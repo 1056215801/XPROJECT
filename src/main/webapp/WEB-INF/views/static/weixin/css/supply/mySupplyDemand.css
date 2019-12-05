@@ -1,0 +1,142 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"黑体";
+}
+
+html {
+	background-color:#ebebeb;
+}
+.supplyDemand_main {
+	background-color:#ebebeb;
+	position:relative;
+}
+.supplyDemand_content {
+	width:100%;
+	background-color:#ebebeb;
+	position:relative;
+	margin:60px 0 60px;
+}
+.fixed_top {
+	position:fixed;
+	top:0;
+	background-color:#FDC006;
+	width:100%;
+	height:50px;
+	z-index:1000;
+	font-weight:bold;
+}
+.fixed_top img {
+	margin:18px 5px 0 10px;
+}
+.fixed_top span {
+	position:absolute;
+	top:14px;
+	font-size:16px;
+	color:#FFF;
+}
+.supplyDemand_operBar {
+	background-color:#fff;
+	border-top:1px solid #e6e6e6;
+	border-bottom:1px solid #e6e6e6;
+	text-align:center;
+}
+.supplyDemand_oper {
+	float:left;
+	padding:7px 0;
+	font-size:14px;
+}
+.borRight {
+	border-right:1px solid #e6e6e6;
+}
+.borLeft {
+	border-left:1px solid #e6e6e6;
+}
+.supplyDemand_cont {
+	background-color:#fff;
+	padding:1% 0;
+}
+.supplyDemand_dataBar {
+	margin:0 1% 2%;
+	float:left;
+	width:98%;
+	border-bottom:1px solid #e6e6e6;
+}
+.supplyDemand_img {
+	float:left;
+}
+.supplyDemand_title {
+	font-weight:bold;
+	color:#5e5e5e;
+	margin-left:120px;
+	line-height:1.4;
+}
+.supplyDemand_title img {
+	display:inline-block;
+	vertical-align:middle;
+}
+.supplyDemand_titleCont {
+	width:85%;
+	display:inline-block;
+	vertical-align:middle;
+}
+.supplyDemand_company {
+	margin-left:120px;
+	font-size:12px;
+	color:#ccc;
+}
+.supplyDemand_data {
+	position:relative;
+	margin-top:30px;
+}
+.supplyDemand_add {
+	float:left;
+	background-color:#F04444;
+	color:#fff;
+	padding:0 4px 0 2px;
+	margin-right:2px;
+	margin-left:10px;
+}
+.supplyDemand_time {
+	float:right;
+	font-size:12px;
+	color:#ccc;
+}
+.supplyDemand_delete {
+	float:left;
+	background-color:#ebebeb;
+	width:100%;
+	text-align:right;
+	padding:3px 0;
+	margin-top:5px;
+}

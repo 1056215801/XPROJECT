@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.weixinConfig.WeixinConfigMenuMapper" >
+
+	<resultMap id="BaseResultMap" type="com.chinatelecom.jx.zone.management.bean.weixinConfig.WeixinConfigMenuBean">
+    	<id column="MENU_ID" jdbcType="DECIMAL" property="menuId"/>
+    	<result column="PARENT_MENU_ID" jdbcType="DECIMAL" property="parentMenuId"/>
+    	<result column="MENU_NAME" jdbcType="VARCHAR" property="menuName"/>
+    	<result column="SAVE_VALUE" jdbcType="VARCHAR" property="saveValue"/>
+    	<result column="MENU_LEVEL" jdbcType="DECIMAL" property="menuLevel"/>
+    	<result column="ORDER_NUM" jdbcType="DECIMAL" property="orderNum"/>
+    	<result column="MENU_TYPE" jdbcType="VARCHAR" property="menuType"/>
+    	<result column="MENU_ICON" jdbcType="VARCHAR" property="menuIcon"/>
+    	<result column="TPL_TYPE" jdbcType="VARCHAR" property="tplType"/>
+    	<result column="DESCRIPTION" jdbcType="VARCHAR" property="description"/>
+    	<result column="SORT_TYPE" jdbcType="VARCHAR" property="sortType"/>
+	</resultMap>
+	
+	<!--
+	<resultMap id="ResultMapWithForeign" type="com.chinatelecom.jx.zone.management.bean.weixinConfig.WeixinConfigMenuBean" extends="BaseResultMap" >
+			 <result column="workProcessid" property="workProcessid" jdbcType="VARCHAR" />
+			 <result column="currentState" property="currentState" jdbcType="VARCHAR" />
+       <result column="organizationName" property="orgName" jdbcType="VARCHAR" />
+        <result column="companyName" property="companyName" jdbcType="VARCHAR" />
+       <result column="accountName" property="accountName" jdbcType="VARCHAR" />
+       <result column="parkName" property="parkName" jdbcType="VARCHAR" />
+  </resultMap>
+  -->
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		MENU_ID,PARENT_MENU_ID,MENU_NAME,SAVE_VALUE,MENU_LEVEL,ORDER_NUM,MENU_TYPE,MENU_ICON,TPL_TYPE,DESCRIPTION,SORT_TYPE
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_WEIXIN_CONFIG_MENU
+    where 
+				MENU_ID = #{menuId,jdbcType=DECIMAL} 
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+        DELETE FROM T_WEIXIN_CONFIG_MENU WHERE
+				MENU_ID = #{menuId,jdbcType=DECIMAL} 
+    </delete>
+
+	<insert id="insert" parameterType="com.chinatelecom.jx.zone.management.bean.weixinConfig.WeixinConfigMenuBean">
+        INSERT INTO T_WEIXIN_CONFIG_MENU (
+        	MENU_ID ,
+        	PARENT_MENU_ID ,
+        	MENU_NAME ,
+        	SAVE_VALUE ,
+        	MENU_LEVEL ,
+        	ORDER_NUM ,
+        	MENU_TYPE ,
+        	MENU_ICON ,
+        	TPL_TYPE ,
+        	DESCRIPTION ,
+        	SORT_TYPE 
+        ) VALUES (
+        	#{menuId,jdbcType=DECIMAL} ,
+        	#{parentMenuId,jdbcType=DECIMAL} ,
+        	#{menuName,jdbcType=VARCHAR} ,
+        	#{saveValue,jdbcType=VARCHAR} ,
+        	#{menuLevel,jdbcType=DECIMAL} ,
+        	#{orderNum,jdbcType=DECIMAL} ,
+        	#{menuType,jdbcType=VARCHAR} ,
+        	#{menuIcon,jdbcType=VARCHAR} ,
+        	#{tplType,jdbcType=VARCHAR} ,
+        	#{description,jdbcType=VARCHAR} ,
+        	#{sortType,jdbcType=VARCHAR} 
+        )
+	</insert>
+	
+	<insert id="insertSelective" parameterType="com.chinatelecom.jx.zone.management.bean.weixinConfig.WeixinConfigMenuBean">
+    insert into T_WEIXIN_CONFIG_MENU
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+    		<if test="menuId != null" >
+        MENU_ID,
+      	</if>
+    		<if test="parentMenuId != null" >
+        PARENT_MENU_ID,
+      	</if>
+    		<if test="menuName != null" >
+        MENU_NAME,
+      	</if>
+    		<if test="saveValue != null" >
+        SAVE_VALUE,
+      	</if>
+    		<if test="menuLevel != null" >
+        MENU_LEVEL,
+      	</if>
+    		<if test="orderNum != null" >
+        ORDER_NUM,
+      	</if>
+    		<if test="menuType != null" >
+        MENU_TYPE,
+      	</if>
+    		<if test="menuIcon != null" >
+        MENU_ICON,
+      	</if>
+    		<if test="tplType != null" >
+        TPL_TYPE,
+      	</if>
+    		<if test="description != null" >
+        DESCRIPTION,
+      	</if>
+    		<if test="sortType != null" >
+        SORT_TYPE,
+      	</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+    		<if test="menuId != null" >
+        #{menuId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="parentMenuId != null" >
+        #{parentMenuId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="menuName != null" >
+        #{menuName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="saveValue != null" >
+        #{saveValue,jdbcType=VARCHAR},
+      	</if>
+    		<if test="menuLevel != null" >
+        #{menuLevel,jdbcType=DECIMAL},
+      	</if>
+    		<if test="orderNum != null" >
+        #{orderNum,jdbcType=DECIMAL},
+      	</if>
+    		<if test="menuType != null" >
+        #{menuType,jdbcType=VARCHAR},
+      	</if>
+    		<if test="menuIcon != null" >
+        #{menuIcon,jdbcType=VARCHAR},
+      	</if>
+    		<if test="tplType != null" >
+        #{tplType,jdbcType=VARCHAR},
+      	</if>
+    		<if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      	</if>
+    		<if test="sortType != null" >
+        #{sortType,jdbcType=VARCHAR},
+      	</if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinatelecom.jx.zone.management.bean.weixinConfig.WeixinConfigMenuBean">
+    update T_WEIXIN_CONFIG_MENU
+    <set >
+    		<if test="parentMenuId != null" >
+        PARENT_MENU_ID = #{parentMenuId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="menuName != null" >
+        MENU_NAME = #{menuName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="saveValue != null" >
+        SAVE_VALUE = #{saveValue,jdbcType=VARCHAR},
+      	</if>
+    		<if test="menuLevel != null" >
+        MENU_LEVEL = #{menuLevel,jdbcType=DECIMAL},
+      	</if>
+    		<if test="orderNum != null" >
+        ORDER_NUM = #{orderNum,jdbcType=DECIMAL},
+      	</if>
+    		<if test="menuType != null" >
+        MENU_TYPE = #{menuType,jdbcType=VARCHAR},
+      	</if>
+    		<if test="menuIcon != null" >
+        MENU_ICON = #{menuIcon,jdbcType=VARCHAR},
+      	</if>
+    		<if test="tplType != null" >
+        TPL_TYPE = #{tplType,jdbcType=VARCHAR},
+      	</if>
+    		<if test="description != null" >
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      	</if>
+    		<if test="sortType != null" >
+        SORT_TYPE = #{sortType,jdbcType=VARCHAR},
+      	</if>
+    </set>
+    where 
+      MENU_ID = #{menuId,jdbcType=DECIMAL} 
+  </update>
+  
+	<update id="updateByPrimaryKey" parameterType="com.chinatelecom.jx.zone.management.bean.weixinConfig.WeixinConfigMenuBean">
+      UPDATE T_WEIXIN_CONFIG_MENU SET
+        PARENT_MENU_ID = #{parentMenuId,jdbcType=DECIMAL} ,
+        MENU_NAME = #{menuName,jdbcType=VARCHAR} ,
+        SAVE_VALUE = #{saveValue,jdbcType=VARCHAR} ,
+        MENU_LEVEL = #{menuLevel,jdbcType=DECIMAL} ,
+        ORDER_NUM = #{orderNum,jdbcType=DECIMAL} ,
+        MENU_TYPE = #{menuType,jdbcType=VARCHAR} ,
+        MENU_ICON = #{menuIcon,jdbcType=VARCHAR} ,
+        TPL_TYPE = #{tplType,jdbcType=VARCHAR} ,
+        DESCRIPTION = #{description,jdbcType=VARCHAR} ,
+        SORT_TYPE = #{sortType,jdbcType=VARCHAR} 
+      WHERE 
+        MENU_ID = #{menuId,jdbcType=DECIMAL} 
+	</update>
+	
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	        
+		       <if test="menuId != null">
+						<![CDATA[AND MENU_ID = #{menuId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="parentMenuId != null">
+						<![CDATA[AND PARENT_MENU_ID = #{parentMenuId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="menuName != null and menuName != ''">
+						<!--
+						<![CDATA[AND MENU_NAME = #{menuName,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND MENU_NAME LIKE '%' || #{menuName,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="saveValue != null and saveValue != ''">
+						<!--
+						<![CDATA[AND SAVE_VALUE = #{saveValue,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND SAVE_VALUE LIKE '%' || #{saveValue,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="menuLevel != null">
+						<![CDATA[AND MENU_LEVEL = #{menuLevel,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="orderNum != null">
+						<![CDATA[AND ORDER_NUM = #{orderNum,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="menuType != null and menuType != ''">
+						<!--
+						<![CDATA[AND MENU_TYPE = #{menuType,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND MENU_TYPE LIKE '%' || #{menuType,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="menuIcon != null and menuIcon != ''">
+						<!--
+						<![CDATA[AND MENU_ICON = #{menuIcon,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND MENU_ICON LIKE '%' || #{menuIcon,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="tplType != null and tplType != ''">
+						<!--
+						<![CDATA[AND TPL_TYPE = #{tplType,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND TPL_TYPE LIKE '%' || #{tplType,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="description != null and description != ''">
+						<!--
+						<![CDATA[AND DESCRIPTION = #{description,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND DESCRIPTION LIKE '%' || #{description,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="sortType != null and sortType != ''">
+						<!--
+						<![CDATA[AND SORT_TYPE = #{sortType,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND SORT_TYPE LIKE '%' || #{sortType,jdbcType=VARCHAR} || '%']]>
+				   </if>
+		</where>
+	</sql>
+	
+	<!--
+	<sql id="Extends_Where_Clause" >
+    <where>	      				
+		       <if test="menuId != null">
+						AND a.MENU_ID = #{menuId,jdbcType=DECIMAL}
+				   </if>
+		       <if test="parentMenuId != null">
+						AND a.PARENT_MENU_ID = #{parentMenuId,jdbcType=DECIMAL}
+				   </if>
+		       <if test="menuName != null and menuName != ''">
+						AND a.MENU_NAME = #{menuName,jdbcType=VARCHAR}
+						AND a.MENU_NAME LIKE '%' || #{menuName,jdbcType=VARCHAR} || '%'
+				   </if>
+		       <if test="saveValue != null and saveValue != ''">
+						AND a.SAVE_VALUE = #{saveValue,jdbcType=VARCHAR}
+						AND a.SAVE_VALUE LIKE '%' || #{saveValue,jdbcType=VARCHAR} || '%'
+				   </if>
+		       <if test="menuLevel != null">
+						AND a.MENU_LEVEL = #{menuLevel,jdbcType=DECIMAL}
+				   </if>
+		       <if test="orderNum != null">
+						AND a.ORDER_NUM = #{orderNum,jdbcType=DECIMAL}
+				   </if>
+		       <if test="menuType != null and menuType != ''">
+						AND a.MENU_TYPE = #{menuType,jdbcType=VARCHAR}
+						AND a.MENU_TYPE LIKE '%' || #{menuType,jdbcType=VARCHAR} || '%'
+				   </if>
+		       <if test="menuIcon != null and menuIcon != ''">
+						AND a.MENU_ICON = #{menuIcon,jdbcType=VARCHAR}
+						AND a.MENU_ICON LIKE '%' || #{menuIcon,jdbcType=VARCHAR} || '%'
+				   </if>
+		       <if test="tplType != null and tplType != ''">
+						AND a.TPL_TYPE = #{tplType,jdbcType=VARCHAR}
+						AND a.TPL_TYPE LIKE '%' || #{tplType,jdbcType=VARCHAR} || '%'
+				   </if>
+		       <if test="description != null and description != ''">
+						AND a.DESCRIPTION = #{description,jdbcType=VARCHAR}
+						AND a.DESCRIPTION LIKE '%' || #{description,jdbcType=VARCHAR} || '%'
+				   </if>
+		       <if test="sortType != null and sortType != ''">
+						AND a.SORT_TYPE = #{sortType,jdbcType=VARCHAR}
+						AND a.SORT_TYPE LIKE '%' || #{sortType,jdbcType=VARCHAR} || '%'
+				   </if>
+	      <if test="accountName != null and accountName!=''" >
+	        and b.account_name LIKE '%' || ${accountName} || '%'
+	      </if>
+	      <if test="orgName != null and orgName!=''" >
+	        and c.organization_name LIKE '%${orgName}%'
+	      </if>
+	      <if test="copmanyName != null and copmanyName!=''" >
+	        and d.organization_name LIKE '%${copmanyName}%'
+	      </if>
+	      <if test="parkName != null and parkName!=''" >
+	        and e.organization_name LIKE '%${parkName}%'
+	      </if>
+		</where>
+  </sql>
+  -->
+  
+  <select id="queryByCond" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.weixinConfig.WeixinConfigMenuBean" >
+    select <include refid="Base_Column_List" />
+    from T_WEIXIN_CONFIG_MENU
+	<include refid="Base_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <select id="queryByParentId" resultMap="BaseResultMap" parameterType="java.math.BigDecimal">
+    select <include refid="Base_Column_List" />
+    from T_WEIXIN_CONFIG_MENU
+	where  
+	  	PARENT_MENU_ID = #{parentId,jdbcType=DECIMAL} 
+    order by  ORDER_NUM asc
+  </select>
+  
+  
+  <select id="queryByParentIds" resultMap="BaseResultMap"  >
+    select <include refid="Base_Column_List" />
+    from T_WEIXIN_CONFIG_MENU
+	  where PARENT_MENU_ID in  
+	 <foreach item="item" index="index" collection="list" open="(" separator="," close=")">  
+	  #{item}  
+ 	 </foreach>  
+ 	  order by  ORDER_NUM asc
+  </select>
+</mapper>
+

@@ -1,0 +1,144 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"黑体";
+}
+a:hover, a:visited, a:link, a:active {
+    text-decoration:none;
+	color:#000;
+}
+
+html {
+	background-color:#ebebeb;
+}
+.home_main {
+	background-color:#ebebeb;
+	position:relative;
+	margin-bottom:60px;
+}
+.home_content {
+	width:100%;
+	height:180px;
+	background-color:#ebebeb;
+	position:relative;
+}
+.home_position {
+	position:absolute;
+	top:3px;
+	right:7px;
+} 
+.home_add {
+	vertical-align:middle;
+	color:#fff;
+	font-size:12px;
+}
+
+.carousel_text {
+	line-height:20px;
+	margin:-6px auto 0;
+	height:31px;
+	background-color:#fff;
+}
+.carousel_bodier{
+	float:left;
+	background-color:#fff;
+	width:90%;
+	overflow:hidden;
+	white-space:nowrap;
+	padding:5px 0;
+}
+.carousel_bodier a {
+	display:inline-block;
+	width:100%;
+}
+.carousel_content{
+	width:auto;
+	height:20px;
+	font-size:12px;
+	color:#A23838;
+}
+.d2{
+	margin:0px auto;
+	background-color:#FF9933;
+}
+
+.home_operBar {
+	background-color:#fff;
+	margin-top:8px;
+}
+.home_operTitle {
+	color:#F14342;
+	border-left:3px solid #F14342;
+	padding:0 5px;
+	line-height:1;
+}
+.home_oper {
+	float:left;
+	width:60px;
+	height:80px;
+	margin:2px 15px 15px;
+}
+.home_operName {
+	text-align:center;
+	font-weight:bold;
+}
+.home_dataBar {
+	background-color:#fff;
+	margin-top:8px;
+	margin-bottom:8px;
+}
+.home_dataTitle {
+	color:#5e5e5e;
+	border-left:3px solid #5e5e5e;
+	padding:0 5px;
+	line-height:1;
+}
+.home_data {
+	position:relative;
+	margin:0 5px;
+	padding:10px;
+	border-bottom:1px solid #f6f6f6;
+}
+.home_dataName {
+	font-weight:bold;
+	padding:1px 0;
+}
+.home_dataDescribe {
+	font-size:12px;
+	color:#aaa;
+}
+.home_dataVal {
+	margin:0 5px 0 10px;
+	position:relative;
+	top:7px;
+}

@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.investigationInfo.InvestigationInfoExampleMapper" >
+
+	<resultMap id="BaseResultMap" type="com.chinatelecom.jx.zone.management.bean.investigationInfo.InvestigationInfoExampleBean">
+    	<id column="ID" jdbcType="DECIMAL" property="id"/>
+    	<result column="INVESTIGATION_ID" jdbcType="DECIMAL" property="investigationId"/>
+    	<result column="ACCOUNT_ID" jdbcType="DECIMAL" property="accountId"/>
+    	<result column="ACCOUNT_NAME" jdbcType="VARCHAR" property="accountName"/>
+    	<result column="IP_ADDRESS" jdbcType="VARCHAR" property="ipAddress"/>
+    	<result column="SOURCE" jdbcType="DECIMAL" property="source"/>
+    	<result column="STATUS" jdbcType="DECIMAL" property="status"/>
+    	<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+    	<result column="REMARK" jdbcType="VARCHAR" property="remark"/>
+    	<result column="EXTEND1" jdbcType="VARCHAR" property="extend1"/>
+    	<result column="EXTEND2" jdbcType="VARCHAR" property="extend2"/>
+    	<result column="EXTEND3" jdbcType="VARCHAR" property="extend3"/>
+	</resultMap>
+	
+	<resultMap id="JoinCountResultMap" type="com.chinatelecom.jx.zone.management.bean.investigationInfo.InvestigationInfoExampleBean">
+    	<result column="INVESTIGATION_ID" jdbcType="DECIMAL" property="investigationId"/>
+    	<result column="EXTEND1" jdbcType="VARCHAR" property="extend1"/>
+	</resultMap>
+	
+	<!--
+	<resultMap id="ResultMapWithForeign" type="com.chinatelecom.jx.zone.management.bean.investigationInfo.InvestigationInfoExampleBean" extends="BaseResultMap" >
+			 <result column="workProcessid" property="workProcessid" jdbcType="VARCHAR" />
+			 <result column="currentState" property="currentState" jdbcType="VARCHAR" />
+       <result column="organizationName" property="orgName" jdbcType="VARCHAR" />
+        <result column="companyName" property="companyName" jdbcType="VARCHAR" />
+       <result column="accountName" property="accountName" jdbcType="VARCHAR" />
+       <result column="parkName" property="parkName" jdbcType="VARCHAR" />
+  </resultMap>
+  -->
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		ID,INVESTIGATION_ID,ACCOUNT_ID,ACCOUNT_NAME,IP_ADDRESS,SOURCE,STATUS,CREATE_TIME,REMARK,EXTEND1,EXTEND2,EXTEND3
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_INVESTIGATION_INFO_EXAMPLE
+    where 
+				ID = #{id,jdbcType=DECIMAL} 
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+        DELETE FROM T_INVESTIGATION_INFO_EXAMPLE WHERE
+				ID = #{id,jdbcType=DECIMAL} 
+    </delete>
+
+	<insert id="insert" parameterType="com.chinatelecom.jx.zone.management.bean.investigationInfo.InvestigationInfoExampleBean">
+        INSERT INTO T_INVESTIGATION_INFO_EXAMPLE (
+        	ID ,
+        	INVESTIGATION_ID ,
+        	ACCOUNT_ID ,
+        	ACCOUNT_NAME ,
+        	IP_ADDRESS ,
+        	SOURCE ,
+        	STATUS ,
+        	CREATE_TIME ,
+        	REMARK ,
+        	EXTEND1 ,
+        	EXTEND2 ,
+        	EXTEND3 
+        ) VALUES (
+        	#{id,jdbcType=DECIMAL} ,
+        	#{investigationId,jdbcType=DECIMAL} ,
+        	#{accountId,jdbcType=DECIMAL} ,
+        	#{accountName,jdbcType=VARCHAR} ,
+        	#{ipAddress,jdbcType=VARCHAR} ,
+        	#{source,jdbcType=DECIMAL} ,
+        	#{status,jdbcType=DECIMAL} ,
+        	#{createTime,jdbcType=TIMESTAMP} ,
+        	#{remark,jdbcType=VARCHAR} ,
+        	#{extend1,jdbcType=VARCHAR} ,
+        	#{extend2,jdbcType=VARCHAR} ,
+        	#{extend3,jdbcType=VARCHAR} 
+        )
+	</insert>
+	
+	<insert id="insertSelective" parameterType="com.chinatelecom.jx.zone.management.bean.investigationInfo.InvestigationInfoExampleBean">
+    insert into T_INVESTIGATION_INFO_EXAMPLE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+    		<if test="id != null" >
+        ID,
+      	</if>
+    		<if test="investigationId != null" >
+        INVESTIGATION_ID,
+      	</if>
+    		<if test="accountId != null" >
+        ACCOUNT_ID,
+      	</if>
+    		<if test="accountName != null" >
+        ACCOUNT_NAME,
+      	</if>
+    		<if test="ipAddress != null" >
+        IP_ADDRESS,
+      	</if>
+    		<if test="source != null" >
+        SOURCE,
+      	</if>
+    		<if test="status != null" >
+        STATUS,
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME,
+      	</if>
+    		<if test="remark != null" >
+        REMARK,
+      	</if>
+    		<if test="extend1 != null" >
+        EXTEND1,
+      	</if>
+    		<if test="extend2 != null" >
+        EXTEND2,
+      	</if>
+    		<if test="extend3 != null" >
+        EXTEND3,
+      	</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+    		<if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      	</if>
+    		<if test="investigationId != null" >
+        #{investigationId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="accountId != null" >
+        #{accountId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="accountName != null" >
+        #{accountName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="ipAddress != null" >
+        #{ipAddress,jdbcType=VARCHAR},
+      	</if>
+    		<if test="source != null" >
+        #{source,jdbcType=DECIMAL},
+      	</if>
+    		<if test="status != null" >
+        #{status,jdbcType=DECIMAL},
+      	</if>
+    		<if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    		<if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      	</if>
+    		<if test="extend1 != null" >
+        #{extend1,jdbcType=VARCHAR},
+      	</if>
+    		<if test="extend2 != null" >
+        #{extend2,jdbcType=VARCHAR},
+      	</if>
+    		<if test="extend3 != null" >
+        #{extend3,jdbcType=VARCHAR},
+      	</if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinatelecom.jx.zone.management.bean.investigationInfo.InvestigationInfoExampleBean">
+    update T_INVESTIGATION_INFO_EXAMPLE
+    <set >
+    		<if test="investigationId != null" >
+        INVESTIGATION_ID = #{investigationId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="accountId != null" >
+        ACCOUNT_ID = #{accountId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="accountName != null" >
+        ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="ipAddress != null" >
+        IP_ADDRESS = #{ipAddress,jdbcType=VARCHAR},
+      	</if>
+    		<if test="source != null" >
+        SOURCE = #{source,jdbcType=DECIMAL},
+      	</if>
+    		<if test="status != null" >
+        STATUS = #{status,jdbcType=DECIMAL},
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    		<if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      	</if>
+    		<if test="extend1 != null" >
+        EXTEND1 = #{extend1,jdbcType=VARCHAR},
+      	</if>
+    		<if test="extend2 != null" >
+        EXTEND2 = #{extend2,jdbcType=VARCHAR},
+      	</if>
+    		<if test="extend3 != null" >
+        EXTEND3 = #{extend3,jdbcType=VARCHAR},
+      	</if>
+    </set>
+    where 
+      ID = #{id,jdbcType=DECIMAL} 
+  </update>
+  
+	<update id="updateByPrimaryKey" parameterType="com.chinatelecom.jx.zone.management.bean.investigationInfo.InvestigationInfoExampleBean">
+      UPDATE T_INVESTIGATION_INFO_EXAMPLE SET
+        INVESTIGATION_ID = #{investigationId,jdbcType=DECIMAL} ,
+        ACCOUNT_ID = #{accountId,jdbcType=DECIMAL} ,
+        ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR} ,
+        IP_ADDRESS = #{ipAddress,jdbcType=VARCHAR} ,
+        SOURCE = #{source,jdbcType=DECIMAL} ,
+        STATUS = #{status,jdbcType=DECIMAL} ,
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP} ,
+        REMARK = #{remark,jdbcType=VARCHAR} ,
+        EXTEND1 = #{extend1,jdbcType=VARCHAR} ,
+        EXTEND2 = #{extend2,jdbcType=VARCHAR} ,
+        EXTEND3 = #{extend3,jdbcType=VARCHAR} 
+      WHERE 
+        ID = #{id,jdbcType=DECIMAL} 
+	</update>
+	
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	        
+		       <if test="id != null">
+						<![CDATA[AND ID = #{id,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="investigationId != null">
+						<![CDATA[AND INVESTIGATION_ID = #{investigationId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="accountId != null">
+						<![CDATA[AND ACCOUNT_ID = #{accountId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="accountName != null and accountName != ''">
+						<!--
+						<![CDATA[AND ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND ACCOUNT_NAME LIKE '%' || #{accountName,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="ipAddress != null and ipAddress != ''">
+						<!--
+						<![CDATA[AND IP_ADDRESS = #{ipAddress,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND IP_ADDRESS LIKE '%' || #{ipAddress,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="source != null">
+						<![CDATA[AND SOURCE = #{source,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="status != null">
+						<![CDATA[AND STATUS = #{status,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+	        
+		       <if test="remark != null and remark != ''">
+						<!--
+						<![CDATA[AND REMARK = #{remark,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND REMARK LIKE '%' || #{remark,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="extend1 != null and extend1 != ''">
+						<!--
+						<![CDATA[AND EXTEND1 = #{extend1,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND EXTEND1 LIKE '%' || #{extend1,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="extend2 != null and extend2 != ''">
+						<!--
+						<![CDATA[AND EXTEND2 = #{extend2,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND EXTEND2 LIKE '%' || #{extend2,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="extend3 != null and extend3 != ''">
+						<!--
+						<![CDATA[AND EXTEND3 = #{extend3,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND EXTEND3 LIKE '%' || #{extend3,jdbcType=VARCHAR} || '%']]>
+				   </if>
+		</where>
+	</sql>
+	
+ 
+ <sql id="Base_Where_Clause1">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	        
+		       <if test="id != null">
+						<![CDATA[AND ID = #{id,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="investigationId != null">
+						<![CDATA[AND INVESTIGATION_ID = #{investigationId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="accountId != null">
+						<![CDATA[AND ACCOUNT_ID = #{accountId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="accountName != null and accountName != ''">
+						<!--
+						<![CDATA[AND ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND ACCOUNT_NAME LIKE '%' || #{accountName,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="ipAddress != null and ipAddress != ''">
+						<!--
+						<![CDATA[AND IP_ADDRESS = #{ipAddress,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND IP_ADDRESS LIKE '%' || #{ipAddress,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="source != null">
+						<![CDATA[AND SOURCE = #{source,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="status != null">
+						<![CDATA[AND STATUS = #{status,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+	        
+		       <if test="remark != null and remark != ''">
+						<!--
+						<![CDATA[AND REMARK = #{remark,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND REMARK LIKE '%' || #{remark,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="extend1 != null and extend1 != ''">
+						<!--
+						<![CDATA[AND EXTEND1 = #{extend1,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND EXTEND1 LIKE '%' || #{extend1,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="extend2 != null and extend2 != ''">
+						<!--
+						<![CDATA[AND EXTEND2 = #{extend2,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND EXTEND2 LIKE '%' || #{extend2,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="extend3 != null and extend3 != ''">
+						<!--
+						<![CDATA[AND EXTEND3 = #{extend3,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND EXTEND3 LIKE '%' || #{extend3,jdbcType=VARCHAR} || '%']]>
+				   </if>
+				   <if test="start  != null and start != ''">
+						<![CDATA[AND to_date(CREATE_TIME ,'yyyy-MM-dd') >= to_date(#{start,jdbcType=VARCHAR} ,'yyyy-MM-dd') ]]>
+				   </if>
+				    <if test="end != null and end != ''">
+						<![CDATA[AND to_date(CREATE_TIME ,'yyyy-MM-dd') <= to_date(#{end,jdbcType=VARCHAR} ,'yyyy-MM-dd') ]]>
+				   </if>
+		</where>
+	</sql>
+  
+  <select id="queryByCond" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.investigationInfo.InvestigationInfoExampleBean" >
+    select <include refid="Base_Column_List" />
+    from T_INVESTIGATION_INFO_EXAMPLE
+	<include refid="Base_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+     
+  <select id="modelInsertInputProinst" statementType="CALLABLE">
+		{call PKG_INPUT.p_insert_input_proinst(
+		#{p_form_id,mode=IN,jdbcType=VARCHAR},#{p_relation_id,mode=IN,jdbcType=VARCHAR},#{p_create_operator_id,mode=IN,jdbcType=VARCHAR}
+		,#{p_result,mode=OUT,jdbcType=VARCHAR},#{p_resultdesc,mode=OUT,jdbcType=VARCHAR})}
+	</select>
+	
+	<select id="queryJoinCount" resultMap="JoinCountResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.investigationInfo.InvestigationInfoExampleBean" >
+	    select investigation_id, count(1) as extend1
+		  from (select p.investigation_id, p.account_id
+		          from t_investigation_info_example p
+		         <include refid="Base_Where_Clause" />
+		         group by p.investigation_id, p.account_id)
+		 group by investigation_id
+	 </select>
+	 
+	 <select id="queryByCondForPage" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.investigationInfo.InvestigationInfoExampleBean" >
+	    select <include refid="Base_Column_List" />
+	    from T_INVESTIGATION_INFO_EXAMPLE
+		<include refid="Base_Where_Clause1" />
+	    <if test="orderByClause != null" >
+	      order by ${orderByClause}
+	    </if>
+	  </select>
+  
+</mapper>
+

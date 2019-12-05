@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>nivotest</title>
+<link rel="stylesheet" href="css/style_deepred.css" type="text/css" media="screen" />
+<script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="js/jquery.nivo.slider.pack_deepred.js"></script>
+<script type="text/javascript">
+$(window).load(function() {
+   $('#slider_top').nivoSlider({
+		    directionNav: false,
+		    captionOpacity: 0 ,
+		    controlNav: true,
+		    boxCols: 8,
+		    boxRows: 4,
+		    slices: 15,
+		    effect:'random',
+		    animSpeed: 500,
+		    pauseTime: 3000 });
+});
+</script>
+</head>
+
+<body>
+
+<div style="height:120px;margin-top:5px;">   
+<div class="bg_" style="margin: 0 auto;z-index: 0;margin-bottom: 10px;">
+	<div class="bg_in_red" style="width: 998px;height: 100px;margin: 0 auto;z-index: 1;">
+		 <div id="slider-wrap">
+			<div id="slider_top" class="nivoSlider">
+			<a  class="nivo-imageLink"  title="111" href="http://www.baidu.com"     target="_blank" >
+			<img src="" style="width:998px;height:222px;" />  			</a>
+			<a  class="nivo-imageLink"  title="222" href="http://www.tom.com"     target="_blank" >
+			<img src="" style="width:998px;height:222px;" />  			</a>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"Microsoft YaHei";
+}
+a:hover, a:visited, a:link, a:active {
+    text-decoration:none;
+	color:#000;
+}
+div {
+	-webkit-transition: all .2s ease-in-out 0s;
+	-moz-transition: all .2s ease-in-out 0s;
+	-ms-transition: all .2s ease-in-out 0s;
+	-o-transition: all .2s ease-in-out 0s;
+	transition: all .2s ease-in-out 0s;
+}
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.clearfix{zoom:1} 
+img,span {vertical-align:middle;}
+
+.industry_main {
+	width:100%;
+	position:relative;
+}
+.industry_content {
+	width:85%;
+	margin:10px auto;
+	border:1px solid #ccc;
+	padding:20px 5px;
+	position:relative;
+}

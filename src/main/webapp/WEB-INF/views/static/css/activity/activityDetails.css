@@ -1,0 +1,364 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"Microsoft YaHei";
+}
+a:hover, a:visited, a:link, a:active {
+    text-decoration:none;
+	color:#000;
+}
+/* div {
+	-webkit-transition: all .2s ease-in-out 0s;
+	-moz-transition: all .2s ease-in-out 0s;
+	-ms-transition: all .2s ease-in-out 0s;
+	-o-transition: all .2s ease-in-out 0s;
+	transition: all .2s ease-in-out 0s;
+} */
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.clearfix{zoom:1} 
+img,span {vertical-align:middle;}
+
+.details_main {
+	width:100%;
+	/* width:1263px; */
+}
+.details_content {
+	/* width:90%; */
+	width:1137px;
+	margin:20px auto 10px;
+	border:1px solid #ccc;
+}
+.details_header {
+	padding:7px 7px 0;
+}
+.details_headerRight {
+	float:left;
+	width:30%;
+	margin:30px 0 0 3%;
+}
+.right_title {
+	font-size:24px;
+	font-weight:bold;
+	line-height:1.4;
+}
+.right_dataBar {
+	margin-top:15px;
+}
+.right_data {
+	font-size:12px;
+	color:#9c9c9c;
+	margin-bottom:5px;
+}
+.img_contral_t2 {
+	position:relative;
+	/* top:2px; */
+}
+.right_input {
+	background-color:#F14343;
+	padding:14px 60px;
+	border-radius:10px;
+	font-size:16px;
+	font-weight:bold;
+	margin:20px 20% 0;
+	position:relative;
+	top:25px;
+}
+.img_contral_t3 {
+	position:relative;
+	/* top:3px; */
+}
+.right_oper {
+	margin-top:90px;
+}
+.font12 {
+	font-size:12px;
+}
+.span_contral_t-3 {
+	position:relative;
+	top:-3px;
+}
+.details_cont {
+	margin:10px 20px;
+	padding:10px 0;
+	border-bottom:1px solid #ccc;
+}
+.titleName {
+	border-bottom:1px solid #ccc;
+}
+.titleName ul{list-style-type:none; position:relative; top:3px; margin-left:5px;}  
+.titleName ul li{float:left; text-align:center; margin-right:20px; padding: 3px 7px;}
+.titleName ul li a{text-decoration:none; font-size:16px;}
+.titleClick { border-bottom:5px solid #F14241;}
+
+.commentName {
+	border-bottom:1px solid #ccc;
+}
+.commentName ul{list-style-type:none; position:relative; margin-left:5px;}  
+.commentName ul li{float:left; text-align:center; font-weight:bold; margin-right:20px;}
+.commentName ul li a{text-decoration:none; font-weight:bold;}
+.commentClick { border-bottom:2px solid #3a3d4b;}
+.commentItem {
+	color:#9c9c9c;
+}
+.commentInput {
+	border:1px solid #ccc;
+}
+.commentInput textarea {
+	width:99%;
+	border:0;
+	margin:0 4px;
+}
+.commentInput input {
+	padding:3px 25px;
+	background-color:#F14241;
+	border:0;
+	color:#FFF;
+}
+.commentContral {
+	border-top:1px solid #ccc;
+	text-align:right;
+	padding:3px 4px;
+}
+.commentArea {
+	margin-top:15px;
+}
+.commentCount {
+	float:right;
+	font-size:12px;
+	color:#9c9c9c;
+}
+.commentBar {
+	padding:30px 0;
+	border-bottom:1px solid #e6e6e6;
+}
+
+.details_footer {
+	margin:0 20px;
+}
+.detailsNum {
+	font-size:24px;
+	margin-left:5px;
+}
+.detailsHuman {
+	width:70px;
+	float:left;
+	margin:0 1.8% 5px;
+}
+.detailsHumanName {
+	text-align:center;
+	color:#9c9c9c;
+}
+.renovate{
+	display: block;
+    text-align: center;
+	border:1px solid #e6e6e6;
+	padding:7px 0;
+}
+.renovate:hover{
+	background-color:#f6f6f6;
+}
+.renovateTitle{
+	color: #ccc;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 14px;
+    text-align: center;
+}
+.activity_recommend {
+	/* width:90%; */
+	width:1136.7px;
+	margin:0 auto 20px;
+}
+.activityTitle {
+	font-size:16px;
+	font-weight:bold;
+	border-bottom:1px solid #ccc;
+	padding:2px 12px;
+}
+.activityBar {
+	margin:18px 0 0;
+}
+.activityCont {
+	/* width:30%; */
+	width:362px;
+	/* height:200px; */
+	height:266px;
+	border:1px solid #ccc;
+	float:left;
+	margin:0 7px 10px;
+}
+.activityCont_title {
+	margin:8px 5px;
+}
+.activityCont_text {
+	float:left;
+	font-weight:bold;
+}
+.registrationIn {
+	border-radius:10px;
+	padding:0 10px;
+	float:right;
+	border:0;
+	background-color:#F14241;
+	color:#FFF;
+}
+.hasEnded {
+	background-color:#A8A8A8;
+}
+.activityCont_data {
+	font-size:12px;
+	color:#9B9B9B;
+	margin:5px 5px 0;
+}
+
+.activity-tagBox {
+    position: absolute;
+    top: 0;
+    /* right: 35%; */
+    right:402.7px;
+    z-index: 9;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 45px;
+}
+.activity-tagBox ul {
+    position: relative;
+    z-index: 10;
+    top: 20px;
+}
+.activity-tagBox ul li {
+    float: left;
+    margin-right: 20px;
+    color: #fff;
+}
+.tag-bg {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: .5;
+    filter: alpha(opacity=50);
+    position: absolute;
+    top: 20px;
+    left: 0;
+    z-index: 1;
+   	border-radius: 20px 0 0 20px;
+}
+.activity-tagBox i {
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	top: 28px;
+	left: 18px;
+	vertical-align: middle;
+	position: absolute;
+	z-index: 10;
+}
+
+.activity-tagBox {
+    position: absolute;
+    top: 0;
+    /* right: 35%; */
+    right:402.7px;
+    z-index: 9;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 45px;
+}
+.activity-tagBox ul {
+    position: relative;
+    z-index: 10;
+    top: 20px;
+}
+.activity-tagBox ul li {
+    float: left;
+    margin-right: 20px;
+    color: #fff;
+}
+.tag-bg {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: .5;
+    filter: alpha(opacity=50);
+    position: absolute;
+    top: 20px;
+    left: 0;
+    z-index: 1;
+   	border-radius: 20px 0 0 20px;
+}
+.activity-tagBox i {
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	top: 28px;
+	left: 18px;
+	vertical-align: middle;
+	position: absolute;
+	z-index: 10;
+}
+
+.activity-tagBox1 {
+    position: absolute;
+    top: -10px;
+    right: 0;
+    z-index: 9;
+    height: 20px;
+    line-height: 30px;
+    padding-left: 45px;
+}
+.activity-tagBox1 i {
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	top: 24px;
+	left: 18px;
+	vertical-align: middle;
+	position: absolute;
+	z-index: 10;
+}
+.activity-tagBox1 ul {
+    position: relative;
+    z-index: 10;
+    top: 16px;
+}
+.activity-tagBox1 ul li {
+    float: left;
+    margin-right: 20px;
+    color: #fff;
+}

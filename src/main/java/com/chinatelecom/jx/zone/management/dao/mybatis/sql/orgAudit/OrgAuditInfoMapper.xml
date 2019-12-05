@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.orgAudit.OrgAuditInfoMapper" >
+
+	<resultMap id="BaseResultMap" type="com.chinatelecom.jx.zone.management.bean.orgAudit.OrgAuditInfoBean">
+    	<id column="ORG_ID" jdbcType="DECIMAL" property="orgId"/>
+    	<result column="ORG_NAME" jdbcType="VARCHAR" property="orgName"/>
+    	<result column="ORG_KIND" jdbcType="DECIMAL" property="orgKind"/>
+    	<result column="PARENT_ID" jdbcType="DECIMAL" property="parentId"/>
+    	<result column="PARENT_NAME" jdbcType="VARCHAR" property="parentName"/>
+    	<result column="PARENT_KIND" jdbcType="DECIMAL" property="parentKind"/>
+    	<result column="SORT_GRADE" jdbcType="DECIMAL" property="sortGrade"/>
+    	<result column="REMARK" jdbcType="VARCHAR" property="remark"/>
+    	<result column="STATUS" jdbcType="DECIMAL" property="status"/>
+    	<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+	</resultMap>
+	
+	<!--
+	<resultMap id="ResultMapWithForeign" type="com.chinatelecom.jx.zone.management.bean.orgAudit.OrgAuditInfoBean" extends="BaseResultMap" >
+			 <result column="workProcessid" property="workProcessid" jdbcType="VARCHAR" />
+			 <result column="currentState" property="currentState" jdbcType="VARCHAR" />
+       <result column="organizationName" property="orgName" jdbcType="VARCHAR" />
+        <result column="companyName" property="companyName" jdbcType="VARCHAR" />
+       <result column="accountName" property="accountName" jdbcType="VARCHAR" />
+       <result column="parkName" property="parkName" jdbcType="VARCHAR" />
+  </resultMap>
+  -->
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		ORG_ID,ORG_NAME,ORG_KIND,PARENT_ID,PARENT_NAME,PARENT_KIND,SORT_GRADE,REMARK,STATUS,CREATE_TIME
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_ORG_AUDIT_INFO
+    where 
+				ORG_ID = #{orgId,jdbcType=DECIMAL} 
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+        DELETE FROM T_ORG_AUDIT_INFO WHERE
+				ORG_ID = #{orgId,jdbcType=DECIMAL} 
+    </delete>
+
+	<insert id="insert" parameterType="com.chinatelecom.jx.zone.management.bean.orgAudit.OrgAuditInfoBean">
+        INSERT INTO T_ORG_AUDIT_INFO (
+        	ORG_ID ,
+        	ORG_NAME ,
+        	ORG_KIND ,
+        	PARENT_ID ,
+        	PARENT_NAME ,
+        	PARENT_KIND ,
+        	SORT_GRADE ,
+        	REMARK ,
+        	STATUS ,
+        	CREATE_TIME 
+        ) VALUES (
+        	#{orgId,jdbcType=DECIMAL} ,
+        	#{orgName,jdbcType=VARCHAR} ,
+        	#{orgKind,jdbcType=DECIMAL} ,
+        	#{parentId,jdbcType=DECIMAL} ,
+        	#{parentName,jdbcType=VARCHAR} ,
+        	#{parentKind,jdbcType=DECIMAL} ,
+        	#{sortGrade,jdbcType=DECIMAL} ,
+        	#{remark,jdbcType=VARCHAR} ,
+        	#{status,jdbcType=DECIMAL} ,
+        	#{createTime,jdbcType=TIMESTAMP} 
+        )
+	</insert>
+	
+	<insert id="insertSelective" parameterType="com.chinatelecom.jx.zone.management.bean.orgAudit.OrgAuditInfoBean">
+    insert into T_ORG_AUDIT_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+    		<if test="orgId != null" >
+        ORG_ID,
+      	</if>
+    		<if test="orgName != null" >
+        ORG_NAME,
+      	</if>
+    		<if test="orgKind != null" >
+        ORG_KIND,
+      	</if>
+    		<if test="parentId != null" >
+        PARENT_ID,
+      	</if>
+    		<if test="parentName != null" >
+        PARENT_NAME,
+      	</if>
+    		<if test="parentKind != null" >
+        PARENT_KIND,
+      	</if>
+    		<if test="sortGrade != null" >
+        SORT_GRADE,
+      	</if>
+    		<if test="remark != null" >
+        REMARK,
+      	</if>
+    		<if test="status != null" >
+        STATUS,
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME,
+      	</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+    		<if test="orgId != null" >
+        #{orgId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="orgName != null" >
+        #{orgName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="orgKind != null" >
+        #{orgKind,jdbcType=DECIMAL},
+      	</if>
+    		<if test="parentId != null" >
+        #{parentId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="parentName != null" >
+        #{parentName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="parentKind != null" >
+        #{parentKind,jdbcType=DECIMAL},
+      	</if>
+    		<if test="sortGrade != null" >
+        #{sortGrade,jdbcType=DECIMAL},
+      	</if>
+    		<if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      	</if>
+    		<if test="status != null" >
+        #{status,jdbcType=DECIMAL},
+      	</if>
+    		<if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinatelecom.jx.zone.management.bean.orgAudit.OrgAuditInfoBean">
+    update T_ORG_AUDIT_INFO
+    <set >
+    		<if test="orgName != null" >
+        ORG_NAME = #{orgName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="orgKind != null" >
+        ORG_KIND = #{orgKind,jdbcType=DECIMAL},
+      	</if>
+    		<if test="parentId != null" >
+        PARENT_ID = #{parentId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="parentName != null" >
+        PARENT_NAME = #{parentName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="parentKind != null" >
+        PARENT_KIND = #{parentKind,jdbcType=DECIMAL},
+      	</if>
+    		<if test="sortGrade != null" >
+        SORT_GRADE = #{sortGrade,jdbcType=DECIMAL},
+      	</if>
+    		<if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      	</if>
+    		<if test="status != null" >
+        STATUS = #{status,jdbcType=DECIMAL},
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    </set>
+    where 
+      ORG_ID = #{orgId,jdbcType=DECIMAL} 
+  </update>
+  
+	<update id="updateByPrimaryKey" parameterType="com.chinatelecom.jx.zone.management.bean.orgAudit.OrgAuditInfoBean">
+      UPDATE T_ORG_AUDIT_INFO SET
+        ORG_NAME = #{orgName,jdbcType=VARCHAR} ,
+        ORG_KIND = #{orgKind,jdbcType=DECIMAL} ,
+        PARENT_ID = #{parentId,jdbcType=DECIMAL} ,
+        PARENT_NAME = #{parentName,jdbcType=VARCHAR} ,
+        PARENT_KIND = #{parentKind,jdbcType=DECIMAL} ,
+        SORT_GRADE = #{sortGrade,jdbcType=DECIMAL} ,
+        REMARK = #{remark,jdbcType=VARCHAR} ,
+        STATUS = #{status,jdbcType=DECIMAL} ,
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP} 
+      WHERE 
+        ORG_ID = #{orgId,jdbcType=DECIMAL} 
+	</update>
+	
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	        
+		       <if test="orgId != null">
+						<![CDATA[AND ORG_ID = #{orgId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="orgName != null and orgName != ''">
+						<!--
+						<![CDATA[AND ORG_NAME = #{orgName,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND ORG_NAME LIKE '%' || #{orgName,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="orgKind != null">
+						<![CDATA[AND ORG_KIND = #{orgKind,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="parentId != null">
+						<![CDATA[AND PARENT_ID = #{parentId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="parentName != null and parentName != ''">
+						<!--
+						<![CDATA[AND PARENT_NAME = #{parentName,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND PARENT_NAME LIKE '%' || #{parentName,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="parentKind != null">
+						<![CDATA[AND PARENT_KIND = #{parentKind,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="sortGrade != null">
+						<![CDATA[AND SORT_GRADE = #{sortGrade,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="remark != null and remark != ''">
+						<!--
+						<![CDATA[AND REMARK = #{remark,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND REMARK LIKE '%' || #{remark,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="status != null">
+						<![CDATA[AND STATUS = #{status,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		</where>
+	</sql>
+	
+ 
+  
+  <select id="queryByCond" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.orgAudit.OrgAuditInfoBean" >
+    select <include refid="Base_Column_List" />
+    from T_ORG_AUDIT_INFO
+	<include refid="Base_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+  <select id="queryByChildOrg" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.orgAudit.OrgAuditInfoBean" >
+    select a.* from t_project_declare_org a 
+
+	join  t_project_declare_info b  on a.declare_id = b.declare_id
+
+	join t_org_audit_info c on a.org_id = c.org_id  
+
+	where c.parent_id = #{parentId,jdbcType=DECIMAL} and a.declare_id = #{declareId,jdbcType=DECIMAL}
+
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+     
+  
+</mapper>
+

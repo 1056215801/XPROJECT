@@ -1,0 +1,156 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"黑体";
+}
+a:hover, a:visited, a:link, a:active {
+    text-decoration:none;
+	color:#000;
+}
+
+html {
+	background-color:#ebebeb;
+}
+.details_main {
+	background-color:#ebebeb;
+}
+.details_content {
+	width:100%;
+	background-color:#ebebeb;
+	position:relative;
+}
+.surveyDataBar {
+	background-color:#fff;
+	padding:7px 10px;
+	margin-top:10px;
+}
+.surveyTitle {
+	font-size:16px;
+	font-weight:bold;
+	color:#000;
+}
+.surveyDataContral {
+	color:#aaa;
+	padding:3px 0;
+	font-size:12px;
+}
+.surveyPop {
+	vertical-align:middle;
+	font-size:12px;
+}
+.surveyStateYellow {
+	position:absolute;
+	top:7px;
+	right:0;
+	padding:1px 15px;
+	background-color:#f1921c;
+	color:#fff;
+	border:0;
+	border-radius:10px;
+}
+.surveyStateGray {
+	position:absolute;
+	top:7px;
+	right:0;
+	padding:1px 15px;
+	background-color:#A3A3A3;
+	color:#fff;
+	border:0;
+	border-radius:10px;
+}
+.survey_subject {
+	font-weight:bold;
+	margin-top:20px;
+}
+.textareContral {
+	padding:10px;
+	width:93%;
+	font-size:12px;
+	margin:5px 0 0;
+}
+.buttonContral {
+	width:100%;
+	background-color:#f1921c;
+	padding:7px 0;
+	color:#fff;
+	border:0;
+}
+
+body .layui-layer-tl_yellow .layui-layer-title {
+	background-color: #f1921c;
+	color: #fff;
+}
+
+body .layui-layer-tl_yellow .layui-layer-content{
+	padding:20px;
+}
+
+body .layui-layer-tl_yellow .layui-layer-btn{
+	text-align:center;
+}
+
+body .layui-layer-tl_yellow .layui-layer-btn0 {
+	background-color: #f1921c;
+	border-color:#f1921c;
+	text-align:center;
+	width:30%;
+}
+
+body .layui-layer-tl_yellow .layui-layer-btn1{
+	width:30%;
+	text-align:center;
+}
+
+body .layui-layer-title {
+	padding:0 80px 0 20px;
+	height:42px;
+	line-height:42px;
+	border-bottom:1px solid #eee;
+	font-size:14px;
+	color:#fff;
+	overflow:hidden;
+	background-color:#f1921c;
+	border-radius:2px 2px 0 0
+}
+
+/* 小火箭 */
+#tbox{
+	width:50px;
+	height: 60px; 
+	background:url(/XProject/static/weixin/images/logistics/rocket.png) no-repeat; 
+	display:none;
+	position:fixed;
+	right:10px;
+	bottom:50px;
+	background-size:50px 50px; 
+}

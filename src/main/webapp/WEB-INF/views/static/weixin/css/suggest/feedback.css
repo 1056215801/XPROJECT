@@ -1,0 +1,249 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"Microsoft YaHei";
+}
+a:hover, a:visited, a:link, a:active {
+    text-decoration:none;
+	color:#000;
+}
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.clearfix{zoom:1} 
+
+html {
+	background-color:#ebebeb;
+}
+.feed_main {
+	background-color:#ebebeb;
+	position:relative;
+	margin-bottom:60px;
+}
+.feed_content {
+	width:100%;
+	background-color:#ebebeb;
+	position:relative;
+}
+/*间断式向上滚动效果*/
+.shell {
+	background:url("") no-repeat 12px 8px;
+	/* width:100%;  */
+	padding:2px 2px 2px 10px;
+	text-align:left;
+	margin:0 auto;
+	border-top: 1px solid #FFFFC5;
+	border-bottom: 1px solid #FFFFC5;
+	background-color: #FFFFC5;
+}
+#ink_con1, #ink_con2 {
+	height:20px;
+	overflow:hidden;
+	display:inline-block;
+	vertical-align:middle;
+	width:90%;
+}
+#ink_con1 a, #ink_con2 a{
+	font-size:14px; 
+	color:#000; 
+	text-decoration:none; 
+	line-height: 20px; 
+	display: block; 
+	white-space: nowrap;
+}
+/*间断式向上滚动效果*/
+/*微信端小标题*/
+.caption_top {
+	width:100%;
+	height:20px;
+	margin-top:20px;
+	border-top:1px solid #CBCBCB;
+}
+.caption_title {
+	width:26%;
+	position:relative;
+	top:-10px;
+	left:37%;
+	text-align:center; 
+	background-color:#ebebeb;
+	font-size:14px;
+}
+/*微信端小标题*/
+/*表单填写样式*/
+.feedCont {
+	background-color:#FFF;
+	padding:0px 7px;
+	margin-bottom:10px;
+}
+.feedCont table {width:100%;border-collapse:separate; border-spacing:0 5px;}
+.feedCont table tr {}
+.feedCont table tr td {}
+.feedCont select {border:1px solid #7E7E7E;width:90%; padding:6px 0;}
+.feedCont select option {}
+.feedCont input, .feedCont textarea {
+	padding:5px 0;
+	border:1px solid #7E7E7E;
+	text-indent:3px;
+}
+ .feedAttribute {
+	width:18.5%;
+	text-align:right;
+	padding:5px 0;
+} 
+ 
+.feedTable28 {
+	width:28%;
+	padding-left:10px;
+}
+.feedTable50 {
+	width:50%;
+	padding-left:10px;
+}
+.feedTable78 {
+	width:78%;
+	padding-left:10px;
+}
+.feedTable95 {
+	width:95%;
+	padding-left:10px;
+}
+.redStar {
+	color:#F14241;
+	float:right;
+	position:relative;
+	top:5px;
+}
+.feedBtn {
+	background-color:#f14241;
+	color:#FFF;
+	text-align:center;
+	padding:7px 0;
+	width:100%;
+	border:0;
+}
+/*表单填写样式*/
+.attachBar {
+	position:relative;
+	width:80px;
+	float:left;
+	margin-right:5px;
+}
+.attachImage {
+	display:block;
+	margin:10px auto 0;
+}
+.attachName {
+	margin:5px 0;
+	line-height:1;
+}
+.attachDel {
+	position:absolute;
+	top:0;
+	right:0;
+}
+
+.feedContImage {
+	vertical-align:middle;
+	margin-left:5px;
+}
+.feedContStatistics {
+	display:inline-block;
+	vertical-align:middle;
+	font-size:16px;
+	color:#000;
+	margin-left:2px;
+}
+.feedContTop {
+	position:relative;
+	padding:12px 0;
+	border-bottom:1px solid #ccc;
+}
+.feedContTopImage {
+	float:left;
+	margin-left:5px;
+	border-radius:30px;
+}
+.feedContTopName {
+	float:left;
+	color:#f14241;
+	margin-left:5px;
+	position:relative;
+	top:4px;
+}
+.feedContTopTime {
+	float:right;
+	font-size:12px;
+	margin-right:5px;
+	position:relative;
+	top:7px;
+}
+.feedContMid {
+	padding:12px 0;
+	border-bottom:1px solid #ccc;
+}
+.feedContBot {
+	padding:12px 0;
+}
+.feedOper {
+	float:left;
+	margin-left:5px;
+}
+.feedLabel {
+	float:right;
+	border-radius: 2px;
+	background-color:#f14241;
+	color:#fff;
+	padding:0 5px;
+}
+.feedContDel {
+	float:left;
+	color:#f14241;
+	margin-left:5px;
+}
+.renovateTitle {
+	color: #120F0F;
+	display: inline-block;
+	font-size: 14px;
+	line-height: 14px;
+	text-align: center;
+}
+.renovate {
+	display: block;
+    text-align: center;
+	background-color:#F6F6F6;
+	padding:7px 0;
+}

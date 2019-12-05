@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.projectDeclare.ProjectDeclareNodeMapper" >
+
+	<resultMap id="BaseResultMap" type="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareNodeBean">
+    	<id column="NODE_ID" jdbcType="DECIMAL" property="nodeId"/>
+    	<result column="DECLARE_ID" jdbcType="DECIMAL" property="declareId"/>
+    	<result column="NODE_NAME" jdbcType="VARCHAR" property="nodeName"/>
+    	<result column="END_TIME" jdbcType="TIMESTAMP" property="endTime"/>
+    	<result column="REMAIN_DAY" jdbcType="DECIMAL" property="remainDay"/>
+    	<result column="REMARK" jdbcType="VARCHAR" property="remark"/>
+    	<result column="NODE_NUM" jdbcType="DECIMAL" property="nodeNum"/>
+	</resultMap>
+	
+	<!--
+	<resultMap id="ResultMapWithForeign" type="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareNodeBean" extends="BaseResultMap" >
+			 <result column="workProcessid" property="workProcessid" jdbcType="VARCHAR" />
+			 <result column="currentState" property="currentState" jdbcType="VARCHAR" />
+       <result column="organizationName" property="orgName" jdbcType="VARCHAR" />
+        <result column="companyName" property="companyName" jdbcType="VARCHAR" />
+       <result column="accountName" property="accountName" jdbcType="VARCHAR" />
+       <result column="parkName" property="parkName" jdbcType="VARCHAR" />
+  </resultMap>
+  -->
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		NODE_ID,DECLARE_ID,NODE_NAME,END_TIME,REMAIN_DAY,REMARK,NODE_NUM
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_PROJECT_DECLARE_NODE
+    where 
+				NODE_ID = #{nodeId,jdbcType=DECIMAL} 
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+        DELETE FROM T_PROJECT_DECLARE_NODE WHERE
+				NODE_ID = #{nodeId,jdbcType=DECIMAL} 
+    </delete>
+
+	<insert id="insert" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareNodeBean">
+        INSERT INTO T_PROJECT_DECLARE_NODE (
+        	NODE_ID ,
+        	DECLARE_ID ,
+        	NODE_NAME ,
+        	END_TIME ,
+        	REMAIN_DAY ,
+        	REMARK,
+        	NODE_NUM
+        ) VALUES (
+        	#{nodeId,jdbcType=DECIMAL} ,
+        	#{declareId,jdbcType=DECIMAL} ,
+        	#{nodeName,jdbcType=VARCHAR} ,
+        	#{endTime,jdbcType=TIMESTAMP} ,
+        	#{remainDay,jdbcType=DECIMAL} ,
+        	#{remark,jdbcType=VARCHAR},
+        	#{nodeNum,jdbcType=DECIMAL} 
+        )
+	</insert>
+	
+	<insert id="insertSelective" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareNodeBean">
+    insert into T_PROJECT_DECLARE_NODE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+    		<if test="nodeId != null" >
+        NODE_ID,
+      	</if>
+    		<if test="declareId != null" >
+        DECLARE_ID,
+      	</if>
+    		<if test="nodeName != null" >
+        NODE_NAME,
+      	</if>
+    		<if test="endTime != null" >
+        END_TIME,
+      	</if>
+    		<if test="remainDay != null" >
+        REMAIN_DAY,
+      	</if>
+    		<if test="remark != null" >
+        REMARK,
+      	</if>
+    		<if test="nodeNum != null" >
+        NODE_NUM,
+      	</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+    		<if test="nodeId != null" >
+        #{nodeId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="declareId != null" >
+        #{declareId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="nodeName != null" >
+        #{nodeName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      	</if>
+    		<if test="remainDay != null" >
+        #{remainDay,jdbcType=DECIMAL},
+      	</if>
+    		<if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      	</if>
+    		<if test="nodeNum != null" >
+        #{nodeNum,jdbcType=DECIMAL},
+      	</if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareNodeBean">
+    update T_PROJECT_DECLARE_NODE
+    <set >
+    		<if test="declareId != null" >
+        DECLARE_ID = #{declareId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="nodeName != null" >
+        NODE_NAME = #{nodeName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="endTime != null" >
+        END_TIME = #{endTime,jdbcType=TIMESTAMP},
+      	</if>
+    		<if test="remainDay != null" >
+        REMAIN_DAY = #{remainDay,jdbcType=DECIMAL},
+      	</if>
+    		<if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      	</if>
+    		<if test="nodeNum != null" >
+        NODE_NUM = #{nodeNum,jdbcType=DECIMAL},
+      	</if>
+    </set>
+    where 
+      NODE_ID = #{nodeId,jdbcType=DECIMAL} 
+  </update>
+  
+	<update id="updateByPrimaryKey" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareNodeBean">
+      UPDATE T_PROJECT_DECLARE_NODE SET
+        DECLARE_ID = #{declareId,jdbcType=DECIMAL} ,
+        NODE_NAME = #{nodeName,jdbcType=VARCHAR} ,
+        END_TIME = #{endTime,jdbcType=TIMESTAMP} ,
+        REMAIN_DAY = #{remainDay,jdbcType=DECIMAL} ,
+        REMARK = #{remark,jdbcType=VARCHAR},
+        NODE_NUM = #{nodeNum,jdbcType=DECIMAL} 
+      WHERE 
+        NODE_ID = #{nodeId,jdbcType=DECIMAL} 
+	</update>
+	
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	        
+		       <if test="nodeId != null">
+						<![CDATA[AND NODE_ID = #{nodeId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="declareId != null">
+						<![CDATA[AND DECLARE_ID = #{declareId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="nodeName != null and nodeName != ''">
+						<!--
+						<![CDATA[AND NODE_NAME = #{nodeName,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND NODE_NAME LIKE '%' || #{nodeName,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+	        
+		       <if test="remainDay != null">
+						<![CDATA[AND REMAIN_DAY = #{remainDay,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="remark != null and remark != ''">
+						<!--
+						<![CDATA[AND REMARK = #{remark,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND REMARK LIKE '%' || #{remark,jdbcType=VARCHAR} || '%']]>
+				   </if>
+				   <if test="nodeNum != null">
+						<![CDATA[AND NODE_NUM = #{nodeNum,jdbcType=DECIMAL}]]>
+				   </if>
+		</where>
+	</sql>
+	
+ 
+  
+  <select id="queryByCond" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareNodeBean" >
+    select <include refid="Base_Column_List" />
+    from T_PROJECT_DECLARE_NODE
+	<include refid="Base_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+      <delete id="deleteByDeclareId" parameterType="java.math.BigDecimal">
+        DELETE FROM T_PROJECT_DECLARE_NODE WHERE
+				DECLARE_ID = #{declareId,jdbcType=DECIMAL} 
+    </delete>
+  
+  	<select id="selectAll" resultMap="BaseResultMap">
+  		select <include refid="Base_Column_List" />
+    	from T_PROJECT_DECLARE_NODE
+  	</select>
+  
+  	<update id="updateTime">
+  		update T_PROJECT_DECLARE_NODE 
+  		<set>
+  			REMAIN_DAY = -1
+  		</set>
+  		<where>
+  			<![CDATA[AND REMAIN_DAY >= 0 and END_TIME < sysdate]]>
+  		</where>
+  	</update>
+  
+  	<update id="updateTimeDay">
+  		update T_PROJECT_DECLARE_NODE 
+  		<set>
+  			REMAIN_DAY = NVL(FLOOR(END_TIME - sysdate),0)
+  		</set>
+  		<where>
+  			<![CDATA[AND REMAIN_DAY >= 0 and END_TIME > sysdate]]>
+  		</where>
+  	</update>
+  
+</mapper>
+

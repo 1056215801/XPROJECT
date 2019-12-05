@@ -1,0 +1,137 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"Microsoft YaHei";
+}
+a:hover, a:visited, a:link, a:active {
+    text-decoration:none;
+	color:#000;
+}
+/* div {
+	-webkit-transition: all .2s ease-in-out 0s;
+	-moz-transition: all .2s ease-in-out 0s;
+	-ms-transition: all .2s ease-in-out 0s;
+	-o-transition: all .2s ease-in-out 0s;
+	transition: all .2s ease-in-out 0s;
+} */
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.clearfix{zoom:1} 
+img,span {vertical-align:middle;}
+
+.release_main {
+	width:100%;
+	/* width:1263px; */;
+}
+.release_content {
+	/* width:90%; */
+	width:1137px;
+	margin:20px auto 20px;
+	border:1px solid #ccc;
+	padding:20px;
+}
+.titleName {
+	border-bottom:1px solid #ccc;
+}
+.titleName ul{list-style-type:none; position:relative; top:3px; margin-left:5px;}  
+.titleName ul li{float:left; text-align:center; font-weight:bold; margin-right:20px; height:30px;}
+.titleName ul li a{text-decoration:none; font-size:20px; font-weight:bold;}
+.titleClick { border-bottom:5px solid #F14241;}
+.release_dataBar {
+	width:85%;
+	margin:20px auto;
+}
+.release_data {
+	margin-bottom:15px;
+}
+.redStar {
+	float:left;
+	color:#FF0000;
+}
+.release_attr {
+	float:left;
+	margin-left:10px;
+}
+.release_input {
+	float:left;
+	margin-left:15px;
+	padding: 4px 0;
+	text-indent: 1em;
+}
+.laydateContral {
+	float:left;
+	height: 28px;
+	line-height:28px;
+    margin-left: 15px;
+    text-indent: 1em;
+}
+.release_btn {
+	float:right;
+	padding:3px 35px;
+	cursor:pointer;
+}
+.release_rel {
+	background-color:#F14241;
+	border:1px solid #F03B3B;
+	margin-right:35px;
+	color:#FFF;
+}
+.release_pre {
+	background-color:#F2F2F2;
+	border:1px solid #ccc;
+	margin-right:20px;
+}
+.searchOptions {
+	margin-left:15px;
+	float:left;
+}
+.optionBtn {
+	float:left;
+	border:1px solid #ccc;
+	color:#646464;
+	margin-right:7px;
+	padding:3px 7px;
+	border-radius:1px;
+	cursor:pointer;
+	font-size:12px;
+}
+.selected {
+	background-color:#F14241;
+	color:#fff;
+	border:1px solid #F14241;
+}

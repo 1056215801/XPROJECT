@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.drawTd.DrawTdInputMapper" >
+
+	<resultMap id="BaseResultMap" type="com.chinatelecom.jx.zone.management.bean.drawTd.DrawTdInputBean">
+    	<id column="ID" jdbcType="DECIMAL" property="id"/>
+    	<result column="TD_ID" jdbcType="DECIMAL" property="tdId"/>
+    	<result column="INPUT_ID" jdbcType="DECIMAL" property="inputId"/>
+    	<result column="TABLE_ID" jdbcType="DECIMAL" property="tableId"/>
+    	<result column="SORT_GRADE" jdbcType="DECIMAL" property="sortGrade"/>
+    	<result column="PARK_ID" jdbcType="DECIMAL" property="parkId"/>
+    	<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+	</resultMap>
+	
+	<!--
+	<resultMap id="ResultMapWithForeign" type="com.chinatelecom.jx.zone.management.bean.drawTd.DrawTdInputBean" extends="BaseResultMap" >
+			 <result column="workProcessid" property="workProcessid" jdbcType="VARCHAR" />
+			 <result column="currentState" property="currentState" jdbcType="VARCHAR" />
+       <result column="organizationName" property="orgName" jdbcType="VARCHAR" />
+        <result column="companyName" property="companyName" jdbcType="VARCHAR" />
+       <result column="accountName" property="accountName" jdbcType="VARCHAR" />
+       <result column="parkName" property="parkName" jdbcType="VARCHAR" />
+  </resultMap>
+  -->
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		ID,TD_ID,INPUT_ID,TABLE_ID,SORT_GRADE,PARK_ID,CREATE_TIME
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_DRAW_TD_INPUT
+    where 
+				ID = #{id,jdbcType=DECIMAL} 
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+        DELETE FROM T_DRAW_TD_INPUT WHERE
+				ID = #{id,jdbcType=DECIMAL} 
+    </delete>
+
+	<insert id="insert" parameterType="com.chinatelecom.jx.zone.management.bean.drawTd.DrawTdInputBean">
+        INSERT INTO T_DRAW_TD_INPUT (
+        	ID ,
+        	TD_ID ,
+        	INPUT_ID ,
+        	TABLE_ID ,
+        	SORT_GRADE ,
+        	PARK_ID ,
+        	CREATE_TIME 
+        ) VALUES (
+        	#{id,jdbcType=DECIMAL} ,
+        	#{tdId,jdbcType=DECIMAL} ,
+        	#{inputId,jdbcType=DECIMAL} ,
+        	#{tableId,jdbcType=DECIMAL} ,
+        	#{sortGrade,jdbcType=DECIMAL} ,
+        	#{parkId,jdbcType=DECIMAL} ,
+        	#{createTime,jdbcType=TIMESTAMP} 
+        )
+	</insert>
+	
+	<insert id="insertSelective" parameterType="com.chinatelecom.jx.zone.management.bean.drawTd.DrawTdInputBean">
+    insert into T_DRAW_TD_INPUT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+    		<if test="id != null" >
+        ID,
+      	</if>
+    		<if test="tdId != null" >
+        TD_ID,
+      	</if>
+    		<if test="inputId != null" >
+        INPUT_ID,
+      	</if>
+    		<if test="tableId != null" >
+        TABLE_ID,
+      	</if>
+    		<if test="sortGrade != null" >
+        SORT_GRADE,
+      	</if>
+    		<if test="parkId != null" >
+        PARK_ID,
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME,
+      	</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+    		<if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      	</if>
+    		<if test="tdId != null" >
+        #{tdId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="inputId != null" >
+        #{inputId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="tableId != null" >
+        #{tableId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="sortGrade != null" >
+        #{sortGrade,jdbcType=DECIMAL},
+      	</if>
+    		<if test="parkId != null" >
+        #{parkId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinatelecom.jx.zone.management.bean.drawTd.DrawTdInputBean">
+    update T_DRAW_TD_INPUT
+    <set >
+    		<if test="tdId != null" >
+        TD_ID = #{tdId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="inputId != null" >
+        INPUT_ID = #{inputId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="tableId != null" >
+        TABLE_ID = #{tableId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="sortGrade != null" >
+        SORT_GRADE = #{sortGrade,jdbcType=DECIMAL},
+      	</if>
+    		<if test="parkId != null" >
+        PARK_ID = #{parkId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    </set>
+    where 
+      ID = #{id,jdbcType=DECIMAL} 
+  </update>
+  
+	<update id="updateByPrimaryKey" parameterType="com.chinatelecom.jx.zone.management.bean.drawTd.DrawTdInputBean">
+      UPDATE T_DRAW_TD_INPUT SET
+        TD_ID = #{tdId,jdbcType=DECIMAL} ,
+        INPUT_ID = #{inputId,jdbcType=DECIMAL} ,
+        TABLE_ID = #{tableId,jdbcType=DECIMAL} ,
+        SORT_GRADE = #{sortGrade,jdbcType=DECIMAL} ,
+        PARK_ID = #{parkId,jdbcType=DECIMAL} ,
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP} 
+      WHERE 
+        ID = #{id,jdbcType=DECIMAL} 
+	</update>
+	
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	        
+		       <if test="id != null">
+						<![CDATA[AND ID = #{id,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="tdId != null">
+						<![CDATA[AND TD_ID = #{tdId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="inputId != null">
+						<![CDATA[AND INPUT_ID = #{inputId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="tableId != null">
+						<![CDATA[AND TABLE_ID = #{tableId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="sortGrade != null">
+						<![CDATA[AND SORT_GRADE = #{sortGrade,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="parkId != null">
+						<![CDATA[AND PARK_ID = #{parkId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		</where>
+	</sql>
+	
+ 
+  
+  <select id="queryByCond" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.drawTd.DrawTdInputBean" >
+    select <include refid="Base_Column_List" />
+    from T_DRAW_TD_INPUT
+	<include refid="Base_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+     
+  
+</mapper>
+

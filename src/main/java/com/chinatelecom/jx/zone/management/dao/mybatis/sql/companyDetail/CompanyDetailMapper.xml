@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.companyDetail.CompanyDetailMapper">
+	
+	<select id="selectFirstDataByCompanyId" parameterType="java.math.BigDecimal" resultType="java.util.Map">
+	select 
+      (select level1 from (select level1, rownum from (select t1.level1 from x_data.z_fi_credit_result t1 where t1.company_primary_id = t.company_id order by t1.year desc) where rownum = 1) ) as "企业税务信用",  
+      (select count(1) from x_data.z_fi_operating_export_result t1 where t1.company_primary_id = t.company_id) as "进出口信用",  
+      (select count(1) from x_data.z_info_investment_result t1 where t1.company_primary_id = t.company_id) as "对外投资",  
+      (select count(1) from x_data.z_ser_hold_result t1 where t1.company_primary_id = t.company_id) as "控股企业",  
+      (select count(1) from (select t1.primary_id from x_data.z_fi_license_gs_result t1 where t1.company_primary_id = t.company_id 
+              union all select t2.primary_id from x_data.z_fi_license_cn_result t2 where t2.company_primary_id = t.company_id)) as "行政许可", 
+      (select count(1) from (select t1.primary_id from x_data.z_legal_sx_zx_result t1 where t1.company_primary_id = t.company_id 
+              union all select t2.primary_id from x_data.z_legal_sx_sx_result t2 where t2.company_primary_id = t.company_id
+              union all select t3.primary_id from x_data.z_legal_judgment_result t3 where t3.company_primary_id = t.company_id
+              union all select t4.primary_id from x_data.z_legal_court_result t4 where t4.company_primary_id = t.company_id
+              union all select t5.primary_id from x_data.z_legal_courting_result t5 where t5.company_primary_id = t.company_id
+              union all select t6.primary_id from x_data.z_risk_sale_result t6 where t6.company_primary_id = t.company_id
+              union all select t7.primary_id from x_data.z_legal_judicial_result t7 where t7.company_primary_id = t.company_id)) as "法律诉讼",
+      (select count(1) from x_data.z_fi_operating_tender_result t1 where t1.company_primary_id = t.company_id) as "招标股",  
+      (select count(1) from x_data.z_fi_operating_fi_result t1 where t1.company_primary_id = t.company_id) as "融资信息",  
+      (select count(1) from x_data.z_fi_publish_result t1 where t1.company_primary_id = t.company_id) as "地块公示",  
+      (select count(1) from x_data.z_fi_purchase_result t1 where t1.company_primary_id = t.company_id) as "购地信息",  
+      (select count(1) from x_data.z_fi_transfer_result t1 where t1.company_primary_id = t.company_id) as "土地转让", 
+      (select count(1) from x_data.z_s_spot_check t1 where t1.company_primary_id = t.company_id) as "抽查检查",
+      (select count(1) from x_data.z_fi_bond_result t1 where t1.company_primary_id = t.company_id) as "债券信息",  
+      (select count(1) from x_data.z_fi_extra_news_result t1 where t1.company_primary_id = t.company_id) as "新闻舆情",  
+      (select count(1) from X_DATA.Z_INFO_REPORT_RESULT t1 where t1.company_primary_id = t.company_id) as "企业年报"
+    from x_management.t_company_info t where t.company_id = #{companyId, jdbcType=DECIMAL}
+	
+	</select>
+
+	<select id="selectSecondDataByCompanyId"  resultType="java.util.HashMap">
+		select * from ${tableName} where company_primary_id = #{companyId, jdbcType=DECIMAL} order by ${orderByClause} 
+	</select>
+
+    <select id="dimensionCountByCompany" resultType="Integer">
+        SELECT
+            SUM (TOTAL)
+        FROM
+        <foreach item="table" index="index" collection="tableList" open="(" close=")" separator=" UNION ALL ">
+            SELECT
+              COUNT (1) AS TOTAL
+            FROM
+              ${table}
+            WHERE
+              COMPANY_PRIMARY_ID = #{companyId}
+        </foreach>
+
+    </select>
+
+
+    <select id="dimensionDetailByCompany" resultType="java.util.HashMap">
+        SELECT
+        <foreach item="field" index="index" collection="fieldList" separator=",">
+          ${field}
+        </foreach>
+        FROM
+          ${tableName}
+        WHERE
+          COMPANY_PRIMARY_ID = #{companyId}
+    </select>
+
+    <select id="getDetailById" resultType="java.util.HashMap">
+        SELECT
+        <foreach item="field" index="index" collection="fieldList" separator=",">
+            ${field}
+        </foreach>
+        FROM
+          ${tableName}
+        WHERE
+          PRIMARY_ID = #{id}
+    </select>
+
+    <select id="dimensionDetailByCompanyAndPerson" resultType="java.util.HashMap">
+        SELECT
+        <foreach item="field" index="index" collection="fieldList" separator=",">
+            ${field}
+        </foreach>
+        FROM
+          ${tableName}
+        WHERE
+          COMPANY_PRIMARY_ID = #{companyId}
+          AND COMPANY_PERSON_NAME = #{person}
+    </select>
+
+    <select id="getReportInfoByCompany" resultType="java.util.HashMap">
+        SELECT * FROM X_DATA.T_COMPANY_REPORT_RECORD WHERE COMPANY_PRIMARY_ID = #{companyId}
+    </select>
+
+    <select id="findCompanyNameById" resultType="java.lang.String" parameterType="java.math.BigDecimal">
+        SELECT
+            COMPANY_NAME
+        FROM
+            X_MANAGEMENT.T_COMPANY_INFO
+        WHERE
+            COMPANY_ID = #{companyId}
+    </select>
+
+    <select id="allCompanyId" resultType="java.lang.String">
+        SELECT
+            COMPANY_PRIMARY_ID
+        FROM
+            X_DATA.Z_S_RESULT
+    </select>
+
+	
+</mapper>
+

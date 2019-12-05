@@ -1,0 +1,368 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"Microsoft YaHei";
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box
+}
+:after,:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box
+}
+a:hover, a:visited, a:link, a:active {
+    text-decoration:none;
+	color:#000;
+}
+div {
+	-webkit-transition: all .2s ease-in-out 0s;
+	-moz-transition: all .2s ease-in-out 0s;
+	-ms-transition: all .2s ease-in-out 0s;
+	-o-transition: all .2s ease-in-out 0s;
+	transition: all .2s ease-in-out 0s;
+}
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.clearfix{zoom:1} 
+img,span {vertical-align:middle;}
+
+.industry_main {
+	width:100%;
+	position:relative;
+}
+.industry_content {
+	width:100%;
+	margin:10px auto;
+	position:relative;
+	z-index: 1;
+}
+/*industryDocking*/
+.industry_cont {
+	min-width:1020px;
+	width:1137px;
+	margin:0 auto;
+}
+.industry_contLeft {
+	float:left;
+	width:68.9%;
+}
+.industry_contRight {
+	width:30%;
+	margin-left:69.8%;
+}
+.titleName {
+	border-bottom:3px solid #EEEEEE;
+	padding:5px 0;
+}
+.titleName ul{list-style-type:none; position:relative; top:7px; margin-left:0px;}  
+.titleName ul li{float:left; text-align:center; margin-right:20px; padding:3px 7px;margin-bottom: -1px;}
+.titleName ul li a{text-decoration:none; font-size:16px;}
+.titleClick { border-bottom:3px solid #f14241;}
+.searchBar {
+	float:right;
+	margin-top:3px;
+	position: relative;
+}
+.searchBar input {
+	width:200px;
+	text-indent:1em;
+}
+.searchBar img {
+	position:absolute;
+	top:5px;
+	right:5px;
+	cursor:pointer;
+}
+.caret_red_up {
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 4px dashed;
+    display: inline-block;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    width: 0;
+	color:#f14241;
+}
+.caret_red_down {
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px dashed;
+    display: inline-block;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    width: 0;
+	color:#f14241;
+}
+.productScreenBar {
+	background-color:#fff;
+	padding:7px;
+}
+.screenMode {
+	float:left;
+	background-color:#f14241;
+	color:#fff;
+	border:1px solid #f14241;
+	padding:3px 12px;
+	cursor:pointer;
+	border-radius: 4px;
+}
+.sortOrder {
+	float:left;
+	padding: 5px 10px 2px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid #E1E1E1;
+}
+.MOQScreen {
+	float:left;
+	position: relative;
+	top:2px;
+}
+.MOQScreen input {
+	width:70px;
+	vertical-align: middle;
+	border-radius: 4px;
+    border: 1px solid #E1E1E1;
+}
+.areaLocation {
+	float:left;
+	padding: 3px 20px;
+}
+.areaSearchBtn {
+	float:left;
+	background-color:#FFECED;
+	color:#f14241;
+	border:1px solid #f14241;
+	padding:3px 12px;
+	cursor:pointer;
+	border-radius: 4px;
+}
+.dividingLine {
+	border-bottom:0px solid #e6e6e6;
+	margin-bottom: 5px;
+}
+.productDisplayBar {}
+.productDisplay {
+	float:left; 
+	width:24%; 
+	border:1px solid #ccc; 
+	margin:0.8% 0.4% 0.2%;
+	cursor: pointer;
+}
+.productDisplayName {
+	font-size:12px;
+	color:#5e5e5e;
+	padding:5px 5px 0;
+}
+.productDisplayPrice {
+	float:left;
+	background-color:#F04444;
+	color:#fff;
+	padding:0 4px 0 2px;
+	margin-right:2px;
+}
+.productDisplayUnit {
+	float:left;
+}
+.renovate{
+	display: block;
+    text-align: center;
+	border:1px solid #e6e6e6;
+	padding:7px 0;
+}
+.renovate:hover{
+	background-color:#e6e6e6;
+}
+.renovateTitle{
+	color: #ccc;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 14px;
+    text-align: center;
+}
+.productSideBar {
+	margin:10px 0;
+	border:1px solid #ccc;
+}
+.productSideTop {
+	background-color:#F7F7F7;
+	border-left: 3px solid #f14241;
+    position: relative;
+    padding: 15px 0;
+    margin-left: -1px;
+}
+.productSideTopTitle {
+	font-size: 18px;
+    color: #404040;
+	/* font-weight:bold; */
+	margin-left:7px;
+}
+.productSideTopMore {
+	position:absolute;
+	right:12px;
+	top:10px;
+	cursor:pointer;
+}
+.enterpriseRecommendBar {
+	overflow:hidden;
+}
+.enterpriseRecommend {
+	float:left;
+	width:25%;
+    max-height: 120px;
+	margin:4.1%;
+	cursor: pointer;
+}
+.productRecommendBar {
+	overflow:hidden;
+}
+.productRecommend {
+	width:98%;
+	border-bottom:1px solid #e6e6e6;
+	padding:1%;
+	margin-bottom:1%;
+	cursor: pointer;
+}
+.productRecommendName {
+	font-size:16px;
+	/* font-weight:bold; */
+	margin-left:120px;
+	height:36px;
+	line-height:36px;
+}
+.MOQNum {
+	font-size:12px;
+	margin-left:120px;
+}
+/*industryDocking*/
+
+/*productDetails*/
+.details_cont {
+	min-width:1020px;
+	/* width:1137px; */
+	width:1170px;
+	margin:0 auto;
+	border:1px solid #ccc;
+	padding:10px;
+}
+.collectionBtn {
+	float:left;
+	background-color:#FFEDED;
+	color:#f14241;
+	border:1px solid #f14241;
+	font-size:16px;
+	padding:14px 45px;
+	margin-right:10px;
+	/* border-radius: 5px; */
+	cursor:pointer;
+}
+.messageBtn {
+	float:left;
+	background-color:#f14241;
+	color:#fff;
+	border:1px solid #f14241;
+	font-size:16px;
+	padding:14px 45px;
+	/* border-radius: 5px; */
+	cursor:pointer;
+}
+/*productDetails*/
+
+
+/*导航菜单栏*/
+.yHeader{width: 1137px; margin:0 auto;}
+.yNavIndex{width: 1137px; height:35px; position:absolute; z-index:100;}
+.yNavIndex .yMenuIndex{margin-left: 190px;}
+.yNavIndex .yMenuIndex li a{position: relative;display: inline-block;font-size: 16px;color: #333;line-height: 32px;height: 32px;padding: 0 21px;}
+.yNavIndex .yMenuIndex li a.yMenua{font-weight:bold;border-bottom: 3px solid #2d2d2d;}
+.yNavIndex .yMenuIndex li a:hover{font-weight:bold;border-bottom: 3px solid #2d2d2d;}
+.yNavIndex .yMenuIndex li{float: left;height: 33px;padding: 0 12px;}
+/*下拉*/
+.pullDown{z-index: 1;position: absolute;}
+.pullDownTitle{height: 35px;width: 200px;background: #dd3938;color: #ffffff;font-size: 16px;font-weight: normal;/* text-align: center; */padding-left:43px;line-height: 35px;}
+.pullDownList{width: 200px;/* height: 405px; background: url(../images/pullbj.jpg);*/ background:rgba(0, 0, 0, 0.8)!important; position: relative;z-index: 2;}
+.pullDownList li{color: #fefcfc; font-size: 13px; padding:6.9px 11px; position: relative;}
+.pullDownList li i{display: inline-block;position:relative;top:4px;margin-right: 8px;left:0;-webkit-transition: margin-left .2s linear;-moz-transition: margin-left .2s linear;-o-transition: margin-left .2s linear; width: 20px;height: 19px;background: url(../images/indexicon1.png) no-repeat;}
+.pullDownList li.menulihover i{margin-left: 6px;}
+/*以下代码是使用图片精灵需要图片的定位信息*/
+/*.pullDownList li i.listi1{background-position: 0 -1240px}   
+.pullDownList li i.listi2{background-position: 0 -1271px}
+.pullDownList li i.listi3{background-position: 0 -1302px}
+.pullDownList li i.listi4{background-position: 0 -1332px}
+.pullDownList li i.listi5{background-position: 0 -1362px}
+.pullDownList li i.listi6{background-position: 0 -1395px}
+.pullDownList li i.listi7{background-position: 0 -1425px}
+.pullDownList li i.listi8{background-position: 0 -1457px}
+.pullDownList li i.listi9{background-position: 0 -1489px}
+.pullDownList li i.listi10{background-position: 0 -1519px}
+.pullDownList li i.listi11{background-position: 0 -1552px}
+.pullDownList li i.listi12{background-position: 0 -1582px}
+.pullDownList li i.listi13{background-position: 0 -1612px}
+.pullDownList li i.listi14{background-position: 0 -1644px}
+.pullDownList li i.listi15{background-position: 0 -1674px}*/
+.pullDownList li a{color: #fefcfc;font-size: 13px;}
+.pullDownList li.menuliselected{background: #4a4a4a;}
+.pullDownList li.menuliselected span{top: 18px;right: 7px;border-left: 4px solid transparent;border-top: 4px solid #fff;border-right:4px solid transparent;border-bottom: 0;}
+.pullDownList li.menulihover{background: #4a4a4a;}
+.pullDownList li span{display: inline-block; width: 0;height: 0;position: absolute;top: 18px;right: 8px;}
+.pullDownList li.menulihover span{top: 15px;right: 8px;border-left: 4px solid #fff;border-top: 4px solid transparent;border-bottom: 4px solid transparent;border-right: 0;}
+.pullDownListMore {/* border: 1px solid #f14241; */ text-align: center; width: 200px; cursor:pointer; padding:8px 0; position: absolute; bottom:0;}
+.pullDownListMore:hover {background-color:#777;}
+/*下拉详细列表具体分类*/
+.yMenuListCon{width: 600px;height:405px;position: absolute;z-index:2;top: 35px;left: 200px;overflow: hidden;}
+.yMenuListCon p{width:auto;color: #000;font-size: 12px;margin: 10px 0 0 -1px;overflow: hidden;}
+.yMenuListCon p a{color: #000; font-size: 12px; /* padding: 0 8px; */ display: inline-block; float: left; margin-bottom: 15px; line-height:1; padding-right:12px; margin-right: 12px; border-right: 1px solid #aaa;}
+.yMenuListCon p a.ecolor610{color: #f14241;}
+.yMenuListCon p a:hover{color: #f14241;text-decoration: underline;}
+.yMenuListConin{display: none; background: #f7f5f6; opacity: 0.9; -moz-opacity:0.9;filter: alpha(opacity=90); padding:0 20px; width: 600px; height:405px; position: absolute; left: 0; top: 0;}
+.yMenuLCinList{overflow: hidden;}
+/*详细分类标题*/
+.yMenuLCinList h3{position: relative;height: 20px;width: auto;margin: 25px auto 0;border-bottom: 1px solid #aaa;}
+.yMenuLCinList h3 a{/* font-size: 12px; */color: #2d2d2d;position: absolute;bottom: 0px;display: block;}
+.yMenuLCinList h3 .yListMore{color: #666666;font-weight: normal;right: 0;with: 40px;height: 20px;}
+.yMenuLCinList h3 .yListName{-webkit-transition: left .2s linear;-moz-transition: left .2s linear;-o-transition: left .2s linear;display: block;width: 90px;height: 20px;line-height: 20px;left: 0;}
+.yMenuLCinList h3 .yListName:hover{left:6px;}
+/*导航菜单栏*/

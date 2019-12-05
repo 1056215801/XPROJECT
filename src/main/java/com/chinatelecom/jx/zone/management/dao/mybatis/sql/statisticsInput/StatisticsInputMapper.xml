@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.statisticsInput.StatisticsInputMapper" >
+
+	<resultMap id="BaseResultMap" type="com.chinatelecom.jx.zone.management.bean.statisticsInput.StatisticsInputBean">
+    	<id column="ID" jdbcType="DECIMAL" property="id"/>
+    	<result column="INVESTIGATION_ID" jdbcType="DECIMAL" property="investigationId"/>
+    	<result column="FORM_ID" jdbcType="DECIMAL" property="formId"/>
+    	<result column="INPUT_ID" jdbcType="DECIMAL" property="inputId"/>
+    	<result column="INPUT_TYPE" jdbcType="VARCHAR" property="inputType"/>
+    	<result column="CHECK_TYPE" jdbcType="VARCHAR" property="checkType"/>
+    	<result column="INPUT_TITLE" jdbcType="VARCHAR" property="inputTitle"/>
+    	<result column="OPTIONS" jdbcType="VARCHAR" property="options"/>
+    	<result column="INPUT_OPTIONS" jdbcType="VARCHAR" property="inputOptions"/>
+    	<result column="INPUT_TRUE" jdbcType="DECIMAL" property="inputTrue"/>
+    	<result column="SORT_GRADE" jdbcType="VARCHAR" property="sortGrade"/>
+    	<result column="COUNT_EXAMPLE_SUM" jdbcType="DECIMAL" property="countExampleSum"/>
+    	<result column="EXAMPLE_PRC" jdbcType="VARCHAR" property="examplePrc"/>
+    	<result column="UPDATE_DATE" jdbcType="TIMESTAMP" property="updateDate"/>
+    	<result column="STARTTIME" jdbcType="VARCHAR" property="start"/>
+    	<result column="ENDTIME" jdbcType="VARCHAR" property="end"/>
+	</resultMap>
+	
+	<resultMap id="ResultMapWithValue" type="com.chinatelecom.jx.zone.management.bean.statisticsInput.StatisticsInputBean" extends="BaseResultMap" >
+		<result column="value" property="value" jdbcType="VARCHAR" />
+ 	 </resultMap>
+	<!--
+	<resultMap id="ResultMapWithForeign" type="com.chinatelecom.jx.zone.management.bean.statisticsInput.StatisticsInputBean" extends="BaseResultMap" >
+			 <result column="workProcessid" property="workProcessid" jdbcType="VARCHAR" />
+			 <result column="currentState" property="currentState" jdbcType="VARCHAR" />
+       <result column="organizationName" property="orgName" jdbcType="VARCHAR" />
+        <result column="companyName" property="companyName" jdbcType="VARCHAR" />
+       <result column="accountName" property="accountName" jdbcType="VARCHAR" />
+       <result column="parkName" property="parkName" jdbcType="VARCHAR" />
+  </resultMap>
+  -->
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		ID,INVESTIGATION_ID,FORM_ID,INPUT_ID,INPUT_TYPE,CHECK_TYPE,INPUT_TITLE,OPTIONS,INPUT_OPTIONS,INPUT_TRUE,SORT_GRADE,COUNT_EXAMPLE_SUM,EXAMPLE_PRC,UPDATE_DATE
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_STATISTICS_INPUT
+    where 
+				ID = #{id,jdbcType=DECIMAL} 
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+        DELETE FROM T_STATISTICS_INPUT WHERE
+				ID = #{id,jdbcType=DECIMAL} 
+    </delete>
+
+	<insert id="insert" parameterType="com.chinatelecom.jx.zone.management.bean.statisticsInput.StatisticsInputBean">
+        INSERT INTO T_STATISTICS_INPUT (
+        	ID ,
+        	INVESTIGATION_ID ,
+        	FORM_ID ,
+        	INPUT_ID ,
+        	INPUT_TYPE ,
+        	CHECK_TYPE ,
+        	INPUT_TITLE ,
+        	OPTIONS ,
+        	INPUT_OPTIONS ,
+        	INPUT_TRUE ,
+        	SORT_GRADE ,
+        	COUNT_EXAMPLE_SUM ,
+        	EXAMPLE_PRC ,
+        	UPDATE_DATE 
+        ) VALUES (
+        	#{id,jdbcType=DECIMAL} ,
+        	#{investigationId,jdbcType=DECIMAL} ,
+        	#{formId,jdbcType=DECIMAL} ,
+        	#{inputId,jdbcType=DECIMAL} ,
+        	#{inputType,jdbcType=VARCHAR} ,
+        	#{checkType,jdbcType=VARCHAR} ,
+        	#{inputTitle,jdbcType=VARCHAR} ,
+        	#{options,jdbcType=VARCHAR} ,
+        	#{inputOptions,jdbcType=VARCHAR} ,
+        	#{inputTrue,jdbcType=DECIMAL} ,
+        	#{sortGrade,jdbcType=VARCHAR} ,
+        	#{countExampleSum,jdbcType=DECIMAL} ,
+        	#{examplePrc,jdbcType=VARCHAR} ,
+        	#{updateDate,jdbcType=TIMESTAMP} 
+        )
+	</insert>
+	
+	<insert id="insertSelective" parameterType="com.chinatelecom.jx.zone.management.bean.statisticsInput.StatisticsInputBean">
+    insert into T_STATISTICS_INPUT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+    		<if test="id != null" >
+        ID,
+      	</if>
+    		<if test="investigationId != null" >
+        INVESTIGATION_ID,
+      	</if>
+    		<if test="formId != null" >
+        FORM_ID,
+      	</if>
+    		<if test="inputId != null" >
+        INPUT_ID,
+      	</if>
+    		<if test="inputType != null" >
+        INPUT_TYPE,
+      	</if>
+    		<if test="checkType != null" >
+        CHECK_TYPE,
+      	</if>
+    		<if test="inputTitle != null" >
+        INPUT_TITLE,
+      	</if>
+    		<if test="options != null" >
+        OPTIONS,
+      	</if>
+    		<if test="inputOptions != null" >
+        INPUT_OPTIONS,
+      	</if>
+    		<if test="inputTrue != null" >
+        INPUT_TRUE,
+      	</if>
+    		<if test="sortGrade != null" >
+        SORT_GRADE,
+      	</if>
+    		<if test="countExampleSum != null" >
+        COUNT_EXAMPLE_SUM,
+      	</if>
+    		<if test="examplePrc != null" >
+        EXAMPLE_PRC,
+      	</if>
+    		<if test="updateDate != null" >
+        UPDATE_DATE,
+      	</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+    		<if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      	</if>
+    		<if test="investigationId != null" >
+        #{investigationId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="formId != null" >
+        #{formId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="inputId != null" >
+        #{inputId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="inputType != null" >
+        #{inputType,jdbcType=VARCHAR},
+      	</if>
+    		<if test="checkType != null" >
+        #{checkType,jdbcType=VARCHAR},
+      	</if>
+    		<if test="inputTitle != null" >
+        #{inputTitle,jdbcType=VARCHAR},
+      	</if>
+    		<if test="options != null" >
+        #{options,jdbcType=VARCHAR},
+      	</if>
+    		<if test="inputOptions != null" >
+        #{inputOptions,jdbcType=VARCHAR},
+      	</if>
+    		<if test="inputTrue != null" >
+        #{inputTrue,jdbcType=DECIMAL},
+      	</if>
+    		<if test="sortGrade != null" >
+        #{sortGrade,jdbcType=VARCHAR},
+      	</if>
+    		<if test="countExampleSum != null" >
+        #{countExampleSum,jdbcType=DECIMAL},
+      	</if>
+    		<if test="examplePrc != null" >
+        #{examplePrc,jdbcType=VARCHAR},
+      	</if>
+    		<if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      	</if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinatelecom.jx.zone.management.bean.statisticsInput.StatisticsInputBean">
+    update T_STATISTICS_INPUT
+    <set >
+    		<if test="investigationId != null" >
+        INVESTIGATION_ID = #{investigationId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="formId != null" >
+        FORM_ID = #{formId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="inputId != null" >
+        INPUT_ID = #{inputId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="inputType != null" >
+        INPUT_TYPE = #{inputType,jdbcType=VARCHAR},
+      	</if>
+    		<if test="checkType != null" >
+        CHECK_TYPE = #{checkType,jdbcType=VARCHAR},
+      	</if>
+    		<if test="inputTitle != null" >
+        INPUT_TITLE = #{inputTitle,jdbcType=VARCHAR},
+      	</if>
+    		<if test="options != null" >
+        OPTIONS = #{options,jdbcType=VARCHAR},
+      	</if>
+    		<if test="inputOptions != null" >
+        INPUT_OPTIONS = #{inputOptions,jdbcType=VARCHAR},
+      	</if>
+    		<if test="inputTrue != null" >
+        INPUT_TRUE = #{inputTrue,jdbcType=DECIMAL},
+      	</if>
+    		<if test="sortGrade != null" >
+        SORT_GRADE = #{sortGrade,jdbcType=VARCHAR},
+      	</if>
+    		<if test="countExampleSum != null" >
+        COUNT_EXAMPLE_SUM = #{countExampleSum,jdbcType=DECIMAL},
+      	</if>
+    		<if test="examplePrc != null" >
+        EXAMPLE_PRC = #{examplePrc,jdbcType=VARCHAR},
+      	</if>
+    		<if test="updateDate != null" >
+        UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP},
+      	</if>
+    </set>
+    where 
+      ID = #{id,jdbcType=DECIMAL} 
+  </update>
+  
+	<update id="updateByPrimaryKey" parameterType="com.chinatelecom.jx.zone.management.bean.statisticsInput.StatisticsInputBean">
+      UPDATE T_STATISTICS_INPUT SET
+        INVESTIGATION_ID = #{investigationId,jdbcType=DECIMAL} ,
+        FORM_ID = #{formId,jdbcType=DECIMAL} ,
+        INPUT_ID = #{inputId,jdbcType=DECIMAL} ,
+        INPUT_TYPE = #{inputType,jdbcType=VARCHAR} ,
+        CHECK_TYPE = #{checkType,jdbcType=VARCHAR} ,
+        INPUT_TITLE = #{inputTitle,jdbcType=VARCHAR} ,
+        OPTIONS = #{options,jdbcType=VARCHAR} ,
+        INPUT_OPTIONS = #{inputOptions,jdbcType=VARCHAR} ,
+        INPUT_TRUE = #{inputTrue,jdbcType=DECIMAL} ,
+        SORT_GRADE = #{sortGrade,jdbcType=VARCHAR} ,
+        COUNT_EXAMPLE_SUM = #{countExampleSum,jdbcType=DECIMAL} ,
+        EXAMPLE_PRC = #{examplePrc,jdbcType=VARCHAR} ,
+        UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP} 
+      WHERE 
+        ID = #{id,jdbcType=DECIMAL} 
+	</update>
+	
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	        
+		       <if test="id != null">
+						<![CDATA[AND ID = #{id,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="investigationId != null">
+						<![CDATA[AND INVESTIGATION_ID = #{investigationId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="formId != null">
+						<![CDATA[AND FORM_ID = #{formId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="inputId != null">
+						<![CDATA[AND INPUT_ID = #{inputId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="inputType != null and inputType != ''">
+						<!--
+						<![CDATA[AND INPUT_TYPE = #{inputType,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND INPUT_TYPE LIKE '%' || #{inputType,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="checkType != null and checkType != ''">
+						<!--
+						<![CDATA[AND CHECK_TYPE = #{checkType,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND CHECK_TYPE LIKE '%' || #{checkType,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="inputTitle != null and inputTitle != ''">
+						<!--
+						<![CDATA[AND INPUT_TITLE = #{inputTitle,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND INPUT_TITLE LIKE '%' || #{inputTitle,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="options != null and options != ''">
+						<!--
+						<![CDATA[AND OPTIONS = #{options,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND OPTIONS LIKE '%' || #{options,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="inputOptions != null and inputOptions != ''">
+						<!--
+						<![CDATA[AND INPUT_OPTIONS = #{inputOptions,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND INPUT_OPTIONS LIKE '%' || #{inputOptions,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="inputTrue != null">
+						<![CDATA[AND INPUT_TRUE = #{inputTrue,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="sortGrade != null and sortGrade != ''">
+						<!--
+						<![CDATA[AND SORT_GRADE = #{sortGrade,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND SORT_GRADE LIKE '%' || #{sortGrade,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="countExampleSum != null">
+						<![CDATA[AND COUNT_EXAMPLE_SUM = #{countExampleSum,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="examplePrc != null and examplePrc != ''">
+						<!--
+						<![CDATA[AND EXAMPLE_PRC = #{examplePrc,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND EXAMPLE_PRC LIKE '%' || #{examplePrc,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		</where>
+	</sql>
+	
+	<sql id="With_Value_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	        
+		       <if test="id != null">
+						<![CDATA[AND a.ID = #{id,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="investigationId != null">
+						<![CDATA[AND a.INVESTIGATION_ID = #{investigationId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="formId != null">
+						<![CDATA[AND a.FORM_ID = #{formId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="inputId != null">
+						<![CDATA[AND a.INPUT_ID = #{inputId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="inputType != null and inputType != ''">
+						<!--
+						<![CDATA[AND INPUT_TYPE = #{inputType,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND a.INPUT_TYPE LIKE '%' || #{inputType,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="checkType != null and checkType != ''">
+						<!--
+						<![CDATA[AND CHECK_TYPE = #{checkType,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND a.CHECK_TYPE LIKE '%' || #{checkType,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="inputTitle != null and inputTitle != ''">
+						<!--
+						<![CDATA[AND INPUT_TITLE = #{inputTitle,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND a.INPUT_TITLE LIKE '%' || #{inputTitle,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="options != null and options != ''">
+						<!--
+						<![CDATA[AND OPTIONS = #{options,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND a.OPTIONS LIKE '%' || #{options,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="inputOptions != null and inputOptions != ''">
+						<!--
+						<![CDATA[AND INPUT_OPTIONS = #{inputOptions,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND a.INPUT_OPTIONS LIKE '%' || #{inputOptions,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="inputTrue != null">
+						<![CDATA[AND a.INPUT_TRUE = #{inputTrue,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="sortGrade != null and sortGrade != ''">
+						<!--
+						<![CDATA[AND SORT_GRADE = #{sortGrade,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND a.SORT_GRADE LIKE '%' || #{sortGrade,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="countExampleSum != null">
+						<![CDATA[AND a.COUNT_EXAMPLE_SUM = #{countExampleSum,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="examplePrc != null and examplePrc != ''">
+						<!--
+						<![CDATA[AND EXAMPLE_PRC = #{examplePrc,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND a.EXAMPLE_PRC LIKE '%' || #{examplePrc,jdbcType=VARCHAR} || '%']]>
+				</if>
+				<!-- 
+	        	<if test="accountId != null">
+						<![CDATA[AND b.account_Id = #{accountId,jdbcType=DECIMAL}]]>
+				</if>
+				 -->
+		</where>
+	</sql>
+ 
+  
+  <select id="queryByCond" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.statisticsInput.StatisticsInputBean" >
+    select <include refid="Base_Column_List" />
+    from T_STATISTICS_INPUT
+	<include refid="Base_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+   <select id="queryByCondWithValue" resultMap="ResultMapWithValue" parameterType="com.chinatelecom.jx.zone.management.bean.statisticsInput.StatisticsInputBean" >
+    select a.*, b.input_value as value
+	  from T_STATISTICS_INPUT a
+	 left join t_form_input_proinst b
+	    on a.input_id = b.input_id 
+	    <if test="accountId != null">
+			<![CDATA[AND b.account_Id = #{accountId,jdbcType=DECIMAL}]]>
+		</if>
+	<include refid="With_Value_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <select id="queryByCondWithValueByPage" resultMap="ResultMapWithValue" parameterType="com.chinatelecom.jx.zone.management.bean.statisticsInput.StatisticsInputBean" >
+    select a.*, b.input_value as value
+	  from T_STATISTICS_INPUT a
+	 left join t_form_input_proinst b
+	    on a.input_id = b.input_id 
+	    <if test="accountId != null">
+			<![CDATA[AND b.account_Id = #{accountId,jdbcType=DECIMAL}]]>
+		</if>
+	<include refid="With_Value_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <select id="queryStartAndEndTime" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.statisticsInput.StatisticsInputBean" >
+  	select max(a.UPDATE_DATE) endTime , min(a.UPDATE_DATE) startTime from T_STATISTICS_INPUT a
+  	<include refid="With_Value_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>
+

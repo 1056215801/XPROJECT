@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- CacheManager Configuration ========================== An ehcache.xml 
+	corresponds to a single CacheManager. See instructions below or the ehcache 
+	schema (ehcache.xsd) on how to configure. System property tokens can be specified 
+	in this file which are replaced when the configuration is loaded. For example 
+	multicastGroupPort=${multicastGroupPort} can be replaced with the System 
+	property either from an environment variable or a system property specified 
+	with a command line switch such as -DmulticastGroupPort=4446. The attributes 
+	of <ehcache> are: * name - an optional name for the CacheManager. The name 
+	is optional and primarily used for documentation or to distinguish Terracotta 
+	clustered cache state. With Terracotta clustered caches, a combination of 
+	CacheManager name and cache name uniquely identify a particular cache store 
+	in the Terracotta clustered memory. * updateCheck - an optional boolean flag 
+	specifying whether this CacheManager should check for new versions of Ehcache 
+	over the Internet. If not specified, updateCheck="true". * monitoring - an 
+	optional setting that determines whether the CacheManager should automatically 
+	register the SampledCacheMBean with the system MBean server. Currently, this 
+	monitoring is only useful when using Terracotta and thus the "autodetect" 
+	value will detect the presence of Terracotta and register the MBean. Other 
+	allowed values are "on" and "off". The default is "autodetect". -->
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="ehcache.xsd" updateCheck="false"
+	monitoring="autodetect">
+
+	<!-- DiskStore configuration ======================= The diskStore element 
+		is optional. To turn off disk store path creation, comment out the diskStore 
+		element below. Configure it if you have overflowToDisk or diskPersistent 
+		enabled for any cache. If it is not configured, and a cache is created which 
+		requires a disk store, a warning will be issued and java.io.tmpdir will automatically 
+		be used. diskStore has only one attribute - "path". It is the path to the 
+		directory where .data and .index files will be created. If the path is one 
+		of the following Java System Property it is replaced by its value in the 
+		running VM. For backward compatibility these are not specified without being 
+		enclosed in the ${token} replacement syntax. The following properties are 
+		translated: * user.home - User's home directory * user.dir - User's current 
+		working directory * java.io.tmpdir - Default temp file path * ehcache.disk.store.dir 
+		- A system property you would normally specify on the command line e.g. java 
+		-Dehcache.disk.store.dir=/u01/myapp/diskdir ... Subdirectories can be specified 
+		below the property e.g. java.io.tmpdir/one -->
+	<diskStore path="java.io.tmpdir" />
+
+	<!-- CacheManagerEventListener ========================= Specifies a CacheManagerEventListenerFactory 
+		which is notified when Caches are added or removed from the CacheManager. 
+		The attributes of CacheManagerEventListenerFactory are: * class - a fully 
+		qualified factory class name * properties - comma separated properties having 
+		meaning only to the factory. Sets the fully qualified class name to be registered 
+		as the CacheManager event listener. The events include: * adding a Cache 
+		* removing a Cache Callbacks to listener methods are synchronous and unsynchronized. 
+		It is the responsibility of the implementer to safely handle the potential 
+		performance and thread safety issues depending on what their listener is 
+		doing. If no class is specified, no listener is created. There is no default. -->
+	<cacheManagerEventListenerFactory
+		class="" properties="" />
+
+
+
+
+	<!-- Mandatory Default Cache configuration. These settings will be applied 
+		to caches created programmtically using CacheManager.add(String cacheName). 
+		The defaultCache has an implicit name "default" which is a reserved cache 
+		name. -->
+	<defaultCache maxElementsInMemory="10000" eternal="false"
+		timeToIdleSeconds="300" timeToLiveSeconds="300" overflowToDisk="false"
+
+		memoryStoreEvictionPolicy="FIFO" />
+
+	<!-- Sample caches. Following are some example caches. Remove these before 
+		use. -->
+
+	<!-- Sample cache named sampleCache1 This cache contains a maximum in memory 
+		of 10000 elements, and will expire an element if it is idle for more than 
+		5 minutes and lives for more than 10 minutes. If there are more than 10000 
+		elements it will overflow to the disk cache, which in this configuration 
+		will go to wherever java.io.tmp is defined on your system. On a standard 
+		Linux system this will be /tmp" -->
+
+	<cache name="FilterWordCache" maxElementsInMemory="10" eternal="true"
+		overflowToDisk="false" timeToIdleSeconds="900" timeToLiveSeconds="900"
+		memoryStoreEvictionPolicy="LFU" />
+		
+	<cache name="OrganizationInfoCache" maxElementsInMemory="2000" eternal="false"
+		timeToIdleSeconds="900" timeToLiveSeconds="900" overflowToDisk="false"
+		memoryStoreEvictionPolicy="FIFO" />
+
+	<cache name="AccountInfoCache" maxElementsInMemory="2000" eternal="false"
+		timeToIdleSeconds="900" timeToLiveSeconds="900" overflowToDisk="false"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="AccountLiveCache" maxElementsInMemory="2000" eternal="false"
+		timeToIdleSeconds="900" timeToLiveSeconds="900" overflowToDisk="false"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="UserCodeCache" maxElementsInMemory="200" eternal="false"
+		timeToIdleSeconds="900" timeToLiveSeconds="900" overflowToDisk="false"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="AccountAuthCache" maxElementsInMemory="2000" eternal="false"
+		timeToIdleSeconds="900" timeToLiveSeconds="900" overflowToDisk="false"
+		memoryStoreEvictionPolicy="LFU" />		
+
+	<cache name="AccountBanCache" maxElementsInMemory="2000" eternal="false"
+		timeToIdleSeconds="900" timeToLiveSeconds="900" overflowToDisk="false"
+		memoryStoreEvictionPolicy="LFU">
+		 <searchable keys="true" values="false">  
+           <searchAttribute name="accountId" expression="value.accountId"/>
+           <searchAttribute name="systemId" expression="value.systemId"/>  
+           <searchAttribute name="moduleId" expression="value.moduleId"/>  
+         </searchable> 
+    </cache>
+		
+	<cache name="AccountBindCache" maxElementsInMemory="3000" eternal="false"
+		timeToIdleSeconds="900" timeToLiveSeconds="900" overflowToDisk="false"
+		memoryStoreEvictionPolicy="LFU" />	
+
+	<cache name="AccountWeixinCache" maxElementsInMemory="3000" eternal="false"
+		timeToIdleSeconds="900" timeToLiveSeconds="900" overflowToDisk="false"
+		memoryStoreEvictionPolicy="LFU" />
+		
+	<cache name="ShortMessageRandCodeCache" maxElementsInMemory="2000" eternal="false"
+		timeToIdleSeconds="900" timeToLiveSeconds="900" overflowToDisk="false"
+		memoryStoreEvictionPolicy="FIFO" />
+
+
+	<cache name="FailedIpCache" maxElementsInMemory="500" eternal="false"
+		overflowToDisk="false" timeToIdleSeconds="900" timeToLiveSeconds="900"
+		memoryStoreEvictionPolicy="LFU" />
+		
+	<cache name="FailedValidateCache" maxElementsInMemory="500" eternal="false"
+		overflowToDisk="false" timeToIdleSeconds="3600" timeToLiveSeconds="3600"
+		memoryStoreEvictionPolicy="LFU" />
+
+
+		
+	<cache name="TextTemplateCache" maxElementsInMemory="50" eternal="false"
+		overflowToDisk="false" timeToIdleSeconds="900" timeToLiveSeconds="900"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="SystemInfoCache" maxElementsInMemory="20" eternal="false"
+		overflowToDisk="false" timeToIdleSeconds="3600" timeToLiveSeconds="3600"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="HCodeBeanCache" maxElementsInMemory="200" eternal="false"
+		overflowToDisk="false" timeToIdleSeconds="900" timeToLiveSeconds="900"
+		memoryStoreEvictionPolicy="LFU" />
+		
+
+	<cache name="BlackIpCache" maxElementsInMemory="200" eternal="true"
+		overflowToDisk="false" memoryStoreEvictionPolicy="LFU" />
+		
+	<cache name="RedIpCache" maxElementsInMemory="200" eternal="false"
+		overflowToDisk="false" timeToIdleSeconds="900" timeToLiveSeconds="900"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="CaptchaCache" maxElementsInMemory="200" eternal="false"
+		overflowToDisk="false" timeToIdleSeconds="900" timeToLiveSeconds="900"
+		memoryStoreEvictionPolicy="LFU" />
+		
+	<cache name="TicketCache" maxElementsInMemory="200" eternal="false"
+		overflowToDisk="false" timeToIdleSeconds="900" timeToLiveSeconds="900"
+		memoryStoreEvictionPolicy="LFU" />
+
+	<cache name="smChannelThirdBean:organizationId" maxElementsInMemory="200" eternal="false"
+		overflowToDisk="false" timeToIdleSeconds="900" timeToLiveSeconds="900"
+		memoryStoreEvictionPolicy="LFU" />				
+</ehcache>

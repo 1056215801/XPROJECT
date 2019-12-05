@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.projectDeclare.ProjectDeclareLogMapper" >
+
+	<resultMap id="BaseResultMap" type="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareLogBean">
+    	<id column="LOG_ID" jdbcType="DECIMAL" property="logId"/>
+    	<result column="APPLY_ID" jdbcType="DECIMAL" property="applyId"/>
+    	<result column="SORT_NUM" jdbcType="DECIMAL" property="sortNum"/>
+    	<result column="ORG_ID" jdbcType="DECIMAL" property="orgId"/>
+    	<result column="ORG_NAME" jdbcType="VARCHAR" property="orgName"/>
+    	<result column="ORG_KIND" jdbcType="DECIMAL" property="orgKind"/>
+    	<result column="ACCOUNT_ID" jdbcType="DECIMAL" property="accountId"/>
+    	<result column="ACCOUNT_NAME" jdbcType="VARCHAR" property="accountName"/>
+    	<result column="STATUS" jdbcType="DECIMAL" property="status"/>
+    	<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+	</resultMap>
+	
+	<!--
+	<resultMap id="ResultMapWithForeign" type="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareLogBean" extends="BaseResultMap" >
+			 <result column="workProcessid" property="workProcessid" jdbcType="VARCHAR" />
+			 <result column="currentState" property="currentState" jdbcType="VARCHAR" />
+       <result column="organizationName" property="orgName" jdbcType="VARCHAR" />
+        <result column="companyName" property="companyName" jdbcType="VARCHAR" />
+       <result column="accountName" property="accountName" jdbcType="VARCHAR" />
+       <result column="parkName" property="parkName" jdbcType="VARCHAR" />
+  </resultMap>
+  -->
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		LOG_ID,APPLY_ID,SORT_NUM,ORG_ID,ORG_NAME,ORG_KIND,ACCOUNT_ID,ACCOUNT_NAME,STATUS,CREATE_TIME
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_PROJECT_DECLARE_LOG
+    where 
+				LOG_ID = #{logId,jdbcType=DECIMAL} 
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+        DELETE FROM T_PROJECT_DECLARE_LOG WHERE
+				LOG_ID = #{logId,jdbcType=DECIMAL} 
+    </delete>
+  <delete id="deleteByApplyId" parameterType="java.math.BigDecimal">
+        DELETE FROM T_PROJECT_DECLARE_LOG WHERE
+				APPLY_ID = #{applyId,jdbcType=DECIMAL} 
+    </delete>
+
+	<insert id="insert" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareLogBean">
+        INSERT INTO T_PROJECT_DECLARE_LOG (
+        	LOG_ID ,
+        	APPLY_ID ,
+        	SORT_NUM ,
+        	ORG_ID ,
+        	ORG_NAME ,
+        	ORG_KIND ,
+        	ACCOUNT_ID ,
+        	ACCOUNT_NAME ,
+        	STATUS ,
+        	CREATE_TIME 
+        ) VALUES (
+        	#{logId,jdbcType=DECIMAL} ,
+        	#{applyId,jdbcType=DECIMAL} ,
+        	#{sortNum,jdbcType=DECIMAL} ,
+        	#{orgId,jdbcType=DECIMAL} ,
+        	#{orgName,jdbcType=VARCHAR} ,
+        	#{orgKind,jdbcType=DECIMAL} ,
+        	#{accountId,jdbcType=DECIMAL} ,
+        	#{accountName,jdbcType=VARCHAR} ,
+        	#{status,jdbcType=DECIMAL} ,
+        	#{createTime,jdbcType=TIMESTAMP} 
+        )
+	</insert>
+	
+	<insert id="insertSelective" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareLogBean">
+    insert into T_PROJECT_DECLARE_LOG
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+    		<if test="logId != null" >
+        LOG_ID,
+      	</if>
+    		<if test="applyId != null" >
+        APPLY_ID,
+      	</if>
+    		<if test="sortNum != null" >
+        SORT_NUM,
+      	</if>
+    		<if test="orgId != null" >
+        ORG_ID,
+      	</if>
+    		<if test="orgName != null" >
+        ORG_NAME,
+      	</if>
+    		<if test="orgKind != null" >
+        ORG_KIND,
+      	</if>
+    		<if test="accountId != null" >
+        ACCOUNT_ID,
+      	</if>
+    		<if test="accountName != null" >
+        ACCOUNT_NAME,
+      	</if>
+    		<if test="status != null" >
+        STATUS,
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME,
+      	</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+    		<if test="logId != null" >
+        #{logId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="applyId != null" >
+        #{applyId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="sortNum != null" >
+        #{sortNum,jdbcType=DECIMAL},
+      	</if>
+    		<if test="orgId != null" >
+        #{orgId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="orgName != null" >
+        #{orgName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="orgKind != null" >
+        #{orgKind,jdbcType=DECIMAL},
+      	</if>
+    		<if test="accountId != null" >
+        #{accountId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="accountName != null" >
+        #{accountName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="status != null" >
+        #{status,jdbcType=DECIMAL},
+      	</if>
+    		<if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareLogBean">
+    update T_PROJECT_DECLARE_LOG
+    <set >
+    		<if test="applyId != null" >
+        APPLY_ID = #{applyId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="sortNum != null" >
+        SORT_NUM = #{sortNum,jdbcType=DECIMAL},
+      	</if>
+    		<if test="orgId != null" >
+        ORG_ID = #{orgId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="orgName != null" >
+        ORG_NAME = #{orgName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="orgKind != null" >
+        ORG_KIND = #{orgKind,jdbcType=DECIMAL},
+      	</if>
+    		<if test="accountId != null" >
+        ACCOUNT_ID = #{accountId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="accountName != null" >
+        ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="status != null" >
+        STATUS = #{status,jdbcType=DECIMAL},
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    </set>
+    where 
+      LOG_ID = #{logId,jdbcType=DECIMAL} 
+  </update>
+  
+	<update id="updateByPrimaryKey" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareLogBean">
+      UPDATE T_PROJECT_DECLARE_LOG SET
+        APPLY_ID = #{applyId,jdbcType=DECIMAL} ,
+        SORT_NUM = #{sortNum,jdbcType=DECIMAL} ,
+        ORG_ID = #{orgId,jdbcType=DECIMAL} ,
+        ORG_NAME = #{orgName,jdbcType=VARCHAR} ,
+        ORG_KIND = #{orgKind,jdbcType=DECIMAL} ,
+        ACCOUNT_ID = #{accountId,jdbcType=DECIMAL} ,
+        ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR} ,
+        STATUS = #{status,jdbcType=DECIMAL} ,
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP} 
+      WHERE 
+        LOG_ID = #{logId,jdbcType=DECIMAL} 
+	</update>
+	
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	        
+		       <if test="logId != null">
+						<![CDATA[AND LOG_ID = #{logId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="applyId != null">
+						<![CDATA[AND APPLY_ID = #{applyId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="sortNum != null">
+						<![CDATA[AND SORT_NUM = #{sortNum,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="orgId != null">
+						<![CDATA[AND ORG_ID = #{orgId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="orgName != null and orgName != ''">
+						<!--
+						<![CDATA[AND ORG_NAME = #{orgName,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND ORG_NAME LIKE '%' || #{orgName,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="orgKind != null">
+						<![CDATA[AND ORG_KIND = #{orgKind,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="accountId != null">
+						<![CDATA[AND ACCOUNT_ID = #{accountId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="accountName != null and accountName != ''">
+						<!--
+						<![CDATA[AND ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND ACCOUNT_NAME LIKE '%' || #{accountName,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="status != null">
+						<![CDATA[AND STATUS = #{status,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		</where>
+	</sql>
+	
+ 
+  
+  <select id="queryByCond" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareLogBean" >
+    select <include refid="Base_Column_List" />
+    from T_PROJECT_DECLARE_LOG
+	<include refid="Base_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+     
+  
+</mapper>
+

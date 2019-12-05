@@ -1,0 +1,52 @@
+{
+    "success": true,
+    "errorCode": 0,
+    "list": [
+        {
+            "index": "1",
+            "type": "省级综合试点",
+            "company": "九江市政府",
+            "industry": "石化、纺织、船舶等产业"
+        },{
+            "index": "2",
+            "type": "省级分产业试点",
+            "company": "南昌市南昌县政府",
+            "industry": "食品产业"
+        },{
+            "index": "3",
+            "type": "省级分产业试点",
+            "company": "南昌市青山湖区政府",
+            "industry": "纺织产业"
+        },{
+            "index": "4",
+            "type": "省级分产业试点",
+            "company": "宜春市高安市政府",
+            "industry": "建材产业"
+        },{
+            "index": "5",
+            "type": "省级分产业试点",
+            "company": "鹰潭市贵溪市政府",
+            "industry": "有色产业"
+        },{
+            "index": "6",
+            "type": "省级分产业试点",
+            "company": "赣州市南康区政府",
+            "industry": "家具产业"
+        },{
+            "index": "7",
+            "type": "省级分产业试点",
+            "company": "吉安市新干县政府",
+            "industry": "石化产业"
+        },{
+            "index": "8",
+            "type": "省级分产业试点",
+            "company": "九江市湖口县政府",
+            "industry": "船舶产业"
+        },{
+            "index": "9",
+            "type": "省级分产业试点",
+            "company": "新余市渝水区政府",
+            "industry": "钢铁产业"
+        }
+    ]
+}

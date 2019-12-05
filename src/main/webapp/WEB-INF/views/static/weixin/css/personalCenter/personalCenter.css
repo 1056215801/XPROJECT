@@ -1,0 +1,154 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"黑体";
+}
+a:hover, a:visited, a:link, a:active {
+    text-decoration:none;
+	color:#5e5e5e;
+}
+
+html {
+	background-color:#ebebeb;
+}
+.per_main {
+	background-color:#ebebeb;
+	position:relative;
+	margin-bottom:60px;
+}
+.per_content {
+	width:100%;
+	background-color:#ebebeb;
+	position:relative;
+}
+.per_headInfo {
+	background-color:#fff;
+	margin-top:10px;
+	padding:5px 10px;
+	position:relative;
+}
+.per_headImg {
+	float:left;
+	margin-right:10px;
+}
+.per_headName {
+	font-size:16px;
+	font-weight:bold;
+	padding:10px 0 5px;
+}
+.per_headPhone {
+	color:#aaa;
+}
+.per_headOper {
+	float:right;
+	font-size:13px;
+	position:relative;
+	top:8px;
+	padding:4px 0 4px 10px;
+}
+.per_operBar {
+	background-color:#fff;
+	margin-top:8px;
+	position:relative;
+}
+.per_oper {
+	margin:0 10px;
+	padding:12px 0;
+	border-bottom:1px solid #f6f6f6;
+}
+.per_operLast {
+	margin:0 10px;
+	padding:12px 0;
+}
+.per_operLeft {
+	float:left;
+	width:70px;
+	text-align:right;
+	font-weight:bold;
+}
+.per_operRight {
+	float:right;
+	font-size:13px;
+}
+.per_operLeftNext {
+	float:left;
+	margin-left:10px;
+	color:#aaa;
+}
+
+/* 账号升级 */
+.upgradeData {
+	float:left;
+}
+.upgradeData img {
+	float:left;
+	margin-right:10px;
+}
+.upgradeDataCont {
+	float:left;
+	width:120px;
+}
+.upgradeType {
+	font-size:16px;
+	font-weight:bold;
+}
+.upgradeDetails {
+	font-size:12px;
+}
+.upgradeBtn {
+	width:80px;
+	height:80px;
+	float:right;
+	background-color:#F14342;
+	color:#fff;
+	text-align:center;
+}
+.upgradeBtnVal {
+	width:70px;
+	font-size:24px;
+	display:inline-block;
+	vertical-align:middle;
+	line-height:1;
+	margin:16px 0;
+	cursor:pointer;
+}
+
+/* 返回 */
+.buttonContral_white {
+	background-color:#fff;
+	color:#A1A1A1;
+	width:100%;
+	padding:5px 0;
+	border:0;
+	font-size:18px;
+}

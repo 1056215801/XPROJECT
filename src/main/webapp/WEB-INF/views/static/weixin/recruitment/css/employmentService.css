@@ -1,0 +1,476 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"黑体";
+}
+a:hover, a:visited, a:link, a:active {
+    text-decoration:none;
+	color:#000;
+}
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.clearfix{zoom:1} 
+img,span {vertical-align:middle;}
+
+html {background-color:#ebebeb;}
+.employment_main {
+	background-color:#ebebeb;
+	position:relative;
+	margin-bottom:60px;
+}
+.employment_content {
+	width:100%;
+	background-color:#ebebeb;
+	position:relative;
+}
+.whiteFont {color:#fff;}
+.redFont {color:#f14241;}
+.blueFont {color:#3278DA;}
+.yellowFont {color:#FFFF00;}
+.orangeFont {color:#FF6D00;}
+.greenFont {color:#00A85A;}
+.grayFont_5e {color:#5e5e5e;}
+.grayFont_9f {color:#9f9f9f;}
+.font20 {font-size:20px;}
+/*talentService*/
+.searchBar {
+	position:fixed;
+	top:0;
+	background-color:#3278DA;
+	width:100%;
+	height:50px;
+	z-index:10000;
+}
+.searchBtn {
+	float:left;
+	margin:11px 10px;
+}
+.searchInput {
+	width:81%;
+	border-radius:20px;
+	border:0;
+	position:relative;
+	top:11px;
+	text-indent:1em;
+	padding:3px 0;
+}
+.screenBar {
+	background-color:#fff;
+	border-top:1px solid #cbcbcb;
+	border-bottom:1px solid #cbcbcb;
+	text-align:center;
+	margin-top:7px;
+}
+.screen {
+	float:left;
+	padding:7px 0;
+}
+.border_right_cb {
+	border-right:1px solid #cbcbcb;
+}
+.border_left_cb {
+	border-left:1px solid #cbcbcb;
+}
+.caret {
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px dashed;
+    display: inline-block;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    width: 0;
+}
+.talent_content {
+	background-color:#fff;
+	padding-bottom:10px;
+}
+.talent_cont {
+	background-color:#fff;
+	margin:0 3%;
+	padding:10px 0;
+	border-bottom:1px solid #e6e6e6;
+}
+.talent_headPortrait {
+	display:inline-block;
+	vertical-align:middle;
+	width:70px;
+	height:70px;
+	position:relative;
+}
+.talent_containe {
+	display:inline-block;
+	vertical-align:middle;
+	position:relative;
+	margin-left:3%;
+	width:72%;
+}
+.talent_name {
+	float:left;
+	color:#000;
+	font-size:18px;
+}
+.talent_view {
+	float:right;
+	background-color:#f14241;
+	color:#fff;
+	border-radius:20px;
+	padding:0px 10px;
+	margin-top:3px;
+	margin-right: -2px;
+	cursor:pointer;
+}
+.talent_label {
+	border:1px solid #9f9f9f;
+	color:#9f9f9f;
+	padding:2px 5px;
+	font-size:12px;
+	white-space:nowrap;
+}
+.talent_tip {
+	float:left;
+	line-height:2;
+}
+.talent_time {
+	float:right;
+	font-size:12px;
+	position:relative;
+	top:7px;
+}
+/*talentService*/
+
+/*brokerService*/
+.broker_content {
+	background-color:#fff;
+	padding-bottom:10px;
+}
+.broker_cont {
+	background-color:#fff;
+	margin:0 3%;
+	padding:10px 0;
+	border-bottom:1px solid #e6e6e6;
+}
+.broker_headPortrait {
+	display:inline-block;
+	vertical-align:middle;
+	width:70px;
+	height:70px;
+	position:relative;
+}
+.broker_containe {
+	display:inline-block;
+	vertical-align:middle;
+	position:relative;
+	margin-left:3%;
+	width:72%;
+}
+.broker_name {
+	float:left;
+	color:#000;
+	font-size:18px;
+}
+.broker_grade {
+	float:left;
+	color:#ff6d00;
+	margin-top:3px;
+	margin-left:2px;
+}
+.broker_evaluate {
+	float:right;
+	background-color:#ff6d00;
+	color:#fff;
+	border-radius:20px;
+	padding:0px 10px;
+	margin-top:3px;
+	margin-right: -2px;
+	cursor:pointer;
+}
+.broker_evaluateTitle {
+	float:right;
+	color:#9f9f9f;
+	margin-top:3px;
+	margin-right:2px;
+}
+.broker_tip {
+	line-height:2;
+}
+/*brokerService*/
+
+/*myEmployment*/
+.my_content {
+	background-color:#fff;
+	padding-bottom:10px;
+}
+.my_cont {
+	background-color:#fff;
+	margin:0 3%;
+	padding:10px 0;
+	border-bottom:1px solid #e6e6e6;
+}
+.my_headPortrait {
+	display:inline-block;
+	vertical-align:middle;
+	width:70px;
+	height:70px;
+	position:relative;
+}
+.my_containe {
+	display:inline-block;
+	vertical-align:middle;
+	position:relative;
+	margin-left:3%;
+	width:72%;
+}
+.my_position {
+	float:left;
+	color:#000;
+	font-size:18px;
+}
+.my_salary {
+	float:right;
+	background-color:#f14241;
+	color:#fff;
+	border-radius:20px;
+	padding:0px 10px;
+	margin-top:3px;
+	cursor:pointer;
+}
+.my_company {
+	float:left;
+	color:#000;
+	font-size:18px;
+}
+/*myEmployment*/
+
+/*talentDetails*/
+.fixed_top {
+	position:fixed;
+	top:0;
+	background-color:#3278DA;
+	width:100%;
+	height:50px;
+	padding-left:15px;
+	z-index:1000;
+}
+.fixed_top img {
+	margin:15px 5px 15px 0;
+}
+.fixed_top span {
+	display:inline-block;
+	margin:13px 0;
+	font-size:16px;
+	font-weight:bold;
+	color:#FFF;
+}
+.fixed_bottom {
+	width:100%;
+	height:45px;
+	position:fixed;
+	bottom:0;
+	background-color:#F4F4F4;
+	border-top:1px solid #DCDCDC;
+}
+.returnBtn {
+	float:left;
+	margin:12px 10px;
+}
+.bottom_operation {
+	float:right;
+	border-left:1px solid #DCDCDC;
+	padding:0 10px;
+}
+.bottom_operation img {
+	margin:12px 0;
+}
+.bottom_operation span {
+	display: inline-block;
+    margin: 12px 0;
+}
+.caption_top {
+	width:100%;
+	height:20px;
+	margin-top:20px;
+	border-top:1px solid #CBCBCB;
+}
+.caption_title {
+	width:26%;
+	position:relative;
+	top:-10px;
+	left:37%;
+	text-align:center; 
+	background-color:#ebebeb;
+	font-size:14px;
+}
+.talent_details {
+	background-color: #1B95EA;
+    padding: 10px 3%;
+	color:#fff;
+	font-size:12px;
+}
+.bluePoint {
+	display:inline-block;
+	width:12px;
+	height:12px;
+	border-radius:50%;
+	background-color:#1B95EA;
+	margin-right:3px;
+}
+.details_content {
+	background-color:#fff;
+	padding:7px 12px;
+	color:#3278DA;
+}
+.education_contBar {
+	border-bottom:1px solid #e6e6e6;
+}
+.education_time {}
+.education_cont {
+	padding:2px 17px;
+	color:#9f9f9f;
+}
+/*talentDetails*/
+
+/*brokerDetails*/
+.broker_details {
+	background-color: #fff;
+    padding: 10px 3%;
+	font-size:12px;
+}
+.broker_statisticsBar {
+	padding:7px 0px;
+	background-color:#3278DA;
+}
+.broker_statistics {
+	float:left;
+	width:33%;
+	border-right:1px solid #fff;
+	color:#fff;
+	text-align:center;
+}
+/*brokerDetails*/
+
+/*companyDetails*/
+.company_detailsBar {
+	background-color:#fff;
+	padding:10px 15px;
+}
+.company_position {
+	color:#000;
+	font-size:18px;
+}
+.company_salary {
+	color:#FF6D00;
+	margin-left:5px;
+}
+.company_details {
+	margin:5px 0;
+}
+.company_details span {
+	margin-right:5px;
+}
+/*companyDetails*/
+
+/*employmentDetails*/
+.titleSwitch {
+	position:fixed;
+	top:0;
+	background-color:#1B95EA;
+	width:100%;
+	height:50px;
+	z-index:1000;
+}
+.titleName {
+}
+.titleName ul{list-style-type:none;}  
+.titleName ul li{float:left; width:50%; text-align:center; font-weight:bold; padding:12.8px 0; position:relative;}
+.titleName ul li a{text-decoration:none; font-size:16px; font-weight:bold; color:#fff;}
+.titleClick { background-color:#3278DA;}
+.titleItem {
+	margin-top:65px;
+}
+.caret_title {
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 7px dashed;
+    display: inline-block;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    width: 0;
+	color:#3278DA;
+	position: absolute;
+    top: 50px;
+    left: 50%;
+    margin-left: -7px;
+}
+/*employmentDetails*/
+
+/*fieldSearch*/
+.field_search_title {
+	font-size:16px;
+	padding:6px 10px;
+}
+.field_search_content {
+	background-color:#FFF;
+	padding:5px 12px;
+}
+.optionBtn {
+	float:left;
+	border:1px solid #5e5e5e;
+	color:#5F5F5F;
+	margin:5px 7px 5px 0;
+	padding:0 5px;
+	border-radius:3px;
+}
+.selected {
+	background-color:#1B95EA;
+	color:#FFF;
+	border:1px solid #1B95EA;
+}
+/*fieldSearch*/
+
+
+#dropdown {
+    position: fixed;
+    top: 252px;
+    width: 100%;
+    height: 140px;
+    background-color: #fff;
+    display: none;
+    z-index: 10000;
+}

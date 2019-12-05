@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jaxws="http://cxf.apache.org/jaxws" xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-3.2.xsd
+         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+         http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+         http://www.springframework.org/schema/task  
+         http://www.springframework.org/schema/task/spring-task.xsd           
+        ">
+
+	<context:annotation-config />
+	<context:component-scan base-package="com.chinatelecom.jx">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
+	<bean id="taskExecutor"
+		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<!-- 核心线程数 -->
+		<property name="corePoolSize" value="5" />
+		<!-- 最大线程数 -->
+		<property name="maxPoolSize" value="15" />
+		<!-- 队列最大长度 -->
+		<property name="queueCapacity" value="25" />
+		<!-- 线程池维护线程所允许的空闲时间，默认为60s -->
+		<property name="keepAliveSeconds" value="60" />
+	</bean>
+
+	<task:annotation-driven executor="taskExecutor"
+		scheduler="scheduler" />
+	<task:executor id="taskExecutor" pool-size="5" />
+	<task:scheduler id="scheduler" pool-size="10" />
+
+
+	<cache:annotation-driven cache-manager="cacheManager"
+		proxy-target-class="false" />
+
+	<bean id="cacheManagerFactory"
+		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
+		p:configLocation="classpath:/ehcache.xml" p:shared="false" />
+
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager"
+		p:cacheManager-ref="cacheManagerFactory" />
+
+	<bean id="shortMessageRandCodeCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean"
+		p:cacheManager-ref="cacheManagerFactory" p:cacheName="ShortMessageRandCodeCache" />
+
+	<bean id="accountInfoCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean"
+		p:cacheManager-ref="cacheManagerFactory" p:cacheName="AccountInfoCache" />
+
+	<bean id="userCodeCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean"
+		p:cacheManager-ref="cacheManagerFactory" p:cacheName="UserCodeCache" />
+		
+	<bean id="accountAuthCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean"
+		p:cacheManager-ref="cacheManagerFactory" p:cacheName="AccountAuthCache" />
+		
+	<bean id="accountBanCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean"
+		p:cacheManager-ref="cacheManagerFactory" p:cacheName="AccountBanCache" />		
+
+	<bean id="failedTimesUserCodeCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean"
+		p:cacheManager-ref="cacheManagerFactory" p:cacheName="FailedTimesUserCodeCache" />
+
+	<bean id="failedTimesIpCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean"
+		p:cacheManager-ref="cacheManagerFactory" p:cacheName="FailedTimesIpCache" />
+
+	<bean id="filterWordCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean"
+		p:cacheManager-ref="cacheManagerFactory" p:cacheName="FilterWordCache" />
+
+	<bean id="captchaCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean"
+		p:cacheManager-ref="cacheManagerFactory" p:cacheName="CaptchaCache" />
+
+	<bean id="ticketCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean"
+		p:cacheManager-ref="cacheManagerFactory" p:cacheName="TicketCache" />
+
+
+
+
+
+	<bean
+		class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+
+
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:comp/env/jdbc/xproject" />
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource">
+			<ref local="dataSource" />
+		</property>
+	</bean>
+
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="defaultLobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler"
+		lazy-init="true" />
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="/WEB-INF/mybatis.xml" />
+		<property name="mapperLocations"
+			value="classpath*:com/chinatelecom/jx/zone/**/dao/mybatis/sql/**/*.xml" />
+	</bean>
+
+
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage"
+			value="com.chinatelecom.jx.zone.**.dao.mybatis.mapper" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+	</bean>
+
+
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<property name="maxTotal" value="50" />
+		<property name="maxIdle" value="2" />
+		<property name="testOnBorrow" value="true" />
+	</bean>
+	<bean id="jedisPool" class="redis.clients.jedis.JedisPool"
+		destroy-method="close">
+		<constructor-arg ref="jedisPoolConfig" />
+		<constructor-arg type="java.lang.String" value="${Redis_Ip}" />
+		<constructor-arg type="int" value="${Redis_Port}" />
+		<constructor-arg type="int" value="2000" />
+		<constructor-arg type="java.lang.String" value="${Redis_Passwd}" />
+	</bean>
+
+    <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+          p:use-pool="true" p:hostName="${Redis_Ip}" p:port="${Redis_Port}" p:password="${Redis_Passwd}"/>
+    <!-- redis template definition -->
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate"
+          p:connection-factory-ref="jedisConnectionFactory"/>
+
+
+	<bean id="cyclicIntegerSeq" class="com.chinatelecom.jx.zone.bean.CyclicIntegerSeq">
+		<constructor-arg type="int" value="2" />
+	</bean>
+
+	<bean id="seed" class="java.lang.String">
+		<constructor-arg value="${SEED}" />
+	</bean>
+
+	<bean id="primaryKeySeq" class="com.chinatelecom.jx.zone.bean.SeqIdType"
+		scope="prototype">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+	
+	<bean id="cryptUtils" class="com.chinatelecom.jx.util.CryptUtils"
+		init-method="initialize" />
+
+	<bean id="hCodePtHelper" class="com.chinatelecom.jx.helper.HCodePtHelper" />
+
+	
+	<bean id="accountIdSessionHelper" class="com.chinatelecom.jx.zone.session.helper.AccountIdSessionHelper" />
+	<bean id="organizationIdSessionHelper" class="com.chinatelecom.jx.zone.session.helper.OrganizationIdSessionHelper" />
+	<bean id="authKindSessionHelper" class="com.chinatelecom.jx.zone.session.helper.AuthKindSessionHelper" />
+	
+	<bean id="listHelper" class="com.chinatelecom.jx.helper.ListHelper" />
+	<bean id="poiHelper" class="com.chinatelecom.jx.helper.POIHelper" />
+	<bean id="signatureHelper" class="com.chinatelecom.jx.helper.SignatureHelper" />
+
+		
+		
+	<bean id="systemIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+	<bean id="moduleIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+	<bean id="filterIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+	<bean id="newsIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+	<bean id="organizationIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+	<bean id="accountIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+	<bean id="bindIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+
+
+	<bean id="dutyIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+	<bean id="packIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+	<bean id="roleIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+	<bean id="menuIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+
+
+	<bean id="groupIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+	<bean id="bookIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+
+	<bean id="mobileIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+
+	<bean id="passwdIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+	<bean id="loginIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+
+	<bean id="logIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+	<bean id="templateIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+	<bean id="controlIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+	<bean id="jobIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+	<bean id="boxIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+	<bean id="requestIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+	<bean id="responseIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+	<bean id="reportIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+	<bean id="deliveryIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+	<bean id="recvIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+
+
+	<bean id="interfaceIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+	<bean id="invokeIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+	<bean id="callIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+
+	<bean id="typeIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+	<bean id="valueIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+	<bean id="keyIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+  
+	<bean id="msgIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+	<bean id="imageIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+  
+
+	<bean id="banIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+	<bean id="suggestIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>
+
+	<bean id="companyIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>         
+
+	<bean id="parkIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean>  
+	
+	<bean id="industryIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean> 
+
+	<bean id="attachmentIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean> 
+	
+	<bean id="authIdSeq" class="com.chinatelecom.jx.zone.bean.SeqIdType">
+		<property name="seed" value="${SEED}" />
+		<property name="bean" ref="cyclicIntegerSeq" />
+		<property name="timestampFmt" value="yyyyMMddHHmmss" />
+		<property name="cyclicIdLength" value="9" />
+	</bean> 		
+		
+</beans>

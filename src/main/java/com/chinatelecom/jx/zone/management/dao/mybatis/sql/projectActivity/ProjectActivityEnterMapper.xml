@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.projectActivity.ProjectActivityEnterMapper" >
+
+	<resultMap id="BaseResultMap" type="com.chinatelecom.jx.zone.management.bean.projectActivity.ProjectActivityEnterBean">
+    	<id column="ENTER_ID" jdbcType="DECIMAL" property="enterId"/>
+    	<result column="ACTIVITY_ID" jdbcType="DECIMAL" property="activityId"/>
+    	<result column="ENTER_ACCOUNT" jdbcType="DECIMAL" property="enterAccount"/>
+    	<result column="ENTER_USER" jdbcType="VARCHAR" property="enterUser"/>
+    	<result column="ENTER_TIME" jdbcType="TIMESTAMP" property="enterTime"/>
+    	<result column="PRIZE_SEQ" jdbcType="DECIMAL" property="prizeSeq"/>
+    	<result column="STATUS" jdbcType="DECIMAL" property="status"/>
+    	<result column="REMARK" jdbcType="VARCHAR" property="remark"/>
+    	<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+    	<result column="IMAGE_URL" jdbcType="VARCHAR" property="imageUrl"/>
+	</resultMap>
+	
+	<!--
+	<resultMap id="ResultMapWithForeign" type="com.chinatelecom.jx.zone.management.bean.projectActivity.ProjectActivityEnterBean" extends="BaseResultMap" >
+			 <result column="workProcessid" property="workProcessid" jdbcType="VARCHAR" />
+			 <result column="currentState" property="currentState" jdbcType="VARCHAR" />
+       <result column="organizationName" property="orgName" jdbcType="VARCHAR" />
+        <result column="companyName" property="companyName" jdbcType="VARCHAR" />
+       <result column="accountName" property="accountName" jdbcType="VARCHAR" />
+       <result column="parkName" property="parkName" jdbcType="VARCHAR" />
+  </resultMap>
+  -->
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		ENTER_ID,ACTIVITY_ID,ENTER_ACCOUNT,ENTER_USER,ENTER_TIME,PRIZE_SEQ,STATUS,REMARK,CREATE_TIME
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_PROJECT_ACTIVITY_ENTER
+    where 
+				ENTER_ID = #{enterId,jdbcType=DECIMAL} 
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+        DELETE FROM T_PROJECT_ACTIVITY_ENTER WHERE
+				ENTER_ID = #{enterId,jdbcType=DECIMAL} 
+    </delete>
+
+	<insert id="insert" parameterType="com.chinatelecom.jx.zone.management.bean.projectActivity.ProjectActivityEnterBean">
+        INSERT INTO T_PROJECT_ACTIVITY_ENTER (
+        	ENTER_ID ,
+        	ACTIVITY_ID ,
+        	ENTER_ACCOUNT ,
+        	ENTER_USER ,
+        	ENTER_TIME ,
+        	PRIZE_SEQ ,
+        	STATUS ,
+        	REMARK ,
+        	CREATE_TIME 
+        ) VALUES (
+        	#{enterId,jdbcType=DECIMAL} ,
+        	#{activityId,jdbcType=DECIMAL} ,
+        	#{enterAccount,jdbcType=DECIMAL} ,
+        	#{enterUser,jdbcType=VARCHAR} ,
+        	#{enterTime,jdbcType=TIMESTAMP} ,
+        	#{prizeSeq,jdbcType=DECIMAL} ,
+        	#{status,jdbcType=DECIMAL} ,
+        	#{remark,jdbcType=VARCHAR} ,
+        	#{createTime,jdbcType=TIMESTAMP} 
+        )
+	</insert>
+	
+	<insert id="insertSelective" parameterType="com.chinatelecom.jx.zone.management.bean.projectActivity.ProjectActivityEnterBean">
+    insert into T_PROJECT_ACTIVITY_ENTER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+    		<if test="enterId != null" >
+        ENTER_ID,
+      	</if>
+    		<if test="activityId != null" >
+        ACTIVITY_ID,
+      	</if>
+    		<if test="enterAccount != null" >
+        ENTER_ACCOUNT,
+      	</if>
+    		<if test="enterUser != null" >
+        ENTER_USER,
+      	</if>
+    		<if test="enterTime != null" >
+        ENTER_TIME,
+      	</if>
+    		<if test="prizeSeq != null" >
+        PRIZE_SEQ,
+      	</if>
+    		<if test="status != null" >
+        STATUS,
+      	</if>
+    		<if test="remark != null" >
+        REMARK,
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME,
+      	</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+    		<if test="enterId != null" >
+        #{enterId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="activityId != null" >
+        #{activityId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="enterAccount != null" >
+        #{enterAccount,jdbcType=DECIMAL},
+      	</if>
+    		<if test="enterUser != null" >
+        #{enterUser,jdbcType=VARCHAR},
+      	</if>
+    		<if test="enterTime != null" >
+        #{enterTime,jdbcType=TIMESTAMP},
+      	</if>
+    		<if test="prizeSeq != null" >
+        #{prizeSeq,jdbcType=DECIMAL},
+      	</if>
+    		<if test="status != null" >
+        #{status,jdbcType=DECIMAL},
+      	</if>
+    		<if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      	</if>
+    		<if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinatelecom.jx.zone.management.bean.projectActivity.ProjectActivityEnterBean">
+    update T_PROJECT_ACTIVITY_ENTER
+    <set >
+    		<if test="activityId != null" >
+        ACTIVITY_ID = #{activityId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="enterAccount != null" >
+        ENTER_ACCOUNT = #{enterAccount,jdbcType=DECIMAL},
+      	</if>
+    		<if test="enterUser != null" >
+        ENTER_USER = #{enterUser,jdbcType=VARCHAR},
+      	</if>
+    		<if test="enterTime != null" >
+        ENTER_TIME = #{enterTime,jdbcType=TIMESTAMP},
+      	</if>
+    		<if test="prizeSeq != null" >
+        PRIZE_SEQ = #{prizeSeq,jdbcType=DECIMAL},
+      	</if>
+    		<if test="status != null" >
+        STATUS = #{status,jdbcType=DECIMAL},
+      	</if>
+    		<if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    </set>
+    where 
+      ENTER_ID = #{enterId,jdbcType=DECIMAL} 
+  </update>
+  
+	<update id="updateByPrimaryKey" parameterType="com.chinatelecom.jx.zone.management.bean.projectActivity.ProjectActivityEnterBean">
+      UPDATE T_PROJECT_ACTIVITY_ENTER SET
+        ACTIVITY_ID = #{activityId,jdbcType=DECIMAL} ,
+        ENTER_ACCOUNT = #{enterAccount,jdbcType=DECIMAL} ,
+        ENTER_USER = #{enterUser,jdbcType=VARCHAR} ,
+        ENTER_TIME = #{enterTime,jdbcType=TIMESTAMP} ,
+        PRIZE_SEQ = #{prizeSeq,jdbcType=DECIMAL} ,
+        STATUS = #{status,jdbcType=DECIMAL} ,
+        REMARK = #{remark,jdbcType=VARCHAR} ,
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP} 
+      WHERE 
+        ENTER_ID = #{enterId,jdbcType=DECIMAL} 
+	</update>
+	
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	        
+		       <if test="enterId != null">
+						<![CDATA[AND ENTER_ID = #{enterId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="activityId != null">
+						<![CDATA[AND ACTIVITY_ID = #{activityId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="enterAccount != null">
+						<![CDATA[AND ENTER_ACCOUNT = #{enterAccount,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="enterUser != null and enterUser != ''">
+						<!--
+						<![CDATA[AND ENTER_USER = #{enterUser,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND ENTER_USER LIKE '%' || #{enterUser,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+	        
+		       <if test="prizeSeq != null">
+						<![CDATA[AND PRIZE_SEQ = #{prizeSeq,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="status != null">
+						<![CDATA[AND STATUS = #{status,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="remark != null and remark != ''">
+						<!--
+						<![CDATA[AND REMARK = #{remark,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND REMARK LIKE '%' || #{remark,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		</where>
+	</sql>
+	
+	<!--
+	<sql id="Extends_Where_Clause" >
+    <where>	      				
+		       <if test="enterId != null">
+						AND a.ENTER_ID = #{enterId,jdbcType=DECIMAL}
+				   </if>
+		       <if test="activityId != null">
+						AND a.ACTIVITY_ID = #{activityId,jdbcType=DECIMAL}
+				   </if>
+		       <if test="enterAccount != null">
+						AND a.ENTER_ACCOUNT = #{enterAccount,jdbcType=DECIMAL}
+				   </if>
+		       <if test="enterUser != null and enterUser != ''">
+						AND a.ENTER_USER = #{enterUser,jdbcType=VARCHAR}
+						AND a.ENTER_USER LIKE '%' || #{enterUser,jdbcType=VARCHAR} || '%'
+				   </if>
+		        <if test="geEnterTime != null and geEnterTime != ''">
+						<![CDATA[AND to_char(a.ENTER_TIME,'yyyy-MM-dd HH24:mi:ss') >= #{geEnterTime} || ' 00:00:00']]>
+				   </if>
+		       <if test="leEnterTime != null and leEnterTime != ''">
+						<![CDATA[AND to_char(a.ENTER_TIME,'yyyy-MM-dd HH24:mi:ss') <= #{leEnterTime} || ' 23:59:59']]>
+				   </if>
+		       <if test="prizeSeq != null">
+						AND a.PRIZE_SEQ = #{prizeSeq,jdbcType=DECIMAL}
+				   </if>
+		       <if test="status != null">
+						AND a.STATUS = #{status,jdbcType=DECIMAL}
+				   </if>
+		       <if test="remark != null and remark != ''">
+						AND a.REMARK = #{remark,jdbcType=VARCHAR}
+						AND a.REMARK LIKE '%' || #{remark,jdbcType=VARCHAR} || '%'
+				   </if>
+		        <if test="geCreateTime != null and geCreateTime != ''">
+						<![CDATA[AND to_char(a.CREATE_TIME,'yyyy-MM-dd HH24:mi:ss') >= #{geCreateTime} || ' 00:00:00']]>
+				   </if>
+		       <if test="leCreateTime != null and leCreateTime != ''">
+						<![CDATA[AND to_char(a.CREATE_TIME,'yyyy-MM-dd HH24:mi:ss') <= #{leCreateTime} || ' 23:59:59']]>
+				   </if>
+	      <if test="accountName != null and accountName!=''" >
+	        and b.account_name LIKE '%' || ${accountName} || '%'
+	      </if>
+	      <if test="orgName != null and orgName!=''" >
+	        and c.organization_name LIKE '%${orgName}%'
+	      </if>
+	      <if test="copmanyName != null and copmanyName!=''" >
+	        and d.organization_name LIKE '%${copmanyName}%'
+	      </if>
+	      <if test="parkName != null and parkName!=''" >
+	        and e.organization_name LIKE '%${parkName}%'
+	      </if>
+		</where>
+  </sql>
+  -->
+  
+  <select id="queryByCond" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.projectActivity.ProjectActivityEnterBean" >
+    select <include refid="Base_Column_List" />
+    from T_PROJECT_ACTIVITY_ENTER
+	<include refid="Base_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+   <select id="queryByActivityId" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.projectActivity.ProjectActivityEnterBean" >
+    select distinct 
+    	a.ENTER_ID,
+    	a.ACTIVITY_ID,
+    	a.ENTER_ACCOUNT,
+    	a.ENTER_USER,
+    	a.ENTER_TIME,
+    	a.PRIZE_SEQ,
+    	a.STATUS,
+    	a.REMARK,
+    	a.CREATE_TIME,
+    	b.image_url 
+    from T_PROJECT_ACTIVITY_ENTER a
+	left join t_account_image b on a.ENTER_ACCOUNT = b.account_id 
+	where a.ACTIVITY_ID = #{activityId,jdbcType=DECIMAL} 
+		and a.status = #{status,jdbcType=DECIMAL} 
+    	order by a.ENTER_TIME desc 
+  </select>
+  
+  <!--
+   <select id="queryByCondWithForeign" resultMap="ResultMapWithForeign" parameterType="com.chinatelecom.jx.zone.management.bean.projectActivity.ProjectActivityEnterBean" >
+     select a.*,
+        w.processinstid as workProcessid,
+       w.currentState as currentState,
+       b.account_name as accountName,
+       c.organization_name as orgName,
+       d.organization_name as companyName,
+       e.organization_name as parkName
+	  from T_PROJECT_ACTIVITY_ENTER a
+	  left join T_ACCOUNT_INFO b on a.account_id = b.account_id
+	  left join t_organization_info c on a.organization_id = c.organization_id
+	  left join t_organization_info d on a.conpany_id = d.organization_id
+	  left join t_organization_info e on a.root_id = e.organization_id
+	  inner join zone_workflow.wf_main w
+	  on a.id = w.relation_id and a.zt > 0
+	<include refid="Extends_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  -->
+  
+  
+  <!--
+  <select id="selectWithForeignById" resultMap="ResultMapWithForeign" parameterType="java.math.BigDecimal" >
+     select a.*,
+       b.account_name as accountName,
+       c.organization_name as orgName,
+       d.organization_name as companyName,
+       e.organization_name as parkName
+	  from T_PROJECT_ACTIVITY_ENTER a
+	  left join T_ACCOUNT_INFO b on a.account_id = b.account_id
+	  left join t_organization_info c on a.organization_id = c.organization_id
+	  left join t_organization_info d on a.conpany_id = d.organization_id
+	  left join t_organization_info e on a.root_id = e.organization_id
+	  where 
+				a.ENTER_ID = #{enterId,jdbcType=DECIMAL} 
+  </select>
+  -->
+</mapper>
+

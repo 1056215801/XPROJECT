@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.entranceParam.EntrancePageCustomMapper">
+	<resultMap id="BaseResultMap" type="com.chinatelecom.jx.zone.management.bean.entranceParam.EntrancePageCustomBean">
+		<id column="CUSTOM_ID" jdbcType="DECIMAL" property="customId" />
+		<result column="PARAMETER_ID" jdbcType="DECIMAL" property="parameterId" />
+		<result column="ORGANIZATION_ID" jdbcType="DECIMAL" property="organizationId" />
+		<result column="PARAMETER_VALUE" jdbcType="VARCHAR" property="parameterValue" />
+		<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="PARAMETER_CODE" jdbcType="VARCHAR" property="parameterCode" />
+		<result column="PARAMETER_NAME" jdbcType="VARCHAR" property="parameterName" />
+		<result column="PARAMETER_TYPE" jdbcType="VARCHAR" property="parameterType" />
+		<!-- 关联主表 -->
+		<association property="parameter" column="parameterId" select="getParameterById" />
+	</resultMap>
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List"> CUSTOM_ID,PARAMETER_ID,ORGANIZATION_ID,PARAMETER_VALUE,CREATE_TIME
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal">
+		select
+		<include refid="Base_Column_List" />
+		from T_ENTRANCE_PAGE_CUSTOM where CUSTOM_ID = #{customId,jdbcType=DECIMAL}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal"> DELETE FROM T_ENTRANCE_PAGE_CUSTOM WHERE CUSTOM_ID =
+		#{customId,jdbcType=DECIMAL}
+	</delete>
+	<insert id="insert" parameterType="com.chinatelecom.jx.zone.management.bean.entranceParam.EntrancePageCustomBean"> INSERT INTO T_ENTRANCE_PAGE_CUSTOM ( CUSTOM_ID , PARAMETER_ID ,
+		ORGANIZATION_ID , PARAMETER_VALUE , CREATE_TIME ) VALUES ( #{customId,jdbcType=DECIMAL} ,
+		#{parameterId,jdbcType=DECIMAL} , #{organizationId,jdbcType=DECIMAL} , #{parameterValue,jdbcType=VARCHAR} ,
+		#{createTime,jdbcType=TIMESTAMP} )
+	</insert>
+	<insert id="insertSelective" parameterType="com.chinatelecom.jx.zone.management.bean.entranceParam.EntrancePageCustomBean">
+		insert into T_ENTRANCE_PAGE_CUSTOM
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="customId != null"> CUSTOM_ID,
+			</if>
+			<if test="parameterId != null"> PARAMETER_ID,
+			</if>
+			<if test="organizationId != null"> ORGANIZATION_ID,
+			</if>
+			<if test="parameterValue != null"> PARAMETER_VALUE,
+			</if>
+			<if test="createTime != null"> CREATE_TIME,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="customId != null"> #{customId,jdbcType=DECIMAL},
+			</if>
+			<if test="parameterId != null"> #{parameterId,jdbcType=DECIMAL},
+			</if>
+			<if test="organizationId != null"> #{organizationId,jdbcType=DECIMAL},
+			</if>
+			<if test="parameterValue != null"> #{parameterValue,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null"> #{createTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.chinatelecom.jx.zone.management.bean.entranceParam.EntrancePageCustomBean">
+		update T_ENTRANCE_PAGE_CUSTOM
+		<set>
+			<if test="parameterId != null"> PARAMETER_ID = #{parameterId,jdbcType=DECIMAL},
+			</if>
+			<if test="organizationId != null"> ORGANIZATION_ID = #{organizationId,jdbcType=DECIMAL},
+			</if>
+			<if test="parameterValue != null"> PARAMETER_VALUE = #{parameterValue,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null"> CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where CUSTOM_ID = #{customId,jdbcType=DECIMAL}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.chinatelecom.jx.zone.management.bean.entranceParam.EntrancePageCustomBean"> UPDATE T_ENTRANCE_PAGE_CUSTOM SET PARAMETER_ID =
+		#{parameterId,jdbcType=DECIMAL} , ORGANIZATION_ID = #{organizationId,jdbcType=DECIMAL} , PARAMETER_VALUE =
+		#{parameterValue,jdbcType=VARCHAR} , CREATE_TIME = #{createTime,jdbcType=TIMESTAMP} WHERE CUSTOM_ID =
+		#{customId,jdbcType=DECIMAL}
+	</update>
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>
+			<if test="customId != null">
+						<![CDATA[AND CUSTOM_ID = #{customId,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="parameterId != null">
+						<![CDATA[AND PARAMETER_ID = #{parameterId,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="organizationId != null">
+						<![CDATA[AND ORGANIZATION_ID = #{organizationId,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="parameterValue != null and parameterValue != ''">
+						<![CDATA[AND PARAMETER_VALUE LIKE '%' || #{parameterValue,jdbcType=VARCHAR} || '%']]>
+			</if>
+		</where>
+	</sql>
+	<select id="queryByCond" resultMap="BaseResultMap"
+		parameterType="com.chinatelecom.jx.zone.management.bean.entranceParam.EntrancePageCustomBean">
+		select a.*,b.parameter_code,b.parameter_type,b.parameter_name from ( select
+		<include refid="Base_Column_List" />
+		from T_ENTRANCE_PAGE_CUSTOM
+		<include refid="Base_Where_Clause" />
+		<if test="orderByClause != null"> order by ${orderByClause}
+		</if>
+		)a inner join t_entrance_page_parameter b on a.parameter_id = b.parameter_id where 1=1
+		<if test="systemId != null">
+						<![CDATA[AND b.system_id = #{systemId,jdbcType=DECIMAL}]]>
+		</if>
+		<if test="parameterCode != null">
+						<![CDATA[AND b.parameter_code = #{parameterCode,jdbcType=VARCHAR}]]>
+		</if>
+		<if test="parameterType != null">
+						<![CDATA[AND b.parameter_type = #{parameterType,jdbcType=VARCHAR}]]>
+		</if>
+	</select>
+	<!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+	<resultMap id="ParameterMap" type="com.chinatelecom.jx.zone.management.bean.entranceParam.EntrancePageParameterBean">
+		<id column="PARAMETER_ID" jdbcType="DECIMAL" property="parameterId" />
+		<result column="PARAMETER_CODE" jdbcType="VARCHAR" property="parameterCode" />
+		<result column="PARAMETER_TYPE" jdbcType="VARCHAR" property="parameterType" />
+		<result column="SYSTEM_ID" jdbcType="DECIMAL" property="systemId" />
+		<result column="PAGE_CODE" jdbcType="VARCHAR" property="pageCode" />
+		<result column="PARAMETER_NAME" jdbcType="VARCHAR" property="parameterName" />
+		<result column="REMARK" jdbcType="VARCHAR" property="remark" />
+		<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+	</resultMap>
+	<select id="getParameterById" parameterType="DECIMAL" resultMap="ParameterMap"> select * from T_ENTRANCE_PAGE_PARAMETER where
+		PARAMETER_ID = #{parameterId}
+	</select>
+	<select id="getValueById" resultType="string"> select parameter_value from t_entrance_page_custom where parameter_id =
+		#{pId} and organization_id = #{oId}
+	</select>
+</mapper>

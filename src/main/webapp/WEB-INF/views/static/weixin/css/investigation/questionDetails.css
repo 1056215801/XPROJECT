@@ -1,0 +1,96 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"黑体";
+}
+a:hover, a:visited, a:link, a:active {
+    text-decoration:none;
+	color:#000;
+}
+
+html {
+	background-color:#ebebeb;
+}
+.question_main {
+	background-color:#ebebeb;
+}
+.question_content {
+	width:100%;
+	background-color:#ebebeb;
+	position:relative;
+}
+.question_cont {
+	padding:0 10px;
+	margin-top:10px;
+	font-weight:bold;
+}
+.question_reply {
+	margin-top:10px;
+	background-color:#fff;
+}
+.question_replyPeople {
+	font-size:12px;
+	border-bottom:1px solid #ccc;
+	padding:5px 0;
+	color:#aaa;
+}
+.question_replyCont {
+	padding:5px 0;
+}
+
+/* 加载更多 */
+.renovateTitle {
+	color: #120F0F;
+	display: inline-block;
+	font-size: 14px;
+	line-height: 14px;
+	text-align: center;
+}
+.renovate {
+	display: block;
+    text-align: center;
+	background-color:#F6F6F6;
+	padding:7px 0;
+}
+
+/* 小火箭 */
+#tbox{
+	width:50px;
+	height: 60px; 
+	background:url(/XProject/static/weixin/images/logistics/rocket.png) no-repeat; 
+	display:none;
+	position:fixed;
+	right:10px;
+	bottom:50px;
+	background-size:50px 50px; 
+}

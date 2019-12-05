@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.projectDeclare.ProjectDeclarePublicityMapper" >
+
+	<resultMap id="BaseResultMap" type="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclarePublicityBean">
+    	<id column="PUBLICITY_ID" jdbcType="DECIMAL" property="publicityId"/>
+    	<result column="DECLARE_ID" jdbcType="DECIMAL" property="declareId"/>
+    	<result column="PUBLICITY_UNIT" jdbcType="VARCHAR" property="publicityUnit"/>
+    	<result column="PUBLICITY_TITLE" jdbcType="VARCHAR" property="publicityTitle"/>
+    	<result column="PUBLICITY_TEXT" jdbcType="VARCHAR" property="publicityText"/>
+    	<result column="AT_URL_LIST" jdbcType="VARCHAR" property="atUrlList"/>
+    	<result column="AT_ID_LIST" jdbcType="VARCHAR" property="atIdList"/>
+    	<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+    	<result column="STATUS" jdbcType="DECIMAL" property="status"/>
+    	<result column="DECLARE_TITLE" jdbcType="VARCHAR" property="declareTitle"/>
+	</resultMap>
+	
+	<!--
+	<resultMap id="ResultMapWithForeign" type="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclarePublicityBean" extends="BaseResultMap" >
+			 <result column="workProcessid" property="workProcessid" jdbcType="VARCHAR" />
+			 <result column="currentState" property="currentState" jdbcType="VARCHAR" />
+       <result column="organizationName" property="orgName" jdbcType="VARCHAR" />
+        <result column="companyName" property="companyName" jdbcType="VARCHAR" />
+       <result column="accountName" property="accountName" jdbcType="VARCHAR" />
+       <result column="parkName" property="parkName" jdbcType="VARCHAR" />
+  </resultMap>
+  -->
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		PUBLICITY_ID,DECLARE_ID,PUBLICITY_UNIT,PUBLICITY_TITLE,PUBLICITY_TEXT,AT_URL_LIST,AT_ID_LIST,CREATE_TIME,STATUS
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_PROJECT_DECLARE_PUBLICITY
+    where 
+				PUBLICITY_ID = #{publicityId,jdbcType=DECIMAL} 
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+        DELETE FROM T_PROJECT_DECLARE_PUBLICITY WHERE
+				PUBLICITY_ID = #{publicityId,jdbcType=DECIMAL} 
+    </delete>
+
+	<insert id="insert" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclarePublicityBean">
+        INSERT INTO T_PROJECT_DECLARE_PUBLICITY (
+        	PUBLICITY_ID ,
+        	DECLARE_ID ,
+        	PUBLICITY_UNIT ,
+        	PUBLICITY_TITLE ,
+        	PUBLICITY_TEXT ,
+        	AT_URL_LIST ,
+        	AT_ID_LIST ,
+        	CREATE_TIME ,
+        	STATUS 
+        ) VALUES (
+        	#{publicityId,jdbcType=DECIMAL} ,
+        	#{declareId,jdbcType=DECIMAL} ,
+        	#{publicityUnit,jdbcType=VARCHAR} ,
+        	#{publicityTitle,jdbcType=VARCHAR} ,
+        	#{publicityText,jdbcType=VARCHAR} ,
+        	#{atUrlList,jdbcType=VARCHAR} ,
+        	#{atIdList,jdbcType=VARCHAR} ,
+        	#{createTime,jdbcType=TIMESTAMP} ,
+        	#{status,jdbcType=DECIMAL} 
+        )
+	</insert>
+	
+	<insert id="insertSelective" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclarePublicityBean">
+    insert into T_PROJECT_DECLARE_PUBLICITY
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+    		<if test="publicityId != null" >
+        PUBLICITY_ID,
+      	</if>
+    		<if test="declareId != null" >
+        DECLARE_ID,
+      	</if>
+    		<if test="publicityUnit != null" >
+        PUBLICITY_UNIT,
+      	</if>
+    		<if test="publicityTitle != null" >
+        PUBLICITY_TITLE,
+      	</if>
+    		<if test="publicityText != null" >
+        PUBLICITY_TEXT,
+      	</if>
+    		<if test="atUrlList != null" >
+        AT_URL_LIST,
+      	</if>
+    		<if test="atIdList != null" >
+        AT_ID_LIST,
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME,
+      	</if>
+    		<if test="status != null" >
+        STATUS,
+      	</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+    		<if test="publicityId != null" >
+        #{publicityId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="declareId != null" >
+        #{declareId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="publicityUnit != null" >
+        #{publicityUnit,jdbcType=VARCHAR},
+      	</if>
+    		<if test="publicityTitle != null" >
+        #{publicityTitle,jdbcType=VARCHAR},
+      	</if>
+    		<if test="publicityText != null" >
+        #{publicityText,jdbcType=VARCHAR},
+      	</if>
+    		<if test="atUrlList != null" >
+        #{atUrlList,jdbcType=VARCHAR},
+      	</if>
+    		<if test="atIdList != null" >
+        #{atIdList,jdbcType=VARCHAR},
+      	</if>
+    		<if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    		<if test="status != null" >
+        #{status,jdbcType=DECIMAL},
+      	</if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclarePublicityBean">
+    update T_PROJECT_DECLARE_PUBLICITY
+    <set >
+    		<if test="declareId != null" >
+        DECLARE_ID = #{declareId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="publicityUnit != null" >
+        PUBLICITY_UNIT = #{publicityUnit,jdbcType=VARCHAR},
+      	</if>
+    		<if test="publicityTitle != null" >
+        PUBLICITY_TITLE = #{publicityTitle,jdbcType=VARCHAR},
+      	</if>
+    		<if test="publicityText != null" >
+        PUBLICITY_TEXT = #{publicityText,jdbcType=VARCHAR},
+      	</if>
+    		<if test="atUrlList != null" >
+        AT_URL_LIST = #{atUrlList,jdbcType=VARCHAR},
+      	</if>
+    		<if test="atIdList != null" >
+        AT_ID_LIST = #{atIdList,jdbcType=VARCHAR},
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    		<if test="status != null" >
+        STATUS = #{status,jdbcType=DECIMAL},
+      	</if>
+    </set>
+    where 
+      PUBLICITY_ID = #{publicityId,jdbcType=DECIMAL} 
+  </update>
+  
+	<update id="updateByPrimaryKey" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclarePublicityBean">
+      UPDATE T_PROJECT_DECLARE_PUBLICITY SET
+        DECLARE_ID = #{declareId,jdbcType=DECIMAL} ,
+        PUBLICITY_UNIT = #{publicityUnit,jdbcType=VARCHAR} ,
+        PUBLICITY_TITLE = #{publicityTitle,jdbcType=VARCHAR} ,
+        PUBLICITY_TEXT = #{publicityText,jdbcType=VARCHAR} ,
+        AT_URL_LIST = #{atUrlList,jdbcType=VARCHAR} ,
+        AT_ID_LIST = #{atIdList,jdbcType=VARCHAR} ,
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP} ,
+        STATUS = #{status,jdbcType=DECIMAL} 
+      WHERE 
+        PUBLICITY_ID = #{publicityId,jdbcType=DECIMAL} 
+	</update>
+	
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	        
+		       <if test="publicityId != null">
+						<![CDATA[AND PUBLICITY_ID = #{publicityId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="declareId != null">
+						<![CDATA[AND DECLARE_ID = #{declareId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="publicityUnit != null and publicityUnit != ''">
+						<!--
+						<![CDATA[AND PUBLICITY_UNIT = #{publicityUnit,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND PUBLICITY_UNIT LIKE '%' || #{publicityUnit,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="publicityTitle != null and publicityTitle != ''">
+						<!--
+						<![CDATA[AND PUBLICITY_TITLE = #{publicityTitle,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND PUBLICITY_TITLE LIKE '%' || #{publicityTitle,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="publicityText != null and publicityText != ''">
+						<!--
+						<![CDATA[AND PUBLICITY_TEXT = #{publicityText,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND PUBLICITY_TEXT LIKE '%' || #{publicityText,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="atUrlList != null and atUrlList != ''">
+						<!--
+						<![CDATA[AND AT_URL_LIST = #{atUrlList,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND AT_URL_LIST LIKE '%' || #{atUrlList,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="atIdList != null and atIdList != ''">
+						<!--
+						<![CDATA[AND AT_ID_LIST = #{atIdList,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND AT_ID_LIST LIKE '%' || #{atIdList,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+	        
+		       <if test="status != null">
+						<![CDATA[AND STATUS = #{status,jdbcType=DECIMAL}]]>
+				   </if>
+		</where>
+	</sql>
+	
+ 
+  
+  <select id="queryByCond" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclarePublicityBean" >
+    select <include refid="Base_Column_List" />
+    from T_PROJECT_DECLARE_PUBLICITY
+	<include refid="Base_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+     <delete id="deleteByDeclareId" parameterType="java.math.BigDecimal">
+        DELETE FROM T_PROJECT_DECLARE_PUBLICITY WHERE
+				DECLARE_ID = #{declareId,jdbcType=DECIMAL} 
+    </delete>
+  
+  
+  <select id="queryByIsOpen" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclarePublicityBean" >
+	select <include refid="Normal_Column_List" />
+  	from t_project_declare_publicity p
+    where (p.declare_id in (select a.declare_id 
+          from t_project_declare_info a
+          left join t_project_declare_org b
+            on a.declare_id = b.declare_id
+         where (a.declare_open = 1 or
+               (a.declare_open = 0 and b.org_id = #{orgId,jdbcType=DECIMAL} ))
+           AND a.DECLARE_STATUS != 3) or p.declare_id = -1 )
+   			   <if test="publicityId != null">
+						<![CDATA[AND p.PUBLICITY_ID = #{publicityId,jdbcType=DECIMAL}]]>
+			   </if>
+	        
+		       <if test="declareId != null">
+						<![CDATA[AND p.DECLARE_ID = #{declareId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="publicityUnit != null and publicityUnit != ''">
+						<!--
+						<![CDATA[AND PUBLICITY_UNIT = #{publicityUnit,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND p.PUBLICITY_UNIT LIKE '%' || #{publicityUnit,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="publicityTitle != null and publicityTitle != ''">
+						<!--
+						<![CDATA[AND PUBLICITY_TITLE = #{publicityTitle,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND p.PUBLICITY_TITLE LIKE '%' || #{publicityTitle,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="publicityText != null and publicityText != ''">
+						<!--
+						<![CDATA[AND PUBLICITY_TEXT = #{publicityText,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND p.PUBLICITY_TEXT LIKE '%' || #{publicityText,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="atUrlList != null and atUrlList != ''">
+						<!--
+						<![CDATA[AND AT_URL_LIST = #{atUrlList,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND p.AT_URL_LIST LIKE '%' || #{atUrlList,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="atIdList != null and atIdList != ''">
+						<!--
+						<![CDATA[AND AT_ID_LIST = #{atIdList,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND p.AT_ID_LIST LIKE '%' || #{atIdList,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+	        
+		       <if test="status != null">
+						<![CDATA[AND p.STATUS = #{status,jdbcType=DECIMAL}]]>
+			   </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+   <select id="selectWithForegin" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclarePublicityBean" >
+    select <include refid="Normal_Column_List" />,a.DECLARE_TITLE
+    from T_PROJECT_DECLARE_PUBLICITY p
+    left join t_project_declare_info a on p.declare_id = a.declare_id 
+	<include refid="Normal_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <sql id="Foreign_Column_List">
+		a.DECLARE_ID,a.TEMPLATE_ID,a.DECLARE_TITLE,a.DECLARE_BATCH,a.DECLARE_GRADE,a.DECLARE_STATUS,a.SUPERVISOR_NAME,a.SUPERVISOR_ID,a.DECLARE_TEXT,a.AT_URL_LIST,a.AT_ID_LIST,a.APPLY_ONLINE,a.SCHEDULE_OPEN,a.PUBLICITY_OPEN,a.ACCOUNT_ID,a.ACCOUNT_NAME,a.CREATE_TIME,a.DECLARE_REMARK,
+		a.DECLARE_IMAGE,a.IS_RECOMMEND,a.QR_CODE,a.IS_ALLOT,a.INDEX_COUNT,a.DECLARE_OPEN
+	</sql>
+  
+	<sql id="Normal_Column_List">
+		p.PUBLICITY_ID,p.DECLARE_ID,p.PUBLICITY_UNIT,p.PUBLICITY_TITLE,p.PUBLICITY_TEXT,p.AT_URL_LIST,p.AT_ID_LIST,p.CREATE_TIME,p.STATUS
+	</sql>
+	
+	
+	<sql id="Normal_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	        
+		       <if test="publicityId != null">
+						<![CDATA[AND p.PUBLICITY_ID = #{publicityId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="declareId != null">
+						<![CDATA[AND p.DECLARE_ID = #{declareId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="publicityUnit != null and publicityUnit != ''">
+						<!--
+						<![CDATA[AND PUBLICITY_UNIT = #{publicityUnit,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND p.PUBLICITY_UNIT LIKE '%' || #{publicityUnit,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="publicityTitle != null and publicityTitle != ''">
+						<!--
+						<![CDATA[AND PUBLICITY_TITLE = #{publicityTitle,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND p.PUBLICITY_TITLE LIKE '%' || #{publicityTitle,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="publicityText != null and publicityText != ''">
+						<!--
+						<![CDATA[AND PUBLICITY_TEXT = #{publicityText,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND p.PUBLICITY_TEXT LIKE '%' || #{publicityText,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="atUrlList != null and atUrlList != ''">
+						<!--
+						<![CDATA[AND AT_URL_LIST = #{atUrlList,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND p.AT_URL_LIST LIKE '%' || #{atUrlList,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="atIdList != null and atIdList != ''">
+						<!--
+						<![CDATA[AND AT_ID_LIST = #{atIdList,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND p.AT_ID_LIST LIKE '%' || #{atIdList,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+	        
+		       <if test="status != null">
+						<![CDATA[AND p.STATUS = #{status,jdbcType=DECIMAL}]]>
+				   </if>
+		</where>
+	</sql>
+	
+ 
+</mapper>
+

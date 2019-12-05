@@ -1,0 +1,200 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"Microsoft YaHei";
+}
+a:hover, a:visited, a:link, a:active {
+    text-decoration:none;
+	color:#5e5e5e;
+}
+
+.safe_main {
+	width:100%;
+}
+.safe_content {
+	width:90%;
+	margin:10px auto;
+	border:1px solid #ccc;
+}
+.safe_contentLeft {
+	width:200px;
+	float:left;
+	padding:0 15px;
+}
+.menuNav {
+	padding:15px 5px;
+	/* font-weight:bold; */
+	border-bottom:1px solid #ccc;
+}
+.menuNav ul{list-style-type:none;}  
+.menuNav ul li{margin-left:30px; margin-top:5px;}
+.menuNav ul li a{text-decoration:none; color:#aaa;}
+.safe_contentRight {
+	margin-left:220px;
+	padding:22px 15px;
+}
+.safe_cont {
+	border:1px solid #ccc;
+}
+.safe_top {
+	background-color:#F4F4F4;
+	padding:7px 17px;
+}
+
+.safe_dataTop {
+	padding:25px 0;
+	width:100%;
+	display:inline-block;
+	position:relative;
+}
+.safe_dataTopImg {
+	float:left;
+	display:block;
+	margin-left:20px;
+	border-radius:80px;
+}
+.safe_dataTopCont {
+	float:left;
+	margin-left:20px;
+}
+.safe_dataTopCase1 {
+	padding:14px 0 4px;
+}
+.safe_dataTopCase2 {
+	padding:4px 0 14px;
+}
+.safe_dataTopCaseLeft {
+	float:left;
+	width:100px;
+	text-align:right;
+	color:#aaa;
+}
+.safe_dataTopCaseRight {
+	float:left;
+	width:200px;
+}
+.safe_dataTopOper {
+	position:absolute;
+	right:20px;
+	bottom:25px;
+	color:#F14342;
+	cursor:pointer;
+}
+.safe_data {
+	padding:10px 0;
+	width:100%;
+	display:inline-block;
+	position:relative;
+	border-top: 1px solid #e6e6e6;
+	border-bottom:1px solid #e6e6e6;
+	margin-bottom: 25px;
+}
+.safe_dataImg {
+	vertical-align:middle;
+	margin-left:20px;
+}
+.safe_dataLeft {
+	vertical-align:middle;
+	margin-left:5px;
+}
+.safe_dataRight {
+	vertical-align:middle;
+	color:#aaa;
+}
+.loginPasswordOper {
+	position:absolute;
+	right:20px;
+	top:10px;
+	color:#F14342;
+	cursor:pointer;
+}
+.loginPassword {
+	padding:7px 4px;
+}
+.inputBar {
+	padding:5px 0;
+}
+.inputLeft {
+	width:115px;
+	display:inline-block;
+	text-align:right; 
+	vertical-align:middle;
+}
+.inputRight {
+	width:250px;
+	vertical-align:middle;
+}
+.verificationCode {
+	width:100px;
+	padding:2px 0;
+	border:0;
+	background-color:#F4F4F4;
+	color:#5e5e5e;
+	margin-left:10px;
+	vertical-align:middle;
+	cursor:pointer;
+}
+.buttonContralRed {
+	width:100px;
+	padding:5px 0;
+	border:0;
+	background-color:#F14342;
+	color:#fff; margin-left:118px;
+	cursor:pointer;
+}
+.buttonContralGray {
+	width:100px;
+	padding:5px 0;
+	border:0;
+	background-color:#F4F4F4;
+	color:#5e5e5e;
+	margin-left:10px;
+	cursor:pointer;
+}
+.boundPhoneOper {
+	position:absolute;
+	right:20px;
+	top:10px;
+	color:#F14342;
+	cursor:pointer;
+}
+.boundPhone {
+	padding:7px 4px;
+}
+.WeChatBoundOper {
+	position:absolute;
+	right:20px;
+	top:10px;
+	color:#F14342;
+	cursor:pointer;
+}

@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper
+	namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.projectSuggest.ProjectSuggestInfoMapper">
+
+	<resultMap id="BaseResultMap"
+		type="com.chinatelecom.jx.zone.management.bean.projectSuggest.ProjectSuggestInfoBean">
+		<id column="SUGGEST_ID" jdbcType="DECIMAL" property="suggestId" />
+		<result column="SUGGEST_TITLE" jdbcType="VARCHAR" property="suggestTitle" />
+		<result column="SUGGEST_CONTENT" jdbcType="VARCHAR" property="suggestContent" />
+		<result column="ATTACHMENT_ID" jdbcType="VARCHAR" property="attachmentId" />
+		<result column="ATTACHMENT_URL" jdbcType="VARCHAR" property="attachmentUrl" />
+		<result column="ACCOUNT_ID" jdbcType="DECIMAL" property="accountId" />
+		<result column="ACCOUNT_NAME" jdbcType="VARCHAR" property="accountName" />
+		<result column="ACCOUNT_IMAGE" jdbcType="VARCHAR" property="accountImage" />
+		<result column="ACCOUNT_TEL" jdbcType="VARCHAR" property="accountTel" />
+		<result column="ACCOUNT_IP" jdbcType="VARCHAR" property="accountIp" />
+		<result column="MANAGER_ID" jdbcType="DECIMAL" property="managerId" />
+		<result column="MANAAGER_NAME" jdbcType="VARCHAR" property="manaagerName" />
+		<result column="REPLY_CONTENT" jdbcType="VARCHAR" property="replyContent" />
+		<result column="REWARD_CONTENT" jdbcType="VARCHAR" property="rewardContent" />
+		<result column="SUGGEST_SOURCE" jdbcType="DECIMAL" property="suggestSource" />
+		<result column="STATUS" jdbcType="DECIMAL" property="status" />
+		<result column="REMARK" jdbcType="VARCHAR" property="remark" />
+		<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="AUDIT_TIME" jdbcType="TIMESTAMP" property="auditTime" />
+		<result column="EXTEND_1" jdbcType="VARCHAR" property="extend1" />
+		<result column="EXTEND_2" jdbcType="VARCHAR" property="extend2" />
+		<result column="EXTEND_3" jdbcType="VARCHAR" property="extend3" />
+	</resultMap>
+
+	<!-- <resultMap id="ResultMapWithForeign" type="com.chinatelecom.jx.zone.management.bean.projectSuggest.ProjectSuggestInfoBean" 
+		extends="BaseResultMap" > <result column="workProcessid" property="workProcessid" 
+		jdbcType="VARCHAR" /> <result column="currentState" property="currentState" 
+		jdbcType="VARCHAR" /> <result column="organizationName" property="orgName" 
+		jdbcType="VARCHAR" /> <result column="companyName" property="companyName" 
+		jdbcType="VARCHAR" /> <result column="accountName" property="accountName" 
+		jdbcType="VARCHAR" /> <result column="parkName" property="parkName" jdbcType="VARCHAR" 
+		/> </resultMap> -->
+
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		SUGGEST_ID,SUGGEST_TITLE,SUGGEST_CONTENT,ATTACHMENT_ID,ATTACHMENT_URL,ACCOUNT_ID,ACCOUNT_NAME,ACCOUNT_IMAGE,ACCOUNT_TEL,ACCOUNT_IP,MANAGER_ID,MANAAGER_NAME,REPLY_CONTENT,REWARD_CONTENT,SUGGEST_SOURCE,STATUS,REMARK,CREATE_TIME,AUDIT_TIME,EXTEND_1,EXTEND_2,EXTEND_3
+	</sql>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.math.BigDecimal">
+		select
+		<include refid="Base_Column_List" />
+		from T_PROJECT_SUGGEST_INFO
+		where
+		SUGGEST_ID = #{suggestId,jdbcType=DECIMAL}
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+		DELETE FROM T_PROJECT_SUGGEST_INFO WHERE
+		SUGGEST_ID = #{suggestId,jdbcType=DECIMAL}
+	</delete>
+
+	<insert id="insert"
+		parameterType="com.chinatelecom.jx.zone.management.bean.projectSuggest.ProjectSuggestInfoBean">
+		INSERT INTO T_PROJECT_SUGGEST_INFO (
+		SUGGEST_ID ,
+		SUGGEST_TITLE ,
+		SUGGEST_CONTENT ,
+		ATTACHMENT_ID ,
+		ATTACHMENT_URL ,
+		ACCOUNT_ID ,
+		ACCOUNT_NAME ,
+		ACCOUNT_IMAGE ,
+		ACCOUNT_TEL ,
+		ACCOUNT_IP ,
+		MANAGER_ID ,
+		MANAAGER_NAME ,
+		REPLY_CONTENT ,
+		REWARD_CONTENT ,
+		SUGGEST_SOURCE ,
+		STATUS ,
+		REMARK ,
+		CREATE_TIME ,
+		AUDIT_TIME ,
+		EXTEND_1 ,
+		EXTEND_2 ,
+		EXTEND_3
+		) VALUES (
+		#{suggestId,jdbcType=DECIMAL} ,
+		#{suggestTitle,jdbcType=VARCHAR} ,
+		#{suggestContent,jdbcType=VARCHAR} ,
+		#{attachmentId,jdbcType=VARCHAR} ,
+		#{attachmentUrl,jdbcType=VARCHAR} ,
+		#{accountId,jdbcType=DECIMAL} ,
+		#{accountName,jdbcType=VARCHAR} ,
+		#{accountImage,jdbcType=VARCHAR} ,
+		#{accountTel,jdbcType=VARCHAR} ,
+		#{accountIp,jdbcType=VARCHAR} ,
+		#{managerId,jdbcType=DECIMAL} ,
+		#{manaagerName,jdbcType=VARCHAR} ,
+		#{replyContent,jdbcType=VARCHAR} ,
+		#{rewardContent,jdbcType=VARCHAR} ,
+		#{suggestSource,jdbcType=DECIMAL} ,
+		#{status,jdbcType=DECIMAL} ,
+		#{remark,jdbcType=VARCHAR} ,
+		#{createTime,jdbcType=TIMESTAMP} ,
+		#{auditTime,jdbcType=TIMESTAMP} ,
+		#{extend1,jdbcType=VARCHAR} ,
+		#{extend2,jdbcType=VARCHAR} ,
+		#{extend3,jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<insert id="insertSelective"
+		parameterType="com.chinatelecom.jx.zone.management.bean.projectSuggest.ProjectSuggestInfoBean">
+		insert into T_PROJECT_SUGGEST_INFO
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="suggestId != null">
+				SUGGEST_ID,
+			</if>
+			<if test="suggestTitle != null">
+				SUGGEST_TITLE,
+			</if>
+			<if test="suggestContent != null">
+				SUGGEST_CONTENT,
+			</if>
+			<if test="attachmentId != null">
+				ATTACHMENT_ID,
+			</if>
+			<if test="attachmentUrl != null">
+				ATTACHMENT_URL,
+			</if>
+			<if test="accountId != null">
+				ACCOUNT_ID,
+			</if>
+			<if test="accountName != null">
+				ACCOUNT_NAME,
+			</if>
+			<if test="accountImage != null">
+				ACCOUNT_IMAGE,
+			</if>
+			<if test="accountTel != null">
+				ACCOUNT_TEL,
+			</if>
+			<if test="accountIp != null">
+				ACCOUNT_IP,
+			</if>
+			<if test="managerId != null">
+				MANAGER_ID,
+			</if>
+			<if test="manaagerName != null">
+				MANAAGER_NAME,
+			</if>
+			<if test="replyContent != null">
+				REPLY_CONTENT,
+			</if>
+			<if test="rewardContent != null">
+				REWARD_CONTENT,
+			</if>
+			<if test="suggestSource != null">
+				SUGGEST_SOURCE,
+			</if>
+			<if test="status != null">
+				STATUS,
+			</if>
+			<if test="remark != null">
+				REMARK,
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME,
+			</if>
+			<if test="auditTime != null">
+				AUDIT_TIME,
+			</if>
+			<if test="extend1 != null">
+				EXTEND_1,
+			</if>
+			<if test="extend2 != null">
+				EXTEND_2,
+			</if>
+			<if test="extend3 != null">
+				EXTEND_3,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="suggestId != null">
+				#{suggestId,jdbcType=DECIMAL},
+			</if>
+			<if test="suggestTitle != null">
+				#{suggestTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="suggestContent != null">
+				#{suggestContent,jdbcType=VARCHAR},
+			</if>
+			<if test="attachmentId != null">
+				#{attachmentId,jdbcType=VARCHAR},
+			</if>
+			<if test="attachmentUrl != null">
+				#{attachmentUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="accountId != null">
+				#{accountId,jdbcType=DECIMAL},
+			</if>
+			<if test="accountName != null">
+				#{accountName,jdbcType=VARCHAR},
+			</if>
+			<if test="accountImage != null">
+				#{accountImage,jdbcType=VARCHAR},
+			</if>
+			<if test="accountTel != null">
+				#{accountTel,jdbcType=VARCHAR},
+			</if>
+			<if test="accountIp != null">
+				#{accountIp,jdbcType=VARCHAR},
+			</if>
+			<if test="managerId != null">
+				#{managerId,jdbcType=DECIMAL},
+			</if>
+			<if test="manaagerName != null">
+				#{manaagerName,jdbcType=VARCHAR},
+			</if>
+			<if test="replyContent != null">
+				#{replyContent,jdbcType=VARCHAR},
+			</if>
+			<if test="rewardContent != null">
+				#{rewardContent,jdbcType=VARCHAR},
+			</if>
+			<if test="suggestSource != null">
+				#{suggestSource,jdbcType=DECIMAL},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=DECIMAL},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="auditTime != null">
+				#{auditTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="extend1 != null">
+				#{extend1,jdbcType=VARCHAR},
+			</if>
+			<if test="extend2 != null">
+				#{extend2,jdbcType=VARCHAR},
+			</if>
+			<if test="extend3 != null">
+				#{extend3,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateByPrimaryKeySelective"
+		parameterType="com.chinatelecom.jx.zone.management.bean.projectSuggest.ProjectSuggestInfoBean">
+		update T_PROJECT_SUGGEST_INFO
+		<set>
+			<if test="suggestTitle != null">
+				SUGGEST_TITLE = #{suggestTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="suggestContent != null">
+				SUGGEST_CONTENT = #{suggestContent,jdbcType=VARCHAR},
+			</if>
+			<if test="attachmentId != null">
+				ATTACHMENT_ID = #{attachmentId,jdbcType=VARCHAR},
+			</if>
+			<if test="attachmentUrl != null">
+				ATTACHMENT_URL = #{attachmentUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="accountId != null">
+				ACCOUNT_ID = #{accountId,jdbcType=DECIMAL},
+			</if>
+			<if test="accountName != null">
+				ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR},
+			</if>
+			<if test="accountImage != null">
+				ACCOUNT_IMAGE = #{accountImage,jdbcType=VARCHAR},
+			</if>
+			<if test="accountTel != null">
+				ACCOUNT_TEL = #{accountTel,jdbcType=VARCHAR},
+			</if>
+			<if test="accountIp != null">
+				ACCOUNT_IP = #{accountIp,jdbcType=VARCHAR},
+			</if>
+			<if test="managerId != null">
+				MANAGER_ID = #{managerId,jdbcType=DECIMAL},
+			</if>
+			<if test="manaagerName != null">
+				MANAAGER_NAME = #{manaagerName,jdbcType=VARCHAR},
+			</if>
+			<if test="replyContent != null">
+				REPLY_CONTENT = #{replyContent,jdbcType=VARCHAR},
+			</if>
+			<if test="rewardContent != null">
+				REWARD_CONTENT = #{rewardContent,jdbcType=VARCHAR},
+			</if>
+			<if test="suggestSource != null">
+				SUGGEST_SOURCE = #{suggestSource,jdbcType=DECIMAL},
+			</if>
+			<if test="status != null">
+				STATUS = #{status,jdbcType=DECIMAL},
+			</if>
+			<if test="remark != null">
+				REMARK = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="auditTime != null">
+				AUDIT_TIME = #{auditTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="extend1 != null">
+				EXTEND_1 = #{extend1,jdbcType=VARCHAR},
+			</if>
+			<if test="extend2 != null">
+				EXTEND_2 = #{extend2,jdbcType=VARCHAR},
+			</if>
+			<if test="extend3 != null">
+				EXTEND_3 = #{extend3,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where
+		SUGGEST_ID = #{suggestId,jdbcType=DECIMAL}
+	</update>
+
+	<update id="updateByPrimaryKey"
+		parameterType="com.chinatelecom.jx.zone.management.bean.projectSuggest.ProjectSuggestInfoBean">
+		UPDATE T_PROJECT_SUGGEST_INFO SET
+		SUGGEST_TITLE = #{suggestTitle,jdbcType=VARCHAR} ,
+		SUGGEST_CONTENT = #{suggestContent,jdbcType=VARCHAR} ,
+		ATTACHMENT_ID = #{attachmentId,jdbcType=VARCHAR} ,
+		ATTACHMENT_URL = #{attachmentUrl,jdbcType=VARCHAR} ,
+		ACCOUNT_ID = #{accountId,jdbcType=DECIMAL} ,
+		ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR} ,
+		ACCOUNT_IMAGE = #{accountImage,jdbcType=VARCHAR} ,
+		ACCOUNT_TEL = #{accountTel,jdbcType=VARCHAR} ,
+		ACCOUNT_IP = #{accountIp,jdbcType=VARCHAR} ,
+		MANAGER_ID = #{managerId,jdbcType=DECIMAL} ,
+		MANAAGER_NAME = #{manaagerName,jdbcType=VARCHAR} ,
+		REPLY_CONTENT = #{replyContent,jdbcType=VARCHAR} ,
+		REWARD_CONTENT = #{rewardContent,jdbcType=VARCHAR} ,
+		SUGGEST_SOURCE = #{suggestSource,jdbcType=DECIMAL} ,
+		STATUS = #{status,jdbcType=DECIMAL} ,
+		REMARK = #{remark,jdbcType=VARCHAR} ,
+		CREATE_TIME = #{createTime,jdbcType=TIMESTAMP} ,
+		AUDIT_TIME = #{auditTime,jdbcType=TIMESTAMP} ,
+		EXTEND_1 = #{extend1,jdbcType=VARCHAR} ,
+		EXTEND_2 = #{extend2,jdbcType=VARCHAR} ,
+		EXTEND_3 = #{extend3,jdbcType=VARCHAR}
+		WHERE
+		SUGGEST_ID = #{suggestId,jdbcType=DECIMAL}
+	</update>
+
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>
+
+			<if test="suggestId != null">
+						<![CDATA[AND SUGGEST_ID = #{suggestId,jdbcType=DECIMAL}]]>
+			</if>
+
+			<if test="suggestTitle != null and suggestTitle != ''">
+				<!-- <![CDATA[AND SUGGEST_TITLE = #{suggestTitle,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND SUGGEST_TITLE LIKE '%' || #{suggestTitle,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="suggestContent != null and suggestContent != ''">
+				<!-- <![CDATA[AND SUGGEST_CONTENT = #{suggestContent,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND SUGGEST_CONTENT LIKE '%' || #{suggestContent,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="attachmentId != null">
+						<![CDATA[AND ATTACHMENT_ID = #{attachmentId,jdbcType=VARCHAR}]]>
+			</if>
+
+			<if test="attachmentUrl != null and attachmentUrl != ''">
+				<!-- <![CDATA[AND ATTACHMENT_URL = #{attachmentUrl,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND ATTACHMENT_URL LIKE '%' || #{attachmentUrl,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="accountId != null">
+						<![CDATA[AND ACCOUNT_ID = #{accountId,jdbcType=DECIMAL}]]>
+			</if>
+
+			<if test="accountName != null and accountName != ''">
+				<!-- <![CDATA[AND ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND ACCOUNT_NAME LIKE '%' || #{accountName,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="accountImage != null and accountImage != ''">
+				<!-- <![CDATA[AND ACCOUNT_IMAGE = #{accountImage,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND ACCOUNT_IMAGE LIKE '%' || #{accountImage,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="accountTel != null and accountTel != ''">
+				<!-- <![CDATA[AND ACCOUNT_TEL = #{accountTel,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND ACCOUNT_TEL LIKE '%' || #{accountTel,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="accountIp != null and accountIp != ''">
+				<!-- <![CDATA[AND ACCOUNT_IP = #{accountIp,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND ACCOUNT_IP LIKE '%' || #{accountIp,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="managerId != null">
+						<![CDATA[AND MANAGER_ID = #{managerId,jdbcType=DECIMAL}]]>
+			</if>
+
+			<if test="manaagerName != null and manaagerName != ''">
+				<!-- <![CDATA[AND MANAAGER_NAME = #{manaagerName,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND MANAAGER_NAME LIKE '%' || #{manaagerName,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="replyContent != null and replyContent != ''">
+				<!-- <![CDATA[AND REPLY_CONTENT = #{replyContent,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND REPLY_CONTENT LIKE '%' || #{replyContent,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="rewardContent != null and rewardContent != ''">
+				<!-- <![CDATA[AND REWARD_CONTENT = #{rewardContent,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND REWARD_CONTENT LIKE '%' || #{rewardContent,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="suggestSource != null">
+						<![CDATA[AND SUGGEST_SOURCE = #{suggestSource,jdbcType=DECIMAL}]]>
+			</if>
+
+			<if test="status != null">
+				<![CDATA[AND STATUS = #{status,jdbcType=DECIMAL}]]>
+			</if>
+
+			<if test="remark != null and remark != ''">
+				<!-- <![CDATA[AND REMARK = #{remark,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND REMARK LIKE '%' || #{remark,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+
+
+			<if test="extend1 != null and extend1 != ''">
+				<!-- <![CDATA[AND EXTEND_1 = #{extend1,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND EXTEND_1 LIKE '%' || #{extend1,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="extend2 != null and extend2 != ''">
+				<!-- <![CDATA[AND EXTEND_2 = #{extend2,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND EXTEND_2 LIKE '%' || #{extend2,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="extend3 != null and extend3 != ''">
+				<!-- <![CDATA[AND EXTEND_3 = #{extend3,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND EXTEND_3 LIKE '%' || #{extend3,jdbcType=VARCHAR} || '%']]>
+			</if>
+		</where>
+	</sql>
+
+	<select id="queryByCond" resultMap="BaseResultMap"
+		parameterType="com.chinatelecom.jx.zone.management.bean.projectSuggest.ProjectSuggestInfoBean">
+		select
+		<include refid="Base_Column_List" />
+		from T_PROJECT_SUGGEST_INFO
+		<include refid="Base_Where_Clause" />
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+
+	<!-- 状态不为 2 进行主题搜索 -->
+	<select id="queryByCondNoStatus" resultMap="BaseResultMap"
+		parameterType="com.chinatelecom.jx.zone.management.bean.projectSuggest.ProjectSuggestInfoBean">
+		select
+		<include refid="Base_Column_List" />
+		from T_PROJECT_SUGGEST_INFO where status != 2
+
+	<if test="suggestTitle != null and suggestTitle != ''">
+	<!--<![CDATA[AND SUGGEST_TITLE = #{suggestTitle,jdbcType=VARCHAR}]]>-->
+    <![CDATA[AND SUGGEST_TITLE LIKE '%' || #{suggestTitle,jdbcType=VARCHAR} || '%']]>
+	</if>
+
+	<if test="orderByClause != null">
+			order by ${orderByClause}
+	</if>
+	</select>
+
+	<sql id="Extends_Where_Clause">
+		<where>
+			<if test="suggestId != null">
+				<![CDATA[AND SUGGEST_ID = #{suggestId,jdbcType=DECIMAL}]]>
+			</if>
+
+			<if test="suggestTitle != null and suggestTitle != ''">
+                <![CDATA[AND SUGGEST_TITLE LIKE '%' || #{suggestTitle,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="suggestContent != null and suggestContent != ''">
+				<![CDATA[AND SUGGEST_CONTENT LIKE '%' || #{suggestContent,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="attachmentId != null">
+			   <![CDATA[AND ATTACHMENT_ID = #{attachmentId,jdbcType=VARCHAR}]]>
+			</if>
+
+			<if test="attachmentUrl != null and attachmentUrl != ''">
+			  <![CDATA[AND ATTACHMENT_URL LIKE '%' || #{attachmentUrl,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="accountId != null">
+						<![CDATA[AND ACCOUNT_ID = #{accountId,jdbcType=DECIMAL}]]>
+			</if>
+
+			<if test="accountName != null and accountName != ''">
+						
+						<![CDATA[AND ACCOUNT_NAME LIKE '%' || #{accountName,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="accountImage != null and accountImage != ''">
+						
+						<![CDATA[AND ACCOUNT_IMAGE LIKE '%' || #{accountImage,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="accountTel != null and accountTel != ''">
+						
+						<![CDATA[AND ACCOUNT_TEL LIKE '%' || #{accountTel,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="accountIp != null and accountIp != ''">
+						
+						<![CDATA[AND ACCOUNT_IP LIKE '%' || #{accountIp,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="managerId != null">
+						<![CDATA[AND MANAGER_ID = #{managerId,jdbcType=DECIMAL}]]>
+			</if>
+
+			<if test="manaagerName != null and manaagerName != ''">
+						
+						<![CDATA[AND MANAAGER_NAME LIKE '%' || #{manaagerName,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="replyContent != null and replyContent != ''">
+						
+						<![CDATA[AND REPLY_CONTENT LIKE '%' || #{replyContent,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="rewardContent != null and rewardContent != ''">
+						
+						<![CDATA[AND REWARD_CONTENT LIKE '%' || #{rewardContent,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="suggestSource != null">
+						<![CDATA[AND SUGGEST_SOURCE = #{suggestSource,jdbcType=DECIMAL}]]>
+			</if>
+
+			<if test="status != null">
+						
+						<![CDATA[AND STATUS = #{status,jdbcType=DECIMAL}]]>
+			</if>
+
+			<if test="remark != null and remark != ''">
+						
+						<![CDATA[AND REMARK LIKE '%' || #{remark,jdbcType=VARCHAR} || '%']]>
+			</if>
+	 
+            <if test="createTimeS != null and createTimeS != ''">
+			<![CDATA[AND to_char(CREATE_TIME,'yyyy-MM-dd HH24:mi:ss') >= (#{createTimeS }||'00:00:00')]]>
+			</if>
+			
+			<if test="createTimeE != null and createTimeE != ''">
+			 <![CDATA[AND to_char(CREATE_TIME,'yyyy-MM-dd HH24:mi:ss') <= (#{createTimeE }||'23:59:59')]]>			
+			</if>
+
+
+			<if test="extend1 != null and extend1 != ''">
+			<![CDATA[AND EXTEND_1 LIKE '%' || #{extend1,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="extend2 != null and extend2 != ''">
+						
+						<![CDATA[AND EXTEND_2 LIKE '%' || #{extend2,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="extend3 != null and extend3 != ''">
+						
+						<![CDATA[AND EXTEND_3 LIKE '%' || #{extend3,jdbcType=VARCHAR} || '%']]>
+			</if>
+		</where>
+	</sql>
+
+	<!-- 意见反馈起始时间、是否采纳搜索 -->
+	<select id="queryByCondWithForeign" resultMap="BaseResultMap"
+		parameterType="com.chinatelecom.jx.zone.management.bean.projectSuggest.ProjectSuggestInfoBean">
+		select
+		<include refid="Base_Column_List" />
+		from T_PROJECT_SUGGEST_INFO 
+		<include refid="Extends_Where_Clause" />
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+
+
+
+	<!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+
+
+</mapper>
+

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appender name="dest1" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d %-40c %-5p %m%n</pattern>
+		</encoder>
+	</appender>
+	<appender name="dest2"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!--See http://logback.qos.ch/manual/appenders.html#RollingFileAppender -->
+		<!--and http://logback.qos.ch/manual/appenders.html#TimeBasedRollingPolicy -->
+		<!--for further documentation -->
+		<file>XProjectLog.log</file>
+		<encoder>
+			<pattern>%d %-40c %-5p %m%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>XProjectLog.%d{yyyy-MM-dd HH}.log.gz
+			</fileNamePattern>
+			<maxHistory>96</maxHistory>
+		</rollingPolicy>
+	</appender>
+   <appender name="logstashSocket" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+      <destination>logstash10:4560</destination>
+      <queueSize>65536</queueSize>
+      
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>WARN</level>
+		</filter>       
+           
+      <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder" >
+      	<customFields>{"application":"XProject","profile": "${spring.profiles.active}"}</customFields>      
+      </encoder>
+    </appender>
+    
+	<appender name="logstashFile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>XProjectLogstash.log</file>
+      	<encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder" >
+      		<customFields>{"application":"XProject","profile": "${spring.profiles.active}"}</customFields>      
+      	</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>XProjectLogstash.%d{yyyy-MM-dd HH}.log.gz
+			</fileNamePattern>
+			<maxHistory>96</maxHistory>
+		</rollingPolicy>
+	</appender>
+  	
+	<root level="trace">
+		<appender-ref ref="dest2" />
+		<appender-ref ref="logstashSocket" />
+		<appender-ref ref="logstashFile" />
+	</root>
+	
+</configuration>

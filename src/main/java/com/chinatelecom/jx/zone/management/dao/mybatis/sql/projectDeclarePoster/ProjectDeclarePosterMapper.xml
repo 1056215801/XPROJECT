@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.projectDeclarePoster.ProjectDeclarePosterMapper" >
+
+	<resultMap id="BaseResultMap" type="com.chinatelecom.jx.zone.management.bean.projectDeclarePoster.ProjectDeclarePosterBean">
+    	<id column="POSTER_ID" jdbcType="DECIMAL" property="posterId"/>
+    	<id column="POSTER_TITLE" jdbcType="VARCHAR" property="posterTitle"/>
+    	<result column="ATTACHMENT_ID" jdbcType="DECIMAL" property="attachmentId"/>
+    	<result column="ATTACHMENT_URL" jdbcType="VARCHAR" property="attachmentUrl"/>
+    	<result column="ACCOUNT_ID" jdbcType="DECIMAL" property="accountId"/>
+    	<result column="ACCOUNT_NAME" jdbcType="VARCHAR" property="accountName"/>
+    	<result column="ORGANIZATION_ID" jdbcType="DECIMAL" property="organizationId"/>
+    	<result column="ORGANIZATION_NAME" jdbcType="VARCHAR" property="organizationName"/>
+    	<result column="ROOT_ID" jdbcType="DECIMAL" property="rootId"/>
+    	<result column="ROOT_NAME" jdbcType="VARCHAR" property="rootName"/>
+    	<result column="PARK_ID" jdbcType="DECIMAL" property="parkId"/>
+    	<result column="PARK_NAME" jdbcType="VARCHAR" property="parkName"/>
+    	<result column="AREA_ID" jdbcType="DECIMAL" property="areaId"/>
+    	<result column="AREA_NAME" jdbcType="VARCHAR" property="areaName"/>
+    	<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+    	<result column="SORT_GRADE" jdbcType="DECIMAL" property="sortGrade"/>
+	</resultMap>
+	
+	<!--
+	<resultMap id="ResultMapWithForeign" type="com.chinatelecom.jx.zone.management.bean.projectDeclarePoster.ProjectDeclarePosterBean" extends="BaseResultMap" >
+			 <result column="workProcessid" property="workProcessid" jdbcType="VARCHAR" />
+			 <result column="currentState" property="currentState" jdbcType="VARCHAR" />
+       <result column="organizationName" property="orgName" jdbcType="VARCHAR" />
+        <result column="companyName" property="companyName" jdbcType="VARCHAR" />
+       <result column="accountName" property="accountName" jdbcType="VARCHAR" />
+       <result column="parkName" property="parkName" jdbcType="VARCHAR" />
+  </resultMap>
+  -->
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		POSTER_ID,ATTACHMENT_ID,ATTACHMENT_URL,ACCOUNT_ID,ACCOUNT_NAME,ORGANIZATION_ID,ORGANIZATION_NAME,ROOT_ID,ROOT_NAME,PARK_ID,PARK_NAME,AREA_ID,AREA_NAME,CREATE_TIME,SORT_GRADE,POSTER_TITLE
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_PROJECT_DECLARE_POSTER
+    where 
+				POSTER_ID = #{posterId,jdbcType=DECIMAL} 
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+        DELETE FROM T_PROJECT_DECLARE_POSTER WHERE
+				POSTER_ID = #{posterId,jdbcType=DECIMAL} 
+    </delete>
+
+	<insert id="insert" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclarePoster.ProjectDeclarePosterBean">
+        INSERT INTO T_PROJECT_DECLARE_POSTER (
+        	POSTER_ID ,
+        	ATTACHMENT_ID ,
+        	ATTACHMENT_URL ,
+        	ACCOUNT_ID ,
+        	ACCOUNT_NAME ,
+        	ORGANIZATION_ID ,
+        	ORGANIZATION_NAME ,
+        	ROOT_ID ,
+        	ROOT_NAME ,
+        	PARK_ID ,
+        	PARK_NAME ,
+        	AREA_ID ,
+        	AREA_NAME ,
+        	CREATE_TIME ,
+        	SORT_GRADE ,
+        	POSTER_TITLE
+        ) VALUES (
+        	#{posterId,jdbcType=DECIMAL} ,
+        	#{attachmentId,jdbcType=DECIMAL} ,
+        	#{attachmentUrl,jdbcType=VARCHAR} ,
+        	#{accountId,jdbcType=DECIMAL} ,
+        	#{accountName,jdbcType=VARCHAR} ,
+        	#{organizationId,jdbcType=DECIMAL} ,
+        	#{organizationName,jdbcType=VARCHAR} ,
+        	#{rootId,jdbcType=DECIMAL} ,
+        	#{rootName,jdbcType=VARCHAR} ,
+        	#{parkId,jdbcType=DECIMAL} ,
+        	#{parkName,jdbcType=VARCHAR} ,
+        	#{areaId,jdbcType=DECIMAL} ,
+        	#{areaName,jdbcType=VARCHAR} ,
+        	#{createTime,jdbcType=TIMESTAMP} ,
+        	#{sortGrade,jdbcType=DECIMAL} ,
+        	#{posterTitle,jdbcType=VARCHAR} 
+        )
+	</insert>
+	
+	<insert id="insertSelective" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclarePoster.ProjectDeclarePosterBean">
+    insert into T_PROJECT_DECLARE_POSTER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+    		<if test="posterId != null" >
+        POSTER_ID,
+      	</if>
+    		<if test="attachmentId != null" >
+        ATTACHMENT_ID,
+      	</if>
+    		<if test="attachmentUrl != null" >
+        ATTACHMENT_URL,
+      	</if>
+    		<if test="accountId != null" >
+        ACCOUNT_ID,
+      	</if>
+    		<if test="accountName != null" >
+        ACCOUNT_NAME,
+      	</if>
+    		<if test="organizationId != null" >
+        ORGANIZATION_ID,
+      	</if>
+    		<if test="organizationName != null" >
+        ORGANIZATION_NAME,
+      	</if>
+    		<if test="rootId != null" >
+        ROOT_ID,
+      	</if>
+    		<if test="rootName != null" >
+        ROOT_NAME,
+      	</if>
+    		<if test="parkId != null" >
+        PARK_ID,
+      	</if>
+    		<if test="parkName != null" >
+        PARK_NAME,
+      	</if>
+    		<if test="areaId != null" >
+        AREA_ID,
+      	</if>
+    		<if test="areaName != null" >
+        AREA_NAME,
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME,
+      	</if>
+    		<if test="sortGrade != null" >
+        SORT_GRADE,
+      	</if>
+    		<if test="posterTitle != null" >
+        POSTER_TITLE,
+      	</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+    		<if test="posterId != null" >
+        #{posterId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="attachmentId != null" >
+        #{attachmentId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="attachmentUrl != null" >
+        #{attachmentUrl,jdbcType=VARCHAR},
+      	</if>
+    		<if test="accountId != null" >
+        #{accountId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="accountName != null" >
+        #{accountName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="organizationId != null" >
+        #{organizationId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="organizationName != null" >
+        #{organizationName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="rootId != null" >
+        #{rootId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="rootName != null" >
+        #{rootName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="parkId != null" >
+        #{parkId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="parkName != null" >
+        #{parkName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="areaId != null" >
+        #{areaId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="areaName != null" >
+        #{areaName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    		<if test="sortGrade != null" >
+        #{sortGrade,jdbcType=DECIMAL},
+      	</if>
+      	<if test="posterTitle != null" >
+          #{posterTitle,jdbcType=VARCHAR},
+      	</if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclarePoster.ProjectDeclarePosterBean">
+    update T_PROJECT_DECLARE_POSTER
+    <set >
+    		<if test="attachmentId != null" >
+        ATTACHMENT_ID = #{attachmentId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="attachmentUrl != null" >
+        ATTACHMENT_URL = #{attachmentUrl,jdbcType=VARCHAR},
+      	</if>
+    		<if test="accountId != null" >
+        ACCOUNT_ID = #{accountId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="accountName != null" >
+        ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="organizationId != null" >
+        ORGANIZATION_ID = #{organizationId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="organizationName != null" >
+        ORGANIZATION_NAME = #{organizationName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="rootId != null" >
+        ROOT_ID = #{rootId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="rootName != null" >
+        ROOT_NAME = #{rootName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="parkId != null" >
+        PARK_ID = #{parkId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="parkName != null" >
+        PARK_NAME = #{parkName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="areaId != null" >
+        AREA_ID = #{areaId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="areaName != null" >
+        AREA_NAME = #{areaName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    		<if test="sortGrade != null" >
+        SORT_GRADE = #{sortGrade,jdbcType=DECIMAL},
+      	</if>
+    	<if test="posterTitle != null" >
+         POSTER_TITLE = #{posterTitle,jdbcType=VARCHAR},
+      	</if>
+    </set>
+    where 
+      POSTER_ID = #{posterId,jdbcType=DECIMAL} 
+  </update>
+  
+	<update id="updateByPrimaryKey" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclarePoster.ProjectDeclarePosterBean">
+      UPDATE T_PROJECT_DECLARE_POSTER SET
+        ATTACHMENT_ID = #{attachmentId,jdbcType=DECIMAL} ,
+        ATTACHMENT_URL = #{attachmentUrl,jdbcType=VARCHAR} ,
+        ACCOUNT_ID = #{accountId,jdbcType=DECIMAL} ,
+        ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR} ,
+        ORGANIZATION_ID = #{organizationId,jdbcType=DECIMAL} ,
+        ORGANIZATION_NAME = #{organizationName,jdbcType=VARCHAR} ,
+        ROOT_ID = #{rootId,jdbcType=DECIMAL} ,
+        ROOT_NAME = #{rootName,jdbcType=VARCHAR} ,
+        PARK_ID = #{parkId,jdbcType=DECIMAL} ,
+        PARK_NAME = #{parkName,jdbcType=VARCHAR} ,
+        AREA_ID = #{areaId,jdbcType=DECIMAL} ,
+        AREA_NAME = #{areaName,jdbcType=VARCHAR} ,
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP} ,
+        SORT_GRADE = #{sortGrade,jdbcType=DECIMAL} ,
+         POSTER_TITLE = #{posterTitle,jdbcType=VARCHAR}
+      WHERE 
+        POSTER_ID = #{posterId,jdbcType=DECIMAL} 
+	</update>
+	
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	        
+		       <if test="posterId != null">
+						<![CDATA[AND POSTER_ID = #{posterId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="attachmentId != null">
+						<![CDATA[AND ATTACHMENT_ID = #{attachmentId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="attachmentUrl != null and attachmentUrl != ''">
+						<!--
+						<![CDATA[AND ATTACHMENT_URL = #{attachmentUrl,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND ATTACHMENT_URL LIKE '%' || #{attachmentUrl,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="accountId != null">
+						<![CDATA[AND ACCOUNT_ID = #{accountId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="accountName != null and accountName != ''">
+						<!--
+						<![CDATA[AND ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND ACCOUNT_NAME LIKE '%' || #{accountName,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="organizationId != null">
+						<![CDATA[AND ORGANIZATION_ID = #{organizationId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="organizationName != null and organizationName != ''">
+						<!--
+						<![CDATA[AND ORGANIZATION_NAME = #{organizationName,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND ORGANIZATION_NAME LIKE '%' || #{organizationName,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="rootId != null">
+						<![CDATA[AND ROOT_ID = #{rootId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="rootName != null and rootName != ''">
+						<!--
+						<![CDATA[AND ROOT_NAME = #{rootName,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND ROOT_NAME LIKE '%' || #{rootName,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="parkId != null">
+						<![CDATA[AND PARK_ID = #{parkId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="parkName != null and parkName != ''">
+						<!--
+						<![CDATA[AND PARK_NAME = #{parkName,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND PARK_NAME LIKE '%' || #{parkName,jdbcType=VARCHAR} || '%']]>
+				   </if>
+		       <if test="posterTitle != null and posterTitle != ''">
+						<!--
+						<![CDATA[AND PARK_NAME = #{parkName,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND POSTER_TITLE LIKE '%' || #{posterTitle,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="areaId != null">
+						<![CDATA[AND AREA_ID = #{areaId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="areaName != null and areaName != ''">
+						<!--
+						<![CDATA[AND AREA_NAME = #{areaName,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND AREA_NAME LIKE '%' || #{areaName,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+	        
+		       <if test="sortGrade != null">
+						<![CDATA[AND SORT_GRADE = #{sortGrade,jdbcType=DECIMAL}]]>
+				   </if>
+		</where>
+	</sql>
+	
+ 
+  
+  <select id="queryByCond" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclarePoster.ProjectDeclarePosterBean" >
+    select <include refid="Base_Column_List" />
+    from T_PROJECT_DECLARE_POSTER
+	<include refid="Base_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+     
+  
+</mapper>
+

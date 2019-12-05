@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.expShare.ExpShareCommentMapper" >
+
+	<resultMap id="BaseResultMap" type="com.chinatelecom.jx.zone.management.bean.expShare.ExpShareCommentBean">
+    	<id column="COMMENT_ID" jdbcType="DECIMAL" property="commentId"/>
+    	<result column="EXP_ID" jdbcType="DECIMAL" property="expId"/>
+    	<result column="ACCOUNT_ID" jdbcType="DECIMAL" property="accountId"/>
+    	<result column="ACCOUNT_NAME" jdbcType="VARCHAR" property="accountName"/>
+    	<result column="COMMENT_TEXT" jdbcType="VARCHAR" property="commentText"/>
+    	<result column="REPLY_COMMENT_ID" jdbcType="DECIMAL" property="replyCommentId"/>
+    	<result column="REPLY_ACCOUNT_ID" jdbcType="DECIMAL" property="replyAccountId"/>
+    	<result column="REPLY_ACCOUNT_NAME" jdbcType="VARCHAR" property="replyAccountName"/>
+    	<result column="IS_ANONYMOUS" jdbcType="DECIMAL" property="isAnonymous"/>
+    	<result column="REMARK" jdbcType="VARCHAR" property="remark"/>
+    	<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+	</resultMap>
+	
+	<!--
+	<resultMap id="ResultMapWithForeign" type="com.chinatelecom.jx.zone.management.bean.expShare.ExpShareCommentBean" extends="BaseResultMap" >
+			 <result column="workProcessid" property="workProcessid" jdbcType="VARCHAR" />
+			 <result column="currentState" property="currentState" jdbcType="VARCHAR" />
+       <result column="organizationName" property="orgName" jdbcType="VARCHAR" />
+        <result column="companyName" property="companyName" jdbcType="VARCHAR" />
+       <result column="accountName" property="accountName" jdbcType="VARCHAR" />
+       <result column="parkName" property="parkName" jdbcType="VARCHAR" />
+  </resultMap>
+  -->
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		COMMENT_ID,EXP_ID,ACCOUNT_ID,ACCOUNT_NAME,COMMENT_TEXT,REPLY_COMMENT_ID,REPLY_ACCOUNT_ID,REPLY_ACCOUNT_NAME,IS_ANONYMOUS,REMARK,CREATE_TIME
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_EXP_SHARE_COMMENT
+    where 
+				COMMENT_ID = #{commentId,jdbcType=DECIMAL} 
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+        DELETE FROM T_EXP_SHARE_COMMENT WHERE
+				COMMENT_ID = #{commentId,jdbcType=DECIMAL} 
+    </delete>
+
+	<insert id="insert" parameterType="com.chinatelecom.jx.zone.management.bean.expShare.ExpShareCommentBean">
+        INSERT INTO T_EXP_SHARE_COMMENT (
+        	COMMENT_ID ,
+        	EXP_ID ,
+        	ACCOUNT_ID ,
+        	ACCOUNT_NAME ,
+        	COMMENT_TEXT ,
+        	REPLY_COMMENT_ID ,
+        	REPLY_ACCOUNT_ID ,
+        	REPLY_ACCOUNT_NAME ,
+        	IS_ANONYMOUS ,
+        	REMARK ,
+        	CREATE_TIME 
+        ) VALUES (
+        	#{commentId,jdbcType=DECIMAL} ,
+        	#{expId,jdbcType=DECIMAL} ,
+        	#{accountId,jdbcType=DECIMAL} ,
+        	#{accountName,jdbcType=VARCHAR} ,
+        	#{commentText,jdbcType=VARCHAR} ,
+        	#{replyCommentId,jdbcType=DECIMAL} ,
+        	#{replyAccountId,jdbcType=DECIMAL} ,
+        	#{replyAccountName,jdbcType=VARCHAR} ,
+        	#{isAnonymous,jdbcType=DECIMAL} ,
+        	#{remark,jdbcType=VARCHAR} ,
+        	#{createTime,jdbcType=TIMESTAMP} 
+        )
+	</insert>
+	
+	<insert id="insertSelective" parameterType="com.chinatelecom.jx.zone.management.bean.expShare.ExpShareCommentBean">
+    insert into T_EXP_SHARE_COMMENT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+    		<if test="commentId != null" >
+        COMMENT_ID,
+      	</if>
+    		<if test="expId != null" >
+        EXP_ID,
+      	</if>
+    		<if test="accountId != null" >
+        ACCOUNT_ID,
+      	</if>
+    		<if test="accountName != null" >
+        ACCOUNT_NAME,
+      	</if>
+    		<if test="commentText != null" >
+        COMMENT_TEXT,
+      	</if>
+    		<if test="replyCommentId != null" >
+        REPLY_COMMENT_ID,
+      	</if>
+    		<if test="replyAccountId != null" >
+        REPLY_ACCOUNT_ID,
+      	</if>
+    		<if test="replyAccountName != null" >
+        REPLY_ACCOUNT_NAME,
+      	</if>
+    		<if test="isAnonymous != null" >
+        IS_ANONYMOUS,
+      	</if>
+    		<if test="remark != null" >
+        REMARK,
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME,
+      	</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+    		<if test="commentId != null" >
+        #{commentId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="expId != null" >
+        #{expId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="accountId != null" >
+        #{accountId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="accountName != null" >
+        #{accountName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="commentText != null" >
+        #{commentText,jdbcType=VARCHAR},
+      	</if>
+    		<if test="replyCommentId != null" >
+        #{replyCommentId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="replyAccountId != null" >
+        #{replyAccountId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="replyAccountName != null" >
+        #{replyAccountName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="isAnonymous != null" >
+        #{isAnonymous,jdbcType=DECIMAL},
+      	</if>
+    		<if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      	</if>
+    		<if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinatelecom.jx.zone.management.bean.expShare.ExpShareCommentBean">
+    update T_EXP_SHARE_COMMENT
+    <set >
+    		<if test="expId != null" >
+        EXP_ID = #{expId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="accountId != null" >
+        ACCOUNT_ID = #{accountId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="accountName != null" >
+        ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="commentText != null" >
+        COMMENT_TEXT = #{commentText,jdbcType=VARCHAR},
+      	</if>
+    		<if test="replyCommentId != null" >
+        REPLY_COMMENT_ID = #{replyCommentId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="replyAccountId != null" >
+        REPLY_ACCOUNT_ID = #{replyAccountId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="replyAccountName != null" >
+        REPLY_ACCOUNT_NAME = #{replyAccountName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="isAnonymous != null" >
+        IS_ANONYMOUS = #{isAnonymous,jdbcType=DECIMAL},
+      	</if>
+    		<if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    </set>
+    where 
+      COMMENT_ID = #{commentId,jdbcType=DECIMAL} 
+  </update>
+  
+	<update id="updateByPrimaryKey" parameterType="com.chinatelecom.jx.zone.management.bean.expShare.ExpShareCommentBean">
+      UPDATE T_EXP_SHARE_COMMENT SET
+        EXP_ID = #{expId,jdbcType=DECIMAL} ,
+        ACCOUNT_ID = #{accountId,jdbcType=DECIMAL} ,
+        ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR} ,
+        COMMENT_TEXT = #{commentText,jdbcType=VARCHAR} ,
+        REPLY_COMMENT_ID = #{replyCommentId,jdbcType=DECIMAL} ,
+        REPLY_ACCOUNT_ID = #{replyAccountId,jdbcType=DECIMAL} ,
+        REPLY_ACCOUNT_NAME = #{replyAccountName,jdbcType=VARCHAR} ,
+        IS_ANONYMOUS = #{isAnonymous,jdbcType=DECIMAL} ,
+        REMARK = #{remark,jdbcType=VARCHAR} ,
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP} 
+      WHERE 
+        COMMENT_ID = #{commentId,jdbcType=DECIMAL} 
+	</update>
+	
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	        
+		       <if test="commentId != null">
+						<![CDATA[AND COMMENT_ID = #{commentId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="expId != null">
+						<![CDATA[AND EXP_ID = #{expId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="accountId != null">
+						<![CDATA[AND ACCOUNT_ID = #{accountId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="accountName != null and accountName != ''">
+						<!--
+						<![CDATA[AND ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND ACCOUNT_NAME LIKE '%' || #{accountName,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="commentText != null and commentText != ''">
+						<!--
+						<![CDATA[AND COMMENT_TEXT = #{commentText,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND COMMENT_TEXT LIKE '%' || #{commentText,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="replyCommentId != null">
+						<![CDATA[AND REPLY_COMMENT_ID = #{replyCommentId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="replyAccountId != null">
+						<![CDATA[AND REPLY_ACCOUNT_ID = #{replyAccountId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="replyAccountName != null and replyAccountName != ''">
+						<!--
+						<![CDATA[AND REPLY_ACCOUNT_NAME = #{replyAccountName,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND REPLY_ACCOUNT_NAME LIKE '%' || #{replyAccountName,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="isAnonymous != null">
+						<![CDATA[AND IS_ANONYMOUS = #{isAnonymous,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="remark != null and remark != ''">
+						<!--
+						<![CDATA[AND REMARK = #{remark,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND REMARK LIKE '%' || #{remark,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		</where>
+	</sql>
+	
+ 
+  
+  <select id="queryByCond" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.expShare.ExpShareCommentBean" >
+    select <include refid="Base_Column_List" />
+    from T_EXP_SHARE_COMMENT
+	<include refid="Base_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+     
+  
+</mapper>
+

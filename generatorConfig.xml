@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<classPathEntry
+		location="D:\repo\Program\oracle\jdbc\oracle-jdbc-ojdbc6\11.2.0.4\oracle-jdbc-ojdbc6-11.2.0.4.jar" />
+	<context id="context123" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+		<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+			connectionURL="jdbc:oracle:thin:@(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 134.225.107.51)(PORT = 1521))(CONNECT_DATA =(SERVER = DEDICATED)(SERVICE_NAME = orcl)))"
+			userId="X_PROJECT" password="X_PROJECT_123" />
+
+		<javaTypeResolver>
+			<!-- false,把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer true,把JDBC DECIMAL和 NUMERIC 
+				类型解析为java.math.BigDecimal -->
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- <javaModelGenerator targetPackage="com.chinatelecom.jx.zone.np.mobile.bean" 
+			targetProject="Portal" /> <sqlMapGenerator targetPackage="com.chinatelecom.jx.zone.np.mobile.dao.mybatis.sql" 
+			targetProject="Portal" /> <javaClientGenerator targetPackage="com.chinatelecom.jx.zone.np.mobile.dao.mybatis.mapper" 
+			targetProject="Portal" type="XMLMAPPER" /> <table schema="" tableName="t_np_mobile" 
+			domainObjectName="NpMobileBean" enableCountByExample="false" enableUpdateByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"> 
+			<columnOverride column="create_time" javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"></columnOverride> 
+			</table> -->
+
+		<!-- <javaModelGenerator targetPackage="com.chinatelecom.jx.zone.hcode.pt.bean" 
+			targetProject="Portal" /> <sqlMapGenerator targetPackage="com.chinatelecom.jx.zone.hcode.pt.dao.mybatis.sql" 
+			targetProject="Portal" /> <javaClientGenerator targetPackage="com.chinatelecom.jx.zone.hcode.pt.dao.mybatis.mapper" 
+			targetProject="Portal" type="XMLMAPPER" /> <table schema="" tableName="t_hcode_pt" 
+			domainObjectName="HcodePtBean" enableCountByExample="false" enableUpdateByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"> 
+			</table> -->
+<!--			
+ 		<javaModelGenerator targetPackage="com.chinatelecom.jx.zone.organization.info.bean"
+			targetProject="Portal" />
+		<sqlMapGenerator
+			targetPackage="com.chinatelecom.jx.zone.organization.info.dao.mybatis.sql"
+			targetProject="Portal" />
+		<javaClientGenerator
+			targetPackage="com.chinatelecom.jx.zone.organization.info.dao.mybatis.mapper"
+			targetProject="Portal" type="XMLMAPPER" />
+		<table schema="" tableName="t_organization_info" domainObjectName="OrganizationInfoBean"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+			<columnOverride column="organization_name" javaType="java.lang.String"
+				jdbcType="VARCHAR"></columnOverride>	
+			<columnOverride column="organization_nick" javaType="java.lang.String"
+				jdbcType="VARCHAR"></columnOverride>																							
+			<columnOverride column="create_time" javaType="java.sql.Timestamp"
+				jdbcType="TIMESTAMP"></columnOverride>				
+		</table>			
+-->			
+<!-- 
+		<javaModelGenerator targetPackage="com.chinatelecom.jx.zone.news.info.bean"
+			targetProject="Portal" />
+		<sqlMapGenerator
+			targetPackage="com.chinatelecom.jx.zone.news.info.dao.mybatis.sql"
+			targetProject="Portal" />
+		<javaClientGenerator
+			targetPackage="com.chinatelecom.jx.zone.news.info.dao.mybatis.mapper"
+			targetProject="Portal" type="XMLMAPPER" />
+		<table schema="" tableName="t_news_info" domainObjectName="NewsInfoBean"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+
+			<columnOverride column="news_title" javaType="java.lang.String"
+				jdbcType="VARCHAR"></columnOverride>	
+			<columnOverride column="news_summary" javaType="java.lang.String"
+				jdbcType="VARCHAR"></columnOverride>	
+			<columnOverride column="account_name" javaType="java.lang.String"
+				jdbcType="VARCHAR"></columnOverride>
+			<columnOverride column="organization_name" javaType="java.lang.String"
+				jdbcType="VARCHAR"></columnOverride>	
+			<columnOverride column="root_name" javaType="java.lang.String"
+				jdbcType="VARCHAR"></columnOverride>																
+			<columnOverride column="create_time" javaType="java.sql.Timestamp"
+				jdbcType="TIMESTAMP"></columnOverride>				
+		</table>
+ -->
+ 
+<!--  
+ 		<javaModelGenerator targetPackage="com.chinatelecom.jx.zone.account.info.bean"
+			targetProject="Portal" />
+		<sqlMapGenerator
+			targetPackage="com.chinatelecom.jx.zone.account.info.dao.mybatis.sql"
+			targetProject="Portal" />
+		<javaClientGenerator
+			targetPackage="com.chinatelecom.jx.zone.account.info.dao.mybatis.mapper"
+			targetProject="Portal" type="XMLMAPPER" />
+		<table schema="" tableName="t_account_info" domainObjectName="AccountInfoBean"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+
+			<columnOverride column="account_name" javaType="java.lang.String"
+				jdbcType="VARCHAR"></columnOverride>	
+			<columnOverride column="login_time" javaType="java.sql.Timestamp"
+				jdbcType="TIMESTAMP"></columnOverride>
+			<columnOverride column="passwd_time" javaType="java.sql.Timestamp"
+				jdbcType="TIMESTAMP"></columnOverride>
+			<columnOverride column="deadline_time" javaType="java.sql.Timestamp"
+				jdbcType="TIMESTAMP"></columnOverride>																								
+			<columnOverride column="create_time" javaType="java.sql.Timestamp"
+				jdbcType="TIMESTAMP"></columnOverride>				
+		</table>
+ -->
+ <!--  
+  		<javaModelGenerator targetPackage="com.chinatelecom.jx.zone.mobile.bind.bean"
+			targetProject="Portal" />
+		<sqlMapGenerator
+			targetPackage="com.chinatelecom.jx.zone.mobile.bind.dao.mybatis.sql"
+			targetProject="Portal" />
+		<javaClientGenerator
+			targetPackage="com.chinatelecom.jx.zone.mobile.bind.dao.mybatis.mapper"
+			targetProject="Portal" type="XMLMAPPER" />
+		<table schema="" tableName="t_mobile_bind" domainObjectName="MobileBindBean"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">																							
+			<columnOverride column="create_time" javaType="java.sql.Timestamp"
+				jdbcType="TIMESTAMP"></columnOverride>				
+		</table>
+ --> 
+ <!--  
+  		<javaModelGenerator targetPackage="com.chinatelecom.jx.zone.account.auth.bean"
+			targetProject="Portal" />
+		<sqlMapGenerator
+			targetPackage="com.chinatelecom.jx.zone.account.auth.dao.mybatis.sql"
+			targetProject="Portal" />
+		<javaClientGenerator
+			targetPackage="com.chinatelecom.jx.zone.account.auth.dao.mybatis.mapper"
+			targetProject="Portal" type="XMLMAPPER" />
+		<table schema="" tableName="t_account_auth" domainObjectName="AccountAuthBean"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">																							
+			<columnOverride column="create_time" javaType="java.sql.Timestamp"
+				jdbcType="TIMESTAMP"></columnOverride>				
+		</table> 		
+ -->
+ <!-- 
+   		<javaModelGenerator targetPackage="com.chinatelecom.jx.zone.account.live.bean"
+			targetProject="Portal" />
+		<sqlMapGenerator
+			targetPackage="com.chinatelecom.jx.zone.account.live.dao.mybatis.sql"
+			targetProject="Portal" />
+		<javaClientGenerator
+			targetPackage="com.chinatelecom.jx.zone.account.live.dao.mybatis.mapper"
+			targetProject="Portal" type="XMLMAPPER" />
+		<table schema="" tableName="t_account_live" domainObjectName="AccountLiveBean"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">																										
+		</table> 
+  --> 		
+   <!-- 
+     	<javaModelGenerator targetPackage="com.chinatelecom.jx.zone.account.login.log.bean"
+			targetProject="Portal" />
+		<sqlMapGenerator
+			targetPackage="com.chinatelecom.jx.zone.account.login.log.dao.mybatis.sql"
+			targetProject="Portal" />
+		<javaClientGenerator
+			targetPackage="com.chinatelecom.jx.zone.account.login.log.dao.mybatis.mapper"
+			targetProject="Portal" type="XMLMAPPER" />
+		<table schema="" tableName="t_account_login_log" domainObjectName="AccountLoginLogBean"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">		
+			<columnOverride column="create_time" javaType="java.sql.Timestamp"
+				jdbcType="TIMESTAMP"></columnOverride>																												
+		</table> 
+    -->
+    
+   <!--     
+     	<javaModelGenerator targetPackage="com.chinatelecom.jx.zone.account.passwd.log.bean"
+			targetProject="Portal" />
+		<sqlMapGenerator
+			targetPackage="com.chinatelecom.jx.zone.account.passwd.log.dao.mybatis.sql"
+			targetProject="Portal" />
+		<javaClientGenerator
+			targetPackage="com.chinatelecom.jx.zone.account.passwd.log.dao.mybatis.mapper"
+			targetProject="Portal" type="XMLMAPPER" />
+		<table schema="" tableName="t_account_passwd_log" domainObjectName="AccountPasswdLogBean"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">		
+			<columnOverride column="create_time" javaType="java.sql.Timestamp"
+				jdbcType="TIMESTAMP"></columnOverride>																												
+		</table>     
+        -->
+  <!--         
+     	<javaModelGenerator targetPackage="com.chinatelecom.jx.zone.organization.contact.group.bean"
+			targetProject="Portal" />
+		<sqlMapGenerator
+			targetPackage="com.chinatelecom.jx.zone.organization.contact.group.dao.mybatis.sql"
+			targetProject="Portal" />
+		<javaClientGenerator
+			targetPackage="com.chinatelecom.jx.zone.organization.contact.group.dao.mybatis.mapper"
+			targetProject="Portal" type="XMLMAPPER" />
+		<table schema="" tableName="t_organization_contact_group" domainObjectName="OrganizationContactGroupBean"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">		
+            <columnOverride column="group_name" javaType="java.lang.String"
+				jdbcType="VARCHAR"></columnOverride>			
+			<columnOverride column="create_time" javaType="java.sql.Timestamp"
+				jdbcType="TIMESTAMP"></columnOverride>																										
+		</table>         
+      -->    
+
+  <!--    
+     	<javaModelGenerator targetPackage="com.chinatelecom.jx.zone.organization.contact.book.bean"
+			targetProject="Portal" />
+		<sqlMapGenerator
+			targetPackage="com.chinatelecom.jx.zone.organization.contact.book.dao.mybatis.sql"
+			targetProject="Portal" />
+		<javaClientGenerator
+			targetPackage="com.chinatelecom.jx.zone.organization.contact.book.dao.mybatis.mapper"
+			targetProject="Portal" type="XMLMAPPER" />
+		<table schema="" tableName="t_organization_contact_book" domainObjectName="OrganizationContactBookBean"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">		
+            <columnOverride column="contact_name" javaType="java.lang.String"
+				jdbcType="VARCHAR"></columnOverride>	
+            <columnOverride column="contact_organization" javaType="java.lang.String"
+				jdbcType="VARCHAR"></columnOverride>				
+			<columnOverride column="contact_duty" javaType="java.lang.String"
+				jdbcType="VARCHAR"></columnOverride>
+			<columnOverride column="contact_email" javaType="java.lang.String"
+				jdbcType="VARCHAR"></columnOverride>	
+			<columnOverride column="contact_address" javaType="java.lang.String"
+				jdbcType="VARCHAR"></columnOverride>		
+			<columnOverride column="create_time" javaType="java.sql.Timestamp"
+				jdbcType="TIMESTAMP"></columnOverride>																												
+		</table>      
+       --> 
+       
+     	<!-- <javaModelGenerator targetPackage="com.chinatelecom.jx.zone.organization.contact.mobile.bean"
+			targetProject="Portal" />
+		<sqlMapGenerator
+			targetPackage="com.chinatelecom.jx.zone.organization.contact.mobile.dao.mybatis.sql"
+			targetProject="Portal" />
+		<javaClientGenerator
+			targetPackage="com.chinatelecom.jx.zone.organization.contact.mobile.dao.mybatis.mapper"
+			targetProject="Portal" type="XMLMAPPER" />
+		<table schema="" tableName="t_organization_contact_mobile" domainObjectName="OrganizationContactMobileBean"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">	
+			<columnOverride column="create_time" javaType="java.sql.Timestamp"
+				jdbcType="TIMESTAMP"></columnOverride>																												
+		</table>  -->
+		<javaModelGenerator targetPackage="com.chinatelecom.jx.zone.management.bean"
+			targetProject="ProjectApplicationInformationSystem" />
+		<sqlMapGenerator
+			targetPackage="com.chinatelecom.jx.zone.management.dao.mybatis.sql"
+			targetProject="ProjectApplicationInformationSystem" />
+		<javaClientGenerator
+			targetPackage="com.chinatelecom.jx.zone.management.dao.mybatis.mapper"
+			targetProject="ProjectApplicationInformationSystem" type="XMLMAPPER" />
+		<table schema="" tableName="t_my_test" domainObjectName="TestBean"
+			enableCountByExample="false" enableUpdateByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false" 
+			selectByExampleQueryId="false">	
+					 																									
+		</table>      
+	</context>
+</generatorConfiguration>

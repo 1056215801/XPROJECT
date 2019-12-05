@@ -1,0 +1,152 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"黑体";
+}
+a:hover, a:visited, a:link, a:active {
+    text-decoration:none;
+	color:#000;
+}
+
+html {
+	background-color:#ebebeb;
+}
+.results_main {
+	background-color:#ebebeb;
+}
+.results_content {
+	width:100%;
+	background-color:#ebebeb;
+	position:relative;
+}
+.surveyDataBar {
+	background-color:#fff;
+	padding:7px 10px;
+	margin-top:10px;
+}
+.surveyTitle {
+	font-size:16px;
+	font-weight:bold;
+	color:#000;
+}
+.surveyDataContral {
+	color:#aaa;
+	padding:3px 0;
+	font-size:12px;
+}
+.surveyPop {
+	vertical-align:middle;
+	font-size:12px;
+}
+.surveyStateYellow {
+	position:absolute;
+	top:7px;
+	right:0;
+	padding:1px 15px;
+	background-color:#f1921c;
+	color:#fff;
+	border:0;
+	border-radius:10px;
+}
+.surveyStateGray {
+	position:absolute;
+	top:7px;
+	right:0;
+	padding:1px 15px;
+	background-color:#A3A3A3;
+	color:#fff;
+	border:0;
+	border-radius:10px;
+}
+
+.survey_subject {
+	font-weight:bold;
+	margin-top:20px;
+}
+.survey_optionBar {
+	background-color:#F6F6F6;
+	margin-top:5px
+}
+.survey_option {
+	padding:7px 0;
+	margin-left:10px;
+}
+.survey_dataStrip {
+	float:right;
+	width:166px;
+	font-size:10px;
+}
+.survey_sum {
+	display:inline-block;
+	vertical-align:middle;
+	margin-right:5px;
+}
+.survey_percentageStrip {
+	display:inline-block;
+	vertical-align:middle;
+	margin-right:5px;
+	height:20px;
+}
+.survey_percentage {
+	display:inline-block;
+	vertical-align:middle;
+	margin-right:5px;
+}
+.buttonContral {
+	width:100%;
+	background-color:#f1921c;
+	padding:8px 0;
+	color:#fff;
+	border:0;
+	font-size: 18px;
+}
+.survey_optionChoice {
+	float:left;
+	margin-right:5px;
+}
+/* 调查结果隐藏多余radio */
+.hideCheckBox {
+	opacity: 0;
+}
+
+/* 小火箭 */
+#tbox{
+	width:50px;
+	height: 60px; 
+	background:url(/XProject/static/weixin/images/logistics/rocket.png) no-repeat; 
+	display:none;
+	position:fixed;
+	right:10px;
+	bottom:50px;
+	background-size:50px 50px; 
+}

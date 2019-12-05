@@ -1,0 +1,254 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+    color: #5e5e5e;
+    background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"Microsoft YaHei";
+}
+a:hover, a:visited, a:link, a:active {
+    text-decoration:none;
+    color:#000;
+}
+div {
+    -webkit-transition: all .2s ease-in-out 0s;
+    -moz-transition: all .2s ease-in-out 0s;
+    -ms-transition: all .2s ease-in-out 0s;
+    -o-transition: all .2s ease-in-out 0s;
+    transition: all .2s ease-in-out 0s;
+}
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.clearfix{zoom:1} 
+img,span {vertical-align:middle;}
+input, select, textarea {border-radius: 2px; border:1px solid #ccc; padding:3px;}
+
+.survey_main {
+	width:100%;
+	height:100%;
+	position:relative;
+	overflow: hidden;
+}
+.survey_contentLeft {
+	width:250px;
+	height:100%;
+	border-right:1px solid #ccc;
+	float:left;
+	position:relative;
+	overflow:auto;
+}
+.survey_contLeftBar {
+	width: 100%;
+    padding: 8px 0;
+}
+.survey_contLeftTitle {
+	font-size:13px;
+	padding:8px 12px;
+}
+.elementDiv {
+    padding: 0 7px 10px;
+	margin-bottom:10px;
+}
+.elementSpan {
+	width: 108px;
+	float:left;
+	font-size:12px;
+	text-align:center;
+    margin: 2px;
+	padding:5px 0;
+	background-color: #F9F9F9;
+    border: 1px dashed #ccc;
+	color: #337ab7;
+	cursor:pointer;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.elementSpan:hover {
+	background-color: #EAF5F9;
+}
+.elementSpanMove {
+	display:block;
+	width: 108px;
+	font-size:12px;
+	text-align:center;
+    margin: 2px;
+	padding:5px 0;
+	background-color: #F9F9F9;
+    border: 1px dashed #ccc;
+	color: #337ab7;
+	cursor:pointer;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.elementSpanMove:hover {
+	background-color: #EAF5F9;
+}
+.survey_contentCenter {
+	float:left;
+	height:100%;
+	position:relative;
+	margin-left:10px;
+	overflow: hidden;
+}
+.survey_contCenterOper {
+	width:100%;
+	height:40px;
+	border-bottom:1px solid #ccc;
+	padding-top:3px;
+	text-align: center;
+}
+.survey_contCenterContent{
+	padding:5px 15px 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: absolute;
+    top: 40px;
+	right: 0;
+	bottom: 0;
+    width: 100%;
+    height:90%;
+}
+.survey_contentRight {
+	width:300px;
+	height:100%;
+	border-left:1px solid #ccc;
+	float:right;
+	background-color:#FAFAFA;
+	position:relative;
+}
+.titleName {
+	border-bottom:1px solid #ccc;
+	height:40px;
+}
+.titleName ul{list-style-type:none; margin-left:5px;}  
+.titleName ul li{float:left; text-align:center; padding:5px 40px;}
+.titleName ul li a{text-decoration:none; font-size:13px;}
+.titleClick { border-bottom:2px solid #178CDF;}
+.titleItem {
+	padding:5px 15px 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: absolute;
+    top: 40px;
+	right: 0;
+	bottom: 0;
+    width: 270px;
+    height:88%;
+}
+.survey_contRightBar {
+	position:relative;
+}
+.survey_contRightTitleBar {
+	margin-bottom:10px;
+}
+.survey_contRightTitle {
+	font-weight: bold;
+}
+.titleTip {
+	position:absolute;
+	background-color: #DEF1FF;
+    border: 1px solid #90BDDE;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 12px;
+	text-align: center;
+	padding: 2px 10px;
+    position: absolute;
+    top: 2px;
+	right:22px;
+}
+.splitLine {
+	border-top:1px solid #ccc;
+	margin:10px 0;
+}
+.imgContral {
+	cursor:pointer;
+}
+.checksOperBar {
+	font-size: 13px;
+	height: 30px;
+    line-height: 30px;
+    margin-left: 20px;
+}
+.checksOper {
+	color: #178cdf;
+    cursor: pointer;
+    float: left;
+    margin-right: 5px;
+    position: relative;
+	left: 0;
+}
+.checksOper.checksSplit::before {
+	border-left: 1px solid #000;
+    content: "";
+    height: 12px;
+    margin-right: 5px;
+    width: 0;
+}
+.changeModeBar {
+	margin:4px 0;
+	position:relative;
+}
+.changeModeBar .modeItem {
+	background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    cursor: pointer;
+    display: inline-block;
+    float: left;
+    left: 0;
+    margin: 0 0 0 -1px;
+    overflow: hidden;
+    padding: 7px 12px;
+    position: relative;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    z-index: 0;
+}
+.changeModeBar .selected {
+	background-color: #178CDF;
+    border-color: #178CDF;
+    color: #fff;
+    z-index: 1;
+}
+.btnBlue{
+	background-color: #178CDF;
+    border-color: #178CDF;
+    color: #fff;
+}
+.inputWidth{
+	width: 100%;
+}

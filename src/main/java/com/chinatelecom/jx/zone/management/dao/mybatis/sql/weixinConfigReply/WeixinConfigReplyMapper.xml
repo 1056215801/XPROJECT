@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.weixinConfigReply.WeixinConfigReplyMapper" >
+
+	<resultMap id="BaseResultMap" type="com.chinatelecom.jx.zone.management.bean.weixinConfigReply.WeixinConfigReplyBean">
+    	<id column="REPLY_ID" jdbcType="DECIMAL" property="replyId"/>
+    	<result column="INPUT_WORD" jdbcType="VARCHAR" property="inputWord"/>
+    	<result column="JUMP_URL" jdbcType="VARCHAR" property="jumpUrl"/>
+    	<result column="REPLY_WORD" jdbcType="VARCHAR" property="replyWord"/>
+    	<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+    	<result column="CREATE_USER" jdbcType="VARCHAR" property="createUser"/>
+    	<result column="REPLY_ATTACHMENT" jdbcType="VARCHAR" property="replyAttachment"/>
+    	<result column="REMARK" jdbcType="VARCHAR" property="remark"/>
+    	<result column="STATUS" jdbcType="DECIMAL" property="status"/>
+    	<result column="TYPE" jdbcType="VARCHAR" property="type"/>
+    	<result column="TITLE" jdbcType="VARCHAR" property="title"/>
+    	<result column="PIC_URL" jdbcType="VARCHAR" property="picUrl"/>
+    	<result column="SHOW_SUBSCRIBE" jdbcType="DECIMAL" property="showSubscribe"/>
+    	<result column="SHOW_SUBSCRIBE_ORDER" jdbcType="DECIMAL" property="showSubscribeOrder"/>
+	</resultMap>
+	
+	<!--
+	<resultMap id="ResultMapWithForeign" type="com.chinatelecom.jx.zone.management.bean.weixinConfigReply.WeixinConfigReplyBean" extends="BaseResultMap" >
+			 <result column="workProcessid" property="workProcessid" jdbcType="VARCHAR" />
+			 <result column="currentState" property="currentState" jdbcType="VARCHAR" />
+       <result column="organizationName" property="orgName" jdbcType="VARCHAR" />
+        <result column="companyName" property="companyName" jdbcType="VARCHAR" />
+       <result column="accountName" property="accountName" jdbcType="VARCHAR" />
+       <result column="parkName" property="parkName" jdbcType="VARCHAR" />
+  </resultMap>
+  -->
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		REPLY_ID,INPUT_WORD,JUMP_URL,REPLY_WORD,CREATE_TIME,CREATE_USER,REPLY_ATTACHMENT,REMARK,STATUS,TYPE,TITLE,PIC_URL,SHOW_SUBSCRIBE,SHOW_SUBSCRIBE_ORDER
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_WEIXIN_CONFIG_REPLY
+    where 
+				REPLY_ID = #{replyId,jdbcType=DECIMAL} 
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+        DELETE FROM T_WEIXIN_CONFIG_REPLY WHERE
+				REPLY_ID = #{replyId,jdbcType=DECIMAL} 
+    </delete>
+
+	<insert id="insert" parameterType="com.chinatelecom.jx.zone.management.bean.weixinConfigReply.WeixinConfigReplyBean">
+        INSERT INTO T_WEIXIN_CONFIG_REPLY (
+        	REPLY_ID ,
+        	INPUT_WORD ,
+        	JUMP_URL ,
+        	REPLY_WORD ,
+        	CREATE_TIME ,
+        	CREATE_USER ,
+        	REPLY_ATTACHMENT ,
+        	REMARK ,
+        	STATUS ,
+        	TYPE ,
+        	TITLE ,
+        	PIC_URL ,
+        	SHOW_SUBSCRIBE ,
+        	SHOW_SUBSCRIBE_ORDER 
+        ) VALUES (
+        	#{replyId,jdbcType=DECIMAL} ,
+        	#{inputWord,jdbcType=VARCHAR} ,
+        	#{jumpUrl,jdbcType=VARCHAR} ,
+        	#{replyWord,jdbcType=VARCHAR} ,
+        	#{createTime,jdbcType=TIMESTAMP} ,
+        	#{createUser,jdbcType=VARCHAR} ,
+        	#{replyAttachment,jdbcType=VARCHAR} ,
+        	#{remark,jdbcType=VARCHAR} ,
+        	#{status,jdbcType=DECIMAL} ,
+        	#{type,jdbcType=VARCHAR} ,
+        	#{title,jdbcType=VARCHAR} ,
+        	#{picUrl,jdbcType=VARCHAR} ,
+        	#{showSubscribe,jdbcType=DECIMAL} ,
+        	#{showSubscribeOrder,jdbcType=DECIMAL} 
+        )
+	</insert>
+	
+	<insert id="insertSelective" parameterType="com.chinatelecom.jx.zone.management.bean.weixinConfigReply.WeixinConfigReplyBean">
+    insert into T_WEIXIN_CONFIG_REPLY
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+    		<if test="replyId != null" >
+        REPLY_ID,
+      	</if>
+    		<if test="inputWord != null" >
+        INPUT_WORD,
+      	</if>
+    		<if test="jumpUrl != null" >
+        JUMP_URL,
+      	</if>
+    		<if test="replyWord != null" >
+        REPLY_WORD,
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME,
+      	</if>
+    		<if test="createUser != null" >
+        CREATE_USER,
+      	</if>
+    		<if test="replyAttachment != null" >
+        REPLY_ATTACHMENT,
+      	</if>
+    		<if test="remark != null" >
+        REMARK,
+      	</if>
+    		<if test="status != null" >
+        STATUS,
+      	</if>
+    		<if test="type != null" >
+        TYPE,
+      	</if>
+    		<if test="title != null" >
+        TITLE,
+      	</if>
+    		<if test="picUrl != null" >
+        PIC_URL,
+      	</if>
+    		<if test="showSubscribe != null" >
+        SHOW_SUBSCRIBE,
+      	</if>
+    		<if test="showSubscribeOrder != null" >
+        SHOW_SUBSCRIBE_ORDER,
+      	</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+    		<if test="replyId != null" >
+        #{replyId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="inputWord != null" >
+        #{inputWord,jdbcType=VARCHAR},
+      	</if>
+    		<if test="jumpUrl != null" >
+        #{jumpUrl,jdbcType=VARCHAR},
+      	</if>
+    		<if test="replyWord != null" >
+        #{replyWord,jdbcType=VARCHAR},
+      	</if>
+    		<if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    		<if test="createUser != null" >
+        #{createUser,jdbcType=VARCHAR},
+      	</if>
+    		<if test="replyAttachment != null" >
+        #{replyAttachment,jdbcType=VARCHAR},
+      	</if>
+    		<if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      	</if>
+    		<if test="status != null" >
+        #{status,jdbcType=DECIMAL},
+      	</if>
+    		<if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      	</if>
+    		<if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      	</if>
+    		<if test="picUrl != null" >
+        #{picUrl,jdbcType=VARCHAR},
+      	</if>
+    		<if test="showSubscribe != null" >
+        #{showSubscribe,jdbcType=DECIMAL},
+      	</if>
+    		<if test="showSubscribeOrder != null" >
+        #{showSubscribeOrder,jdbcType=DECIMAL},
+      	</if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinatelecom.jx.zone.management.bean.weixinConfigReply.WeixinConfigReplyBean">
+    update T_WEIXIN_CONFIG_REPLY
+    <set >
+    		<if test="inputWord != null" >
+        INPUT_WORD = #{inputWord,jdbcType=VARCHAR},
+      	</if>
+    		<if test="jumpUrl != null" >
+        JUMP_URL = #{jumpUrl,jdbcType=VARCHAR},
+      	</if>
+    		<if test="replyWord != null" >
+        REPLY_WORD = #{replyWord,jdbcType=VARCHAR},
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    		<if test="createUser != null" >
+        CREATE_USER = #{createUser,jdbcType=VARCHAR},
+      	</if>
+    		<if test="replyAttachment != null" >
+        REPLY_ATTACHMENT = #{replyAttachment,jdbcType=VARCHAR},
+      	</if>
+    		<if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      	</if>
+    		<if test="status != null" >
+        STATUS = #{status,jdbcType=DECIMAL},
+      	</if>
+    		<if test="type != null" >
+        TYPE = #{type,jdbcType=VARCHAR},
+      	</if>
+    		<if test="title != null" >
+        TITLE = #{title,jdbcType=VARCHAR},
+      	</if>
+    		<if test="picUrl != null" >
+        PIC_URL = #{picUrl,jdbcType=VARCHAR},
+      	</if>
+    		<if test="showSubscribe != null" >
+        SHOW_SUBSCRIBE = #{showSubscribe,jdbcType=DECIMAL},
+      	</if>
+    		<if test="showSubscribeOrder != null" >
+        SHOW_SUBSCRIBE_ORDER = #{showSubscribeOrder,jdbcType=DECIMAL},
+      	</if>
+    </set>
+    where 
+      REPLY_ID = #{replyId,jdbcType=DECIMAL} 
+  </update>
+  
+	<update id="updateByPrimaryKey" parameterType="com.chinatelecom.jx.zone.management.bean.weixinConfigReply.WeixinConfigReplyBean">
+      UPDATE T_WEIXIN_CONFIG_REPLY SET
+        INPUT_WORD = #{inputWord,jdbcType=VARCHAR} ,
+        JUMP_URL = #{jumpUrl,jdbcType=VARCHAR} ,
+        REPLY_WORD = #{replyWord,jdbcType=VARCHAR} ,
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP} ,
+        CREATE_USER = #{createUser,jdbcType=VARCHAR} ,
+        REPLY_ATTACHMENT = #{replyAttachment,jdbcType=VARCHAR} ,
+        REMARK = #{remark,jdbcType=VARCHAR} ,
+        STATUS = #{status,jdbcType=DECIMAL} ,
+        TYPE = #{type,jdbcType=VARCHAR} ,
+        TITLE = #{title,jdbcType=VARCHAR} ,
+        PIC_URL = #{picUrl,jdbcType=VARCHAR} ,
+        SHOW_SUBSCRIBE = #{showSubscribe,jdbcType=DECIMAL} ,
+        SHOW_SUBSCRIBE_ORDER = #{showSubscribeOrder,jdbcType=DECIMAL} 
+      WHERE 
+        REPLY_ID = #{replyId,jdbcType=DECIMAL} 
+	</update>
+	
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	        
+		       <if test="replyId != null">
+						<![CDATA[AND REPLY_ID = #{replyId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="inputWord != null and inputWord != ''">
+						<!--
+						<![CDATA[AND INPUT_WORD = #{inputWord,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND INPUT_WORD LIKE '%' || #{inputWord,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="jumpUrl != null and jumpUrl != ''">
+						<!--
+						<![CDATA[AND JUMP_URL = #{jumpUrl,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND JUMP_URL LIKE '%' || #{jumpUrl,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="replyWord != null and replyWord != ''">
+						<!--
+						<![CDATA[AND REPLY_WORD = #{replyWord,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND REPLY_WORD LIKE '%' || #{replyWord,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+	        
+		       <if test="createUser != null and createUser != ''">
+						<!--
+						<![CDATA[AND CREATE_USER = #{createUser,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND CREATE_USER LIKE '%' || #{createUser,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="replyAttachment != null and replyAttachment != ''">
+						<!--
+						<![CDATA[AND REPLY_ATTACHMENT = #{replyAttachment,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND REPLY_ATTACHMENT LIKE '%' || #{replyAttachment,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="remark != null and remark != ''">
+						<!--
+						<![CDATA[AND REMARK = #{remark,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND REMARK LIKE '%' || #{remark,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="status != null">
+						<![CDATA[AND STATUS = #{status,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="type != null and type != ''">
+						<!--
+						<![CDATA[AND TYPE = #{type,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND TYPE LIKE '%' || #{type,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="title != null and title != ''">
+						<!--
+						<![CDATA[AND TITLE = #{title,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND TITLE LIKE '%' || #{title,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="picUrl != null and picUrl != ''">
+						<!--
+						<![CDATA[AND PIC_URL = #{picUrl,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND PIC_URL LIKE '%' || #{picUrl,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="showSubscribe != null">
+						<![CDATA[AND SHOW_SUBSCRIBE = #{showSubscribe,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="showSubscribeOrder != null">
+						<![CDATA[AND SHOW_SUBSCRIBE_ORDER = #{showSubscribeOrder,jdbcType=DECIMAL}]]>
+				   </if>
+		</where>
+	</sql>
+	
+ 
+  
+  <select id="queryByCond" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.weixinConfigReply.WeixinConfigReplyBean" >
+    select <include refid="Base_Column_List" />
+    from T_WEIXIN_CONFIG_REPLY
+	<include refid="Base_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+     
+  
+</mapper>
+

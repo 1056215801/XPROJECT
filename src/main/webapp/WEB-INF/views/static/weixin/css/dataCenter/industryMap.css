@@ -1,0 +1,386 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a,
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, section, summary
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+    color: #5e5e5e;
+    background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"黑体";
+}
+a:hover, a:visited, a:link, a:active {
+    text-decoration:none;
+    color:#000;
+}
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.clearfix{zoom:1}
+img,span {vertical-align:middle;}
+
+.whiteFont {color:#fff;}
+.redFont {color:#f14241;}
+.lightBlueFont {color:#67F5FF;}
+.deepBlueFont {color:#3278DA;}
+.yellowFont {color:#FFFF00;}
+.orangeFont {color:#FF6D00;}
+.greenFont {color:#00A85A;}
+.grayFont_5e {color:#5e5e5e;}
+.grayFont_9f {color:#9f9f9f;}
+.font12 {font-size:12px;}
+.font16 {font-size:16px;}
+.font20 {font-size:20px;}
+.margin_top_50 {margin-top:50px;}
+.margin_top_60 {margin-top:60px;}
+.margin_top_100 {margin-top:100px;}
+.margin_top_110 {margin-top:110px;}
+.margin_bottom_10 {margin-bottom:10px;}
+.ver_align_top{vertical-align: top;}
+
+.ui-loader { display: none;}
+.industry_main {
+    width:100%;
+    height: 100%;
+    position:relative;
+    background: url("../../images/dataCenter/bg.jpg") no-repeat 0 0 / 100% 100%;
+}
+.industry_content {
+    width:100%;
+    height: calc(100% - 50px);
+    position:relative;
+}
+
+/*industryMap*/
+.industry_choice_area {
+    position: absolute;
+    right: 0;
+    top: 20px;
+    color: #fff;
+    background: rgba(0,0,0,0.3);
+    padding: 3px 7px;
+}
+.industry_choice_moduleBar {
+    height: 25%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1% 2%;
+}
+.industry_choice_module {
+    float: left;
+    width: 48%;
+    height: 45%;
+    margin: 1%;
+    color: #fff;
+}
+.industry_choice_module i {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+.industry_choice_module img {
+    margin-left: 7%;
+}
+.industry_choice_module span {
+    display: inline-block;
+    width: calc(100% - 7% - 60px);
+    text-align: center;
+}
+.blueModule {
+    background-color: #11729D;
+}
+.greenModule {
+    background-color: #799C0E;
+}
+.purpleModule {
+    background-color: #CD0567;
+}
+.orangeModule {
+    background-color: #F6AF55;
+}
+/*industryMap*/
+
+/*parkDistribution_map*/
+.industry_searchBar {
+    background: url("../../images/dataCenter/bg_line.png") no-repeat 0 0;
+    width: 100%;
+    height: 50px;
+    position:relative;
+    display: flex;
+    box-shadow: 0 1px 1px 1px rgba(0,0,0,0.1);
+    -webkit-box-shadow: 0 1px 1px 1px rgba(0,0,0,0.1);
+}
+.industry_search_region, .industry_search_echelon, .industry_search_scale, .industry_search_industry, .industry_search_industryKind{
+	position: relative;
+    flex: 1;
+    margin: 12px 0;
+    color: #fff;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.5);
+    white-space: nowrap;
+}
+.industry_searchBar div:last-child { border: none;}
+.industry_search_btn {
+    float: left;
+    width: 13%;
+    margin: 11px 0;
+    text-align: center;
+}
+.caret {
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px dashed;
+    display: inline-block;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    width: 0;
+}
+/*区域下拉框样式*/
+#region_down{position:absolute; bottom:5px; left:0px; line-height:1.4; z-index: 100;}
+#region_down ul{background:#fff; position:absolute; overflow: auto; display:none;}
+#region_down ul li {width:100px; text-align:center; font-weight:bold; border-bottom:1px solid #E6E6E6;}
+#region_down ul li a{display:block; color:#000; text-decoration:none; font-size:14px; padding:7px 0;}
+/*梯次下拉框样式*/
+#echelon_down{position:absolute; bottom:5px; left:29%; line-height:1.4; z-index: 100;}
+#echelon_down ul{background:#fff; position:absolute; overflow: auto; display:none;}
+#echelon_down ul li {width:100px; text-align:center; font-weight:bold; border-bottom:1px solid #E6E6E6;}
+#echelon_down ul li a{display:block; color:#000; text-decoration:none; font-size:14px; padding:7px 0;}
+/*规模下拉框样式*/
+#scale_down{position:absolute; bottom:5px; left:58%; line-height:1.4; z-index: 100;}
+#scale_down ul{background:#fff; position:absolute; overflow: auto; display:none;}
+#scale_down ul li {width:100px; text-align:center; font-weight:bold; border-bottom:1px solid #E6E6E6;}
+#scale_down ul li a{display:block; color:#000; text-decoration:none; font-size:14px; padding:7px 0;}
+/*产业下拉框样式*/
+#industry_down{position:absolute; bottom:5px; left:29%; line-height:1.4; z-index: 100;}
+#industry_down ul{background:#fff; position:absolute; overflow: auto; display:none;}
+#industry_down ul li {width:100px; text-align:center; font-weight:bold; border-bottom:1px solid #E6E6E6;}
+#industry_down ul li a{display:block; color:#000; text-decoration:none; font-size:14px; padding:7px 0;}
+/*种类下拉框样式*/
+#industryKind_down{position:absolute; bottom:5px; left:0; line-height:1.4; z-index: 100; }
+#industryKind_down ul{background:#fff; position:absolute; overflow: auto; display:none; }
+#industryKind_down ul li {width:100px; text-align:center; font-weight:bold; border-bottom:1px solid #E6E6E6;}
+#industryKind_down ul li a{display:block; color:#000; text-decoration:none; font-size:14px; padding:7px 0;}
+
+
+#mapPage, #listPage {height: 100%; overflow: auto;}
+.industry_titleBar {
+    background-color: rgba(0,0,0,0.2);
+    text-align: center;
+    color: #fff;
+    padding: 7px 0;
+    margin: 0 5px;
+    border-radius: 3px;
+}
+.industry_titleLeft {
+    float: left;
+    margin-left: 10px;
+}
+.industry_titleRight {
+    float: right;
+    font-size: 12px;
+    margin-right: 10px;
+    padding: 1.2px 0;
+}
+/*.mapArea {
+    width: 100%;
+    height: calc(100% - 34.5px);
+}*/
+.returnBtn {
+    background: url("../../images/dataCenter/return.png") no-repeat 0 0 / 100% 100%;
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    bottom: 50px;
+    left: 15px;
+}
+.switchBtn_next {
+    background: url("../../images/dataCenter/return.png") no-repeat 0 0 / 100% 100%;
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    bottom: 50px;
+    right: 15px;
+    left: auto;
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+}
+/*parkDistribution_details*/
+
+/*industryDistribution_map*/
+.industry_dataCont2 {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+/* demo1 */
+
+.industry_information {
+	padding: 1%;
+    text-align: center;
+}
+.industry_information .industry_choice_module { position: relative;}
+.industry_information .industry_text {
+	padding: 25px 0;
+    width: 100%;
+    color: #fff;
+}
+.industry_information .industry_text h1 {
+	font-size: 28px;
+    color: yellow;
+}
+.industry_information .industry_text small {
+    font-size: 14px;
+    color: #fff;
+}
+.industry_information .industry_text p {
+	height: 22px;
+}
+.industry_information .industry_text span {
+	display: initial;
+    color: yellow;
+    vertical-align: bottom;
+}
+.industry_demoImg { 
+    background: rgba(8,47,86,0.5);
+    height: 300px;
+    overflow: hidden;
+}
+.industry_demoImg.double_height { height: 450px;}
+.industry_demoImg.half_height { height: 200px;}
+.industry_demoImg img {width: 100%;}
+.industry_dataCenter { padding-bottom: 20px;}
+.industry_dataCenter .industry_more {
+	position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0,0,0,.3);
+    text-align: center;
+    line-height: 40px;
+    color: #999;
+    font-size: 16px;
+}
+
+.industry_infor {
+    padding: 2%;
+    font-size: 0;
+}
+.industry_infor .industry_text:first-child { 
+    margin-bottom: 2%;
+	width: 100%;
+}
+.industry_infor .industry_text:nth-child(2) { margin-right: 2%;}
+.industry_infor .industry_text {
+    padding: 15px 0;
+    display: inline-block;
+    width: 49%;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+}
+.industry_infor .industry_text h1 {
+    font-size: 28px;
+    color: yellow;
+}
+.industry_infor .industry_text small {
+    font-size: 14px;
+    color: #fff;
+}
+.industry_infor .industry_text p {
+    white-space: nowrap;
+    overflow: hidden;
+}
+.industry_demoText {
+    margin-top: 10px;
+    background: rgba(8,47,86,0.5);
+    color: #fff;
+    font-size: 16px;
+}
+.industry_demoText .title {
+    padding: 15px 0;
+    text-align: center;
+    color: #b0e7ff;
+}
+.industry_demoText li {
+    padding-left: 15px;
+    height: 36px;
+    line-height: 36px;
+}
+.industry_demoText li:nth-child(even){ background-color: rgba(0,0,0,.3);}
+.industry_demoText2 li:nth-child(even){ background-color: transparent;}
+.industry_demoText2 li:nth-child(odd){ background-color: rgba(0,0,0,.3);}
+.industry_demoText li span {
+	margin-right: 15px;
+    color: red;
+}
+.industry_countText {
+    margin: 0;
+    font-size: 14px
+}
+.industry_countText+.industry_countText .industry_demoImg { margin-top: 10px;}
+.industry_demoImg .titleBar span { color: #FCFF00;}
+.titleBar {
+    position: relative;
+    padding: 5px 15px 5px 25px;
+    font-size: 16px;
+    color: #b0e7ff;
+    font-weight: bold;
+    font-family: -webkit-pictograph;
+    font-family: pictograph;
+}
+.titleBar::before {
+	content: "";
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-40%);
+    -webkit-transform: translateY(-40%);
+    width: 2.2px;
+    height: 18px;
+    background: #aee9ff;
+    display: inline-block;
+}
+.titleBar span {
+    float: right;
+    color: #7DFC00;
+}
+.industry_countText li img{
+    margin: 0 5px;
+    width: 14px;
+    vertical-align: text-top;
+}
+.industry_countText font {
+    float: right;
+    margin-right: 15px;
+    color: #7DFC00;
+}

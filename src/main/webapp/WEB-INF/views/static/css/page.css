@@ -1,0 +1,13 @@
+.pagetip{margin-left:5px;}
+.paginations ul{ float:right;font-size:16px; line-height:24px; margin-right:10px;}
+.paginations ul a{color:#6FAED9;}
+.paginations ul li{float:left;padding:5px 15px;height:35px;margin-top:12px;list-style:none;}
+.paginations ul li a,.pagination ul li span{text-decoration:none; color:#666666;}
+.paginations ul li span:hover{text-decoration:none; color:#fff;}
+.paginations ul li:hover{ background:#6FAED9; color:#fff;}
+.paginations ul li.disabled{color:#737373;cursor:default;background:#f9f9f9;}
+.paginations ul li.disabled a{ color:#737373; cursor:default; font-size:12px;background:#f9f9f9;}
+.paginations ul li.active { background:#6FAED9; color:#fff;} 
+.act li{background:#6FAED9; color:#fff;}
+/* .pagination ul li.active a{color:#666666;font-size:12px;} */
+.paginations ul li input{ text-align:center; width:25px; padding:0; margin:0; font-size:12px; height:20px; line-height:20px;}

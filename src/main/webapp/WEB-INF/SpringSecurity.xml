@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<b:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:b="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+
+     
+	<global-method-security pre-post-annotations="enabled" />
+
+
+	<http pattern="/static/**" security="none"  auto-config="false"  />
+ <!--
+    <http pattern="/login/json/attachment/publish*" security="none" auto-config="false" />  
+ -->
+
+    <!-- 针对微信信任访问的处理 -->
+
+
+    <http pattern="/auth/page/mobile/weixin/**"  auto-config="false" use-expressions="true" entry-point-ref="authenticationEntryPoint">    
+    	<csrf disabled="true"/>
+    	<custom-filter ref="mobileWeixinOpenFilter" before="ANONYMOUS_FILTER" /> 
+		<intercept-url pattern="/**" access="permitAll" />
+    </http> 
+ 
+    <http pattern="/auth/page/validateUnifiedSSOLogin"  auto-config="false" use-expressions="true" entry-point-ref="authenticationEntryPoint">    
+    	<csrf disabled="true"/>
+    	<custom-filter ref="unifiedSSOAuthenticationFilter" before="ANONYMOUS_FILTER" /> 
+		<intercept-url pattern="/**" access="permitAll" />
+    </http>   
+
+	<http auto-config="false" use-expressions="true"  entry-point-ref="authenticationEntryPoint">
+        
+        <headers defaults-disabled="true">
+          <!-- 禁止HeaderWriterFilter为response添加安全header信息。 -->
+          <cache-control/>
+        </headers>
+        <csrf disabled="true"/>
+        <!--  
+		   <form-login login-page='/session/page/login' />		
+		   <remember-me />
+		-->
+		
+		<custom-filter ref="zoneAuthenticationFilter" position="FORM_LOGIN_FILTER" />		
+		<custom-filter ref="zoneLogoutFilter" position="LOGOUT_FILTER" />
+		<custom-filter ref="rememberMeAuthenticationFilter" position="REMEMBER_ME_FILTER" />
+		
+        <!-- 
+		<intercept-url pattern="/session/**" access="permitAll" />
+		<intercept-url pattern="/**" access="isAuthenticated()" />        
+        -->
+         <intercept-url pattern="/admin/**" access="isAuthenticated()" />      
+         <intercept-url pattern="/personalCenter/**" access="isAuthenticated()" /> 
+         <intercept-url pattern="/**/myList*" access="isAuthenticated()" />      
+         
+         <intercept-url pattern="/interface/json/**" access="permitAll" /> 
+         
+         <intercept-url pattern="/**/add*" access="isAuthenticated()" />      
+         <intercept-url pattern="/**/add/**" access="isAuthenticated()" />      
+         <intercept-url pattern="/**/create*" access="isAuthenticated()" />     
+         <intercept-url pattern="/**/create/**" access="isAuthenticated()" />     
+         <intercept-url pattern="/**/edit*" access="isAuthenticated()" />   
+         <intercept-url pattern="/**/edit/**" access="isAuthenticated()" />     
+         <intercept-url pattern="/**/delete*" access="isAuthenticated()" />   
+         <intercept-url pattern="/**/delete/**" access="isAuthenticated()" />    
+         <intercept-url pattern="/**/save*" access="isAuthenticated()" />      
+         <intercept-url pattern="/**/save/**" access="isAuthenticated()" /> 
+       
+         <intercept-url pattern="/**" access="permitAll" />        
+       
+        
+        
+        
+         <access-denied-handler ref="accessDeniedHandler" /> 
+        
+        <!-- 
+        <logout invalidate-session="true" logout-url ="/session/logout" success-handler-ref="zoneLogoutSuccessHandler" />        
+         -->
+
+        
+	</http>
+	
+	<b:bean id="authenticationEntryPoint"  
+        class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">  
+        <b:constructor-arg index="0" value="/session/page/login/index"></b:constructor-arg>
+    </b:bean>  
+    
+	<b:bean id="accessDeniedHandler"   
+       class="com.chinatelecom.jx.zone.spring.security.ZoneAccessDeniedHandler">  
+         <b:property name="errorPage" value="/session/page/403" />          
+    </b:bean>
+    
+    <b:bean id="requestCache" class="org.springframework.security.web.savedrequest.HttpSessionRequestCache" />
+    
+    <b:bean id="zoneSavedRequestAwareAuthenticationSuccessHandler" class="com.chinatelecom.jx.zone.spring.security.ZoneSavedRequestAwareAuthenticationSuccessHandler">
+      <!-- 
+          <b:property name="defaultTargetUrl" value="/login/page/index/index" />
+       -->
+      <b:property name="defaultTargetUrl" value="/" />      
+      <b:property name="requestCache" ref="requestCache" />
+      <b:property name="targetUrlParameter" value="redirectUrl"></b:property>      
+    </b:bean>
+    
+    <b:bean id="zoneSimpleUrlAuthenticationFailureHandler" class="com.chinatelecom.jx.zone.spring.security.ZoneSimpleUrlAuthenticationFailureHandler" >
+       <b:constructor-arg index="0" value="/session/page/login/index"></b:constructor-arg>
+       <b:property name="useForward" value="false" />
+    </b:bean>
+    
+    <b:bean id="zoneAuthenticationFilter" class="com.chinatelecom.jx.zone.spring.security.ZoneAuthenticationFilter">
+       <b:constructor-arg index="0" type="org.springframework.security.web.util.matcher.RequestMatcher">
+         <b:bean class="org.springframework.security.web.util.matcher.AntPathRequestMatcher">
+           <b:constructor-arg index="0"  type="java.lang.String" value="/session/login" />
+           <b:constructor-arg index="1"  type="java.lang.String" value="POST" />
+         </b:bean>     
+       </b:constructor-arg>    
+       <b:property name="authenticationManager" ref="authenticationManager" />
+       <b:property name="authenticationSuccessHandler" ref="zoneSavedRequestAwareAuthenticationSuccessHandler" />
+       <b:property name="authenticationFailureHandler" ref="zoneSimpleUrlAuthenticationFailureHandler" />
+       <b:property name="rememberMeServices" ref="zoneTokenBasedRememberMeServices" />       
+    </b:bean>
+
+    <b:bean id="zoneExceptionTranslationFilter" class="org.springframework.security.web.access.ExceptionTranslationFilter">
+      <b:constructor-arg index="0" ref="authenticationEntryPoint"></b:constructor-arg>
+      <b:constructor-arg index="1" ref="requestCache"></b:constructor-arg>
+      <b:property name="accessDeniedHandler" ref="accessDeniedHandler"/>
+    </b:bean>    
+   
+ 
+    <b:bean id="zoneLogoutSuccessHandler" class="com.chinatelecom.jx.zone.spring.security.ZoneLogoutSuccessHandler" init-method="initialize" >
+      <b:property name="alwaysUseDefaultTargetUrl" value="true" />
+      <b:property name="defaultTargetUrl" value="/session/page/login/index?logout" />    
+    </b:bean>
+ 
+     
+    <b:bean id="zoneLogoutFilter" class="org.springframework.security.web.authentication.logout.LogoutFilter">
+      <b:constructor-arg index="0" ref="zoneLogoutSuccessHandler" />
+      <b:constructor-arg index="1" ref="zoneTokenBasedRememberMeServices" />
+      <b:property name="filterProcessesUrl" value="/session/logout"></b:property>    
+    </b:bean>
+
+    <b:bean id="zoneTokenBasedRememberMeServices" class="com.chinatelecom.jx.zone.spring.security.ZoneTokenBasedRememberMeServices">
+     	<b:constructor-arg index="0" type="java.lang.String" value="zone" />
+        <b:constructor-arg index="1" type="org.springframework.security.core.userdetails.UserDetailsService" ref="zoneUserDetailsService" />
+        <b:property name="parameter" value="remember-me" />
+    </b:bean>
+    
+    
+    <b:bean id="rememberMeAuthenticationFilter" class="org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter">
+     <b:constructor-arg index="0"  ref="authenticationManager" />
+     <b:constructor-arg index="1"  ref="zoneTokenBasedRememberMeServices" />
+    </b:bean>
+    
+   <b:bean id="rememberMeAuthenticationProvider" class="org.springframework.security.authentication.RememberMeAuthenticationProvider">
+     <b:constructor-arg index="0" type="java.lang.String" value="zone" />
+   </b:bean>
+   
+
+
+	<authentication-manager alias="authenticationManager"  erase-credentials="false" >
+		<authentication-provider ref="zoneAuthenticationProvider" />
+		<authentication-provider ref="rememberMeAuthenticationProvider" />
+	</authentication-manager>
+
+</b:beans>

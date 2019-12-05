@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.expShare.ExpShareLabelMapper" >
+
+	<resultMap id="BaseResultMap" type="com.chinatelecom.jx.zone.management.bean.expShare.ExpShareLabelBean">
+    	<id column="LABEL_ID" jdbcType="DECIMAL" property="labelId"/>
+    	<result column="LABEL_TITLE" jdbcType="VARCHAR" property="labelTitle"/>
+    	<result column="LABEL_SORT" jdbcType="DECIMAL" property="labelSort"/>
+    	<result column="REMARK" jdbcType="VARCHAR" property="remark"/>
+	</resultMap>
+	
+	<!--
+	<resultMap id="ResultMapWithForeign" type="com.chinatelecom.jx.zone.management.bean.expShare.ExpShareLabelBean" extends="BaseResultMap" >
+			 <result column="workProcessid" property="workProcessid" jdbcType="VARCHAR" />
+			 <result column="currentState" property="currentState" jdbcType="VARCHAR" />
+       <result column="organizationName" property="orgName" jdbcType="VARCHAR" />
+        <result column="companyName" property="companyName" jdbcType="VARCHAR" />
+       <result column="accountName" property="accountName" jdbcType="VARCHAR" />
+       <result column="parkName" property="parkName" jdbcType="VARCHAR" />
+  </resultMap>
+  -->
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		LABEL_ID,LABEL_TITLE,LABEL_SORT,REMARK
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_EXP_SHARE_LABEL
+    where 
+				LABEL_ID = #{labelId,jdbcType=DECIMAL} 
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+        DELETE FROM T_EXP_SHARE_LABEL WHERE
+				LABEL_ID = #{labelId,jdbcType=DECIMAL} 
+    </delete>
+
+	<insert id="insert" parameterType="com.chinatelecom.jx.zone.management.bean.expShare.ExpShareLabelBean">
+        INSERT INTO T_EXP_SHARE_LABEL (
+        	LABEL_ID ,
+        	LABEL_TITLE ,
+        	LABEL_SORT ,
+        	REMARK 
+        ) VALUES (
+        	#{labelId,jdbcType=DECIMAL} ,
+        	#{labelTitle,jdbcType=VARCHAR} ,
+        	#{labelSort,jdbcType=DECIMAL} ,
+        	#{remark,jdbcType=VARCHAR} 
+        )
+	</insert>
+	
+	<insert id="insertSelective" parameterType="com.chinatelecom.jx.zone.management.bean.expShare.ExpShareLabelBean">
+    insert into T_EXP_SHARE_LABEL
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+    		<if test="labelId != null" >
+        LABEL_ID,
+      	</if>
+    		<if test="labelTitle != null" >
+        LABEL_TITLE,
+      	</if>
+    		<if test="labelSort != null" >
+        LABEL_SORT,
+      	</if>
+    		<if test="remark != null" >
+        REMARK,
+      	</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+    		<if test="labelId != null" >
+        #{labelId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="labelTitle != null" >
+        #{labelTitle,jdbcType=VARCHAR},
+      	</if>
+    		<if test="labelSort != null" >
+        #{labelSort,jdbcType=DECIMAL},
+      	</if>
+    		<if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      	</if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinatelecom.jx.zone.management.bean.expShare.ExpShareLabelBean">
+    update T_EXP_SHARE_LABEL
+    <set >
+    		<if test="labelTitle != null" >
+        LABEL_TITLE = #{labelTitle,jdbcType=VARCHAR},
+      	</if>
+    		<if test="labelSort != null" >
+        LABEL_SORT = #{labelSort,jdbcType=DECIMAL},
+      	</if>
+    		<if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      	</if>
+    </set>
+    where 
+      LABEL_ID = #{labelId,jdbcType=DECIMAL} 
+  </update>
+  
+	<update id="updateByPrimaryKey" parameterType="com.chinatelecom.jx.zone.management.bean.expShare.ExpShareLabelBean">
+      UPDATE T_EXP_SHARE_LABEL SET
+        LABEL_TITLE = #{labelTitle,jdbcType=VARCHAR} ,
+        LABEL_SORT = #{labelSort,jdbcType=DECIMAL} ,
+        REMARK = #{remark,jdbcType=VARCHAR} 
+      WHERE 
+        LABEL_ID = #{labelId,jdbcType=DECIMAL} 
+	</update>
+	
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	        
+		       <if test="labelId != null">
+						<![CDATA[AND LABEL_ID = #{labelId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="labelTitle != null and labelTitle != ''">
+						<!--
+						<![CDATA[AND LABEL_TITLE = #{labelTitle,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND LABEL_TITLE LIKE '%' || #{labelTitle,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="labelSort != null">
+						<![CDATA[AND LABEL_SORT = #{labelSort,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="remark != null and remark != ''">
+						<!--
+						<![CDATA[AND REMARK = #{remark,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND REMARK LIKE '%' || #{remark,jdbcType=VARCHAR} || '%']]>
+				   </if>
+		</where>
+	</sql>
+	
+ 
+  
+  <select id="queryByCond" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.expShare.ExpShareLabelBean" >
+    select <include refid="Base_Column_List" />
+    from T_EXP_SHARE_LABEL
+	<include refid="Base_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+     
+  
+</mapper>
+

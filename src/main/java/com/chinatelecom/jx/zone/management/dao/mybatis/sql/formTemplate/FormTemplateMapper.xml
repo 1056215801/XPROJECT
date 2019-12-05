@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.formTemplate.FormTemplateMapper" >
+
+	<resultMap id="BaseResultMap" type="com.chinatelecom.jx.zone.management.bean.formTemplate.FormTemplateBean">
+    	<id column="ID" jdbcType="DECIMAL" property="id"/>
+    	<result column="FORM_NAME" jdbcType="VARCHAR" property="formName"/>
+    	<result column="FORM_DESC" jdbcType="VARCHAR" property="formDesc"/>
+    	<result column="STATUS_FLAG" jdbcType="DECIMAL" property="statusFlag"/>
+    	<result column="CREATE_OPERATOR_ID" jdbcType="DECIMAL" property="createOperatorId"/>
+    	<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+    	<result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime"/>
+    	<result column="PARK_ID" jdbcType="DECIMAL" property="parkId"/>
+    	<result column="QUOTE_FORM_ID" jdbcType="DECIMAL" property="quoteFormId"/>
+    	<result column="RELATION_TYPE" jdbcType="DECIMAL" property="relationType"/>
+    	<result column="SHOW_URL" jdbcType="VARCHAR" property="showUrl"/>
+    	<result column="EDIT_URL" jdbcType="VARCHAR" property="editUrl"/>
+    	<result column="BRIEF" jdbcType="VARCHAR" property="brief"/>
+    	<result column="EXTEND1" jdbcType="VARCHAR" property="extend1"/>
+    	<result column="EXTEND2" jdbcType="VARCHAR" property="extend2"/>
+    	<result column="EXTEND3" jdbcType="VARCHAR" property="extend3"/>
+    	<result column="FORM_LAYOUT" jdbcType="VARCHAR" property="formLayout"/>
+	</resultMap>
+	
+	<!--
+	<resultMap id="ResultMapWithForeign" type="com.chinatelecom.jx.zone.management.bean.formTemplate.FormTemplateBean" extends="BaseResultMap" >
+			 <result column="workProcessid" property="workProcessid" jdbcType="VARCHAR" />
+			 <result column="currentState" property="currentState" jdbcType="VARCHAR" />
+       <result column="organizationName" property="orgName" jdbcType="VARCHAR" />
+        <result column="companyName" property="companyName" jdbcType="VARCHAR" />
+       <result column="accountName" property="accountName" jdbcType="VARCHAR" />
+       <result column="parkName" property="parkName" jdbcType="VARCHAR" />
+  </resultMap>
+  -->
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		ID,FORM_NAME,FORM_DESC,STATUS_FLAG,CREATE_OPERATOR_ID,CREATE_TIME,UPDATE_TIME,PARK_ID,QUOTE_FORM_ID,RELATION_TYPE,SHOW_URL,EDIT_URL,BRIEF,EXTEND1,EXTEND2,EXTEND3,FORM_LAYOUT
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_FORM_TEMPLATE
+    where 
+				ID = #{id,jdbcType=DECIMAL} 
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+        DELETE FROM T_FORM_TEMPLATE WHERE
+				ID = #{id,jdbcType=DECIMAL} 
+    </delete>
+
+	<insert id="insert" parameterType="com.chinatelecom.jx.zone.management.bean.formTemplate.FormTemplateBean">
+        INSERT INTO T_FORM_TEMPLATE (
+        	ID ,
+        	FORM_NAME ,
+        	FORM_DESC ,
+        	STATUS_FLAG ,
+        	CREATE_OPERATOR_ID ,
+        	CREATE_TIME ,
+        	UPDATE_TIME ,
+        	PARK_ID ,
+        	QUOTE_FORM_ID ,
+        	RELATION_TYPE ,
+        	SHOW_URL ,
+        	EDIT_URL ,
+        	BRIEF ,
+        	EXTEND1 ,
+        	EXTEND2 ,
+        	EXTEND3 ,
+        	FORM_LAYOUT 
+        ) VALUES (
+        	#{id,jdbcType=DECIMAL} ,
+        	#{formName,jdbcType=VARCHAR} ,
+        	#{formDesc,jdbcType=VARCHAR} ,
+        	#{statusFlag,jdbcType=DECIMAL} ,
+        	#{createOperatorId,jdbcType=DECIMAL} ,
+        	#{createTime,jdbcType=TIMESTAMP} ,
+        	#{updateTime,jdbcType=TIMESTAMP} ,
+        	#{parkId,jdbcType=DECIMAL} ,
+        	#{quoteFormId,jdbcType=DECIMAL} ,
+        	#{relationType,jdbcType=DECIMAL} ,
+        	#{showUrl,jdbcType=VARCHAR} ,
+        	#{editUrl,jdbcType=VARCHAR} ,
+        	#{brief,jdbcType=VARCHAR} ,
+        	#{extend1,jdbcType=VARCHAR} ,
+        	#{extend2,jdbcType=VARCHAR} ,
+        	#{extend3,jdbcType=VARCHAR} ,
+        	#{formLayout,jdbcType=VARCHAR}
+        )
+	</insert>
+	
+	<insert id="insertSelective" parameterType="com.chinatelecom.jx.zone.management.bean.formTemplate.FormTemplateBean">
+    insert into T_FORM_TEMPLATE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+    		<if test="id != null" >
+        ID,
+      	</if>
+    		<if test="formName != null" >
+        FORM_NAME,
+      	</if>
+    		<if test="formDesc != null" >
+        FORM_DESC,
+      	</if>
+    		<if test="statusFlag != null" >
+        STATUS_FLAG,
+      	</if>
+    		<if test="createOperatorId != null" >
+        CREATE_OPERATOR_ID,
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME,
+      	</if>
+    		<if test="updateTime != null" >
+        UPDATE_TIME,
+      	</if>
+    		<if test="parkId != null" >
+        PARK_ID,
+      	</if>
+    		<if test="quoteFormId != null" >
+        QUOTE_FORM_ID,
+      	</if>
+    		<if test="relationType != null" >
+        RELATION_TYPE,
+      	</if>
+    		<if test="showUrl != null" >
+        SHOW_URL,
+      	</if>
+    		<if test="editUrl != null" >
+        EDIT_URL,
+      	</if>
+    		<if test="brief != null" >
+        BRIEF,
+      	</if>
+    		<if test="extend1 != null" >
+        EXTEND1,
+      	</if>
+    		<if test="extend2 != null" >
+        EXTEND2,
+      	</if>
+    		<if test="extend3 != null" >
+        EXTEND3,
+      	</if>
+      	<if test="formLayout != null" >
+        FORM_LAYOUT,
+      	</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+    		<if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      	</if>
+    		<if test="formName != null" >
+        #{formName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="formDesc != null" >
+        #{formDesc,jdbcType=VARCHAR},
+      	</if>
+    		<if test="statusFlag != null" >
+        #{statusFlag,jdbcType=DECIMAL},
+      	</if>
+    		<if test="createOperatorId != null" >
+        #{createOperatorId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    		<if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      	</if>
+    		<if test="parkId != null" >
+        #{parkId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="quoteFormId != null" >
+        #{quoteFormId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="relationType != null" >
+        #{relationType,jdbcType=DECIMAL},
+      	</if>
+    		<if test="showUrl != null" >
+        #{showUrl,jdbcType=VARCHAR},
+      	</if>
+    		<if test="editUrl != null" >
+        #{editUrl,jdbcType=VARCHAR},
+      	</if>
+    		<if test="brief != null" >
+        #{brief,jdbcType=VARCHAR},
+      	</if>
+    		<if test="extend1 != null" >
+        #{extend1,jdbcType=VARCHAR},
+      	</if>
+    		<if test="extend2 != null" >
+        #{extend2,jdbcType=VARCHAR},
+      	</if>
+    		<if test="extend3 != null" >
+        #{extend3,jdbcType=VARCHAR},
+      	</if>
+      	<if test="formLayout != null" >
+        #{formLayout,jdbcType=VARCHAR},
+      	</if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinatelecom.jx.zone.management.bean.formTemplate.FormTemplateBean">
+    update T_FORM_TEMPLATE
+    <set >
+    		<if test="formName != null" >
+        FORM_NAME = #{formName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="formDesc != null" >
+        FORM_DESC = #{formDesc,jdbcType=VARCHAR},
+      	</if>
+    		<if test="statusFlag != null" >
+        STATUS_FLAG = #{statusFlag,jdbcType=DECIMAL},
+      	</if>
+    		<if test="createOperatorId != null" >
+        CREATE_OPERATOR_ID = #{createOperatorId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    		<if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      	</if>
+    		<if test="parkId != null" >
+        PARK_ID = #{parkId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="quoteFormId != null" >
+        QUOTE_FORM_ID = #{quoteFormId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="relationType != null" >
+        RELATION_TYPE = #{relationType,jdbcType=DECIMAL},
+      	</if>
+    		<if test="showUrl != null" >
+        SHOW_URL = #{showUrl,jdbcType=VARCHAR},
+      	</if>
+    		<if test="editUrl != null" >
+        EDIT_URL = #{editUrl,jdbcType=VARCHAR},
+      	</if>
+    		<if test="brief != null" >
+        BRIEF = #{brief,jdbcType=VARCHAR},
+      	</if>
+    		<if test="extend1 != null" >
+        EXTEND1 = #{extend1,jdbcType=VARCHAR},
+      	</if>
+    		<if test="extend2 != null" >
+        EXTEND2 = #{extend2,jdbcType=VARCHAR},
+      	</if>
+    		<if test="extend3 != null" >
+        EXTEND3 = #{extend3,jdbcType=VARCHAR},
+      	</if>
+      	<if test="formLayout != null" >
+        FORM_LAYOUT = #{formLayout,jdbcType=VARCHAR},
+      	</if>
+    </set>
+    where 
+      ID = #{id,jdbcType=DECIMAL} 
+  </update>
+  
+	<update id="updateByPrimaryKey" parameterType="com.chinatelecom.jx.zone.management.bean.formTemplate.FormTemplateBean">
+      UPDATE T_FORM_TEMPLATE SET
+        FORM_NAME = #{formName,jdbcType=VARCHAR} ,
+        FORM_DESC = #{formDesc,jdbcType=VARCHAR} ,
+        STATUS_FLAG = #{statusFlag,jdbcType=DECIMAL} ,
+        CREATE_OPERATOR_ID = #{createOperatorId,jdbcType=DECIMAL} ,
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP} ,
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP} ,
+        PARK_ID = #{parkId,jdbcType=DECIMAL} ,
+        QUOTE_FORM_ID = #{quoteFormId,jdbcType=DECIMAL} ,
+        RELATION_TYPE = #{relationType,jdbcType=DECIMAL} ,
+        SHOW_URL = #{showUrl,jdbcType=VARCHAR} ,
+        EDIT_URL = #{editUrl,jdbcType=VARCHAR} ,
+        BRIEF = #{brief,jdbcType=VARCHAR} ,
+        EXTEND1 = #{extend1,jdbcType=VARCHAR} ,
+        EXTEND2 = #{extend2,jdbcType=VARCHAR} ,
+        EXTEND3 = #{extend3,jdbcType=VARCHAR} ,
+        FORM_LAYOUT = #{formLayout,jdbcType=VARCHAR}  
+      WHERE 
+        ID = #{id,jdbcType=DECIMAL} 
+	</update>
+	
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	        
+		       <if test="id != null">
+						<![CDATA[AND ID = #{id,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="formName != null and formName != ''">
+						<!--
+						<![CDATA[AND FORM_NAME = #{formName,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND FORM_NAME LIKE '%' || #{formName,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="formDesc != null and formDesc != ''">
+						<!--
+						<![CDATA[AND FORM_DESC = #{formDesc,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND FORM_DESC LIKE '%' || #{formDesc,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="statusFlag != null">
+						<![CDATA[AND STATUS_FLAG = #{statusFlag,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="createOperatorId != null">
+						<![CDATA[AND CREATE_OPERATOR_ID = #{createOperatorId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+	        
+	        
+		       <if test="parkId != null">
+						<![CDATA[AND PARK_ID = #{parkId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="quoteFormId != null">
+						<![CDATA[AND QUOTE_FORM_ID = #{quoteFormId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="relationType != null">
+						<![CDATA[AND RELATION_TYPE = #{relationType,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="showUrl != null and showUrl != ''">
+						<!--
+						<![CDATA[AND SHOW_URL = #{showUrl,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND SHOW_URL LIKE '%' || #{showUrl,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="editUrl != null and editUrl != ''">
+						<!--
+						<![CDATA[AND EDIT_URL = #{editUrl,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND EDIT_URL LIKE '%' || #{editUrl,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="brief != null and brief != ''">
+						<!--
+						<![CDATA[AND BRIEF = #{brief,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND BRIEF LIKE '%' || #{brief,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="extend1 != null and extend1 != ''">
+						<!--
+						<![CDATA[AND EXTEND1 = #{extend1,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND EXTEND1 LIKE '%' || #{extend1,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="extend2 != null and extend2 != ''">
+						<!--
+						<![CDATA[AND EXTEND2 = #{extend2,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND EXTEND2 LIKE '%' || #{extend2,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="extend3 != null and extend3 != ''">
+						<!--
+						<![CDATA[AND EXTEND3 = #{extend3,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND EXTEND3 LIKE '%' || #{extend3,jdbcType=VARCHAR} || '%']]>
+				   </if>
+				<if test="formLayout != null and formLayout != ''">
+						<![CDATA[AND FORM_LAYOUT = #{formLayout,jdbcType=VARCHAR}]]>
+				   </if>
+		</where>
+	</sql>
+	
+ 
+  
+  <select id="queryByCond" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.formTemplate.FormTemplateBean" >
+    select <include refid="Base_Column_List" />
+    from T_FORM_TEMPLATE
+	<include refid="Base_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+     
+  
+</mapper>
+

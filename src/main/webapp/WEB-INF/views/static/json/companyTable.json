@@ -1,0 +1,70 @@
+{
+	"企业税务信用": "x_data.z_fi_credit_result",
+	"企业税务信用排序": "year desc",
+	
+	"进出口信用": "x_data.z_fi_operating_export_result",
+	"进出口信用排序": "reg_date desc",
+	
+	"对外投资": "x_data.z_info_investment_result",
+	"对外投资排序": "start_date desc",
+	
+	"控股企业": "x_data.z_ser_hold_result",
+	"控股企业排序": "start_date desc",
+	
+	"行政许可工商": "x_data.z_fi_license_gs_result",
+	"行政许可工商排序": "validity_from desc",
+	
+	"行政许可信用中国": "x_data.z_fi_license_cn_result",
+	"行政许可信用中国排序": "lian_date desc",
+	
+	"法律诉讼被执行人信息": "x_data.z_legal_sx_zx_result",
+	"法律诉讼被执行人信息排序": "liandate desc",
+	
+	"法律诉失信被执行人": "x_data.z_legal_sx_sx_result",
+	"法律诉失信被执行人排序": "publicdate desc",
+	
+	"法律诉讼裁判文书": "x_data.z_legal_judgment_result",
+	"法律诉讼裁判文书排序": "submit_date desc",
+	
+	"法律诉讼法院公告": "x_data.z_legal_court_result",
+	"法律诉讼法院公告排序": "publish_date desc",
+	
+	"法律诉讼开庭公告": "x_data.z_legal_courting_result",
+	"法律诉讼开庭公告排序": "open_time desc",
+	
+	"法律诉讼司法拍卖": "x_data.z_risk_sale_result",
+	"法律诉讼司法拍卖排序": "1 desc",
+	
+	"法律诉讼司法协助": "x_data.z_legal_judicial_result",
+	"法律诉讼司法协助排序": "1 desc",
+	
+	//法律诉讼 送达公告 TODO
+	
+	"招标股": "x_data.z_fi_operating_tender_result",
+	"招标股排序": "pubdate desc",
+	
+	"融资信息": "x_data.z_fi_operating_fi_result",
+	"融资信息排序": "date1 desc",
+	
+	"地块公示": "x_data.z_fi_publish_result",
+	"地块公示排序": "publish_date desc",
+	
+	"购地信息": "x_data.z_fi_purchase_result",
+	"购地信息排序": "sign_time desc",
+	
+	"土地转让": "x_data.z_fi_transfer_result",
+	"土地转让排序": "trans_time desc",
+	
+	"抽查检查": "x_data.z_s_spot_check",
+	"抽查检查排序": "date1 desc",
+	
+	"债券信息": "x_data.z_fi_bond_result",
+	"债券信息排序": "release_date desc",
+	
+	"新闻舆情": "x_data.z_fi_extra_news_result",
+	"新闻舆情排序": "publish_time desc",
+	
+	"企业年报": "x_data.z_fi_credit_result",
+	"企业年报排序": "year desc"
+	
+}

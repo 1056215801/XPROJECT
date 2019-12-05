@@ -1,0 +1,244 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"黑体";
+}
+a:hover, a:visited, a:link, a:active {
+    text-decoration:none;
+	color:#000;
+}
+
+html {
+	background-color:#ebebeb;
+}
+.enterprise_main {
+	background-color:#ebebeb;
+	position:relative;
+}
+.enterprise_content {
+	width:100%;
+	background-color:#ebebeb;
+	position:relative;
+	margin:10px 0 55px;
+}
+.enterpriseDataBar {
+	background-color:#fff;
+	margin-bottom:10px;
+}
+.projectTitle {
+	font-weight: bold;
+	font-size:16px;
+	line-height:1.4;
+}
+.projectData {
+	margin-top: 10px;
+	position: relative;
+	color: #8a8a8a;
+	font-size:12px;
+}
+.projectDataLeft {
+	float: left;
+	text-align: right;
+	width: 60px;
+}
+.projectDataRight {
+	margin-left: 60px;
+}
+.recommendItem {
+	position:absolute;
+	top:0;
+	left:0;
+}
+.info_top {
+	width:100%;
+	height:20px;
+	margin-top:20px;
+	border-top:1px solid #f6f6f6;
+}
+.info_title {
+	width:26%;
+	position:relative;
+	top:-10px;
+	left:37%;
+	text-align:center; 
+	background-color:#ebebeb;
+	font-size:14px;
+}
+.project_operBar {
+	background-color:#fff;
+	border-top:1px solid #f6f6f6;
+	border-bottom:1px solid #f6f6f6;
+	text-align:center;
+}
+.project_oper {
+	float:left;
+	padding:7px 0;
+}
+.borRight {
+	border-right:1px solid #f6f6f6;
+}
+.borLeft {
+	border-left:1px solid #f6f6f6;
+}
+.enterprise_dataBar {
+	margin:0 12px;
+	padding-bottom:10px;
+}
+.enterprise_data {
+	padding:10px 0;
+	border-bottom:1px solid #f6f6f6;
+}
+.enterprise_dataTitle {
+	font-weight: bold;
+	font-size:16px;
+	line-height:1.4;
+}
+.enterprise_dataAttr {
+	font-size:12px;
+	color:#8a8a8a;
+	margin-top:3px;
+}
+.enterprise_dataTime {
+	float:left;
+}
+.enterprise_dataStateBlue {
+	background-color:#45A9E4;
+	width:40px;
+	float:right;
+	font-size:10px;
+	border-radius:5px;
+	color:#fff;
+	padding:0 5px;
+	text-align:center;
+}
+.enterprise_dataStateGray {
+	background-color:#B3B3B3;
+	width:40px;
+	float:right;
+	font-size:10px;
+	border-radius:5px;
+	color:#fff;
+	padding:0 5px;
+	text-align:center;
+}
+.enterprise_dataStateRed {
+	background-color:#f14241;
+	width:40px;
+	float:right;
+	font-size:10px;
+	border-radius:5px;
+	color:#fff;
+	padding:0 5px;
+	text-align:center;
+}
+
+.fixed_bottom {
+	width:100%;
+	height:45px;
+	position:fixed;
+	bottom:0;
+	background-color:#F4F4F4;
+	border-top:1px solid #DCDCDC;
+}
+.returnBtn {
+	float:left;
+	margin:12px 10px;
+}
+.bottom_operation {
+	float:right;
+	border-left:1px solid #DCDCDC;
+	padding:0 10px;
+}
+.bottom_operation img {
+	margin:12px 0;
+}
+.spanContral_1 {
+	position:relative;
+	bottom:16px;
+}
+.spanContral_2 {
+	position:relative;
+	top:10px;
+}
+.tipsBar {
+	width:78%;
+	font-size:12px;
+	padding:5px 10px;
+}
+.tipsLeft {
+	float:left;
+	width:65px;
+	font-weight:bold;
+	color:#FE6700;
+}
+.tipsRight {
+	margin-left:65px;
+	color:#FE6700;
+}
+
+/* 选中的分类 */
+.select_oper{
+	color:#f14241;
+	font-weight:bold;
+}
+
+/* 加载更多 */
+.renovateTitle {
+	color: #120F0F;
+	display: inline-block;
+	font-size: 14px;
+	line-height: 14px;
+	text-align: center;
+}
+.renovate {
+	display: block;
+    text-align: center;
+	background-color:#F6F6F6;
+	padding:7px 0;
+}
+
+/* 小火箭 */
+#tbox{
+	width:50px;
+	float:right;
+	position:fixed;
+	right:10px;
+	bottom:50px;
+	overflow:visible;
+}
+#gotop{ 
+	width:50px; 
+	height:50px; 
+	background:url(/mytest/views/static/images/rocket.png) no-repeat; 
+	display:block;
+	background-size:50px 50px; 

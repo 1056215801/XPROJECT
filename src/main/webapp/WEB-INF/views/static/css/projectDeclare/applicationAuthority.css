@@ -1,0 +1,133 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"Microsoft YaHei";
+}
+a:hover, a:visited, a:link, a:active {
+    text-decoration:none;
+	color:#000;
+}
+/* div {
+	-webkit-transition: all .2s ease-in-out 0s;
+	-moz-transition: all .2s ease-in-out 0s;
+	-ms-transition: all .2s ease-in-out 0s;
+	-o-transition: all .2s ease-in-out 0s;
+	transition: all .2s ease-in-out 0s;
+} */
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.clearfix{zoom:1} 
+img,span {vertical-align:middle;}
+
+.authority_main {
+	width:100%;
+}
+.authority_content {
+	/* width:85%; */
+	width:1137px;
+	margin:10px auto;
+	border:1px solid #ccc;
+	padding:20px;
+}
+.titleName {
+	border-bottom:1px solid #ccc;
+}
+.titleName ul{list-style-type:none; position:relative; top:3px; margin-left:5px;}  
+.titleName ul li{float:left; text-align:center; font-weight:bold; margin-right:20px; padding:1px 10px;}
+.titleName ul li a{text-decoration:none; font-size:20px; font-weight:bold;}
+.titleClick { border-bottom:5px solid #F14241;}
+.authority_inputBar {
+	width:82%;
+	margin:20px auto;
+}
+.authority_input {
+	margin-bottom:15px;
+}
+.redStar {
+	float:left;
+	color:#FF0000;
+}
+.authority_attr {
+	float:left;
+	margin-left:10px;
+	width:56px;
+}
+.inputContral {
+	float:left;
+	margin-left:15px;
+}
+.selectContral {
+	float:left;
+	margin-left:15px;
+	padding:2px 0;
+}
+.uploadImgContral {
+	float:left;
+	margin-left:15px;
+}
+.uploadImgTips {
+	float:left;
+	margin-left:15px;
+	font-size:12px;
+	color:#aaa;
+}
+.redBtnContral {
+	background-color:#f14241;
+	border:1px solid #f14241;
+	color:#fff;
+	width:100px;
+	float:right;
+	padding:3px 0;
+	cursor:pointer;
+}
+.grayBtnContral {
+	background-color:#F2F2F2;
+	border:1px solid #E2E2E2;
+	margin-right:10px;
+	width:100px;
+	float:right;
+	padding:3px 0;
+	cursor:pointer;
+}
+.authority_exampleBar {
+	border-left:1px solid #ccc;
+	padding-left:30px;
+}
+.authority_example {
+	color:#aaa;
+}

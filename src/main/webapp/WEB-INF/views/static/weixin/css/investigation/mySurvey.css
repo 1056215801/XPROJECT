@@ -1,0 +1,167 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"黑体";
+}
+a:hover, a:visited, a:link, a:active {
+    text-decoration:none;
+	color:#f1921c;
+}
+li {
+	background-color:#fff;
+}
+
+html {
+	background-color:#ebebeb;
+}
+.mySur_main {
+	background-color:#ebebeb;
+	position:relative;
+	margin-bottom:60px;
+}
+.mySur_content {
+	width:100%;
+	background-color:#ebebeb;
+	position:relative;
+}
+.titleSwitch {
+	position:fixed;
+	top:0;
+	background-color:#f1921c;
+	width:100%;
+	height:55px;
+	z-index:1000;
+}
+.titleName {
+	margin:9px auto;
+	width:186px;
+}
+.titleName ul{list-style-type:none; position:relative; top:3px; margin-left:5px;}  
+.titleName ul li{float:left; text-align:center; font-weight:bold; padding:5px 15px;}
+.titleName ul li a{text-decoration:none; font-size:14px; font-weight:bold;}
+.titleClick { background-color:#b76501;}
+.titleClick a { color:#fff;}
+.titleItem {
+	margin-top:65px;
+}
+
+.surveyCont {
+	background-color:#fff;
+	margin-bottom:10px;
+}
+.surveyDataBar {
+	margin:0 10px;
+	padding:5px 0;
+}
+.surveyDataTop {
+	border-bottom:1px solid #f6f6f6;
+	padding:5px 0;
+}
+.surveyTitle {
+	vertical-align:middle;
+	color:#000;
+	font-size: 15px;
+}
+.surveyTime {
+	font-size:12px;
+	color:#585858;
+}
+.surveyDataBottom {
+	position:relative;
+	padding:5px 0;
+}
+.surveyPop {
+	vertical-align:middle;
+	font-size:12px;
+	color:#000;
+}
+.surveyStateYellow {
+	position:absolute;
+	top:7px;
+	right:0;
+	padding:1px 15px;
+	background-color:#f1921c;
+	color:#fff;
+	border:0;
+	border-radius:10px;
+}
+.surveyStateGray {
+	position:absolute;
+	top:7px;
+	right:0;
+	padding:1px 15px;
+	background-color:#A3A3A3;
+	color:#fff;
+	border:0;
+	border-radius:10px;
+}
+.surveyDelOper {
+	background-color:#F4F4F4;
+	position:relative; 
+	padding:5px 0;
+	text-align:right;
+}
+
+/* 底部选项栏图标样式 */
+.navigationImg{
+	width:20px;
+	height:20px; 
+	margin-top:6%;
+}
+
+/* 加载更多 */
+.renovateTitle {
+	color: #120F0F;
+	display: inline-block;
+	font-size: 14px;
+	line-height: 14px;
+	text-align: center;
+}
+.renovate {
+	display: block;
+    text-align: center;
+	background-color:#F6F6F6;
+	padding:7px 0;
+}
+
+/* 小火箭 */
+#tbox{
+	width:50px;
+	height: 60px; 
+	background:url(/XProject/static/weixin/images/logistics/rocket.png) no-repeat; 
+	display:none;
+	position:fixed;
+	right:10px;
+	bottom:50px;
+	background-size:50px 50px; 
+}

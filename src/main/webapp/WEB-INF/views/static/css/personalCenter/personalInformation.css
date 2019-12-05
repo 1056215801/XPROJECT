@@ -1,0 +1,101 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"Microsoft YaHei";
+}
+a:hover, a:visited, a:link, a:active {
+    text-decoration:none;
+	color:#5e5e5e;
+}
+
+.info_main {
+	width:100%;
+}
+.info_content {
+	width:90%;
+	margin:10px auto;
+	border:1px solid #ccc;
+}
+.info_contentLeft {
+	width:200px;
+	float:left;
+	padding:0 15px;
+}
+.menuNav {
+	padding:15px 5px;
+	/* font-weight:bold; */
+	border-bottom:1px solid #ccc;
+}
+.menuNav ul{list-style-type:none;}  
+.menuNav ul li{margin-left:30px; margin-top:5px;}
+.menuNav ul li a{text-decoration:none; color:#aaa;}
+.info_contentRight {
+	margin-left:220px;
+	padding:22px 15px;
+}
+.info_cont {
+	border:1px solid #ccc;
+}
+.info_top {
+	background-color:#F4F4F4;
+	padding:7px 17px;
+}
+.info_data {
+	padding:7px 0;
+}
+.info_dataLeft {
+	float:left;
+	width:50px;
+}
+.inputTextContral {
+	width:250px;
+	padding:3px 0;
+	text-indent: 1em;
+}
+.inputCase {
+	float:left;
+	margin-right:10px;
+}
+.laydateContral {
+	height:28px;
+	text-indent: 1em;
+}
+.buttonContral {
+	width:100px;
+	background-color:#F14342;
+	padding:3px 0;
+	text-align:center;
+	border:0;
+	color:#fff;
+	cursor:pointer;
+}

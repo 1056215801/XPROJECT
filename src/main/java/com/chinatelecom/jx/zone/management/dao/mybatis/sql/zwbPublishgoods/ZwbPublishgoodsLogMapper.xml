@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.zwbPublishgoods.ZwbPublishgoodsLogMapper" >
+
+	<resultMap id="BaseResultMap" type="com.chinatelecom.jx.zone.management.bean.zwbPublishgoods.ZwbPublishgoodsLogBean">
+    	<id column="GOODS_ID" jdbcType="DECIMAL" property="goodsId"/>
+    	<result column="ACCOUNT_ID" jdbcType="DECIMAL" property="accountId"/>
+    	<result column="ORGANIZATION_ID" jdbcType="DECIMAL" property="organizationId"/>
+    	<result column="GOODS_TYPE_ID" jdbcType="DECIMAL" property="goodsTypeId"/>
+    	<result column="GOODS_NAME" jdbcType="VARCHAR" property="goodsName"/>
+    	<result column="GOODS_WEIGHT" jdbcType="DECIMAL" property="goodsWeight"/>
+    	<result column="TOTAL_PRICE" jdbcType="VARCHAR" property="totalPrice"/>
+    	<result column="SEND_TYPE" jdbcType="DECIMAL" property="sendType"/>
+    	<result column="LOAD_TIME" jdbcType="TIMESTAMP" property="loadTime"/>
+    	<result column="BEGIN_AREA_ID" jdbcType="DECIMAL" property="beginAreaId"/>
+    	<result column="BEGIN_DETAIL_ADDRESS" jdbcType="VARCHAR" property="beginDetailAddress"/>
+    	<result column="BEGIN_CONTACTS" jdbcType="VARCHAR" property="beginContacts"/>
+    	<result column="END_AREA_ID" jdbcType="DECIMAL" property="endAreaId"/>
+    	<result column="END_DETAIL_ADDRESS" jdbcType="VARCHAR" property="endDetailAddress"/>
+    	<result column="END_CONTACTS" jdbcType="VARCHAR" property="endContacts"/>
+    	<result column="REMARK" jdbcType="VARCHAR" property="remark"/>
+    	<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+	</resultMap>
+	
+	<!--
+	<resultMap id="ResultMapWithForeign" type="com.chinatelecom.jx.zone.management.bean.zwbPublishgoods.ZwbPublishgoodsLogBean" extends="BaseResultMap" >
+			 <result column="workProcessid" property="workProcessid" jdbcType="VARCHAR" />
+			 <result column="currentState" property="currentState" jdbcType="VARCHAR" />
+       <result column="organizationName" property="orgName" jdbcType="VARCHAR" />
+        <result column="companyName" property="companyName" jdbcType="VARCHAR" />
+       <result column="accountName" property="accountName" jdbcType="VARCHAR" />
+       <result column="parkName" property="parkName" jdbcType="VARCHAR" />
+  </resultMap>
+  -->
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		GOODS_ID,ACCOUNT_ID,ORGANIZATION_ID,GOODS_TYPE_ID,GOODS_NAME,GOODS_WEIGHT,TOTAL_PRICE,SEND_TYPE,LOAD_TIME,BEGIN_AREA_ID,BEGIN_DETAIL_ADDRESS,BEGIN_CONTACTS,END_AREA_ID,END_DETAIL_ADDRESS,END_CONTACTS,REMARK,CREATE_TIME
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_ZWB_PUBLISHGOODS_LOG
+    where 
+				GOODS_ID = #{goodsId,jdbcType=DECIMAL} 
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+        DELETE FROM T_ZWB_PUBLISHGOODS_LOG WHERE
+				GOODS_ID = #{goodsId,jdbcType=DECIMAL} 
+    </delete>
+
+	<insert id="insert" parameterType="com.chinatelecom.jx.zone.management.bean.zwbPublishgoods.ZwbPublishgoodsLogBean">
+        INSERT INTO T_ZWB_PUBLISHGOODS_LOG (
+        	GOODS_ID ,
+        	ACCOUNT_ID ,
+        	ORGANIZATION_ID ,
+        	GOODS_TYPE_ID ,
+        	GOODS_NAME ,
+        	GOODS_WEIGHT ,
+        	TOTAL_PRICE ,
+        	SEND_TYPE ,
+        	LOAD_TIME ,
+        	BEGIN_AREA_ID ,
+        	BEGIN_DETAIL_ADDRESS ,
+        	BEGIN_CONTACTS ,
+        	END_AREA_ID ,
+        	END_DETAIL_ADDRESS ,
+        	END_CONTACTS ,
+        	REMARK ,
+        	CREATE_TIME 
+        ) VALUES (
+        	#{goodsId,jdbcType=DECIMAL} ,
+        	#{accountId,jdbcType=DECIMAL} ,
+        	#{organizationId,jdbcType=DECIMAL} ,
+        	#{goodsTypeId,jdbcType=DECIMAL} ,
+        	#{goodsName,jdbcType=VARCHAR} ,
+        	#{goodsWeight,jdbcType=DECIMAL} ,
+        	#{totalPrice,jdbcType=VARCHAR} ,
+        	#{sendType,jdbcType=DECIMAL} ,
+        	#{loadTime,jdbcType=TIMESTAMP} ,
+        	#{beginAreaId,jdbcType=DECIMAL} ,
+        	#{beginDetailAddress,jdbcType=VARCHAR} ,
+        	#{beginContacts,jdbcType=VARCHAR} ,
+        	#{endAreaId,jdbcType=DECIMAL} ,
+        	#{endDetailAddress,jdbcType=VARCHAR} ,
+        	#{endContacts,jdbcType=VARCHAR} ,
+        	#{remark,jdbcType=VARCHAR} ,
+        	#{createTime,jdbcType=TIMESTAMP} 
+        )
+	</insert>
+	
+	<insert id="insertSelective" parameterType="com.chinatelecom.jx.zone.management.bean.zwbPublishgoods.ZwbPublishgoodsLogBean">
+    insert into T_ZWB_PUBLISHGOODS_LOG
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+    		<if test="goodsId != null" >
+        GOODS_ID,
+      	</if>
+    		<if test="accountId != null" >
+        ACCOUNT_ID,
+      	</if>
+    		<if test="organizationId != null" >
+        ORGANIZATION_ID,
+      	</if>
+    		<if test="goodsTypeId != null" >
+        GOODS_TYPE_ID,
+      	</if>
+    		<if test="goodsName != null" >
+        GOODS_NAME,
+      	</if>
+    		<if test="goodsWeight != null" >
+        GOODS_WEIGHT,
+      	</if>
+    		<if test="totalPrice != null" >
+        TOTAL_PRICE,
+      	</if>
+    		<if test="sendType != null" >
+        SEND_TYPE,
+      	</if>
+    		<if test="loadTime != null" >
+        LOAD_TIME,
+      	</if>
+    		<if test="beginAreaId != null" >
+        BEGIN_AREA_ID,
+      	</if>
+    		<if test="beginDetailAddress != null" >
+        BEGIN_DETAIL_ADDRESS,
+      	</if>
+    		<if test="beginContacts != null" >
+        BEGIN_CONTACTS,
+      	</if>
+    		<if test="endAreaId != null" >
+        END_AREA_ID,
+      	</if>
+    		<if test="endDetailAddress != null" >
+        END_DETAIL_ADDRESS,
+      	</if>
+    		<if test="endContacts != null" >
+        END_CONTACTS,
+      	</if>
+    		<if test="remark != null" >
+        REMARK,
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME,
+      	</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+    		<if test="goodsId != null" >
+        #{goodsId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="accountId != null" >
+        #{accountId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="organizationId != null" >
+        #{organizationId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="goodsTypeId != null" >
+        #{goodsTypeId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="goodsName != null" >
+        #{goodsName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="goodsWeight != null" >
+        #{goodsWeight,jdbcType=DECIMAL},
+      	</if>
+    		<if test="totalPrice != null" >
+        #{totalPrice,jdbcType=VARCHAR},
+      	</if>
+    		<if test="sendType != null" >
+        #{sendType,jdbcType=DECIMAL},
+      	</if>
+    		<if test="loadTime != null" >
+        #{loadTime,jdbcType=TIMESTAMP},
+      	</if>
+    		<if test="beginAreaId != null" >
+        #{beginAreaId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="beginDetailAddress != null" >
+        #{beginDetailAddress,jdbcType=VARCHAR},
+      	</if>
+    		<if test="beginContacts != null" >
+        #{beginContacts,jdbcType=VARCHAR},
+      	</if>
+    		<if test="endAreaId != null" >
+        #{endAreaId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="endDetailAddress != null" >
+        #{endDetailAddress,jdbcType=VARCHAR},
+      	</if>
+    		<if test="endContacts != null" >
+        #{endContacts,jdbcType=VARCHAR},
+      	</if>
+    		<if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      	</if>
+    		<if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinatelecom.jx.zone.management.bean.zwbPublishgoods.ZwbPublishgoodsLogBean">
+    update T_ZWB_PUBLISHGOODS_LOG
+    <set >
+    		<if test="accountId != null" >
+        ACCOUNT_ID = #{accountId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="organizationId != null" >
+        ORGANIZATION_ID = #{organizationId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="goodsTypeId != null" >
+        GOODS_TYPE_ID = #{goodsTypeId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="goodsName != null" >
+        GOODS_NAME = #{goodsName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="goodsWeight != null" >
+        GOODS_WEIGHT = #{goodsWeight,jdbcType=DECIMAL},
+      	</if>
+    		<if test="totalPrice != null" >
+        TOTAL_PRICE = #{totalPrice,jdbcType=VARCHAR},
+      	</if>
+    		<if test="sendType != null" >
+        SEND_TYPE = #{sendType,jdbcType=DECIMAL},
+      	</if>
+    		<if test="loadTime != null" >
+        LOAD_TIME = #{loadTime,jdbcType=TIMESTAMP},
+      	</if>
+    		<if test="beginAreaId != null" >
+        BEGIN_AREA_ID = #{beginAreaId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="beginDetailAddress != null" >
+        BEGIN_DETAIL_ADDRESS = #{beginDetailAddress,jdbcType=VARCHAR},
+      	</if>
+    		<if test="beginContacts != null" >
+        BEGIN_CONTACTS = #{beginContacts,jdbcType=VARCHAR},
+      	</if>
+    		<if test="endAreaId != null" >
+        END_AREA_ID = #{endAreaId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="endDetailAddress != null" >
+        END_DETAIL_ADDRESS = #{endDetailAddress,jdbcType=VARCHAR},
+      	</if>
+    		<if test="endContacts != null" >
+        END_CONTACTS = #{endContacts,jdbcType=VARCHAR},
+      	</if>
+    		<if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    </set>
+    where 
+      GOODS_ID = #{goodsId,jdbcType=DECIMAL} 
+  </update>
+  
+	<update id="updateByPrimaryKey" parameterType="com.chinatelecom.jx.zone.management.bean.zwbPublishgoods.ZwbPublishgoodsLogBean">
+      UPDATE T_ZWB_PUBLISHGOODS_LOG SET
+        ACCOUNT_ID = #{accountId,jdbcType=DECIMAL} ,
+        ORGANIZATION_ID = #{organizationId,jdbcType=DECIMAL} ,
+        GOODS_TYPE_ID = #{goodsTypeId,jdbcType=DECIMAL} ,
+        GOODS_NAME = #{goodsName,jdbcType=VARCHAR} ,
+        GOODS_WEIGHT = #{goodsWeight,jdbcType=DECIMAL} ,
+        TOTAL_PRICE = #{totalPrice,jdbcType=VARCHAR} ,
+        SEND_TYPE = #{sendType,jdbcType=DECIMAL} ,
+        LOAD_TIME = #{loadTime,jdbcType=TIMESTAMP} ,
+        BEGIN_AREA_ID = #{beginAreaId,jdbcType=DECIMAL} ,
+        BEGIN_DETAIL_ADDRESS = #{beginDetailAddress,jdbcType=VARCHAR} ,
+        BEGIN_CONTACTS = #{beginContacts,jdbcType=VARCHAR} ,
+        END_AREA_ID = #{endAreaId,jdbcType=DECIMAL} ,
+        END_DETAIL_ADDRESS = #{endDetailAddress,jdbcType=VARCHAR} ,
+        END_CONTACTS = #{endContacts,jdbcType=VARCHAR} ,
+        REMARK = #{remark,jdbcType=VARCHAR} ,
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP} 
+      WHERE 
+        GOODS_ID = #{goodsId,jdbcType=DECIMAL} 
+	</update>
+	
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	        
+		       <if test="goodsId != null">
+						<![CDATA[AND GOODS_ID = #{goodsId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="accountId != null">
+						<![CDATA[AND ACCOUNT_ID = #{accountId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="organizationId != null">
+						<![CDATA[AND ORGANIZATION_ID = #{organizationId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="goodsTypeId != null">
+						<![CDATA[AND GOODS_TYPE_ID = #{goodsTypeId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="goodsName != null and goodsName != ''">
+						<!--
+						<![CDATA[AND GOODS_NAME = #{goodsName,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND GOODS_NAME LIKE '%' || #{goodsName,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="goodsWeight != null">
+						<![CDATA[AND GOODS_WEIGHT = #{goodsWeight,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="totalPrice != null">
+						<![CDATA[AND TOTAL_PRICE = #{totalPrice,jdbcType=VARCHAR}]]>
+				   </if>
+	        
+		       <if test="sendType != null">
+						<![CDATA[AND SEND_TYPE = #{sendType,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+	        
+		       <if test="beginAreaId != null">
+						<![CDATA[AND BEGIN_AREA_ID = #{beginAreaId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="beginDetailAddress != null and beginDetailAddress != ''">
+						<!--
+						<![CDATA[AND BEGIN_DETAIL_ADDRESS = #{beginDetailAddress,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND BEGIN_DETAIL_ADDRESS LIKE '%' || #{beginDetailAddress,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="beginContacts != null and beginContacts != ''">
+						<!--
+						<![CDATA[AND BEGIN_CONTACTS = #{beginContacts,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND BEGIN_CONTACTS LIKE '%' || #{beginContacts,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="endAreaId != null">
+						<![CDATA[AND END_AREA_ID = #{endAreaId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="endDetailAddress != null and endDetailAddress != ''">
+						<!--
+						<![CDATA[AND END_DETAIL_ADDRESS = #{endDetailAddress,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND END_DETAIL_ADDRESS LIKE '%' || #{endDetailAddress,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="endContacts != null and endContacts != ''">
+						<!--
+						<![CDATA[AND END_CONTACTS = #{endContacts,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND END_CONTACTS LIKE '%' || #{endContacts,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="remark != null and remark != ''">
+						<!--
+						<![CDATA[AND REMARK = #{remark,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND REMARK LIKE '%' || #{remark,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		</where>
+	</sql>
+	
+ 
+  
+  <select id="queryByCond" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.zwbPublishgoods.ZwbPublishgoodsLogBean" >
+    select <include refid="Base_Column_List" />
+    from T_ZWB_PUBLISHGOODS_LOG
+	<include refid="Base_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+     
+  
+</mapper>
+

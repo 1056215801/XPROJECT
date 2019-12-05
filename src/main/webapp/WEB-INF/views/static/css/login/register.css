@@ -1,0 +1,131 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"黑体";
+}
+
+.register_main {
+}
+.register_content {
+	width:380px;
+	margin:0 auto 75px;
+}
+.bottomLine {
+	position:relative;
+	top:40px;
+	border-bottom:3px solid #ccc;
+}
+.loginModeGray {
+	float:left;
+	font-size:16px;
+	padding:11px 5px 2px;
+	color:#6F6F6F;
+	border-bottom:3px solid #6F6F6F;
+	font-weight:bold;
+	z-index:10;
+}
+.input_Contral {
+	width:90%;
+	margin:10px auto;
+	border: 1px solid #ccc;
+	border-radius: 1px;
+	padding: 8px 12px;
+	display:block;
+}
+.checkbox_Contral {
+	margin:-3px 5px 0 3px;
+	display:inline-block;
+	vertical-align:middle;
+	border:1px solid #ccc;
+}
+.validateContral {
+	margin:10px auto;
+	width:96.6%;
+}
+.messageValidate {
+	width:59.8%;
+	float:left;
+	border: 1px solid #ccc;
+	border-radius: 1px;
+	padding: 8px 12px;
+}
+.validateBtn {
+	width:30%;
+	float:left;
+	border: 1px solid #EFEFEF;
+	border-radius: 1px;
+	padding: 8px 12px;
+	margin-left:10px;
+	background-color:#EFEFEF;
+	text-align:center;
+	/* color:#f14342; */
+	color:#6F6F6F;
+	cursor:pointer;
+}
+.validateBtn:hover {
+	background-color:#e7e7e7;
+}
+.successTips {
+	width:100%;
+	margin-top:60px;
+	padding:35px 0;
+	-moz-box-shadow:1px 1px 2px rgba(0, 0, 0, .2);
+	-webkit-box-shadow:1px 1px 2px rgba(0, 0, 0, .2);
+	box-shadow:1px 1px 2px rgba(0, 0, 0, .2);
+}
+.successImg {
+	display:inline-block;
+	vertical-align:middle;
+	margin-left:35px;
+}
+.successCont {
+	display:inline-block;
+	vertical-align:middle;
+	font-size:16px;
+	margin-left:25px;
+}
+.copyright {
+	position:fixed;
+	left:0;
+	right:0;
+	text-align:center;
+	bottom:15px;
+	color:#aaa;
+}
+
+.displayNo {display:none;}
+.button_Contral {
+	margin:10px 2% 0!important;
+	font-weight:bold!important;
+	border-radius:20px;
+}

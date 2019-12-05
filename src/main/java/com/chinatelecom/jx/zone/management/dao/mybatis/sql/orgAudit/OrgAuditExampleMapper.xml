@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper
+	namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.orgAudit.OrgAuditExampleMapper">
+
+	<resultMap id="BaseResultMap"
+		type="com.chinatelecom.jx.zone.management.bean.orgAudit.OrgAuditExampleBean">
+		<id column="EXAMPLE_ID" jdbcType="DECIMAL" property="exampleId" />
+		<result column="ORG_ID" jdbcType="DECIMAL" property="orgId" />
+		<result column="DECLARE_ID" jdbcType="DECIMAL" property="declareId" />
+		<result column="DECLARE_TITLE" jdbcType="VARCHAR" property="declareTitle" />
+		<result column="ORG_NAME" jdbcType="VARCHAR" property="orgName" />
+		<result column="ORG_KIND" jdbcType="DECIMAL" property="orgKind" />
+		<result column="END_TIME" jdbcType="TIMESTAMP" property="endTime" />
+		<result column="INDEX_NUM" jdbcType="DECIMAL" property="indexNum" />
+		<result column="IS_REPORT" jdbcType="DECIMAL" property="isReport" />
+		<result column="STATUS" jdbcType="DECIMAL" property="status" />
+		<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="EXAMPLE_TITLE" jdbcType="VARCHAR" property="exampleTitle" />
+		<result column="EXAMPLE_TEXT" jdbcType="VARCHAR" property="exampleText" />
+		<result column="EXAMPLE_ATT" jdbcType="VARCHAR" property="exampleAtt" />
+		<result column="IS_ALLOT" jdbcType="DECIMAL" property="isAllot" />
+		<result column="DECLARE_OPEN" jdbcType="DECIMAL" property="declareOpen" />
+	</resultMap>
+
+	<!-- <resultMap id="ResultMapWithForeign" type="com.chinatelecom.jx.zone.management.bean.orgAudit.OrgAuditExampleBean" 
+		extends="BaseResultMap" > <result column="workProcessid" property="workProcessid" 
+		jdbcType="VARCHAR" /> <result column="currentState" property="currentState" 
+		jdbcType="VARCHAR" /> <result column="organizationName" property="orgName" 
+		jdbcType="VARCHAR" /> <result column="companyName" property="companyName" 
+		jdbcType="VARCHAR" /> <result column="accountName" property="accountName" 
+		jdbcType="VARCHAR" /> <result column="parkName" property="parkName" jdbcType="VARCHAR" 
+		/> </resultMap> -->
+
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		EXAMPLE_ID,ORG_ID,DECLARE_ID,DECLARE_TITLE,ORG_NAME,ORG_KIND,END_TIME,INDEX_NUM,IS_REPORT,STATUS,CREATE_TIME,EXAMPLE_TITLE,EXAMPLE_TEXT,EXAMPLE_ATT,IS_ALLOT
+	</sql>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.math.BigDecimal">
+		select
+		<include refid="Base_Column_List" />
+		from T_ORG_AUDIT_EXAMPLE
+		where
+		EXAMPLE_ID =
+		#{exampleId,jdbcType=DECIMAL}
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+		DELETE FROM
+		T_ORG_AUDIT_EXAMPLE WHERE
+		EXAMPLE_ID = #{exampleId,jdbcType=DECIMAL}
+	</delete>
+
+	<insert id="insert"
+		parameterType="com.chinatelecom.jx.zone.management.bean.orgAudit.OrgAuditExampleBean">
+		INSERT INTO T_ORG_AUDIT_EXAMPLE (
+		EXAMPLE_ID ,
+		ORG_ID ,
+		DECLARE_ID ,
+		DECLARE_TITLE ,
+		ORG_NAME ,
+		ORG_KIND ,
+		END_TIME ,
+		INDEX_NUM ,
+		IS_REPORT ,
+		STATUS ,
+		CREATE_TIME,
+		EXAMPLE_TITLE,
+		EXAMPLE_TEXT,
+		EXAMPLE_ATT,
+		IS_ALLOT
+		) VALUES (
+		#{exampleId,jdbcType=DECIMAL} ,
+		#{orgId,jdbcType=DECIMAL} ,
+		#{declareId,jdbcType=DECIMAL} ,
+		#{declareTitle,jdbcType=VARCHAR} ,
+		#{orgName,jdbcType=VARCHAR} ,
+		#{orgKind,jdbcType=DECIMAL} ,
+		#{endTime,jdbcType=TIMESTAMP} ,
+		#{indexNum,jdbcType=DECIMAL} ,
+		#{isReport,jdbcType=DECIMAL} ,
+		#{status,jdbcType=DECIMAL} ,
+		#{createTime,jdbcType=TIMESTAMP} ,
+		#{exampleTitle,jdbcType=VARCHAR} ,
+		#{exampleText,jdbcType=VARCHAR} ,
+		#{exampleAtt,jdbcType=VARCHAR},
+		#{isAllot,jdbcType=DECIMAL} 
+		)
+	</insert>
+
+	<insert id="insertSelective"
+		parameterType="com.chinatelecom.jx.zone.management.bean.orgAudit.OrgAuditExampleBean">
+		insert into T_ORG_AUDIT_EXAMPLE
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="exampleId != null">
+				EXAMPLE_ID,
+			</if>
+			<if test="orgId != null">
+				ORG_ID,
+			</if>
+			<if test="declareId != null">
+				DECLARE_ID,
+			</if>
+			<if test="declareTitle != null">
+				DECLARE_TITLE,
+			</if>
+			<if test="orgName != null">
+				ORG_NAME,
+			</if>
+			<if test="orgKind != null">
+				ORG_KIND,
+			</if>
+			<if test="endTime != null">
+				END_TIME,
+			</if>
+			<if test="indexNum != null">
+				INDEX_NUM,
+			</if>
+			<if test="isReport != null">
+				IS_REPORT,
+			</if>
+			<if test="status != null">
+				STATUS,
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME,
+			</if>
+			<if test="exampleTitle != null">
+				EXAMPLE_TITLE,
+			</if>
+			<if test="exampleText != null">
+				EXAMPLE_TEXT,
+			</if>
+			<if test="exampleAtt != null">
+				EXAMPLE_ATT,
+			</if>
+				<if test="isAllot != null">
+				IS_ALLOT,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="exampleId != null">
+				#{exampleId,jdbcType=DECIMAL},
+			</if>
+			<if test="orgId != null">
+				#{orgId,jdbcType=DECIMAL},
+			</if>
+			<if test="declareId != null">
+				#{declareId,jdbcType=DECIMAL},
+			</if>
+			<if test="declareTitle != null">
+				#{declareTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="orgName != null">
+				#{orgName,jdbcType=VARCHAR},
+			</if>
+			<if test="orgKind != null">
+				#{orgKind,jdbcType=DECIMAL},
+			</if>
+			<if test="endTime != null">
+				#{endTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="indexNum != null">
+				#{indexNum,jdbcType=DECIMAL},
+			</if>
+			<if test="isReport != null">
+				#{isReport,jdbcType=DECIMAL},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=DECIMAL},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="exampleTitle != null">
+				#{exampleTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="exampleText != null">
+				#{exampleText,jdbcType=VARCHAR},
+			</if>
+			<if test="exampleAtt != null">
+				#{exampleAtt,jdbcType=VARCHAR},
+			</if>
+			<if test="isAllot != null">
+				#{isAllot,jdbcType=DECIMAL},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateByPrimaryKeySelective"
+		parameterType="com.chinatelecom.jx.zone.management.bean.orgAudit.OrgAuditExampleBean">
+		update T_ORG_AUDIT_EXAMPLE
+		<set>
+			<if test="orgId != null">
+				ORG_ID = #{orgId,jdbcType=DECIMAL},
+			</if>
+			<if test="declareId != null">
+				DECLARE_ID = #{declareId,jdbcType=DECIMAL},
+			</if>
+			<if test="declareTitle != null">
+				DECLARE_TITLE = #{declareTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="orgName != null">
+				ORG_NAME = #{orgName,jdbcType=VARCHAR},
+			</if>
+			<if test="orgKind != null">
+				ORG_KIND = #{orgKind,jdbcType=DECIMAL},
+			</if>
+			<if test="endTime != null">
+				END_TIME = #{endTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="indexNum != null">
+				INDEX_NUM = #{indexNum,jdbcType=DECIMAL},
+			</if>
+			<if test="isReport != null">
+				IS_REPORT = #{isReport,jdbcType=DECIMAL},
+			</if>
+			<if test="status != null">
+				STATUS = #{status,jdbcType=DECIMAL},
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="exampleTitle != null">
+				EXAMPLE_TITLE = #{exampleTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="exampleText != null">
+				EXAMPLE_TEXT = #{exampleText,jdbcType=VARCHAR},
+			</if>
+			<if test="exampleAtt != null">
+				EXAMPLE_ATT = #{exampleAtt,jdbcType=VARCHAR},
+			</if>
+			<if test="isAllot != null">
+				IS_ALLOT = #{isAllot,jdbcType=DECIMAL},
+			</if>
+		</set>
+		where
+		EXAMPLE_ID = #{exampleId,jdbcType=DECIMAL}
+	</update>
+
+	<update id="updateByPrimaryKey"
+		parameterType="com.chinatelecom.jx.zone.management.bean.orgAudit.OrgAuditExampleBean">
+		UPDATE T_ORG_AUDIT_EXAMPLE SET
+		ORG_ID =
+		#{orgId,jdbcType=DECIMAL} ,
+		DECLARE_ID = #{declareId,jdbcType=DECIMAL}
+		,
+		DECLARE_TITLE = #{declareTitle,jdbcType=VARCHAR} ,
+		ORG_NAME =
+		#{orgName,jdbcType=VARCHAR} ,
+		ORG_KIND = #{orgKind,jdbcType=DECIMAL} ,
+		END_TIME = #{endTime,jdbcType=TIMESTAMP} ,
+		INDEX_NUM =
+		#{indexNum,jdbcType=DECIMAL} ,
+		IS_REPORT = #{isReport,jdbcType=DECIMAL}
+		,
+		STATUS = #{status,jdbcType=DECIMAL} ,
+		CREATE_TIME =
+		#{createTime,jdbcType=TIMESTAMP} ,
+		EXAMPLE_TITLE =
+		#{exampleTitle,jdbcType=VARCHAR} ,
+		EXAMPLE_TEXT =
+		#{exampleText,jdbcType=VARCHAR} ,
+		EXAMPLE_ATT =
+		#{exampleAtt,jdbcType=VARCHAR} ,
+		IS_ALLOT = #{isAllot,jdbcType=DECIMAL} ,
+		WHERE
+		EXAMPLE_ID =
+		#{exampleId,jdbcType=DECIMAL}
+	</update>
+
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>
+
+			<if test="exampleId != null">
+						<![CDATA[AND EXAMPLE_ID = #{exampleId,jdbcType=DECIMAL}]]>
+			</if>
+
+			<if test="orgId != null">
+						<![CDATA[AND ORG_ID = #{orgId,jdbcType=DECIMAL}]]>
+			</if>
+
+			<if test="declareId != null">
+						<![CDATA[AND DECLARE_ID = #{declareId,jdbcType=DECIMAL}]]>
+			</if>
+
+			<if test="orgName != null and orgName != ''">
+				<!-- <![CDATA[AND ORG_NAME = #{orgName,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND ORG_NAME LIKE '%' || #{orgName,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="exampleTitle != null and exampleTitle != ''">
+				<!-- <![CDATA[AND ORG_NAME = #{orgName,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND EXAMPLE_TITLE LIKE '%' || #{exampleTitle,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="declareTitle != null and declareTitle != ''">
+				<!-- <![CDATA[AND ORG_NAME = #{orgName,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND DECLARE_TITLE LIKE '%' || #{declareTitle,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="orgKind != null">
+						<![CDATA[AND ORG_KIND = #{orgKind,jdbcType=DECIMAL}]]>
+			</if>
+
+
+			<if test="indexNum != null">
+						<![CDATA[AND INDEX_NUM = #{indexNum,jdbcType=DECIMAL}]]>
+			</if>
+
+			<if test="isReport != null">
+						<![CDATA[AND IS_REPORT = #{isReport,jdbcType=DECIMAL}]]>
+			</if>
+
+			<if test="status != null">
+						<![CDATA[AND STATUS = #{status,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="endTime != null">
+						<![CDATA[AND END_TIME = #{endTime,jdbcType=TIMESTAMP}]]>
+			</if>
+
+		</where>
+	</sql>
+
+
+
+	<select id="queryByCond" resultMap="BaseResultMap"
+		parameterType="com.chinatelecom.jx.zone.management.bean.orgAudit.OrgAuditExampleBean">
+		select
+		<include refid="Base_Column_List" />
+		from T_ORG_AUDIT_EXAMPLE
+		<include refid="Base_Where_Clause" />
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+
+	<!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+	<select id="selectMyCreateExample" resultMap="BaseResultMap">
+		select a.* from t_org_audit_example a
+		join t_project_declare_info b on
+		a.declare_id = b.declare_id
+		<where>
+			<if test="accountId != null">
+						<![CDATA[AND b.ACCOUNT_ID = #{accountId,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="orgName != null and orgName != ''">
+						<![CDATA[AND a.ORG_NAME LIKE '%' || #{orgName,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="declareTitle != null and declareTitle != ''">
+						<![CDATA[AND a.DECLARE_TITLE LIKE '%' || #{declareTitle,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="exampleTitle != null and exampleTitle != ''">
+						<![CDATA[AND a.EXAMPLE_TITLE LIKE '%' || #{exampleTitle,jdbcType=VARCHAR} || '%']]>
+			</if>
+		</where>
+		order by a.create_time DESC
+	</select>
+	
+	<select id="selectMyOrgCreateExample" resultMap="BaseResultMap">
+		select a.* from t_org_audit_example a 
+		join t_org_audit_info b on b.org_id = a.org_id
+		where a.index_num != 0
+			<if test="parentId != null">
+						<![CDATA[AND b.PARENT_ID = #{parentId,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="orgName != null and orgName != ''">
+						<![CDATA[AND a.ORG_NAME LIKE '%' || #{orgName,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="declareTitle != null and declareTitle != ''">
+						<![CDATA[AND a.DECLARE_TITLE LIKE '%' || #{declareTitle,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="exampleTitle != null and exampleTitle != ''">
+						<![CDATA[AND a.EXAMPLE_TITLE LIKE '%' || #{exampleTitle,jdbcType=VARCHAR} || '%']]>
+			</if>
+		order by a.create_time DESC
+	</select>
+	
+	<select id="selectExampleAndDeclareOpen" resultMap="BaseResultMap">
+		select a.*, b.declare_open
+ 		 from t_org_audit_example a left
+  				join t_project_declare_info b
+   		 		on a.declare_id = b.declare_id
+   		 <where>
+   		 		
+			<if test="orgId != null">
+						<![CDATA[AND a.ORG_ID = #{orgId,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="declareTitle != null and declareTitle != ''">
+						<![CDATA[AND a.DECLARE_TITLE LIKE '%' || #{declareTitle,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="exampleTitle != null and exampleTitle != ''">
+						<![CDATA[AND a.EXAMPLE_TITLE LIKE '%' || #{exampleTitle,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="isReport !=null and isReport !=1">
+						<![CDATA[AND a.IS_REPORT = #{isReport,jdbcType=DECIMAL} AND a.END_TIME > sysdate ]]>
+			</if>
+			<if test="isReport ==1">
+						<![CDATA[AND a.IS_REPORT = #{isReport,jdbcType=DECIMAL}]]>
+			</if>
+			</where>
+		order by a.create_time DESC
+	</select>
+
+
+    <delete id="deleteByDeclareId" parameterType="java.math.BigDecimal">
+		DELETE FROM
+		T_ORG_AUDIT_EXAMPLE WHERE
+		DECLARE_ID = #{declareId,jdbcType=DECIMAL}
+	</delete>
+</mapper>
+

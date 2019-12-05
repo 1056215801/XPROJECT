@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.projectDeclare.ProjectDeclareInfoMapper">
+	<resultMap id="BaseResultMap" type="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareInfoBean">
+		<id column="DECLARE_ID" jdbcType="DECIMAL" property="declareId" />
+		<result column="TEMPLATE_ID" jdbcType="DECIMAL" property="templateId" />
+		<result column="DECLARE_TITLE" jdbcType="VARCHAR" property="declareTitle" />
+		<result column="DECLARE_BATCH" jdbcType="VARCHAR" property="declareBatch" />
+		<result column="DECLARE_GRADE" jdbcType="VARCHAR" property="declareGrade" />
+		<result column="DECLARE_STATUS" jdbcType="DECIMAL" property="declareStatus" />
+		<result column="SUPERVISOR_NAME" jdbcType="VARCHAR" property="supervisorName" />
+		<result column="SUPERVISOR_ID" jdbcType="DECIMAL" property="supervisorId" />
+		<result column="DECLARE_TEXT" jdbcType="VARCHAR" property="declareText" />
+		<result column="AT_URL_LIST" jdbcType="VARCHAR" property="atUrlList" />
+		<result column="AT_ID_LIST" jdbcType="VARCHAR" property="atIdList" />
+		<result column="APPLY_ONLINE" jdbcType="DECIMAL" property="applyOnline" />
+		<result column="APPLY_YC" jdbcType="DECIMAL" property="applyYc" />
+		<result column="SCHEDULE_OPEN" jdbcType="DECIMAL" property="scheduleOpen" />
+		<result column="PUBLICITY_OPEN" jdbcType="DECIMAL" property="publicityOpen" />
+		<result column="ACCOUNT_ID" jdbcType="DECIMAL" property="accountId" />
+		<result column="ACCOUNT_NAME" jdbcType="VARCHAR" property="accountName" />
+		<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="DECLARE_REMARK" jdbcType="VARCHAR" property="declareRemark" />
+		<result column="DECLARE_IMAGE" jdbcType="VARCHAR" property="declareImage" />
+		<result column="IS_RECOMMEND" jdbcType="VARCHAR" property="isRecommend" />
+		<result column="QR_CODE" jdbcType="VARCHAR" property="qrCode" />
+		<result column="COUNT_NUM" jdbcType="DECIMAL" property="applyCount" />
+		<result column="IS_ALLOT" jdbcType="DECIMAL" property="isAllot" />
+		<result column="INDEX_COUNT" jdbcType="DECIMAL" property="indexCount" />
+		<result column="DECLARE_OPEN" jdbcType="DECIMAL" property="declareOpen" />
+		<result column="DECLARE_IMAGE_ID" jdbcType="DECIMAL" property="declareImageId" />
+		<result column="AREA_ID" jdbcType="DECIMAL" property="areaId" />
+		<result column="AREA_NAME" jdbcType="VARCHAR" property="areaName" />
+		<result column="END_DATE" jdbcType="VARCHAR" property="endDate" />
+		<result column="APPLY_COUNT" jdbcType="DECIMAL" property="applyCount" />
+		<result column="AUDITING_APPLY_COUNT" jdbcType="DECIMAL" property="auditingApplyCount" />
+		<result column="AUDITED_APPLY_COUNT" jdbcType="DECIMAL" property="auditedApplyCount" />
+	</resultMap>
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		DECLARE_ID,TEMPLATE_ID,DECLARE_TITLE,DECLARE_BATCH,DECLARE_GRADE,DECLARE_STATUS,SUPERVISOR_NAME,SUPERVISOR_ID,DECLARE_TEXT,AT_URL_LIST,AT_ID_LIST,APPLY_ONLINE,APPLY_YC,SCHEDULE_OPEN,PUBLICITY_OPEN,ACCOUNT_ID,ACCOUNT_NAME,CREATE_TIME,DECLARE_REMARK,
+		DECLARE_IMAGE,IS_RECOMMEND,QR_CODE,IS_ALLOT,INDEX_COUNT,DECLARE_OPEN,DECLARE_IMAGE_ID,AREA_ID,AREA_NAME 
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal">
+		select
+		<include refid="Base_Column_List" />
+		from T_PROJECT_DECLARE_INFO where DECLARE_ID = #{declareId,jdbcType=DECIMAL}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal"> DELETE FROM T_PROJECT_DECLARE_INFO WHERE DECLARE_ID =
+		#{declareId,jdbcType=DECIMAL} 
+	</delete>
+	<insert id="insert" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareInfoBean"> INSERT INTO T_PROJECT_DECLARE_INFO ( DECLARE_ID , TEMPLATE_ID , DECLARE_TITLE
+		, DECLARE_BATCH , DECLARE_GRADE , DECLARE_STATUS , SUPERVISOR_NAME , SUPERVISOR_ID , DECLARE_TEXT , AT_URL_LIST ,
+		AT_ID_LIST , APPLY_ONLINE , APPLY_YC , SCHEDULE_OPEN , PUBLICITY_OPEN , ACCOUNT_ID , ACCOUNT_NAME , CREATE_TIME,
+		DECLARE_REMARK , DECLARE_IMAGE, IS_RECOMMEND, QR_CODE, IS_ALLOT, INDEX_COUNT, DECLARE_OPEN , DECLARE_IMAGE_ID ,
+		AREA_ID, AREA_NAME ) VALUES ( #{declareId,jdbcType=DECIMAL} , #{templateId,jdbcType=DECIMAL} ,
+		#{declareTitle,jdbcType=VARCHAR} , #{declareBatch,jdbcType=VARCHAR} , #{declareGrade,jdbcType=VARCHAR} ,
+		#{declareStatus,jdbcType=DECIMAL} , #{supervisorName,jdbcType=VARCHAR} , #{supervisorId,jdbcType=DECIMAL} ,
+		#{declareText,jdbcType=VARCHAR} , #{atUrlList,jdbcType=VARCHAR} , #{atIdList,jdbcType=VARCHAR} ,
+		#{applyOnline,jdbcType=DECIMAL} , #{applyYc,jdbcType=DECIMAL} , #{scheduleOpen,jdbcType=DECIMAL} ,
+		#{publicityOpen,jdbcType=DECIMAL} , #{accountId,jdbcType=DECIMAL} , #{accountName,jdbcType=VARCHAR} ,
+		#{createTime,jdbcType=TIMESTAMP} , #{declareRemark,jdbcType=VARCHAR} , #{declareImage,jdbcType=VARCHAR} ,
+		#{isRecommend,jdbcType=VARCHAR} , #{qrCode,jdbcType=VARCHAR} , #{isAllot,jdbcType=DECIMAL} ,
+		#{indexCount,jdbcType=DECIMAL}, #{declareOpen,jdbcType=DECIMAL}, #{declareImageId,jdbcType=DECIMAL},
+		#{areaId,jdbcType=DECIMAL}, #{areaName,jdbcType=VARCHAR} ) 
+	</insert>
+	<insert id="insertSelective" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareInfoBean">
+		insert into T_PROJECT_DECLARE_INFO
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="declareId != null"> DECLARE_ID, 
+			</if>
+			<if test="templateId != null"> TEMPLATE_ID, 
+			</if>
+			<if test="declareTitle != null"> DECLARE_TITLE, 
+			</if>
+			<if test="declareBatch != null"> DECLARE_BATCH, 
+			</if>
+			<if test="declareGrade != null"> DECLARE_GRADE, 
+			</if>
+			<if test="declareStatus != null"> DECLARE_STATUS, 
+			</if>
+			<if test="supervisorName != null"> SUPERVISOR_NAME, 
+			</if>
+			<if test="supervisorId != null"> SUPERVISOR_ID, 
+			</if>
+			<if test="declareText != null"> DECLARE_TEXT, 
+			</if>
+			<if test="atUrlList != null"> AT_URL_LIST, 
+			</if>
+			<if test="atIdList != null"> AT_ID_LIST, 
+			</if>
+			<if test="applyOnline != null"> APPLY_ONLINE, 
+			</if>
+			<if test="applyYc != null"> APPLY_YC, 
+			</if>
+			<if test="scheduleOpen != null"> SCHEDULE_OPEN, 
+			</if>
+			<if test="publicityOpen != null"> PUBLICITY_OPEN, 
+			</if>
+			<if test="accountId != null"> ACCOUNT_ID, 
+			</if>
+			<if test="accountName != null"> ACCOUNT_NAME, 
+			</if>
+			<if test="createTime != null"> CREATE_TIME, 
+			</if>
+			<if test="declareRemark != null"> DECLARE_REMARK, 
+			</if>
+			<if test="declareImage != null"> DECLARE_IMAGE, 
+			</if>
+			<if test="isRecommend != null"> IS_RECOMMEND, 
+			</if>
+			<if test="qrCode != null"> QR_CODE, 
+			</if>
+			<if test="isAllot != null"> IS_ALLOT, 
+			</if>
+			<if test="indexCount != null"> INDEX_COUNT, 
+			</if>
+			<if test="declareOpen != null"> DECLARE_OPEN, 
+			</if>
+			<if test="declareImageId != null"> DECLARE_IMAGE_ID, 
+			</if>
+			<if test="areaId != null"> AREA_ID, 
+			</if>
+			<if test="areaName != null"> AREA_NAME, 
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="declareId != null"> #{declareId,jdbcType=DECIMAL}, 
+			</if>
+			<if test="templateId != null"> #{templateId,jdbcType=DECIMAL}, 
+			</if>
+			<if test="declareTitle != null"> #{declareTitle,jdbcType=VARCHAR}, 
+			</if>
+			<if test="declareBatch != null"> #{declareBatch,jdbcType=VARCHAR}, 
+			</if>
+			<if test="declareGrade != null"> #{declareGrade,jdbcType=VARCHAR}, 
+			</if>
+			<if test="declareStatus != null"> #{declareStatus,jdbcType=DECIMAL}, 
+			</if>
+			<if test="supervisorName != null"> #{supervisorName,jdbcType=VARCHAR}, 
+			</if>
+			<if test="supervisorId != null"> #{supervisorId,jdbcType=DECIMAL}, 
+			</if>
+			<if test="declareText != null"> #{declareText,jdbcType=VARCHAR}, 
+			</if>
+			<if test="atUrlList != null"> #{atUrlList,jdbcType=VARCHAR}, 
+			</if>
+			<if test="atIdList != null"> #{atIdList,jdbcType=VARCHAR}, 
+			</if>
+			<if test="applyOnline != null"> #{applyOnline,jdbcType=DECIMAL}, 
+			</if>
+			<if test="applyYc != null"> #{applyYc,jdbcType=DECIMAL}, 
+			</if>
+			<if test="scheduleOpen != null"> #{scheduleOpen,jdbcType=DECIMAL}, 
+			</if>
+			<if test="publicityOpen != null"> #{publicityOpen,jdbcType=DECIMAL}, 
+			</if>
+			<if test="accountId != null"> #{accountId,jdbcType=DECIMAL}, 
+			</if>
+			<if test="accountName != null"> #{accountName,jdbcType=VARCHAR}, 
+			</if>
+			<if test="createTime != null"> #{createTime,jdbcType=TIMESTAMP}, 
+			</if>
+			<if test="declareRemark != null"> #{declareRemark,jdbcType=VARCHAR}, 
+			</if>
+			<if test="declareImage != null"> #{declareImage,jdbcType=VARCHAR}, 
+			</if>
+			<if test="isRecommend != null"> #{isRecommend,jdbcType=VARCHAR}, 
+			</if>
+			<if test="qrCode != null"> #{qrCode,jdbcType=VARCHAR}, 
+			</if>
+			<if test="isAllot != null"> #{isAllot,jdbcType=DECIMAL}, 
+			</if>
+			<if test="indexCount != null"> #{indexCount,jdbcType=DECIMAL}, 
+			</if>
+			<if test="declareOpen != null"> #{declareOpen,jdbcType=DECIMAL}, 
+			</if>
+			<if test="declareImageId != null"> #{declareImageId,jdbcType=DECIMAL}, 
+			</if>
+			<if test="areaId != null"> #{areaId,jdbcType=DECIMAL}, 
+			</if>
+			<if test="areaName != null"> #{areaName,jdbcType=VARCHAR}, 
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareInfoBean">
+		update T_PROJECT_DECLARE_INFO
+		<set>
+			<if test="templateId != null"> TEMPLATE_ID = #{templateId,jdbcType=DECIMAL}, 
+			</if>
+			<if test="declareTitle != null"> DECLARE_TITLE = #{declareTitle,jdbcType=VARCHAR}, 
+			</if>
+			<if test="declareBatch != null"> DECLARE_BATCH = #{declareBatch,jdbcType=VARCHAR}, 
+			</if>
+			<if test="declareGrade != null"> DECLARE_GRADE = #{declareGrade,jdbcType=VARCHAR}, 
+			</if>
+			<if test="declareStatus != null"> DECLARE_STATUS = #{declareStatus,jdbcType=DECIMAL}, 
+			</if>
+			<if test="supervisorName != null"> SUPERVISOR_NAME = #{supervisorName,jdbcType=VARCHAR}, 
+			</if>
+			<if test="supervisorId != null"> SUPERVISOR_ID = #{supervisorId,jdbcType=DECIMAL}, 
+			</if>
+			<if test="declareText != null"> DECLARE_TEXT = #{declareText,jdbcType=VARCHAR}, 
+			</if>
+			<if test="atUrlList != null"> AT_URL_LIST = #{atUrlList,jdbcType=VARCHAR}, 
+			</if>
+			<if test="atIdList != null"> AT_ID_LIST = #{atIdList,jdbcType=VARCHAR}, 
+			</if>
+			<if test="applyOnline != null"> APPLY_ONLINE = #{applyOnline,jdbcType=DECIMAL}, 
+			</if>
+			<if test="applyYc != null"> APPLY_YC = #{applyYc,jdbcType=DECIMAL}, 
+			</if>
+			<if test="scheduleOpen != null"> SCHEDULE_OPEN = #{scheduleOpen,jdbcType=DECIMAL}, 
+			</if>
+			<if test="publicityOpen != null"> PUBLICITY_OPEN = #{publicityOpen,jdbcType=DECIMAL}, 
+			</if>
+			<if test="accountId != null"> ACCOUNT_ID = #{accountId,jdbcType=DECIMAL}, 
+			</if>
+			<if test="accountName != null"> ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR}, 
+			</if>
+			<if test="createTime != null"> CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}, 
+			</if>
+			<if test="declareRemark != null"> DECLARE_REMARK = #{declareRemark,jdbcType=TIMESTAMP}, 
+			</if>
+			<if test="declareImage != null"> DECLARE_IMAGE = #{declareImage,jdbcType=TIMESTAMP}, 
+			</if>
+			<if test="isRecommend != null"> IS_RECOMMEND = #{isRecommend,jdbcType=TIMESTAMP}, 
+			</if>
+			<if test="qrCode != null"> QR_CODE = #{qrCode,jdbcType=TIMESTAMP}, 
+			</if>
+			<if test="isAllot != null"> IS_ALLOT = #{isAllot,jdbcType=DECIMAL}, 
+			</if>
+			<if test="indexCount != null"> INDEX_COUNT = #{indexCount,jdbcType=DECIMAL}, 
+			</if>
+			<if test="declareOpen != null"> DECLARE_OPEN = #{declareOpen,jdbcType=DECIMAL}, 
+			</if>
+			<if test="declareImageId != null"> DECLARE_IMAGE_ID=#{declareImageId,jdbcType=DECIMAL}, 
+			</if>
+			<if test="areaId != null"> AREA_ID = #{areaId,jdbcType=DECIMAL}, 
+			</if>
+			<if test="areaName != null"> AREA_NAME = #{areaName,jdbcType=VARCHAR}, 
+			</if>
+		</set>
+		where DECLARE_ID = #{declareId,jdbcType=DECIMAL}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareInfoBean"> UPDATE T_PROJECT_DECLARE_INFO SET TEMPLATE_ID =
+		#{templateId,jdbcType=DECIMAL} , DECLARE_TITLE = #{declareTitle,jdbcType=VARCHAR} , DECLARE_BATCH =
+		#{declareBatch,jdbcType=VARCHAR} , DECLARE_GRADE = #{declareGrade,jdbcType=VARCHAR} , DECLARE_STATUS =
+		#{declareStatus,jdbcType=DECIMAL} , SUPERVISOR_NAME = #{supervisorName,jdbcType=VARCHAR} , SUPERVISOR_ID =
+		#{supervisorId,jdbcType=DECIMAL} , DECLARE_TEXT = #{declareText,jdbcType=VARCHAR} , AT_URL_LIST =
+		#{atUrlList,jdbcType=VARCHAR} , AT_ID_LIST = #{atIdList,jdbcType=VARCHAR} , APPLY_ONLINE =
+		#{applyOnline,jdbcType=DECIMAL} , APPLY_YC = #{applyYc,jdbcType=DECIMAL} , SCHEDULE_OPEN =
+		#{scheduleOpen,jdbcType=DECIMAL} , PUBLICITY_OPEN = #{publicityOpen,jdbcType=DECIMAL} , ACCOUNT_ID =
+		#{accountId,jdbcType=DECIMAL} , ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR} , CREATE_TIME =
+		#{createTime,jdbcType=TIMESTAMP} , DECLARE_REMARK = #{declareRemark,jdbcType=VARCHAR} , DECLARE_IMAGE =
+		#{declareImage,jdbcType=VARCHAR} , IS_RECOMMEND = #{isRecommend,jdbcType=VARCHAR} , QR_CODE =
+		#{qrCode,jdbcType=VARCHAR} , IS_ALLOT = #{isAllot,jdbcType=DECIMAL} , INDEX_COUNT = #{indexCount,jdbcType=DECIMAL} ,
+		DECLARE_OPEN = #{declareOpen,jdbcType=DECIMAL} , DECLARE_IMAGE_ID=#{declareImageId,jdbcType=DECIMAL}, AREA_ID =
+		#{areaId,jdbcType=DECIMAL}, AREA_NAME = #{areaName,jdbcType=VARCHAR} WHERE DECLARE_ID = #{declareId,jdbcType=DECIMAL} 
+	</update>
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>
+			<if test="declareId != null">
+						<![CDATA[AND DECLARE_ID = #{declareId,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="templateId != null">
+						<![CDATA[AND TEMPLATE_ID = #{templateId,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="declareTitle != null and declareTitle != ''">
+				<!-- <![CDATA[AND DECLARE_TITLE = #{declareTitle,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND DECLARE_TITLE LIKE '%' || #{declareTitle,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="declareBatch != null and declareBatch != ''">
+				<!-- <![CDATA[AND DECLARE_BATCH = #{declareBatch,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND DECLARE_BATCH LIKE '%' || #{declareBatch,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="declareGrade != null and declareGrade != ''">
+				<!-- <![CDATA[AND DECLARE_GRADE = #{declareGrade,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND DECLARE_GRADE LIKE '%' || #{declareGrade,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="declareStatus != null">
+						<![CDATA[AND DECLARE_STATUS = #{declareStatus,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="supervisorName != null and supervisorName != ''">
+				<!-- <![CDATA[AND SUPERVISOR_NAME = #{supervisorName,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND SUPERVISOR_NAME LIKE '%' || #{supervisorName,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="declareText != null and declareText != ''">
+				<!-- <![CDATA[AND DECLARE_TEXT = #{declareText,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND DECLARE_TEXT LIKE '%' || #{declareText,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="atUrlList != null and atUrlList != ''">
+				<!-- <![CDATA[AND AT_URL_LIST = #{atUrlList,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND AT_URL_LIST LIKE '%' || #{atUrlList,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="atIdList != null and atIdList != ''">
+				<!-- <![CDATA[AND AT_ID_LIST = #{atIdList,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND AT_ID_LIST LIKE '%' || #{atIdList,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="applyOnline != null">
+						<![CDATA[AND APPLY_ONLINE = #{applyOnline,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="applyYc != null">
+						<![CDATA[AND APPLY_YC = #{applyYc,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="scheduleOpen != null">
+						<![CDATA[AND SCHEDULE_OPEN = #{scheduleOpen,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="publicityOpen != null">
+						<![CDATA[AND PUBLICITY_OPEN = #{publicityOpen,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="accountId != null">
+						<![CDATA[AND ACCOUNT_ID = #{accountId,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="accountName != null and accountName != ''">
+				<!-- <![CDATA[AND ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND ACCOUNT_NAME LIKE '%' || #{accountName,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="declareRemark != null and declareRemark != ''">
+						
+						<![CDATA[AND DECLARE_REMARK LIKE '%' || #{declareRemark,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="isRecommend != null">
+						<![CDATA[AND IS_RECOMMEND = #{isRecommend,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="areaName != null and areaName != ''">
+						<![CDATA[AND AREA_NAME LIKE '%' || #{areaName,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="areaIdArray != null and areaIdArray != ''">
+				and AREA_ID in
+				<foreach item="item" index="index" collection="areaIdArray" open="(" separator="," close=")"> #{item} 
+				</foreach>
+			</if>
+		</where>
+	</sql>
+	<!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+	<sql id="Normal_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>
+			<if test="declareTitle != null and declareTitle != ''">
+				<!-- <![CDATA[AND DECLARE_TITLE = #{declareTitle,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND a.DECLARE_TITLE LIKE '%' || #{declareTitle,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="declareGrade != null and declareGrade != ''">
+				<!-- <![CDATA[AND DECLARE_GRADE = #{declareGrade,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND a.DECLARE_GRADE LIKE '%' || #{declareGrade,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="declareStatus != null">
+						<![CDATA[AND a.DECLARE_STATUS = #{declareStatus,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="areaName != null and areaName != ''">
+						<![CDATA[AND a.AREA_NAME LIKE '%' || #{areaName,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="areaIdArray != null and areaIdArray != ''">
+				and a.AREA_ID in
+				<foreach item="item" index="index" collection="areaIdArray" open="(" separator="," close=")"> #{item} 
+				</foreach>
+			</if>
+		</where>
+	</sql>
+	<sql id="Normal_Column_List">
+		a.DECLARE_ID,a.TEMPLATE_ID,a.DECLARE_TITLE,a.DECLARE_BATCH,a.DECLARE_GRADE,a.DECLARE_STATUS,a.SUPERVISOR_NAME,a.SUPERVISOR_ID,a.DECLARE_TEXT,a.AT_URL_LIST,a.AT_ID_LIST,a.APPLY_ONLINE,a.APPLY_YC,a.SCHEDULE_OPEN,a.PUBLICITY_OPEN,a.ACCOUNT_ID,a.ACCOUNT_NAME,a.CREATE_TIME,a.DECLARE_REMARK,
+		a.DECLARE_IMAGE,a.IS_RECOMMEND,a.QR_CODE,a.IS_ALLOT,a.INDEX_COUNT,a.DECLARE_OPEN,a.AREA_ID,a.AREA_NAME 
+	</sql>
+	<sql id="Easy_Column_List">
+		a.DECLARE_ID,a.TEMPLATE_ID,a.DECLARE_TITLE,a.DECLARE_BATCH,a.DECLARE_GRADE,a.DECLARE_STATUS,a.SUPERVISOR_NAME,a.SUPERVISOR_ID,a.AT_URL_LIST,a.AT_ID_LIST,a.APPLY_ONLINE,a.APPLY_YC,a.SCHEDULE_OPEN,a.PUBLICITY_OPEN,a.ACCOUNT_ID,a.ACCOUNT_NAME,a.CREATE_TIME,a.DECLARE_REMARK,
+		a.DECLARE_IMAGE,a.IS_RECOMMEND,a.QR_CODE,a.IS_ALLOT,a.INDEX_COUNT,a.DECLARE_OPEN,a.AREA_ID,a.AREA_NAME 
+	</sql>
+	<select id="queryForCount" resultMap="BaseResultMap"
+		parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareInfoBean">
+		select
+		<include refid="Normal_Column_List" />
+		,b.count_num COUNT_NUM from t_project_declare_info a left join (select count(c.apply_id) as count_num,c.declare_id
+		from t_project_declare_apply c group by c.declare_id ) b on b.declare_id = a.declare_id
+		<where>
+			<if test="declareTitle != null and declareTitle != ''">
+				<!-- <![CDATA[AND DECLARE_TITLE = #{declareTitle,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND a.DECLARE_TITLE LIKE '%' || #{declareTitle,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="accountId != null">
+						<![CDATA[AND a.ACCOUNT_ID = #{accountId,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="areaName != null and areaName != ''">
+						<![CDATA[AND a.AREA_NAME LIKE '%' || #{areaName,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="areaIdArray != null and areaIdArray != ''">
+				and a.AREA_ID in
+				<foreach item="item" index="index" collection="areaIdArray" open="(" separator="," close=")"> #{item} 
+				</foreach>
+			</if>
+		</where>
+		order by a.create_time desc
+	</select>
+	<select id="queryByCond" resultMap="BaseResultMap"
+		parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareInfoBean">
+		select
+		<if test="fastQuery != null">
+			<include refid="Easy_Column_List" />,(select max(m.REMAIN_DAY) from T_PROJECT_DECLARE_NODE m where  m.DECLARE_ID = a.DECLARE_ID) as END_DATE,(select count(1) from t_project_declare_apply n where n.declare_id = a.declare_id) APPLY_COUNT,(select count(1) from t_project_declare_apply n where n.declare_id = a.declare_id and n.apply_status = 2) AUDITING_APPLY_COUNT,(select count(1) from t_project_declare_apply n where n.declare_id = a.declare_id and n.apply_status = 1) AUDITED_APPLY_COUNT
+		</if>
+		<if test="fastQuery == null">
+			<include refid="Normal_Column_List" />,(select max(m.REMAIN_DAY) from T_PROJECT_DECLARE_NODE m where  m.DECLARE_ID = a.DECLARE_ID) as END_DATE,(select count(1) from t_project_declare_apply n where n.declare_id = a.declare_id) APPLY_COUNT,(select count(1) from t_project_declare_apply n where n.declare_id = a.declare_id and n.apply_status = 2) AUDITING_APPLY_COUNT,(select count(1) from t_project_declare_apply n where n.declare_id = a.declare_id and n.apply_status = 1) AUDITED_APPLY_COUNT
+		</if>
+		from T_PROJECT_DECLARE_INFO a
+		<include refid="Normal_Where_Clause" />
+		<if test="orderByClause != null"> order by ${orderByClause} 
+		</if>
+	</select>
+	<select id="queryFromMyApply" resultMap="BaseResultMap" parameterType="java.math.BigDecimal">
+		select 
+		<include refid="Normal_Column_List" />,(select max(m.REMAIN_DAY) from T_PROJECT_DECLARE_NODE m where  m.DECLARE_ID = a.DECLARE_ID) as END_DATE
+		from t_project_declare_info a 
+		left join (select apply_id,declare_id,create_time from t_project_declare_apply where apply_id in (select MIN(apply_id) from t_project_declare_apply
+		<where>
+			<if test="_parameter != null">
+					<![CDATA[AND ACCOUNT_ID = #{accountId,jdbcType=DECIMAL}]]>
+			</if>
+		</where>
+		group by declare_id) ) b 
+		on b.declare_id = a.declare_id 
+		left join ( select declare_id,account_id,max(create_time) create_time from t_project_online_info
+		<where>
+			<if test="_parameter != null">
+					<![CDATA[AND ACCOUNT_ID = #{accountId,jdbcType=DECIMAL}]]>
+			</if>
+		<![CDATA[AND status in (1,2,3,4,5)]]>
+		</where>
+		group by declare_id,account_id )c on c.declare_id = a.declare_id 
+		where b.declare_id is not null or c.declare_id is not null 
+		order by c.create_time desc nulls last,b.create_time DESC nulls last
+	</select>
+	<select id="queryByCondOrderBy" resultMap="BaseResultMap"
+		parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareInfoBean">
+		select
+		<if test="fastQuery != null">
+			<include refid="Easy_Column_List" />,(select max(m.REMAIN_DAY) from T_PROJECT_DECLARE_NODE m where  m.DECLARE_ID = a.DECLARE_ID) as END_DATE
+		</if>
+		<if test="fastQuery == null">
+			<include refid="Normal_Column_List" />,(select max(m.REMAIN_DAY) from T_PROJECT_DECLARE_NODE m where  m.DECLARE_ID = a.DECLARE_ID) as END_DATE
+		</if>
+		from t_project_declare_info a left join t_project_declare_org c on a.declare_id = c.declare_id where (a.declare_open =
+		1 or (a.declare_open = 0 and c.org_id = #{orgId,jdbcType=DECIMAL}))
+		<if test="declareTitle != null and declareTitle != ''">
+						<![CDATA[AND a.DECLARE_TITLE LIKE '%' || #{declareTitle,jdbcType=VARCHAR} || '%']]>
+		</if>
+		<if test="declareGrade != null and declareGrade != ''">
+						<![CDATA[AND a.DECLARE_GRADE LIKE '%' || #{declareGrade,jdbcType=VARCHAR} || '%']]>
+		</if>
+		<if test="declareStatus != null">
+						<![CDATA[AND a.DECLARE_STATUS = #{declareStatus,jdbcType=DECIMAL}]]>
+		</if>
+		<if test="areaName != null and areaName != ''">
+						<![CDATA[AND a.AREA_NAME LIKE '%' || #{areaName,jdbcType=VARCHAR} || '%']]>
+		</if>
+		<if test="areaIdArray != null and areaIdArray != ''">
+			and a.AREA_ID in
+			<foreach item="item" index="index" collection="areaIdArray" open="(" separator="," close=")"> #{item} 
+			</foreach>
+		</if>
+		order by (select max(b.remain_day) from t_project_declare_node b where b.declare_id = a.declare_id and b.remain_day !=
+		-1 ) ASC
+	</select>
+	<select id="queryByCondNotPreview" resultMap="BaseResultMap"
+		parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareInfoBean">
+		select
+		<if test="fastQuery != null">
+			<include refid="Easy_Column_List" />,(select max(m.REMAIN_DAY) from T_PROJECT_DECLARE_NODE m where  m.DECLARE_ID = a.DECLARE_ID) as END_DATE,(select count(1) from t_project_declare_apply n where n.declare_id = a.declare_id) APPLY_COUNT,(select count(1) from t_project_declare_apply n where n.declare_id = a.declare_id and n.apply_status = 2) AUDITING_APPLY_COUNT,(select count(1) from t_project_declare_apply n where n.declare_id = a.declare_id and n.apply_status = 1) AUDITED_APPLY_COUNT
+		</if>
+		<if test="fastQuery == null">
+			<include refid="Normal_Column_List" />,(select max(m.REMAIN_DAY) from T_PROJECT_DECLARE_NODE m where  m.DECLARE_ID = a.DECLARE_ID) as END_DATE,(select count(1) from t_project_declare_apply n where n.declare_id = a.declare_id) APPLY_COUNT,(select count(1) from t_project_declare_apply n where n.declare_id = a.declare_id and n.apply_status = 2) AUDITING_APPLY_COUNT,(select count(1) from t_project_declare_apply n where n.declare_id = a.declare_id and n.apply_status = 1) AUDITED_APPLY_COUNT
+		</if>
+		from t_project_declare_info a left join t_project_declare_org b on a.declare_id = b.declare_id where (a.declare_open =
+		1 or (a.declare_open = 0 and b.org_id = #{orgId,jdbcType=DECIMAL}))
+		<if test="declareId != null">
+						<![CDATA[AND a.DECLARE_ID = #{declareId,jdbcType=DECIMAL}]]>
+		</if>
+		<if test="declareTitle != null and declareTitle != ''">
+						<![CDATA[AND a.DECLARE_TITLE LIKE '%' || #{declareTitle,jdbcType=VARCHAR} || '%']]>
+		</if>
+		<if test="declareBatch != null and declareBatch != ''">
+			<![CDATA[AND a.DECLARE_BATCH LIKE '%' || #{declareBatch,jdbcType=VARCHAR} || '%']]>
+		</if>
+		<if test="declareGrade != null and declareGrade != ''">
+			<![CDATA[AND a.DECLARE_GRADE LIKE '%' || #{declareGrade,jdbcType=VARCHAR} || '%']]>
+		</if>
+		<if test="accountId != null">
+			<![CDATA[AND a.ACCOUNT_ID = #{accountId,jdbcType=DECIMAL}]]>
+		</if>
+		<if test="declareStatus != null">
+			<![CDATA[AND a.DECLARE_STATUS = #{declareStatus,jdbcType=DECIMAL}]]>
+		</if>
+		<if test="declareStatus == null">
+			<![CDATA[AND a.DECLARE_STATUS != 3]]>
+		</if>
+		<if test="areaId != null">
+						<![CDATA[AND a.AREA_ID = #{areaId,jdbcType=DECIMAL}]]>
+		</if>
+		<if test="areaName != null and areaName != ''">
+						<![CDATA[AND a.AREA_NAME LIKE '%' || #{areaName,jdbcType=VARCHAR} || '%']]>
+		</if>
+		<if test="areaIdArray != null and areaIdArray != ''">
+			and a.AREA_ID in
+			<foreach item="item" index="index" collection="areaIdArray" open="(" separator="," close=")"> #{item} 
+			</foreach>
+		</if>
+		<if test="orderByClause != null"> order by ${orderByClause} 
+		</if>
+	</select>
+	<select id="countByCondNotPreview" resultType="java.lang.Integer"
+		parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareInfoBean">
+		select count(1) from t_project_declare_info a left join t_project_declare_org b on a.declare_id = b.declare_id where
+		(a.declare_open = 1 or (a.declare_open = 0 and b.org_id = #{orgId,jdbcType=DECIMAL}))
+		<if test="declareId != null">
+						<![CDATA[AND a.DECLARE_ID = #{declareId,jdbcType=DECIMAL}]]>
+		</if>
+		<if test="declareTitle != null and declareTitle != ''">
+						<![CDATA[AND a.DECLARE_TITLE LIKE '%' || #{declareTitle,jdbcType=VARCHAR} || '%']]>
+		</if>
+		<if test="declareBatch != null and declareBatch != ''">
+			<![CDATA[AND a.DECLARE_BATCH LIKE '%' || #{declareBatch,jdbcType=VARCHAR} || '%']]>
+		</if>
+		<if test="declareGrade != null and declareGrade != ''">
+			<![CDATA[AND a.DECLARE_GRADE LIKE '%' || #{declareGrade,jdbcType=VARCHAR} || '%']]>
+		</if>
+		<if test="accountId != null">
+			<![CDATA[AND a.ACCOUNT_ID = #{accountId,jdbcType=DECIMAL}]]>
+		</if>
+		<if test="declareStatus != null">
+			<![CDATA[AND a.DECLARE_STATUS = #{declareStatus,jdbcType=DECIMAL}]]>
+		</if>
+		<if test="declareStatus == null">
+			<![CDATA[AND a.DECLARE_STATUS != 3]]>
+		</if>
+		<if test="areaId != null">
+			<![CDATA[AND a.AREA_ID = #{areaId,jdbcType=DECIMAL}]]>
+		</if>
+		<if test="areaName != null and areaName != ''">
+			<![CDATA[AND a.AREA_NAME LIKE '%' || #{areaName,jdbcType=VARCHAR} || '%']]>
+		</if>
+		<if test="areaIdArray != null and areaIdArray != ''">
+			and a.AREA_ID in
+			<foreach item="item" index="index" collection="areaIdArray" open="(" separator="," close=")"> #{item} 
+			</foreach>
+		</if>
+		<if test="orderByClause != null"> order by ${orderByClause} 
+		</if>
+	</select>
+	<update id="updateTime">
+		update T_PROJECT_DECLARE_INFO t
+		<set> t.DECLARE_STATUS = 1 
+		</set>
+		<where>
+			<![CDATA[AND t.DECLARE_STATUS = 0]]>
+			<![CDATA[AND (select max(a.REMAIN_DAY) from T_PROJECT_DECLARE_NODE a where a.DECLARE_ID = t.DECLARE_ID)=-1]]>
+		</where>
+	</update>
+</mapper>

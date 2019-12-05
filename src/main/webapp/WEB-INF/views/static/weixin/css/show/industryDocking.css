@@ -1,0 +1,322 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe, h1, h2, h3, h4, h5, h6, p, a, del, dfn,
+	em, img, small, strong, dl, dt, dd, ol, ul, li, fieldset, form, label,
+	legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside,
+	canvas, details, embed, figure, figcaption, footer, header, hgroup,
+	menu, nav, section, summary {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+body {
+	line-height: 1;
+	color: #5e5e5e;
+	background: #fff;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body, button, input, select, textarea {
+	font: 14px/1.5 arial, "黑体";
+}
+
+input[type="button"], input[type="submit"], input[type="reset"] {
+	-webkit-appearance: none !important;
+}
+
+textarea {
+	-webkit-appearance: none !important;
+}
+
+html {
+	background-color: #ebebeb;
+}
+
+.industry_main {
+	background-color: #ebebeb;
+	position: relative;
+	margin-bottom: 60px;
+}
+
+.industry_content {
+	width: 100%;
+	background-color: #ebebeb;
+	position: relative;
+}
+
+.searchBar {
+	position: fixed;
+	top: 0;
+	background-color: #06B8C2;
+	width: 100%;
+	height: 50px;
+	z-index: 10000;
+}
+
+.search {
+	float: left;
+}
+
+.colorDeep {
+	background-color: #03A1AA;
+}
+
+.message {
+	float: right;
+}
+/* .searchInput {
+	width:50%;
+	padding:7px 0;
+	margin-left: 2%;
+	position:relative;
+	top:8px;
+	text-indent:1em;
+	line-height: normal;
+	line-height: 22px\9;
+	outline:none;
+	border-radius:20px;
+	border:0;
+}
+.searchBtn {
+	width:20%;
+	background-color:#FF8927;
+	color:#fff;
+	padding:3px 0;
+	margin-left: 2%;
+	position:relative;
+	top: 9px;
+	text-align: center;
+	outline:none;
+	border-radius:20px;
+	border:0;
+} */
+#dropdown {
+	position: fixed;
+	top: 50px;
+	width: 100%;
+	height: 140px;
+	background-color: #fff;
+	display: none;
+	z-index: 10000;
+}
+
+#searchOptions {
+	position: fixed;
+	top: 50px;
+	width: 100%;
+	height: 120px;
+	background-color: #fff;
+	display: none;
+	z-index: 10000;
+}
+
+#searchButton1 {
+	background-color: #00A85A;
+	color: #FFF;
+	text-align: center;
+	padding: 5px 0;
+	width: 49%;
+	margin: 4px 4px 4px 4px;
+	bottom: 0;
+	border-color: #00A85A;
+	position: fixed;
+}
+
+#searchButton2 {
+	background-color: #f4f4f4;
+	color: #646464;
+	text-align: center;
+	padding: 5px 0;
+	width: 49%;
+	margin: 4px 4px 4px 4px;
+	bottom: 0;
+	right: 0;
+	position: fixed;
+}
+
+.dropdownContent {
+	padding: 5px 10px;
+}
+
+.optionBtn {
+	float: left;
+	border: 1px solid #a6a6a6;
+	color: #646464;
+	margin: 0 7px 5px 0;
+	padding: 3px 7px;
+	border-radius: 1px;
+	cursor: pointer;
+	font-size: 12px;
+	/* float:left;
+	border:1px solid #9E9E9E;
+	color:#9E9E9E;
+	margin:5px 7px 5px 0;
+	padding:0 5px;
+	border-radius:1px;
+	cursor:pointer; */
+}
+
+.selected {
+	background-color: #06B8C2;
+	color: #fff;
+	border: 1px solid #06B8C2;
+}
+
+.info_top {
+	width: 100%;
+	height: 20px;
+	margin-top: 20px;
+	border-top: 1px solid #CBCBCB;
+}
+
+.info_title {
+	width: 26%;
+	position: relative;
+	top: -10px;
+	left: 37%;
+	text-align: center;
+	background-color: #ebebeb;
+	font-size: 14px;
+}
+
+.industry_cont {
+	padding: 2% 0 0;
+	background-color: #fff;
+}
+
+.industry_dataBar {
+	width: 48%;
+	padding: 0 1%;
+	margin-bottom: 2%;
+	float: left;
+}
+
+.industry_price {
+	background-color: #F04444;
+	color: #fff;
+	padding: 0 4px 0 2px;
+	margin-right: 2px;
+}
+
+#tbox {
+	width: 50px;
+	float: right;
+	position: fixed;
+	right: 10px;
+	bottom: 50px;
+	overflow: visible;
+}
+
+#gotop {
+	width: 50px;
+	height: 60px;
+	background: url(/XProject/static/weixin/images/logistics/rocket.png)
+		no-repeat;
+	display: block;
+	background-size: 50px 50px;
+}
+
+.renovate {
+	display: block;
+	text-align: center;
+	background-color: #F6F6F6;
+	padding: 7px 0;
+}
+
+.renovate:hover {
+	background-color: #e5edf2;
+}
+
+.renovateTitle {
+	color: #8D8D8D;
+	display: inline-block;
+	font-size: 14px;
+	line-height: 14px;
+	text-align: center;
+}
+.home_position {
+	position:relative;
+	top:13px;
+	right:11px;
+	float:right;
+} 
+.home_add {
+	vertical-align:middle;
+	color:#fff;
+	font-size:12px;
+}
+body .layui-layer-btn .layui-layer-btn0 {
+	border-color:#00A85A;
+	background-color:#00A85A;
+	color:#fff
+}
+body .layui-layer-bg_gray_two_btn .layui-layer-btn0 {
+	background-color: #00A85A;
+	color: #FFF;
+	text-align: center;
+	padding: 8px 0;
+	width: 49%;
+	margin: 0;
+	border-color: #00A85A;
+	font-size: 18px;
+}
+
+body .layui-layer-bg_gray_two_btn .layui-layer-btn1 {
+	background-color: #f4f4f4;
+	color: #646464;
+	text-align: center;
+	padding: 8px 0;
+	width: 49%;
+	margin: 0;
+	font-size: 18px;
+}
+body .layui-layer-title {
+	padding:0 80px 0 20px;
+	height:42px;
+	line-height:42px;
+	border-bottom:1px solid #eee;
+	font-size:14px;
+	color:#fff;
+	overflow:hidden;
+	background-color:#00A85A;
+	border-radius:2px 2px 0 0
+}
+#left_Menu {
+	position: fixed;
+	z-index: 1;
+	top: 0px;
+	bottom: 68px;
+	left: 0;
+	width: 46%;
+	overflow: scroll;
+	background: #F0F0F0;
+	float:left;
+}
+
+#middle_Menu {
+	position: fixed;
+	z-index: 1;
+	top: 0px;
+	bottom: 68px;
+	left: 50%;
+	width: 46%;
+	background: #F6F6F6;
+	overflow: scroll;
+	float:right;
+}
+.selecter {
+	font-weight: bold;
+	color: #f14241;
+}

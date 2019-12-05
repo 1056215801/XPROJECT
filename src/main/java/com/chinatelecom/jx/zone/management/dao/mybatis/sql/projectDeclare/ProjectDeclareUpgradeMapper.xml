@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.projectDeclare.ProjectDeclareUpgradeMapper" >
+
+	<resultMap id="BaseResultMap" type="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareUpgradeBean">
+    	<id column="UPGRADE_ID" jdbcType="DECIMAL" property="upgradeId"/>
+    	<result column="ACCOUNT_ID" jdbcType="DECIMAL" property="accountId"/>
+    	<result column="COMPANY_NAME" jdbcType="VARCHAR" property="companyName"/>
+    	<result column="COMPANY_PROVINCE" jdbcType="VARCHAR" property="companyProvince"/>
+    	<result column="COMPANY_CITY" jdbcType="VARCHAR" property="companyCity"/>
+    	<result column="COMPANY_COUNTY" jdbcType="VARCHAR" property="companyCounty"/>
+    	<result column="COMPANY_CODE_IMAGE" jdbcType="VARCHAR" property="companyCodeImage"/>
+    	<result column="ACCOUNT_NAME" jdbcType="VARCHAR" property="accountName"/>
+    	<result column="IDCARD_NUM" jdbcType="VARCHAR" property="idcardNum"/>
+    	<result column="TELEPHONE" jdbcType="VARCHAR" property="telephone"/>
+    	<result column="CERTIFICATE_IMAGE" jdbcType="VARCHAR" property="certificateImage"/>
+    	<result column="STATUS" jdbcType="DECIMAL" property="status"/>
+    	<result column="IDCARD_FRONT" jdbcType="VARCHAR" property="idcardFront"/>
+    	<result column="IDCARD_BACK" jdbcType="VARCHAR" property="idcardBack"/>
+    	<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+    	<result column="TYPE" jdbcType="DECIMAL" property="type"/>
+    	<result column="REMARK" jdbcType="VARCHAR" property="remark"/>
+	</resultMap>
+	
+	<!--
+	<resultMap id="ResultMapWithForeign" type="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareUpgradeBean" extends="BaseResultMap" >
+			 <result column="workProcessid" property="workProcessid" jdbcType="VARCHAR" />
+			 <result column="currentState" property="currentState" jdbcType="VARCHAR" />
+       <result column="organizationName" property="orgName" jdbcType="VARCHAR" />
+        <result column="companyName" property="companyName" jdbcType="VARCHAR" />
+       <result column="accountName" property="accountName" jdbcType="VARCHAR" />
+       <result column="parkName" property="parkName" jdbcType="VARCHAR" />
+  </resultMap>
+  -->
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		UPGRADE_ID,ACCOUNT_ID,COMPANY_NAME,COMPANY_PROVINCE,COMPANY_CITY,COMPANY_COUNTY,COMPANY_CODE_IMAGE,ACCOUNT_NAME,IDCARD_NUM,TELEPHONE,CERTIFICATE_IMAGE,STATUS,IDCARD_FRONT,IDCARD_BACK,CREATE_TIME,TYPE,REMARK
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_PROJECT_DECLARE_UPGRADE
+    where 
+				UPGRADE_ID = #{upgradeId,jdbcType=DECIMAL} 
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+        DELETE FROM T_PROJECT_DECLARE_UPGRADE WHERE
+				UPGRADE_ID = #{upgradeId,jdbcType=DECIMAL} 
+    </delete>
+
+	<insert id="insert" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareUpgradeBean">
+        INSERT INTO T_PROJECT_DECLARE_UPGRADE (
+        	UPGRADE_ID ,
+        	ACCOUNT_ID ,
+        	COMPANY_NAME ,
+        	COMPANY_PROVINCE ,
+        	COMPANY_CITY ,
+        	COMPANY_COUNTY ,
+        	COMPANY_CODE_IMAGE ,
+        	ACCOUNT_NAME ,
+        	IDCARD_NUM ,
+        	TELEPHONE ,
+        	CERTIFICATE_IMAGE ,
+        	STATUS ,
+        	IDCARD_FRONT ,
+        	IDCARD_BACK ,
+        	CREATE_TIME ,
+        	TYPE ,
+        	REMARK 
+        ) VALUES (
+        	#{upgradeId,jdbcType=DECIMAL} ,
+        	#{accountId,jdbcType=DECIMAL} ,
+        	#{companyName,jdbcType=VARCHAR} ,
+        	#{companyProvince,jdbcType=VARCHAR} ,
+        	#{companyCity,jdbcType=VARCHAR} ,
+        	#{companyCounty,jdbcType=VARCHAR} ,
+        	#{companyCodeImage,jdbcType=VARCHAR} ,
+        	#{accountName,jdbcType=VARCHAR} ,
+        	#{idcardNum,jdbcType=VARCHAR} ,
+        	#{telephone,jdbcType=VARCHAR} ,
+        	#{certificateImage,jdbcType=VARCHAR} ,
+        	#{status,jdbcType=DECIMAL} ,
+        	#{idcardFront,jdbcType=VARCHAR} ,
+        	#{idcardBack,jdbcType=VARCHAR} ,
+        	#{createTime,jdbcType=TIMESTAMP} ,
+        	#{type,jdbcType=DECIMAL} ,
+        	#{remark,jdbcType=VARCHAR} 
+        )
+	</insert>
+	
+	<insert id="insertSelective" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareUpgradeBean">
+    insert into T_PROJECT_DECLARE_UPGRADE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+    		<if test="upgradeId != null" >
+        UPGRADE_ID,
+      	</if>
+    		<if test="accountId != null" >
+        ACCOUNT_ID,
+      	</if>
+    		<if test="companyName != null" >
+        COMPANY_NAME,
+      	</if>
+    		<if test="companyProvince != null" >
+        COMPANY_PROVINCE,
+      	</if>
+    		<if test="companyCity != null" >
+        COMPANY_CITY,
+      	</if>
+    		<if test="companyCounty != null" >
+        COMPANY_COUNTY,
+      	</if>
+    		<if test="companyCodeImage != null" >
+        COMPANY_CODE_IMAGE,
+      	</if>
+    		<if test="accountName != null" >
+        ACCOUNT_NAME,
+      	</if>
+    		<if test="idcardNum != null" >
+        IDCARD_NUM,
+      	</if>
+    		<if test="telephone != null" >
+        TELEPHONE,
+      	</if>
+    		<if test="certificateImage != null" >
+        CERTIFICATE_IMAGE,
+      	</if>
+    		<if test="status != null" >
+        STATUS,
+      	</if>
+    		<if test="idcardFront != null" >
+        IDCARD_FRONT,
+      	</if>
+    		<if test="idcardBack != null" >
+        IDCARD_BACK,
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME,
+      	</if>
+    		<if test="type != null" >
+        TYPE,
+      	</if>
+    		<if test="remark != null" >
+        REMARK,
+      	</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+    		<if test="upgradeId != null" >
+        #{upgradeId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="accountId != null" >
+        #{accountId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="companyProvince != null" >
+        #{companyProvince,jdbcType=VARCHAR},
+      	</if>
+    		<if test="companyCity != null" >
+        #{companyCity,jdbcType=VARCHAR},
+      	</if>
+    		<if test="companyCounty != null" >
+        #{companyCounty,jdbcType=VARCHAR},
+      	</if>
+    		<if test="companyCodeImage != null" >
+        #{companyCodeImage,jdbcType=VARCHAR},
+      	</if>
+    		<if test="accountName != null" >
+        #{accountName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="idcardNum != null" >
+        #{idcardNum,jdbcType=VARCHAR},
+      	</if>
+    		<if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      	</if>
+    		<if test="certificateImage != null" >
+        #{certificateImage,jdbcType=VARCHAR},
+      	</if>
+    		<if test="status != null" >
+        #{status,jdbcType=DECIMAL},
+      	</if>
+    		<if test="idcardFront != null" >
+        #{idcardFront,jdbcType=VARCHAR},
+      	</if>
+    		<if test="idcardBack != null" >
+        #{idcardBack,jdbcType=VARCHAR},
+      	</if>
+    		<if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    		<if test="type != null" >
+        #{type,jdbcType=DECIMAL},
+      	</if>
+    		<if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      	</if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareUpgradeBean">
+    update T_PROJECT_DECLARE_UPGRADE
+    <set >
+    		<if test="accountId != null" >
+        ACCOUNT_ID = #{accountId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="companyName != null" >
+        COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="companyProvince != null" >
+        COMPANY_PROVINCE = #{companyProvince,jdbcType=VARCHAR},
+      	</if>
+    		<if test="companyCity != null" >
+        COMPANY_CITY = #{companyCity,jdbcType=VARCHAR},
+      	</if>
+    		<if test="companyCounty != null" >
+        COMPANY_COUNTY = #{companyCounty,jdbcType=VARCHAR},
+      	</if>
+    		<if test="companyCodeImage != null" >
+        COMPANY_CODE_IMAGE = #{companyCodeImage,jdbcType=VARCHAR},
+      	</if>
+    		<if test="accountName != null" >
+        ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="idcardNum != null" >
+        IDCARD_NUM = #{idcardNum,jdbcType=VARCHAR},
+      	</if>
+    		<if test="telephone != null" >
+        TELEPHONE = #{telephone,jdbcType=VARCHAR},
+      	</if>
+    		<if test="certificateImage != null" >
+        CERTIFICATE_IMAGE = #{certificateImage,jdbcType=VARCHAR},
+      	</if>
+    		<if test="status != null" >
+        STATUS = #{status,jdbcType=DECIMAL},
+      	</if>
+    		<if test="idcardFront != null" >
+        IDCARD_FRONT = #{idcardFront,jdbcType=VARCHAR},
+      	</if>
+    		<if test="idcardBack != null" >
+        IDCARD_BACK = #{idcardBack,jdbcType=VARCHAR},
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    		<if test="type != null" >
+        TYPE = #{type,jdbcType=DECIMAL},
+      	</if>
+    		<if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      	</if>
+    </set>
+    where 
+      UPGRADE_ID = #{upgradeId,jdbcType=DECIMAL} 
+  </update>
+  
+	<update id="updateByPrimaryKey" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareUpgradeBean">
+      UPDATE T_PROJECT_DECLARE_UPGRADE SET
+        ACCOUNT_ID = #{accountId,jdbcType=DECIMAL} ,
+        COMPANY_NAME = #{companyName,jdbcType=VARCHAR} ,
+        COMPANY_PROVINCE = #{companyProvince,jdbcType=VARCHAR} ,
+        COMPANY_CITY = #{companyCity,jdbcType=VARCHAR} ,
+        COMPANY_COUNTY = #{companyCounty,jdbcType=VARCHAR} ,
+        COMPANY_CODE_IMAGE = #{companyCodeImage,jdbcType=VARCHAR} ,
+        ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR} ,
+        IDCARD_NUM = #{idcardNum,jdbcType=VARCHAR} ,
+        TELEPHONE = #{telephone,jdbcType=VARCHAR} ,
+        CERTIFICATE_IMAGE = #{certificateImage,jdbcType=VARCHAR} ,
+        STATUS = #{status,jdbcType=DECIMAL} ,
+        IDCARD_FRONT = #{idcardFront,jdbcType=VARCHAR} ,
+        IDCARD_BACK = #{idcardBack,jdbcType=VARCHAR} ,
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP} ,
+        TYPE = #{type,jdbcType=DECIMAL} ,
+        REMARK = #{remark,jdbcType=VARCHAR} 
+      WHERE 
+        UPGRADE_ID = #{upgradeId,jdbcType=DECIMAL} 
+	</update>
+	
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	        
+		       <if test="upgradeId != null">
+						<![CDATA[AND UPGRADE_ID = #{upgradeId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="accountId != null">
+						<![CDATA[AND ACCOUNT_ID = #{accountId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="companyName != null and companyName != ''">
+						<!--
+						<![CDATA[AND COMPANY_NAME = #{companyName,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND COMPANY_NAME LIKE '%' || #{companyName,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="companyProvince != null and companyProvince != ''">
+						<!--
+						<![CDATA[AND COMPANY_PROVINCE = #{companyProvince,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND COMPANY_PROVINCE LIKE '%' || #{companyProvince,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="companyCity != null and companyCity != ''">
+						<!--
+						<![CDATA[AND COMPANY_CITY = #{companyCity,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND COMPANY_CITY LIKE '%' || #{companyCity,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="companyCounty != null and companyCounty != ''">
+						<!--
+						<![CDATA[AND COMPANY_COUNTY = #{companyCounty,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND COMPANY_COUNTY LIKE '%' || #{companyCounty,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="companyCodeImage != null and companyCodeImage != ''">
+						<!--
+						<![CDATA[AND COMPANY_CODE_IMAGE = #{companyCodeImage,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND COMPANY_CODE_IMAGE LIKE '%' || #{companyCodeImage,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="accountName != null and accountName != ''">
+						<!--
+						<![CDATA[AND ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND ACCOUNT_NAME LIKE '%' || #{accountName,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="idcardNum != null and idcardNum != ''">
+						<!--
+						<![CDATA[AND IDCARD_NUM = #{idcardNum,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND IDCARD_NUM LIKE '%' || #{idcardNum,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="telephone != null and telephone != ''">
+						<!--
+						<![CDATA[AND TELEPHONE = #{telephone,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND TELEPHONE LIKE '%' || #{telephone,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="certificateImage != null and certificateImage != ''">
+						<!--
+						<![CDATA[AND CERTIFICATE_IMAGE = #{certificateImage,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND CERTIFICATE_IMAGE LIKE '%' || #{certificateImage,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="status != null">
+						<![CDATA[AND STATUS = #{status,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="idcardFront != null and idcardFront != ''">
+						<!--
+						<![CDATA[AND IDCARD_FRONT = #{idcardFront,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND IDCARD_FRONT LIKE '%' || #{idcardFront,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="idcardBack != null and idcardBack != ''">
+						<!--
+						<![CDATA[AND IDCARD_BACK = #{idcardBack,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND IDCARD_BACK LIKE '%' || #{idcardBack,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+	        
+		       <if test="type != null">
+						<![CDATA[AND TYPE = #{type,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="remark != null and remark != ''">
+						<!--
+						<![CDATA[AND REMARK = #{remark,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND REMARK LIKE '%' || #{remark,jdbcType=VARCHAR} || '%']]>
+				   </if>
+		</where>
+	</sql>
+	
+ 
+  
+  <select id="queryByCond" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareUpgradeBean" >
+    select <include refid="Base_Column_List" />
+    from T_PROJECT_DECLARE_UPGRADE
+	<include refid="Base_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+     
+  
+</mapper>
+

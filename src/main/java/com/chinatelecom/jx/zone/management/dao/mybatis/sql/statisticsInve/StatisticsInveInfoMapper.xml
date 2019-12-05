@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.statisticsInve.StatisticsInveInfoMapper" >
+
+	<resultMap id="BaseResultMap" type="com.chinatelecom.jx.zone.management.bean.statisticsInve.StatisticsInveInfoBean">
+    	<id column="ID" jdbcType="DECIMAL" property="id"/>
+    	<result column="INVESTIGATION_ID" jdbcType="DECIMAL" property="investigationId"/>
+    	<result column="FORM_ID" jdbcType="DECIMAL" property="formId"/>
+    	<result column="COUNT_EXAMPLE_SUM" jdbcType="DECIMAL" property="countExampleSum"/>
+    	<result column="COUNT_EXAMPLE_PC" jdbcType="DECIMAL" property="countExamplePc"/>
+    	<result column="COUNT_EXAMPLE_WX" jdbcType="DECIMAL" property="countExampleWx"/>
+    	<result column="COUNT_BROWSE" jdbcType="DECIMAL" property="countBrowse"/>
+    	<result column="CREATEDAY" jdbcType="VARCHAR" property="createday"/>
+    	<result column="EXAMPLE_PRC" jdbcType="VARCHAR" property="examplePrc"/>
+    	<result column="UPDATE_DATE" jdbcType="TIMESTAMP" property="updateDate"/>
+	</resultMap>
+	
+	<!--
+	<resultMap id="ResultMapWithForeign" type="com.chinatelecom.jx.zone.management.bean.statisticsInve.StatisticsInveInfoBean" extends="BaseResultMap" >
+			 <result column="workProcessid" property="workProcessid" jdbcType="VARCHAR" />
+			 <result column="currentState" property="currentState" jdbcType="VARCHAR" />
+       <result column="organizationName" property="orgName" jdbcType="VARCHAR" />
+        <result column="companyName" property="companyName" jdbcType="VARCHAR" />
+       <result column="accountName" property="accountName" jdbcType="VARCHAR" />
+       <result column="parkName" property="parkName" jdbcType="VARCHAR" />
+  </resultMap>
+  -->
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		ID,INVESTIGATION_ID,FORM_ID,COUNT_EXAMPLE_SUM,COUNT_EXAMPLE_PC,COUNT_EXAMPLE_WX,COUNT_BROWSE,CREATEDAY,EXAMPLE_PRC,UPDATE_DATE
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_STATISTICS_INVE_INFO
+    where 
+				ID = #{id,jdbcType=DECIMAL} 
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+        DELETE FROM T_STATISTICS_INVE_INFO WHERE
+				ID = #{id,jdbcType=DECIMAL} 
+    </delete>
+
+	<insert id="insert" parameterType="com.chinatelecom.jx.zone.management.bean.statisticsInve.StatisticsInveInfoBean">
+        INSERT INTO T_STATISTICS_INVE_INFO (
+        	ID ,
+        	INVESTIGATION_ID ,
+        	FORM_ID ,
+        	COUNT_EXAMPLE_SUM ,
+        	COUNT_EXAMPLE_PC ,
+        	COUNT_EXAMPLE_WX ,
+        	COUNT_BROWSE ,
+        	CREATEDAY ,
+        	EXAMPLE_PRC ,
+        	UPDATE_DATE 
+        ) VALUES (
+        	#{id,jdbcType=DECIMAL} ,
+        	#{investigationId,jdbcType=DECIMAL} ,
+        	#{formId,jdbcType=DECIMAL} ,
+        	#{countExampleSum,jdbcType=DECIMAL} ,
+        	#{countExamplePc,jdbcType=DECIMAL} ,
+        	#{countExampleWx,jdbcType=DECIMAL} ,
+        	#{countBrowse,jdbcType=DECIMAL} ,
+        	#{createday,jdbcType=VARCHAR} ,
+        	#{examplePrc,jdbcType=VARCHAR} ,
+        	#{updateDate,jdbcType=TIMESTAMP} 
+        )
+	</insert>
+	
+	<insert id="insertSelective" parameterType="com.chinatelecom.jx.zone.management.bean.statisticsInve.StatisticsInveInfoBean">
+    insert into T_STATISTICS_INVE_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+    		<if test="id != null" >
+        ID,
+      	</if>
+    		<if test="investigationId != null" >
+        INVESTIGATION_ID,
+      	</if>
+    		<if test="formId != null" >
+        FORM_ID,
+      	</if>
+    		<if test="countExampleSum != null" >
+        COUNT_EXAMPLE_SUM,
+      	</if>
+    		<if test="countExamplePc != null" >
+        COUNT_EXAMPLE_PC,
+      	</if>
+    		<if test="countExampleWx != null" >
+        COUNT_EXAMPLE_WX,
+      	</if>
+    		<if test="countBrowse != null" >
+        COUNT_BROWSE,
+      	</if>
+    		<if test="createday != null" >
+        CREATEDAY,
+      	</if>
+    		<if test="examplePrc != null" >
+        EXAMPLE_PRC,
+      	</if>
+    		<if test="updateDate != null" >
+        UPDATE_DATE,
+      	</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+    		<if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      	</if>
+    		<if test="investigationId != null" >
+        #{investigationId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="formId != null" >
+        #{formId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="countExampleSum != null" >
+        #{countExampleSum,jdbcType=DECIMAL},
+      	</if>
+    		<if test="countExamplePc != null" >
+        #{countExamplePc,jdbcType=DECIMAL},
+      	</if>
+    		<if test="countExampleWx != null" >
+        #{countExampleWx,jdbcType=DECIMAL},
+      	</if>
+    		<if test="countBrowse != null" >
+        #{countBrowse,jdbcType=DECIMAL},
+      	</if>
+    		<if test="createday != null" >
+        #{createday,jdbcType=VARCHAR},
+      	</if>
+    		<if test="examplePrc != null" >
+        #{examplePrc,jdbcType=VARCHAR},
+      	</if>
+    		<if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      	</if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinatelecom.jx.zone.management.bean.statisticsInve.StatisticsInveInfoBean">
+    update T_STATISTICS_INVE_INFO
+    <set >
+    		<if test="investigationId != null" >
+        INVESTIGATION_ID = #{investigationId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="formId != null" >
+        FORM_ID = #{formId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="countExampleSum != null" >
+        COUNT_EXAMPLE_SUM = #{countExampleSum,jdbcType=DECIMAL},
+      	</if>
+    		<if test="countExamplePc != null" >
+        COUNT_EXAMPLE_PC = #{countExamplePc,jdbcType=DECIMAL},
+      	</if>
+    		<if test="countExampleWx != null" >
+        COUNT_EXAMPLE_WX = #{countExampleWx,jdbcType=DECIMAL},
+      	</if>
+    		<if test="countBrowse != null" >
+        COUNT_BROWSE = #{countBrowse,jdbcType=DECIMAL},
+      	</if>
+    		<if test="createday != null" >
+        CREATEDAY = #{createday,jdbcType=VARCHAR},
+      	</if>
+    		<if test="examplePrc != null" >
+        EXAMPLE_PRC = #{examplePrc,jdbcType=VARCHAR},
+      	</if>
+    		<if test="updateDate != null" >
+        UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP},
+      	</if>
+    </set>
+    where 
+      ID = #{id,jdbcType=DECIMAL} 
+  </update>
+  
+	<update id="updateByPrimaryKey" parameterType="com.chinatelecom.jx.zone.management.bean.statisticsInve.StatisticsInveInfoBean">
+      UPDATE T_STATISTICS_INVE_INFO SET
+        INVESTIGATION_ID = #{investigationId,jdbcType=DECIMAL} ,
+        FORM_ID = #{formId,jdbcType=DECIMAL} ,
+        COUNT_EXAMPLE_SUM = #{countExampleSum,jdbcType=DECIMAL} ,
+        COUNT_EXAMPLE_PC = #{countExamplePc,jdbcType=DECIMAL} ,
+        COUNT_EXAMPLE_WX = #{countExampleWx,jdbcType=DECIMAL} ,
+        COUNT_BROWSE = #{countBrowse,jdbcType=DECIMAL} ,
+        CREATEDAY = #{createday,jdbcType=VARCHAR} ,
+        EXAMPLE_PRC = #{examplePrc,jdbcType=VARCHAR} ,
+        UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP} 
+      WHERE 
+        ID = #{id,jdbcType=DECIMAL} 
+	</update>
+	
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	        
+		       <if test="id != null">
+						<![CDATA[AND ID = #{id,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="investigationId != null">
+						<![CDATA[AND INVESTIGATION_ID = #{investigationId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="formId != null">
+						<![CDATA[AND FORM_ID = #{formId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="countExampleSum != null">
+						<![CDATA[AND COUNT_EXAMPLE_SUM = #{countExampleSum,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="countExamplePc != null">
+						<![CDATA[AND COUNT_EXAMPLE_PC = #{countExamplePc,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="countExampleWx != null">
+						<![CDATA[AND COUNT_EXAMPLE_WX = #{countExampleWx,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="countBrowse != null">
+						<![CDATA[AND COUNT_BROWSE = #{countBrowse,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="createday != null and createday != ''">
+						<!--
+						<![CDATA[AND CREATEDAY = #{createday,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND CREATEDAY LIKE '%' || #{createday,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="examplePrc != null and examplePrc != ''">
+						<!--
+						<![CDATA[AND EXAMPLE_PRC = #{examplePrc,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND EXAMPLE_PRC LIKE '%' || #{examplePrc,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		</where>
+	</sql>
+	
+	
+	<sql id="Base_Where_Clause1">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	        
+		       <if test="id != null">
+						<![CDATA[AND ID = #{id,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="investigationId != null">
+						<![CDATA[AND INVESTIGATION_ID = #{investigationId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="formId != null">
+						<![CDATA[AND FORM_ID = #{formId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="countExampleSum != null">
+						<![CDATA[AND COUNT_EXAMPLE_SUM = #{countExampleSum,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="countExamplePc != null">
+						<![CDATA[AND COUNT_EXAMPLE_PC = #{countExamplePc,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="countExampleWx != null">
+						<![CDATA[AND COUNT_EXAMPLE_WX = #{countExampleWx,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="countBrowse != null">
+						<![CDATA[AND COUNT_BROWSE = #{countBrowse,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="createday != null and createday != ''">
+						<!--
+						<![CDATA[AND CREATEDAY = #{createday,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND CREATEDAY LIKE '%' || #{createday,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="examplePrc != null and examplePrc != ''">
+						<!--
+						<![CDATA[AND EXAMPLE_PRC = #{examplePrc,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND EXAMPLE_PRC LIKE '%' || #{examplePrc,jdbcType=VARCHAR} || '%']]>
+				   </if>
+				    <if test="start  != null and start != ''">
+						<![CDATA[AND to_date(createday ,'yyyy-MM-dd') >= to_date(#{start,jdbcType=VARCHAR} ,'yyyy-MM-dd') ]]>
+				   </if>
+				    <if test="end != null and end != ''">
+						<![CDATA[AND to_date(createday ,'yyyy-MM-dd') <= to_date(#{end,jdbcType=VARCHAR} ,'yyyy-MM-dd') ]]>
+				   </if>
+	        
+		</where>
+	</sql>
+ 
+  
+  <select id="queryByCond" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.statisticsInve.StatisticsInveInfoBean" >
+    select <include refid="Base_Column_List" />
+    from T_STATISTICS_INVE_INFO
+	<include refid="Base_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+    <select id="queryTotalCountByCond" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.statisticsInve.StatisticsInveInfoBean" >
+	   select sum(count_example_sum) as count_example_sum,
+	       sum(count_browse) as count_browse,
+	       sum(count_example_pc) as count_example_pc,
+	       sum(count_example_wx) as count_example_wx
+		from T_STATISTICS_INVE_INFO
+		<include refid="Base_Where_Clause" />
+	   <if test="orderByClause != null" >
+	     order by ${orderByClause}
+	   </if>
+	 </select>
+	 
+	 <select id="queryByCondForPage" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.statisticsInve.StatisticsInveInfoBean" >
+	    select <include refid="Base_Column_List" />
+	    from T_STATISTICS_INVE_INFO
+		<include refid="Base_Where_Clause1" />
+	    <if test="orderByClause != null" >
+	      order by ${orderByClause}
+	    </if>
+	 </select>
+</mapper>
+

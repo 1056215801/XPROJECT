@@ -1,0 +1,5 @@
+@charset "utf-8";
+/* CSS Document */
+.impowerBox .title {display: none!important;}
+.impowerBox .qrcode {width: 200px;}
+.impowerBox .info {width: 200px;}

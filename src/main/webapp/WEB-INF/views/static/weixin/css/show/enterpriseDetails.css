@@ -1,0 +1,150 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"黑体";
+}
+
+html {
+	background-color:#ebebeb;
+}
+.entDetails_main {
+	background-color:#ebebeb;
+	position:relative;
+}
+.entDetails_content {
+	width:100%;
+	background-color:#ebebeb;
+	position:relative;
+	margin:50px 0 55px;
+}
+.enterprise_top1 {
+	position:fixed;
+	top:0;
+	background-color:#393A3E;
+	width:100%;
+	height:50px;
+	z-index:10000;
+}
+.enterprise_top1 img {
+	margin:13px 0 0 90px;
+	display:block;
+}
+.entProduct_name {
+	color:#fff;
+	margin-left:90px;
+}
+.enterprise_top2 {
+	position:fixed;
+	top:50px;
+	background-color:#ebebeb;
+	width:100%;
+	height:70px;
+	z-index:10000;
+	font-size:12px;
+}
+.enterprise_logo {
+	position:absolute;
+	top:-35px;
+	left:15px;
+}
+.enterprise_add {
+	margin:7px 0 0 90px;
+}
+.enterprise_range {
+	margin:7px 0 0 90px;
+}
+.entDetails_dataBar {
+	padding:0 3%;
+	background-color:#fff;
+}
+.entDetails_data {
+	border-bottom:1px solid #e6e6e6;
+	padding:10px 0;
+}
+.entDetails_dataLeft {
+	width:20%;
+	float:left;
+	text-align:right;
+}
+.entDetails_dataRight {
+	float:left;
+	font-weight:bold;
+	margin-left:10px;
+}
+.enterprise_intro {
+	margin-top:10px;
+	margin-bottom:-5px;
+	padding:5px 3%;
+	background-color:#fff;
+	text-indent:2em;
+	height:4.3em;
+	overflow:hidden;
+}
+.enterprise_pic {
+	margin-top:10px;
+	padding:5px 1%;
+	background-color:#fff;
+}
+.enterprise_pic img {
+	float:left;
+	display:block;
+	margin:0 1%;
+}
+.fixed_bottom {
+	width:100%;
+	height:45px;
+	position:fixed;
+	bottom:0;
+	background-color:#F4F4F4;
+	border-top:1px solid #DCDCDC;
+}
+.returnBtn {
+	float:left;
+	margin:12px 10px;
+}
+.bottom_operation {
+	float:right;
+	border-left:1px solid #DCDCDC;
+	padding:0 10px;
+}
+.bottom_operation img {
+	margin:12px 0;
+}
+.spanContral_1 {
+	position:relative;
+	bottom:16px;
+}
+.spanContral_2 {
+	position:relative;
+	top:10px;
+}

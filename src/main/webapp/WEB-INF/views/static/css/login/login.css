@@ -1,0 +1,139 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"黑体";
+}
+
+.login_main {
+}
+.login_content {
+	width:380px;
+	margin:0 auto 75px;
+}
+.bottomLine {
+	position:relative;
+	top:40px;
+	border-bottom:3px solid #ccc;
+}
+.loginModeRed {
+	float:left;
+	font-size:16px;
+	padding:11px 5px 2px;
+	color:#f14342;
+	border-bottom:3px solid #f14342;
+	font-weight:bold;
+	z-index:10;
+}
+.loginModeGray {
+	float:left;
+	font-size:16px;
+	padding:11px 5px 2px;
+	color:#6F6F6F;
+	border-bottom:3px solid #6F6F6F;
+	font-weight:bold;
+	z-index:10;
+}
+.switchMode {
+	float:right;
+	cursor:pointer;
+}
+.input_Contral {
+	width:90%;
+	margin:10px auto;
+	border: 1px solid #ccc;
+	border-radius: 1px;
+	padding: 8px 12px;
+	display:block;
+}
+.checkbox_Contral {
+	margin:-3px 5px 0 3px;
+	display:inline-block;
+	vertical-align:middle;
+	border:1px solid #ccc;
+}
+
+.QRCode_Contral {
+	display:block;
+	margin:0 auto;
+}
+.QRCodeTips {
+	width:220px;
+	margin:15px auto 0;
+	text-align:center;
+	background-color:#E7E7E7;
+	border-radius:15px;
+	padding:5px 0;
+	color:#808080;
+}
+.WeChatTips {
+	position:relative;
+	padding:40px 58px;
+}
+.headPortrait {
+	display:inline-block;
+	vertical-align:middle;
+}
+.WeChatName {
+	position:absolute;
+	top:133px;
+	left:28px;
+	width: 150px;
+	text-align: center;
+}
+.success {
+	display:inline-block;
+	vertical-align:middle;
+	margin-left:30px;
+}
+.successTips {
+	display:inline-block;
+	vertical-align:middle;
+	margin-left:3px;
+	width: 110px;
+	text-align: center;
+}
+.copyright {
+	position:fixed;
+	left:0;
+	right:0;
+	text-align:center;
+	bottom:15px;
+	color:#aaa;
+}
+
+.displayNo {display:none;}
+.button_Contral {
+	margin:10px 2% 0!important;
+	font-weight:bold!important;
+	border-radius:20px;
+}

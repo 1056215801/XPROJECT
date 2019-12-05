@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>首页</title>
+<link href="css/homepage.css" rel="stylesheet"/>
+<link href="css/projectHeader.css" rel="stylesheet"/>
+<link href="css/projectFooter.css" rel="stylesheet"/>
+<script src="js/jquery.js"></script>
+<script>
+ $(function(){
+    $(".tabName ul li").each(function(){//页面头部模块切换控制
+		var index=$(this).index();
+		$(".tabName ul li").eq(0).addClass("nameClick");
+		$(this).click(function(){
+			$(this).addClass("nameClick").siblings().removeClass("nameClick");
+			$(".tabItem>ul").eq(index).stop(true).show().siblings().stop(true).hide();
+		})
+    });
+	$(".tabItem ul li").each(function(){
+		$(".tabItem ul li").eq(0).addClass("itemClick");
+		$(this).click(function(){
+			$(this).addClass("itemClick").siblings().removeClass("itemClick");
+		})
+    });
+	$(".titleName ul li").each(function(){//页面内容切换控制
+		var index=$(this).index();
+		$(".titleName ul li").eq(0).addClass("titleClick");
+		$(this).click(function(){
+			$(this).addClass("titleClick").siblings().removeClass("titleClick");
+			$(".titleItem>div").eq(index).stop(true).show().siblings().stop(true).hide();
+		})
+    });
+	$(".searchOptions .optionBtn").click(function(){//标签选择控制
+		if($(this).hasClass("selected")){
+			$(this).removeClass("selected");
+		}else{
+			$(this).addClass("selected");
+		}
+	});
+ })
+</script>
+</head>
+
+<body>
+<div class="home_main">
+	<div class="header_tab">
+			<div class="header_sign">
+				<img src="images/logo.png" width="150px;" height="80px;"/>
+				<div class="header_add">
+					<div>南昌</div>
+					<input type="button" value="切换"/>
+				</div>
+			</div>
+			<div class="tabName">
+				<ul>
+					<li><a href="javascript:;">服务</a></li>
+					<li><a href="javascript:;">办公</a></li>
+				</ul>
+			</div>
+			<div class="header_user">
+				<img src="images/headPortrait.png" width="80px;" height="80px;"/>
+				<span>
+					<a href="javascript:;">登录</a>
+					<a href="javascript:;">注册</a>
+				</span>
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+		<div class="tabItem" style="background-color:#f14342;">
+			<ul>
+				<li><a href="homepage.html">服务</a></li>
+				<li><a href="projectApplication.html">项目申报</a></li>
+				<li><a href="activityRegistration.html">活动报名</a></li>
+				<li><a href="onlineSurvey.html">在线调查</a></li>
+			</ul>
+			<ul style="display: none;">
+				<li><a href="javascript:;">办公</a></li>
+				<li><a href="javascript:;">审计</a></li>
+			</ul>
+		</div> 
+	</div>
+	
+	<img src="images/gg.jpg" width="100%" style="display:block;">
+	<div class="home_content">
+		<div class="home_projectBar">
+			<img src="images/sb.jpg" width="211" height="359" class="home_imgContral">
+			<img src="images/sb1.jpg" width="363" height="359" class="home_imgContral">
+			<div class="home_projectData">
+				<div class="home_projectDataTop">
+					<input type="text" placeholder="找申报" class="searchBox">
+					<input type="button" value="搜&nbsp;索" class="searchBtn">
+					<div class="releaseOper">
+						<img src="images/arrow.jpg" style="vertical-align:middle;">
+						<span style="vertical-align:middle;">发申报</span>
+					</div>
+					<div class="moreOper">更多></div>
+				</div>
+				<div style="margin:0 5px;">
+					<div class="sb_dataBar">
+						<div class="sb_dataTop">
+							<div class="sb_title">测试项目申报</div>
+							<div class="sb_labelGreen">申报中</div>
+						</div>
+						<div class="sb_dataBottom">
+							<div class="sb_data">2016年11月07日&nbsp;&nbsp;市级&nbsp;&nbsp;省工信委</div>
+							<div class="sb_term">距离申报结束还有<font style="font-size:16px; color:#f14342;">18</font>天</div>
+						</div>
+					</div>
+					<div class="sb_dataBar">
+						<div class="sb_dataTop">
+							<div class="sb_title">测试项目申报</div>
+							<div class="sb_labelBlue">已公示</div>
+						</div>
+						<div class="sb_dataBottom">
+							<div class="sb_data">2016年11月07日&nbsp;&nbsp;市级&nbsp;&nbsp;省工信委</div>
+							<div class="sb_term">申报已截止</div>
+						</div>
+					</div>
+					<div class="sb_dataBar">
+						<div class="sb_dataTop">
+							<div class="sb_title">下达2016年第二批省重点建设项目计划下达2016年第二批省重...</div>
+							<div class="sb_labelGreen">申报中</div>
+						</div>
+						<div class="sb_dataBottom">
+							<div class="sb_data">2016年11月07日&nbsp;&nbsp;市级&nbsp;&nbsp;省工信委</div>
+							<div class="sb_term">常年有效</div>
+						</div>
+					</div>
+					<div class="sb_dataBar">
+						<div class="sb_dataTop">
+							<div class="sb_title">测试项目申报</div>
+							<div class="sb_labelGreen">申报中</div>
+						</div>
+						<div class="sb_dataBottom">
+							<div class="sb_data">2016年11月07日&nbsp;&nbsp;市级&nbsp;&nbsp;省工信委</div>
+							<div class="sb_term">距离申报结束还有<font style="font-size:16px; color:#f14342;">18</font>天</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+		<div class="home_projectBar">
+			<img src="images/hd.jpg" width="211" height="359" class="home_imgContral">
+			<img src="images/hd1.jpg" width="363" height="359" class="home_imgContral">
+			<div class="home_projectData">
+				<div class="home_projectDataTop">
+					<input type="text" placeholder="找活动" class="searchBox">
+					<input type="button" value="搜&nbsp;索" class="searchBtn">
+					<div class="releaseOper">
+						<img src="images/arrow.jpg" style="vertical-align:middle;">
+						<span style="vertical-align:middle;">发活动</span>
+					</div>
+					<div class="moreOper">更多></div>
+				</div>
+				<div style="margin:0 5px;">
+					<div class="hd_dataBar">
+						<div class="hd_arrow">></div>
+						<div class="hd_title">2016广州国际进口食品展览会</div>
+						<div class="hd_stateRed">报名中</div>
+					</div>
+					<div class="hd_dataBar">
+						<div class="hd_arrow">></div>
+						<div class="hd_title">2016广州国际进口食品展览会2016广州国际进口食品展览会...</div>
+						<div class="hd_stateRed">报名中</div>
+					</div>
+					<div class="hd_dataBar">
+						<div class="hd_arrow">></div>
+						<div class="hd_title">2016广州国际进口食品展览会</div>
+						<div class="hd_stateRed">报名中</div>
+					</div>
+					<div class="hd_dataBar">
+						<div class="hd_arrow">></div>
+						<div class="hd_title">2016广州国际进口食品展览会2016广州国际进口食品展览会...</div>
+						<div class="hd_stateRed">报名中</div>
+					</div>
+					<div class="hd_dataBar">
+						<div class="hd_arrow">></div>
+						<div class="hd_title">2016广州国际进口食品展览会2016广州国际进口食品展览会...</div>
+						<div class="hd_stateRed">报名中</div>
+					</div>
+					<div class="hd_dataBar">
+						<div class="hd_arrow">></div>
+						<div class="hd_title">2016广州国际进口食品展览会</div>
+						<div class="hd_stateRed">报名中</div>
+					</div>
+					<div class="hd_dataBar">
+						<div class="hd_arrow">></div>
+						<div class="hd_title">2016广州国际进口食品展览会2016广州国际进口食品展览会...</div>
+						<div class="hd_stateRed">报名中</div>
+					</div>
+					<div class="hd_dataBar">
+						<div class="hd_arrow">></div>
+						<div class="hd_title">2016广州国际进口食品展览会</div>
+						<div class="hd_stateRed">报名中</div>
+					</div>
+					
+				</div>
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+		<div class="home_projectBar">
+			<img src="images/dc.jpg" width="211" height="359" class="home_imgContral">
+			<img src="images/dc1.jpg" width="363" height="359" class="home_imgContral">
+			<div class="home_projectData">
+				<div class="home_projectDataTop">
+					<input type="text" placeholder="找调查" class="searchBox">
+					<input type="button" value="搜&nbsp;索" class="searchBtn">
+					<div class="releaseOper">
+						<img src="images/arrow.jpg" style="vertical-align:middle;">
+						<span style="vertical-align:middle;">发调查</span>
+					</div>
+					<div class="moreOper">更多></div>
+				</div>
+				<div style="margin:0 5px;">
+					<div class="dc_dataBar">
+						<div class="dc_arrow">></div>
+						<div class="dc_titleBar">
+							<div class="dc_title">江西各个中学使用的英语教学或是普通话教学</div>
+							<img src="images/new.gif" width="20" height="8" style="vertical-align:middle;">
+						</div>
+						<div class="dc_stateYellow">进行中</div>
+						<div class="dc_numberBar">
+							<img src="images/headsmall.png" width="15" height="15" style="vertical-align:middle;">
+							<div class="dc_number">参与人气：<font style="color:#f1921c;">23230000</font>人</div>
+						</div>
+					</div>
+					<div class="dc_dataBar">
+						<div class="dc_arrow">></div>
+						<div class="dc_titleBar">
+							<div class="dc_title">江西各个中学使用的英语教学或是普通话教学</div>
+						</div>
+						<div class="dc_stateYellow">进行中</div>
+						<div class="dc_numberBar">
+							<img src="images/headsmall.png" width="15" height="15" style="vertical-align:middle;">
+							<div class="dc_number">参与人气：<font style="color:#f1921c;">20</font>人</div>
+						</div>
+					</div>
+					<div class="dc_dataBar">
+						<div class="dc_arrow">></div>
+						<div class="dc_titleBar">
+							<div class="dc_title">江西各个中学使用的英语教学或是普通话教学</div>
+						</div>
+						<div class="dc_stateYellow">进行中</div>
+						<div class="dc_numberBar">
+							<img src="images/headsmall.png" width="15" height="15" style="vertical-align:middle;">
+							<div class="dc_number">参与人气：<font style="color:#f1921c;">23230</font>人</div>
+						</div>
+					</div>
+					<div class="dc_dataBar">
+						<div class="dc_arrow">></div>
+						<div class="dc_titleBar">
+							<div class="dc_title">江西各个中学使用的英语教学或是普通话教学</div>
+						</div>
+						<div class="dc_stateYellow">进行中</div>
+						<div class="dc_numberBar">
+							<img src="images/headsmall.png" width="15" height="15" style="vertical-align:middle;">
+							<div class="dc_number">参与人气：<font style="color:#f1921c;">8323</font>人</div>
+						</div>
+					</div>
+					<div class="dc_dataBar">
+						<div class="dc_arrow">></div>
+						<div class="dc_titleBar">
+							<div class="dc_title">江西各个中学使用的英语教学或是普通话教学</div>
+						</div>
+						<div class="dc_stateYellow">进行中</div>
+						<div class="dc_numberBar">
+							<img src="images/headsmall.png" width="15" height="15" style="vertical-align:middle;">
+							<div class="dc_number">参与人气：<font style="color:#f1921c;">232</font>人</div>
+						</div>
+					</div>
+					<div class="dc_dataBar">
+						<div class="dc_arrow">></div>
+						<div class="dc_titleBar">
+							<div class="dc_title">江西各个中学使用的英语教学或是普通话教学</div>
+						</div>
+						<div class="dc_stateYellow">进行中</div>
+						<div class="dc_numberBar">
+							<img src="images/headsmall.png" width="15" height="15" style="vertical-align:middle;">
+							<div class="dc_number">参与人气：<font style="color:#f1921c;">0</font>人</div>
+						</div>
+					</div>
+					<div class="dc_dataBar">
+						<div class="dc_arrow">></div>
+						<div class="dc_titleBar">
+							<div class="dc_title">江西各个中学使用的英语教学或是普通话教学</div>
+						</div>
+						<div class="dc_stateGray">已结束</div>
+						<div class="dc_numberBar">
+							<img src="images/headsmall.png" width="15" height="15" style="vertical-align:middle;">
+							<div class="dc_number">参与人气：<font style="color:#f1921c;">324</font>人</div>
+						</div>
+					</div>
+					<div class="dc_dataBar">
+						<div class="dc_arrow">></div>
+						<div class="dc_titleBar">
+							<div class="dc_title">江西各个中学使用的英语教学或是普通话教学</div>
+						</div>
+						<div class="dc_stateYellow">进行中</div>
+						<div class="dc_numberBar">
+							<img src="images/headsmall.png" width="15" height="15" style="vertical-align:middle;">
+							<div class="dc_number">参与人气：<font style="color:#f1921c;">34</font>人</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+	</div>
+	
+	<div class="project_footer">
+		<div class="copyright">
+			<div class="copyrightLeft">
+				<div>
+					<span>关于我们</span>&nbsp;<span>联系我们</span>&nbsp;<span>法律条款</span>&nbsp;<span>开放平台</span>
+				</div>
+				<div class="font12" style="margin-top:30px;">
+					<div>Copyright @ 2016 - 2020 CloudCommunity Inc.All Rights Reserved.Powered by 智慧园区</div>
+					<div>江西融合科技有限责任公司 赣ICP备1232434</div>
+				</div>
+			</div>
+			<div class="copyrightRight">
+				<div style="float:left;">
+					<div class="font12">
+						<div class="alignRight">扫描二维码加入</div>
+						<div class="alignRight">微信公众号：1232434</div>
+					</div>
+					<div class="copyrightTel">
+						<img src="images/phone.png" width="20px;" height="20px;">
+						<span class="font16">服务热线</span>
+						<span class="font26" style="margin-left:5px;">968969</span>
+					</div>
+				</div>
+				<img src="images/new2.jpg" width="100px" height="100px;" class="QRcodeImg">
+				<div style="clear:both;"></div>
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

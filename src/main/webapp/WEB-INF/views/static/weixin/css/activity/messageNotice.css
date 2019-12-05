@@ -1,0 +1,101 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"黑体";
+}
+a:hover, a:visited, a:link, a:active {
+    text-decoration:none;
+	color:#ccc;
+}
+
+html {
+	background-color:#ebebeb;
+}
+.notice_main {
+	background-color:#ebebeb;
+	position:relative;
+	font-size:16px;
+}
+.notice_content {
+	width:100%;
+	background-color:#ebebeb;
+	position:relative;
+	margin:50px 0 60px;
+}
+.fixed_top {
+	position:fixed;
+	top:0;
+	background-color:#f14241;
+	width:100%;
+	height:50px;
+	z-index:1000;
+	font-weight:bold;
+}
+.fixed_top img {
+	margin:15px 5px 0 10px;
+}
+.fixed_top span {
+	position:absolute;
+	top:14px;
+	color:#FFF;
+}
+.titleName {
+	border-bottom:1px solid #ccc;
+	padding:10px 5px 14px;
+}
+.titleName ul{list-style-type:none; position:relative; top:3px; margin-left:5px;}  
+.titleName ul li{float:left; text-align:center; margin-right:15px; padding:0 3px; border:1px solid #ccc;}
+.titleName ul li a{text-decoration:none;}
+.titleClick { background-color:#f14241; border:1px solid #f14241;}
+.titleClick a { color:#fff;}
+.noticeInput {
+	padding:13px 3px 7px;
+}
+.noticeInput textarea {
+	width:98%;
+}
+.returnBtn {
+	width:36%;
+	border:0;
+	background-color:#fff;
+	color:#000;
+	padding:7px 0;
+	margin-right:5px;
+}
+.sendBtn {
+	width:60%;
+	border:0;
+	background-color:#f14241;
+	color:#fff;
+	padding:7px 0;
+}

@@ -1,0 +1,88 @@
+@CHARSET "UTF-8";
+body .layui-layer-tl_green .layui-layer-title {
+	background-color: #00A85A;
+	color: #fff;
+	border: none;
+}
+
+body .layui-layer-bg_gray .layui-layer-content {
+	background-color: #ebebeb;
+}
+
+body .layui-layer-bg_gray .layui-layer-btn0 {
+	background-color: #00A85A;
+	color: #FFF;
+	text-align: center;
+	padding: 5px 0;
+	width: 100%;
+	margin: 0;
+}
+
+.selected {
+	font-weight: bold;
+	color: #f14241;
+}
+
+.project_operBar {
+	background-color: #fff;
+	border-top: 1px solid #f6f6f6;
+	border-bottom: 1px solid #f6f6f6;
+	text-align: center;
+}
+
+.project_oper {
+	float: left;
+	padding: 7px 0;
+}
+
+.borRight {
+	border-right: 1px solid #f6f6f6;
+}
+
+.borLeft {
+	border-left: 1px solid #f6f6f6;
+}
+
+.contentBar {
+	background-color: #FFFFFF;
+	padding: 7px 3%;
+	margin-top: 10px;
+}
+.details_main {
+	display:none;
+	font-size:16px;
+}
+
+.mySupply_title {
+	width:26%;
+	position:static;
+	margin-top:-10px;
+	margin-left:37%;
+	text-align:center; 
+	background-color:#ebebeb;
+	font-size:14px;
+}
+
+.mySupply_top {
+	width:100%;
+	height:20px;
+	margin-top:20px;
+	border-top:1px solid #CBCBCB;
+}
+
+body .layui-layer-btn .layui-layer-btn0 {
+	border-color:#00A85A;
+	background-color:#00A85A;
+	color:#fff
+}
+body .layui-layer-title {
+	padding:0 80px 0 20px;
+	height:42px;
+	line-height:42px;
+	border-bottom:1px solid #eee;
+	font-size:14px;
+	color:#fff;
+	overflow:hidden;
+	background-color:#00A85A;
+	border-radius:2px 2px 0 0
+}

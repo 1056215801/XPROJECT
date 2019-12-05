@@ -1,0 +1,111 @@
+@charset "utf-8";
+/* CSS Document */
+/* 返回按钮 */
+.backBtn {
+	position: fixed;
+	bottom: 60px;
+	left: 15px;
+	width: 50px;
+	height: 50px;
+	background: url(../../images/fanhui.png) no-repeat center center;
+	-webkit-background-size: 100%;
+	background-size: 100%;
+	z-index: 999;
+}
+.navigationBar {
+	width: 100%;
+	height: 55px;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	/*line-height:50px;*/
+	background-color: #FFF;
+	border-top: 1px solid #DBDBDB;
+}
+
+.navigationBar ul li {
+	width: 33%;
+	float: left;
+	text-align: center;
+}
+
+.navigationBar ul li a {
+	text-decoration: none;
+	color: #7B7B7B;
+	font-size: 12px;
+}
+
+.navImage {
+	/*height:12px;*/
+	margin-top: 8px;
+}
+
+.navTitle {
+	margin-top: 4px;
+}
+
+#viewMore {
+	position: absolute;
+	bottom: 50px;
+	right: 105px;
+	line-height: 1.4;
+}
+
+#viewMore ul {
+	background: #fff;
+	border: 1px solid #ccc;
+	position: absolute;
+	display: none;
+}
+
+#viewMore ul li {
+	width: 100px;
+	text-align: center;
+	font-weight: bold;
+}
+
+#viewMore ul li a {
+	display: block;
+	color: #807a62;
+	text-decoration: none;
+	font-size: 14px;
+	padding: 12px 0;
+}
+
+#viewMore ul.more_1 { /*相差44*/
+	margin-top: -51px;
+}
+
+#viewMore ul.more_2 {
+	margin-top: -95px;
+}
+
+#viewMore ul.more_3 {
+	margin-top: -139px;
+}
+
+.border_bottom_e6 {
+	border-bottom: 1px solid #E6E6E6;
+}
+
+#tbox {
+	width: 50px;
+	float: right;
+	position: fixed;
+	right: 10px;
+	bottom: 50px;
+	overflow: visible;
+}
+
+#gotop {
+	width: 50px;
+	height: 60px;
+	background: url(/XProject/static/weixin/images/logistics/rocket.png)
+		no-repeat;
+	display: block;
+	background-size: 50px 50px;
+}
+
+.weui-picker-modal .picker-items{
+text-align:center;
+}

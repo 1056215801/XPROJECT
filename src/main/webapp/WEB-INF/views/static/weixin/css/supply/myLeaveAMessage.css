@@ -1,0 +1,154 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"黑体";
+}
+a:hover, a:visited, a:link, a:active {
+    text-decoration:none;
+	color:#F04444;
+}
+li {
+	background-color:#fff;
+}
+
+html {
+	background-color:#ebebeb;
+}
+.message_main {
+	background-color:#ebebeb;
+	position:relative;
+}
+.message_content {
+	width:100%;
+	background-color:#ebebeb;
+	position:relative;
+	margin-bottom:50px;
+}
+.titleName {
+	margin:9px auto;
+	width:186px;
+}
+.titleSwitch {
+	position:fixed;
+	top:0;
+	background-color:#FDC006;
+	width:100%;
+	height:55px;
+	z-index:1000;
+}
+.titleName ul{list-style-type:none; position:relative; top:3px; margin-left:5px;}  
+.titleName ul li{float:left; text-align:center; font-weight:bold; padding:5px 15px;}
+.titleName ul li a{text-decoration:none; font-size:14px; font-weight:bold;}
+.titleClick { background-color:#FF6600;}
+.titleClick a { color:#fff;}
+.titleItem {
+	margin-top:65px;
+}
+.message_operBar {
+	background-color:#fff;
+	border-top:1px solid #cbcbcb;
+	border-bottom:1px solid #cbcbcb;
+	text-align:center;
+}
+.message_oper {
+	float:left;
+	padding:7px 0;
+}
+.borRight {
+	border-right:1px solid #cbcbcb;
+}
+.borLeft {
+	border-left:1px solid #cbcbcb;
+}
+.message_noticeBar {
+	background-color:#fff;
+	padding:2px 0;
+	margin-bottom:10px;
+}
+.message_delBar {
+	background:#F4F4F4;
+	padding:3px 5px;
+}
+.message_entName {
+	float:left;
+	color:#FF5C00;
+}
+.message_notice {
+	margin:0 2%;
+}
+.message_noticeUp {
+	border-bottom:1px solid #e6e6e6;
+	padding:7px 0;
+}
+.message_noticeDown {
+	padding:7px 0;
+}
+.message_time {
+	float:right;
+	font-size:12px;
+	color:#ccc;
+}
+.message_noticeCont {
+	margin:3px 7px;
+}
+.noReply {
+	color:#ccc;
+	width:100%;
+	text-align:center;
+	padding:7px 0;
+}
+.message_personImg {
+	float:left;
+	margin-left:5px;
+}
+.message_personName {
+	float:left;
+	color:#FD5959;
+	font-weight:bold;
+	margin-left:5px;
+}
+.message_reply {
+	color:#FD5959;
+	margin:0 5px;
+}
+.message_replyCont {
+	color:#FD5959;
+	margin:0 5px;
+	text-indent:2em;
+}
+.needReply {
+	float:right;
+	color:#FF5C00;
+	font-weight:bold;
+	margin-right:5px;
+}

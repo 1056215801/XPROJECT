@@ -1,0 +1,123 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a,
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, section, summary
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+    color: #5e5e5e;
+    background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"黑体";
+}
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.clearfix{zoom:1}
+img,span {vertical-align:middle;}
+
+/*jquery-weui框架调整*/
+.weui-label {color: #9f9f9f;}
+::-webkit-input-placeholder{ /* WebKit browsers */
+    color: #000; opacity:1;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #000; opacity:1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #000; opacity:1;
+}
+:-ms-input-placeholder{ /* Internet Explorer 10+ */
+    color: #000; opacity:1;
+}
+.weui-btn-success {
+    background-color: #1c84c6;
+    border-color: #1c84c6;
+    color: #fff;
+}
+.weui-btn-white {
+    background-color: #fff;
+    border: 1px solid #e7eaec;
+    color: inherit;
+}
+.btn-outline {
+    background-color: transparent;
+    color: inherit;
+    transition: all 0.5s ease 0s;
+}
+.weui-btn-success.btn-outline {color: #1c84c6;}
+/*jquery-weui框架调整*/
+
+html, body {height: 100%; background-color: #EEEFF3;}
+
+.login_header {
+    text-align: center;
+    padding: 30px 0 10px 0;
+}
+.login_header+.weui-cells {margin-top: 0;}
+.login_operBar {
+    padding: 7px 15px;
+}
+.login_operBar input {vertical-align: middle;}
+.login_operLeft {
+    float: left;
+}
+.login_operRight {
+    float: right;
+}
+.right {
+    float: right;
+}
+.Myimg{
+	width: 100%;
+}
+.weui-cell__ft{
+	width: 25%;
+}
+.weui-input{
+    padding-right: 10px;
+    text-align:right;
+	color: #000000;
+}
+.weui-label {
+	color: #000000;
+}
+.weui-input::-webkit-input-placeholder { /* WebKit browsers */
+	color: #9f9f9f;
+}
+.weui-input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	color: #9f9f9f;
+}
+.weui-input::-moz-placeholder { /* Mozilla Firefox 19+ */
+	color: #9f9f9f;
+}
+.weui-input:-ms-input-placeholder { /* Internet Explorer 10+ */
+	color: #9f9f9f;
+} 

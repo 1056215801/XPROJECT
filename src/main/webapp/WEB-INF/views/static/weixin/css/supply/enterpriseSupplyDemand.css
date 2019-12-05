@@ -1,0 +1,219 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"黑体";
+}
+
+html {
+	background-color:#ebebeb;
+}
+.entSupplyDemand_main {
+	background-color:#ebebeb;
+	position:relative;
+}
+.entSupplyDemand_content {
+	width:100%;
+	background-color:#ebebeb;
+	position:relative;
+	margin:50px 0 55px;
+}
+.enterprise_top1 {
+	position:fixed;
+	top:0;
+	background-color:#393A3E;
+	width:100%;
+	height:50px;
+	z-index:10000;
+}
+.enterprise_top1 img {
+	margin:13px 0 0 90px;
+	display:block;
+}
+.entSupplyDemand_name {
+	color:#fff;
+	margin-left:90px;
+}
+.enterprise_top2 {
+	position:fixed;
+	top:50px;
+	background-color:#ebebeb;
+	width:100%;
+	height:70px;
+	z-index:10000;
+	font-size:12px;
+}
+.enterprise_logo {
+	position:absolute;
+	top:-35px;
+	left:15px;
+}
+.enterprise_add {
+	margin:7px 0 0 90px;
+}
+.enterprise_range {
+	margin:7px 0 0 90px;
+}
+.entSupplyDemand_operBar {
+	background-color:#fff;
+	border-top:1px solid #f6f6f6;
+	border-bottom:1px solid #f6f6f6;
+	text-align:center;
+}
+.entSupplyDemand_oper {
+	float:left;
+	padding:7px 0;
+}
+.borRight {
+	border-right:1px solid #f6f6f6;
+}
+.borLeft {
+	border-left:1px solid #f6f6f6;
+}
+.supplyDemand_cont {
+	background-color:#fff;
+	padding:1% 0;
+}
+.supplyDemand_dataBar {
+	margin:0 1% 2%;
+	float:left;
+	width:98%;
+	border-bottom:1px solid #f6f6f6;
+	background-color:#fff;
+}
+.supplyDemand_img {
+	float:left;
+	padding:3px;
+}
+.supplyDemand_title {
+	font-weight:bold;
+	color:#5e5e5e;
+	margin-left:120px;
+	line-height:1.4;
+	margin-top:10px;
+}
+.supplyDemand_title img {
+	display:inline-block;
+	vertical-align:middle;
+}
+.supplyDemand_titleCont {
+	width:82%;
+	margin-left:3%;
+	display:inline-block;
+	vertical-align:middle;
+}
+.supplyDemand_company {
+	margin-left:120px;
+	margin-top:5px;
+	font-size:12px;
+	color:#ccc;
+}
+.supplyDemand_data {
+	position:relative;
+	margin-top:30px;
+}
+.supplyDemand_add {
+	float:left;
+	background-color:#F04444;
+	color:#fff;
+	padding:0 4px 0 2px;
+	margin-right:2px;
+	margin-left:5px;
+}
+.supplyDemand_time {
+	float:right;
+	font-size:12px;
+	color:#ccc;
+	padding-top:2px;
+	padding-right:10px;
+}
+.fixed_bottom {
+	width:100%;
+	height:45px;
+	position:fixed;
+	bottom:0;
+	background-color:#F4F4F4;
+	border-top:1px solid #DCDCDC;
+}
+.returnBtn {
+	float:left;
+	margin:12px 10px;
+}
+.bottom_operation {
+	float:right;
+	border-left:1px solid #DCDCDC;
+	padding:0 10px;
+}
+.bottom_operation img {
+	margin:12px 0;
+}
+.spanContral_1 {
+	position:relative;
+	bottom:16px;
+}
+.spanContral_2 {
+	position:relative;
+	top:10px;
+}
+
+.renovateTitle {
+	color: #120F0F;
+	display: inline-block;
+	font-size: 14px;
+	line-height: 14px;
+	text-align: center;
+}
+.renovate {
+	display: block;
+    text-align: center;
+	background-color:#F6F6F6;
+	padding:7px 0;
+}
+.renovate:hover{
+	background-color:#e5edf2;
+}
+
+#tbox{
+	width:50px;
+	float:right;
+	position:fixed;
+	right:10px;
+	bottom:50px;
+	overflow:visible;
+}
+#gotop{ 
+	width:50px; 
+	height:50px; 
+	background:url(/XProject/static/weixin/images/logistics/rocket.png) no-repeat; 
+	display:block;
+	background-size:50px 50px; 
+}

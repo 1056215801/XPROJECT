@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.formInput.FormInputMapper" >
+
+	<resultMap id="BaseResultMap" type="com.chinatelecom.jx.zone.management.bean.formInput.FormInputBean">
+    	<id column="ID" jdbcType="DECIMAL" property="id"/>
+    	<result column="INPUT_TYPE" jdbcType="VARCHAR" property="inputType"/>
+    	<result column="INPUT_TITLE" jdbcType="VARCHAR" property="inputTitle"/>
+    	<result column="FILED_NAME" jdbcType="VARCHAR" property="filedName"/>
+    	<result column="DATA_FORMAT" jdbcType="VARCHAR" property="dataFormat"/>
+    	<result column="DEFAULT_VALUE" jdbcType="VARCHAR" property="defaultValue"/>
+    	<result column="CHECK_TYPE" jdbcType="VARCHAR" property="checkType"/>
+    	<result column="FUNC_PERMISSION" jdbcType="VARCHAR" property="funcPermission"/>
+    	<result column="SORT_GRADE" jdbcType="VARCHAR" property="sortGrade"/>
+    	<result column="MIN_VALUE" jdbcType="VARCHAR" property="minValue"/>
+    	<result column="MAX_VALUE" jdbcType="VARCHAR" property="maxValue"/>
+    	<result column="PRECISION" jdbcType="VARCHAR" property="precision"/>
+    	<result column="OPTIONS" jdbcType="VARCHAR" property="options"/>
+    	<result column="FORM_ID" jdbcType="DECIMAL" property="formId"/>
+    	<result column="PROMPT_MSG" jdbcType="VARCHAR" property="promptMsg"/>
+    	<result column="INPUT_PARAMS" jdbcType="VARCHAR" property="inputParams"/>
+    	<result column="REPEAT_FLAG" jdbcType="DECIMAL" property="repeatFlag"/>
+    	<result column="IS_XML" jdbcType="DECIMAL" property="isXml"/>
+    	<result column="XML_NAME" jdbcType="VARCHAR" property="xmlName"/>
+    	<result column="EXTEND1" jdbcType="VARCHAR" property="extend1"/>
+    	<result column="EXTEND2" jdbcType="VARCHAR" property="extend2"/>
+    	<result column="EXTEND3" jdbcType="VARCHAR" property="extend3"/>
+    	<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+	</resultMap>
+	
+	<!--
+	<resultMap id="ResultMapWithForeign" type="com.chinatelecom.jx.zone.management.bean.formInput.FormInputBean" extends="BaseResultMap" >
+			 <result column="workProcessid" property="workProcessid" jdbcType="VARCHAR" />
+			 <result column="currentState" property="currentState" jdbcType="VARCHAR" />
+       <result column="organizationName" property="orgName" jdbcType="VARCHAR" />
+        <result column="companyName" property="companyName" jdbcType="VARCHAR" />
+       <result column="accountName" property="accountName" jdbcType="VARCHAR" />
+       <result column="parkName" property="parkName" jdbcType="VARCHAR" />
+  </resultMap>
+  -->
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		ID,INPUT_TYPE,INPUT_TITLE,FILED_NAME,DATA_FORMAT,DEFAULT_VALUE,CHECK_TYPE,FUNC_PERMISSION,SORT_GRADE,MIN_VALUE,MAX_VALUE,PRECISION,OPTIONS,FORM_ID,PROMPT_MSG,INPUT_PARAMS,REPEAT_FLAG,IS_XML,XML_NAME,EXTEND1,EXTEND2,EXTEND3,CREATE_TIME
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_FORM_INPUT
+    where 
+				ID = #{id,jdbcType=DECIMAL} 
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+        DELETE FROM T_FORM_INPUT WHERE
+				ID = #{id,jdbcType=DECIMAL} 
+    </delete>
+    
+    <delete id="deleteByTemplateId" parameterType="java.math.BigDecimal">
+        DELETE FROM T_FORM_INPUT WHERE
+				form_id = #{templateId,jdbcType=DECIMAL} 
+    </delete>
+
+	<insert id="insert" parameterType="com.chinatelecom.jx.zone.management.bean.formInput.FormInputBean">
+        INSERT INTO T_FORM_INPUT (
+        	ID ,
+        	INPUT_TYPE ,
+        	INPUT_TITLE ,
+        	FILED_NAME ,
+        	DATA_FORMAT ,
+        	DEFAULT_VALUE ,
+        	CHECK_TYPE ,
+        	FUNC_PERMISSION ,
+        	SORT_GRADE ,
+        	MIN_VALUE ,
+        	MAX_VALUE ,
+        	PRECISION ,
+        	OPTIONS ,
+        	FORM_ID ,
+        	PROMPT_MSG ,
+        	INPUT_PARAMS ,
+        	REPEAT_FLAG ,
+        	IS_XML ,
+        	XML_NAME ,
+        	EXTEND1 ,
+        	EXTEND2 ,
+        	EXTEND3 ,
+        	CREATE_TIME 
+        ) VALUES (
+        	#{id,jdbcType=DECIMAL} ,
+        	#{inputType,jdbcType=VARCHAR} ,
+        	#{inputTitle,jdbcType=VARCHAR} ,
+        	#{filedName,jdbcType=VARCHAR} ,
+        	#{dataFormat,jdbcType=VARCHAR} ,
+        	#{defaultValue,jdbcType=VARCHAR} ,
+        	#{checkType,jdbcType=VARCHAR} ,
+        	#{funcPermission,jdbcType=VARCHAR} ,
+        	#{sortGrade,jdbcType=VARCHAR} ,
+        	#{minValue,jdbcType=VARCHAR} ,
+        	#{maxValue,jdbcType=VARCHAR} ,
+        	#{precision,jdbcType=VARCHAR} ,
+        	#{options,jdbcType=VARCHAR} ,
+        	#{formId,jdbcType=DECIMAL} ,
+        	#{promptMsg,jdbcType=VARCHAR} ,
+        	#{inputParams,jdbcType=VARCHAR} ,
+        	#{repeatFlag,jdbcType=DECIMAL} ,
+        	#{isXml,jdbcType=DECIMAL} ,
+        	#{xmlName,jdbcType=VARCHAR} ,
+        	#{extend1,jdbcType=VARCHAR} ,
+        	#{extend2,jdbcType=VARCHAR} ,
+        	#{extend3,jdbcType=VARCHAR} ,
+        	#{createTime,jdbcType=TIMESTAMP} 
+        )
+	</insert>
+	
+	<insert id="insertSelective" parameterType="com.chinatelecom.jx.zone.management.bean.formInput.FormInputBean">
+    insert into T_FORM_INPUT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+    		<if test="id != null" >
+        ID,
+      	</if>
+    		<if test="inputType != null" >
+        INPUT_TYPE,
+      	</if>
+    		<if test="inputTitle != null" >
+        INPUT_TITLE,
+      	</if>
+    		<if test="filedName != null" >
+        FILED_NAME,
+      	</if>
+    		<if test="dataFormat != null" >
+        DATA_FORMAT,
+      	</if>
+    		<if test="defaultValue != null" >
+        DEFAULT_VALUE,
+      	</if>
+    		<if test="checkType != null" >
+        CHECK_TYPE,
+      	</if>
+    		<if test="funcPermission != null" >
+        FUNC_PERMISSION,
+      	</if>
+    		<if test="sortGrade != null" >
+        SORT_GRADE,
+      	</if>
+    		<if test="minValue != null" >
+        MIN_VALUE,
+      	</if>
+    		<if test="maxValue != null" >
+        MAX_VALUE,
+      	</if>
+    		<if test="precision != null" >
+        PRECISION,
+      	</if>
+    		<if test="options != null" >
+        OPTIONS,
+      	</if>
+    		<if test="formId != null" >
+        FORM_ID,
+      	</if>
+    		<if test="promptMsg != null" >
+        PROMPT_MSG,
+      	</if>
+    		<if test="inputParams != null" >
+        INPUT_PARAMS,
+      	</if>
+    		<if test="repeatFlag != null" >
+        REPEAT_FLAG,
+      	</if>
+    		<if test="isXml != null" >
+        IS_XML,
+      	</if>
+    		<if test="xmlName != null" >
+        XML_NAME,
+      	</if>
+    		<if test="extend1 != null" >
+        EXTEND1,
+      	</if>
+    		<if test="extend2 != null" >
+        EXTEND2,
+      	</if>
+    		<if test="extend3 != null" >
+        EXTEND3,
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME,
+      	</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+    		<if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      	</if>
+    		<if test="inputType != null" >
+        #{inputType,jdbcType=VARCHAR},
+      	</if>
+    		<if test="inputTitle != null" >
+        #{inputTitle,jdbcType=VARCHAR},
+      	</if>
+    		<if test="filedName != null" >
+        #{filedName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="dataFormat != null" >
+        #{dataFormat,jdbcType=VARCHAR},
+      	</if>
+    		<if test="defaultValue != null" >
+        #{defaultValue,jdbcType=VARCHAR},
+      	</if>
+    		<if test="checkType != null" >
+        #{checkType,jdbcType=VARCHAR},
+      	</if>
+    		<if test="funcPermission != null" >
+        #{funcPermission,jdbcType=VARCHAR},
+      	</if>
+    		<if test="sortGrade != null" >
+        #{sortGrade,jdbcType=VARCHAR},
+      	</if>
+    		<if test="minValue != null" >
+        #{minValue,jdbcType=VARCHAR},
+      	</if>
+    		<if test="maxValue != null" >
+        #{maxValue,jdbcType=VARCHAR},
+      	</if>
+    		<if test="precision != null" >
+        #{precision,jdbcType=VARCHAR},
+      	</if>
+    		<if test="options != null" >
+        #{options,jdbcType=VARCHAR},
+      	</if>
+    		<if test="formId != null" >
+        #{formId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="promptMsg != null" >
+        #{promptMsg,jdbcType=VARCHAR},
+      	</if>
+    		<if test="inputParams != null" >
+        #{inputParams,jdbcType=VARCHAR},
+      	</if>
+    		<if test="repeatFlag != null" >
+        #{repeatFlag,jdbcType=DECIMAL},
+      	</if>
+    		<if test="isXml != null" >
+        #{isXml,jdbcType=DECIMAL},
+      	</if>
+    		<if test="xmlName != null" >
+        #{xmlName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="extend1 != null" >
+        #{extend1,jdbcType=VARCHAR},
+      	</if>
+    		<if test="extend2 != null" >
+        #{extend2,jdbcType=VARCHAR},
+      	</if>
+    		<if test="extend3 != null" >
+        #{extend3,jdbcType=VARCHAR},
+      	</if>
+    		<if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinatelecom.jx.zone.management.bean.formInput.FormInputBean">
+    update T_FORM_INPUT
+    <set >
+    		<if test="inputType != null" >
+        INPUT_TYPE = #{inputType,jdbcType=VARCHAR},
+      	</if>
+    		<if test="inputTitle != null" >
+        INPUT_TITLE = #{inputTitle,jdbcType=VARCHAR},
+      	</if>
+    		<if test="filedName != null" >
+        FILED_NAME = #{filedName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="dataFormat != null" >
+        DATA_FORMAT = #{dataFormat,jdbcType=VARCHAR},
+      	</if>
+    		<if test="defaultValue != null" >
+        DEFAULT_VALUE = #{defaultValue,jdbcType=VARCHAR},
+      	</if>
+    		<if test="checkType != null" >
+        CHECK_TYPE = #{checkType,jdbcType=VARCHAR},
+      	</if>
+    		<if test="funcPermission != null" >
+        FUNC_PERMISSION = #{funcPermission,jdbcType=VARCHAR},
+      	</if>
+    		<if test="sortGrade != null" >
+        SORT_GRADE = #{sortGrade,jdbcType=VARCHAR},
+      	</if>
+    		<if test="minValue != null" >
+        MIN_VALUE = #{minValue,jdbcType=VARCHAR},
+      	</if>
+    		<if test="maxValue != null" >
+        MAX_VALUE = #{maxValue,jdbcType=VARCHAR},
+      	</if>
+    		<if test="precision != null" >
+        PRECISION = #{precision,jdbcType=VARCHAR},
+      	</if>
+    		<if test="options != null" >
+        OPTIONS = #{options,jdbcType=VARCHAR},
+      	</if>
+    		<if test="formId != null" >
+        FORM_ID = #{formId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="promptMsg != null" >
+        PROMPT_MSG = #{promptMsg,jdbcType=VARCHAR},
+      	</if>
+    		<if test="inputParams != null" >
+        INPUT_PARAMS = #{inputParams,jdbcType=VARCHAR},
+      	</if>
+    		<if test="repeatFlag != null" >
+        REPEAT_FLAG = #{repeatFlag,jdbcType=DECIMAL},
+      	</if>
+    		<if test="isXml != null" >
+        IS_XML = #{isXml,jdbcType=DECIMAL},
+      	</if>
+    		<if test="xmlName != null" >
+        XML_NAME = #{xmlName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="extend1 != null" >
+        EXTEND1 = #{extend1,jdbcType=VARCHAR},
+      	</if>
+    		<if test="extend2 != null" >
+        EXTEND2 = #{extend2,jdbcType=VARCHAR},
+      	</if>
+    		<if test="extend3 != null" >
+        EXTEND3 = #{extend3,jdbcType=VARCHAR},
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    </set>
+    where 
+      ID = #{id,jdbcType=DECIMAL} 
+  </update>
+  
+	<update id="updateByPrimaryKey" parameterType="com.chinatelecom.jx.zone.management.bean.formInput.FormInputBean">
+      UPDATE T_FORM_INPUT SET
+        INPUT_TYPE = #{inputType,jdbcType=VARCHAR} ,
+        INPUT_TITLE = #{inputTitle,jdbcType=VARCHAR} ,
+        FILED_NAME = #{filedName,jdbcType=VARCHAR} ,
+        DATA_FORMAT = #{dataFormat,jdbcType=VARCHAR} ,
+        DEFAULT_VALUE = #{defaultValue,jdbcType=VARCHAR} ,
+        CHECK_TYPE = #{checkType,jdbcType=VARCHAR} ,
+        FUNC_PERMISSION = #{funcPermission,jdbcType=VARCHAR} ,
+        SORT_GRADE = #{sortGrade,jdbcType=VARCHAR} ,
+        MIN_VALUE = #{minValue,jdbcType=VARCHAR} ,
+        MAX_VALUE = #{maxValue,jdbcType=VARCHAR} ,
+        PRECISION = #{precision,jdbcType=VARCHAR} ,
+        OPTIONS = #{options,jdbcType=VARCHAR} ,
+        FORM_ID = #{formId,jdbcType=DECIMAL} ,
+        PROMPT_MSG = #{promptMsg,jdbcType=VARCHAR} ,
+        INPUT_PARAMS = #{inputParams,jdbcType=VARCHAR} ,
+        REPEAT_FLAG = #{repeatFlag,jdbcType=DECIMAL} ,
+        IS_XML = #{isXml,jdbcType=DECIMAL} ,
+        XML_NAME = #{xmlName,jdbcType=VARCHAR} ,
+        EXTEND1 = #{extend1,jdbcType=VARCHAR} ,
+        EXTEND2 = #{extend2,jdbcType=VARCHAR} ,
+        EXTEND3 = #{extend3,jdbcType=VARCHAR} ,
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP} 
+      WHERE 
+        ID = #{id,jdbcType=DECIMAL} 
+	</update>
+	
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	        
+		       <if test="id != null">
+						<![CDATA[AND ID = #{id,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="inputType != null and inputType != ''">
+						<!--
+						<![CDATA[AND INPUT_TYPE = #{inputType,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND INPUT_TYPE LIKE '%' || #{inputType,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="inputTitle != null and inputTitle != ''">
+						<!--
+						<![CDATA[AND INPUT_TITLE = #{inputTitle,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND INPUT_TITLE LIKE '%' || #{inputTitle,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="filedName != null and filedName != ''">
+						<!--
+						<![CDATA[AND FILED_NAME = #{filedName,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND FILED_NAME LIKE '%' || #{filedName,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="dataFormat != null and dataFormat != ''">
+						<!--
+						<![CDATA[AND DATA_FORMAT = #{dataFormat,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND DATA_FORMAT LIKE '%' || #{dataFormat,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="defaultValue != null and defaultValue != ''">
+						<!--
+						<![CDATA[AND DEFAULT_VALUE = #{defaultValue,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND DEFAULT_VALUE LIKE '%' || #{defaultValue,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="checkType != null and checkType != ''">
+						<!--
+						<![CDATA[AND CHECK_TYPE = #{checkType,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND CHECK_TYPE LIKE '%' || #{checkType,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="funcPermission != null and funcPermission != ''">
+						<!--
+						<![CDATA[AND FUNC_PERMISSION = #{funcPermission,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND FUNC_PERMISSION LIKE '%' || #{funcPermission,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="sortGrade != null and sortGrade != ''">
+						<!--
+						<![CDATA[AND SORT_GRADE = #{sortGrade,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND SORT_GRADE LIKE '%' || #{sortGrade,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="minValue != null and minValue != ''">
+						<!--
+						<![CDATA[AND MIN_VALUE = #{minValue,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND MIN_VALUE LIKE '%' || #{minValue,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="maxValue != null and maxValue != ''">
+						<!--
+						<![CDATA[AND MAX_VALUE = #{maxValue,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND MAX_VALUE LIKE '%' || #{maxValue,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="precision != null and precision != ''">
+						<!--
+						<![CDATA[AND PRECISION = #{precision,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND PRECISION LIKE '%' || #{precision,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="options != null and options != ''">
+						<!--
+						<![CDATA[AND OPTIONS = #{options,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND OPTIONS LIKE '%' || #{options,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="formId != null">
+						<![CDATA[AND FORM_ID = #{formId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="promptMsg != null and promptMsg != ''">
+						<!--
+						<![CDATA[AND PROMPT_MSG = #{promptMsg,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND PROMPT_MSG LIKE '%' || #{promptMsg,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="inputParams != null and inputParams != ''">
+						<!--
+						<![CDATA[AND INPUT_PARAMS = #{inputParams,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND INPUT_PARAMS LIKE '%' || #{inputParams,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="repeatFlag != null">
+						<![CDATA[AND REPEAT_FLAG = #{repeatFlag,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="isXml != null">
+						<![CDATA[AND IS_XML = #{isXml,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="xmlName != null and xmlName != ''">
+						<!--
+						<![CDATA[AND XML_NAME = #{xmlName,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND XML_NAME LIKE '%' || #{xmlName,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="extend1 != null and extend1 != ''">
+						<!--
+						<![CDATA[AND EXTEND1 = #{extend1,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND EXTEND1 LIKE '%' || #{extend1,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="extend2 != null and extend2 != ''">
+						<!--
+						<![CDATA[AND EXTEND2 = #{extend2,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND EXTEND2 LIKE '%' || #{extend2,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="extend3 != null and extend3 != ''">
+						<!--
+						<![CDATA[AND EXTEND3 = #{extend3,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND EXTEND3 LIKE '%' || #{extend3,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		</where>
+	</sql>
+	
+ 
+  
+  <select id="queryByCond" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.formInput.FormInputBean" >
+    select <include refid="Base_Column_List" />
+    from T_FORM_INPUT
+	<include refid="Base_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+  
+</mapper>
+

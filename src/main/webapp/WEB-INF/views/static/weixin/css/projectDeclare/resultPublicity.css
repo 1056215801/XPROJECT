@@ -1,0 +1,226 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"黑体";
+}
+a:hover, a:visited, a:link, a:active {
+    text-decoration:none;
+	color:#000;
+}
+
+html {
+	background-color:#ebebeb;
+}
+.publicity_main {
+	background-color:#ebebeb;
+	position:relative;
+	margin-bottom:60px;
+}
+.publicity_content {
+	width:100%;
+	background-color:#ebebeb;
+	position:relative;
+}
+.searchBar {
+	position:fixed;
+	top:0;
+	background-color:#f14241;
+	width:100%;
+	height:50px;
+	z-index:10000;
+}
+.search {
+	float:left;
+}
+.colorDeep { background-color:#B22C2D;}
+.message {
+	float:right;
+}
+.searchInput {
+	width:82%;
+	border-radius:20px;
+	border:0;
+	position:relative;
+	top:11px;
+	text-indent:1em;
+	padding:3px 0;
+	margin-left:11px;
+}
+.searchBtn {
+	background-color:#FF8927;
+	padding:1px 10px;
+	border-radius:10px;
+	border:0;
+	position:relative;
+	top:12px;
+	margin-left:5px;
+	color:#fff;
+}
+#dropdown{
+	position:fixed;
+	top:50px;
+	width:100%;
+	height:120px;
+	background-color:#fff;
+	display:none;
+	z-index:10000;
+}
+.dropdownContent {
+	padding:5px 10px;
+}
+.optionBtn {
+	float:left;
+	border:1px solid #9E9E9E;
+	color:#9E9E9E;
+	margin:5px 7px 5px 0;
+	padding:0 5px;
+	border-radius:1px;
+	cursor:pointer;
+}
+.selected {
+	background-color:#f14241;
+	color:#fff;
+	border:1px solid #f14241;
+}
+.publicityCont {
+}
+.publicityDataBar {
+	position:relative;
+	/* margin-bottom:7px; */
+	background-color:#fff;
+}
+.publicityTimeLimit {
+	width:80px;
+	font-size:16px;
+	font-weight:bold;
+	text-align:center;
+	padding:18px 0;
+}
+.projectTimeLimitContRed {
+	color:#f14241;
+	display:inline-block;
+	vertical-align:middle;
+	width: 45px;
+	line-height: 1.4;
+}
+.projectTimeLimitContGray {
+	color:#B3B3B3;
+	display:inline-block;
+	vertical-align:middle;
+	width: 45px;
+	line-height: 1.4;
+}
+.publicityStateGreen {
+	background-color:#09D26C;
+	width:80px;
+	color:#fff;
+	border-radius:0 20px 20px 0;
+	text-align:center;
+	padding:2px 0;
+}
+.publicityStateGray {
+	background-color:#B3B3B3;
+	width:80px;
+	color:#fff;
+	border-radius:0 20px 20px 0;
+	text-align:center;
+	padding:2px 0;
+}
+.publicityStateBlue {
+	background-color:#45A9E4;
+	width:80px;
+	color:#fff;
+	border-radius:0 20px 20px 0;
+	text-align:center;
+	padding:2px 0;
+}
+.publicityTitle {
+	font-weight: bold;
+}
+.publicityData {
+	margin-top: 10px;
+	position: relative;
+	color: #8a8a8a;
+	font-size:12px;
+}
+.publicityDataLeft {
+	float: left;
+	text-align: right;
+	width: 60px;
+}
+.projectDataRight {
+	margin-left: 60px;
+}
+.recommendItem {
+	position:absolute;
+	top:0;
+	left:0;
+}
+.renovate{
+	display: block;
+    text-align: center;
+	background-color:#F6F6F6;
+	padding:7px 0;
+}
+.renovateTitle{
+	color: #8D8D8D;
+    display: inline-block; 
+    font-size: 14px;
+    line-height: 14px;
+    text-align: center;
+}
+#tbox{
+	width:50px;
+	float:right;
+	position:fixed;
+	right:10px;
+	bottom:50px;
+	overflow:visible;
+}
+#gotop{ 
+	width:50px; 
+	height:60px; 
+	background:url(/XProject/static/weixin/images/logistics/rocket.png) no-repeat; 
+	display:block;
+	background-size:50px 50px; 
+}
+.hidebg {
+	position:absolute;left:0px;top:0px;
+	background-color:#000;
+	width:100%;  /*宽度设置为100%，这样才能使隐藏背景层覆盖原页面*/
+	height:100%;
+	filter:alpha(opacity=60);  /*设置透明度为60%*/
+	opacity:0.6;  /*非IE浏览器下设置透明度为60%*/
+	display:none;
+	z-Index:2;
+}

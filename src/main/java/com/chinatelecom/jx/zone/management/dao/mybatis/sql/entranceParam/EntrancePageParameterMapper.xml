@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.entranceParam.EntrancePageParameterMapper">
+	<resultMap id="BaseResultMap" type="com.chinatelecom.jx.zone.management.bean.entranceParam.EntrancePageParameterBean">
+		<id column="PARAMETER_ID" jdbcType="DECIMAL" property="parameterId" />
+		<result column="PARAMETER_CODE" jdbcType="VARCHAR" property="parameterCode" />
+		<result column="PARAMETER_TYPE" jdbcType="VARCHAR" property="parameterType" />
+		<result column="SYSTEM_ID" jdbcType="DECIMAL" property="systemId" />
+		<result column="PAGE_CODE" jdbcType="VARCHAR" property="pageCode" />
+		<result column="PARAMETER_NAME" jdbcType="VARCHAR" property="parameterName" />
+		<result column="REMARK" jdbcType="VARCHAR" property="remark" />
+		<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+	</resultMap>
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List"> PARAMETER_ID,PARAMETER_CODE,PARAMETER_TYPE,SYSTEM_ID,PAGE_CODE,PARAMETER_NAME,REMARK,CREATE_TIME 
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal">
+		select
+		<include refid="Base_Column_List" />
+		from T_ENTRANCE_PAGE_PARAMETER where PARAMETER_ID = #{parameterId,jdbcType=DECIMAL}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal"> DELETE FROM T_ENTRANCE_PAGE_PARAMETER WHERE PARAMETER_ID =
+		#{parameterId,jdbcType=DECIMAL} 
+	</delete>
+	<insert id="insert" parameterType="com.chinatelecom.jx.zone.management.bean.entranceParam.EntrancePageParameterBean"> INSERT INTO T_ENTRANCE_PAGE_PARAMETER ( PARAMETER_ID , PARAMETER_CODE ,
+		PARAMETER_TYPE , SYSTEM_ID , PAGE_CODE , PARAMETER_NAME , REMARK , CREATE_TIME ) VALUES (
+		#{parameterId,jdbcType=DECIMAL} , #{parameterCode,jdbcType=VARCHAR} , #{parameterType,jdbcType=VARCHAR} ,
+		#{systemId,jdbcType=DECIMAL} , #{pageCode,jdbcType=VARCHAR} , #{parameterName,jdbcType=VARCHAR} ,
+		#{remark,jdbcType=VARCHAR} , #{createTime,jdbcType=TIMESTAMP} ) 
+	</insert>
+	<insert id="insertSelective" parameterType="com.chinatelecom.jx.zone.management.bean.entranceParam.EntrancePageParameterBean">
+		insert into T_ENTRANCE_PAGE_PARAMETER
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="parameterId != null"> PARAMETER_ID, 
+			</if>
+			<if test="parameterCode != null"> PARAMETER_CODE, 
+			</if>
+			<if test="parameterType != null"> PARAMETER_TYPE, 
+			</if>
+			<if test="systemId != null"> SYSTEM_ID, 
+			</if>
+			<if test="pageCode != null"> PAGE_CODE, 
+			</if>
+			<if test="parameterName != null"> PARAMETER_NAME, 
+			</if>
+			<if test="remark != null"> REMARK, 
+			</if>
+			<if test="createTime != null"> CREATE_TIME, 
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="parameterId != null"> #{parameterId,jdbcType=DECIMAL}, 
+			</if>
+			<if test="parameterCode != null"> #{parameterCode,jdbcType=VARCHAR}, 
+			</if>
+			<if test="parameterType != null"> #{parameterType,jdbcType=VARCHAR}, 
+			</if>
+			<if test="systemId != null"> #{systemId,jdbcType=DECIMAL}, 
+			</if>
+			<if test="pageCode != null"> #{pageCode,jdbcType=VARCHAR}, 
+			</if>
+			<if test="parameterName != null"> #{parameterName,jdbcType=VARCHAR}, 
+			</if>
+			<if test="remark != null"> #{remark,jdbcType=VARCHAR}, 
+			</if>
+			<if test="createTime != null"> #{createTime,jdbcType=TIMESTAMP}, 
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.chinatelecom.jx.zone.management.bean.entranceParam.EntrancePageParameterBean">
+		update T_ENTRANCE_PAGE_PARAMETER
+		<set>
+			<if test="parameterCode != null"> PARAMETER_CODE = #{parameterCode,jdbcType=VARCHAR}, 
+			</if>
+			<if test="parameterType != null"> PARAMETER_TYPE = #{parameterType,jdbcType=VARCHAR}, 
+			</if>
+			<if test="systemId != null"> SYSTEM_ID = #{systemId,jdbcType=DECIMAL}, 
+			</if>
+			<if test="pageCode != null"> PAGE_CODE = #{pageCode,jdbcType=VARCHAR}, 
+			</if>
+			<if test="parameterName != null"> PARAMETER_NAME = #{parameterName,jdbcType=VARCHAR}, 
+			</if>
+			<if test="remark != null"> REMARK = #{remark,jdbcType=VARCHAR}, 
+			</if>
+			<if test="createTime != null"> CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}, 
+			</if>
+		</set>
+		where PARAMETER_ID = #{parameterId,jdbcType=DECIMAL}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.chinatelecom.jx.zone.management.bean.entranceParam.EntrancePageParameterBean"> UPDATE T_ENTRANCE_PAGE_PARAMETER SET PARAMETER_CODE =
+		#{parameterCode,jdbcType=VARCHAR} , PARAMETER_TYPE = #{parameterType,jdbcType=VARCHAR} , SYSTEM_ID =
+		#{systemId,jdbcType=DECIMAL} , PAGE_CODE = #{pageCode,jdbcType=VARCHAR} , PARAMETER_NAME =
+		#{parameterName,jdbcType=VARCHAR} , REMARK = #{remark,jdbcType=VARCHAR} , CREATE_TIME =
+		#{createTime,jdbcType=TIMESTAMP} WHERE PARAMETER_ID = #{parameterId,jdbcType=DECIMAL} 
+	</update>
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>
+			<if test="parameterId != null">
+						<![CDATA[AND PARAMETER_ID = #{parameterId,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="parameterCode != null and parameterCode != ''">
+				<!-- <![CDATA[AND PARAMETER_CODE = #{parameterCode,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND PARAMETER_CODE= #{parameterCode,jdbcType=VARCHAR} ]]>
+			</if>
+			<if test="parameterType != null and parameterType != ''">
+				<!-- <![CDATA[AND PARAMETER_TYPE = #{parameterType,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND PARAMETER_TYPE LIKE '%' || #{parameterType,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="systemId != null">
+						<![CDATA[AND SYSTEM_ID = #{systemId,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="pageCode != null and pageCode != ''">
+				<!-- <![CDATA[AND PAGE_CODE = #{pageCode,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND PAGE_CODE LIKE '%' || #{pageCode,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="parameterName != null and parameterName != ''">
+				<!-- <![CDATA[AND PARAMETER_NAME = #{parameterName,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND PARAMETER_NAME LIKE '%' || #{parameterName,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="remark != null and remark != ''">
+				<!-- <![CDATA[AND REMARK = #{remark,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND REMARK LIKE '%' || #{remark,jdbcType=VARCHAR} || '%']]>
+			</if>
+		</where>
+	</sql>
+	<select id="queryByCond" resultMap="BaseResultMap"
+		parameterType="com.chinatelecom.jx.zone.management.bean.entranceParam.EntrancePageParameterBean">
+		select
+		<include refid="Base_Column_List" />
+		from T_ENTRANCE_PAGE_PARAMETER
+		<include refid="Base_Where_Clause" />
+		<if test="orderByClause != null"> order by ${orderByClause} 
+		</if>
+	</select>
+	<!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+</mapper>

@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.drawTable.DrawTableInfoMapper" >
+
+	<resultMap id="BaseResultMap" type="com.chinatelecom.jx.zone.management.bean.drawTable.DrawTableInfoBean">
+    	<id column="ID" jdbcType="DECIMAL" property="id"/>
+    	<result column="TITLE" jdbcType="VARCHAR" property="title"/>
+    	<result column="MARK" jdbcType="VARCHAR" property="mark"/>
+    	<result column="DESCRIPTION" jdbcType="VARCHAR" property="description"/>
+    	<result column="ROW_NUM" jdbcType="DECIMAL" property="rowNum"/>
+    	<result column="COL_NUM" jdbcType="DECIMAL" property="colNum"/>
+    	<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+    	<result column="ACCOUNT_ID" jdbcType="DECIMAL" property="accountId"/>
+    	<result column="ACCOUNT_NAME" jdbcType="VARCHAR" property="accountName"/>
+    	<result column="PARK_ID" jdbcType="DECIMAL" property="parkId"/>
+	</resultMap>
+	
+	<!--
+	<resultMap id="ResultMapWithForeign" type="com.chinatelecom.jx.zone.management.bean.drawTable.DrawTableInfoBean" extends="BaseResultMap" >
+			 <result column="workProcessid" property="workProcessid" jdbcType="VARCHAR" />
+			 <result column="currentState" property="currentState" jdbcType="VARCHAR" />
+       <result column="organizationName" property="orgName" jdbcType="VARCHAR" />
+        <result column="companyName" property="companyName" jdbcType="VARCHAR" />
+       <result column="accountName" property="accountName" jdbcType="VARCHAR" />
+       <result column="parkName" property="parkName" jdbcType="VARCHAR" />
+  </resultMap>
+  -->
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		ID,TITLE,MARK,DESCRIPTION,ROW_NUM,COL_NUM,CREATE_TIME,ACCOUNT_ID,ACCOUNT_NAME,PARK_ID
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_DRAW_TABLE_INFO
+    where 
+				ID = #{id,jdbcType=DECIMAL} 
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+        DELETE FROM T_DRAW_TABLE_INFO WHERE
+				ID = #{id,jdbcType=DECIMAL} 
+    </delete>
+
+	<insert id="insert" parameterType="com.chinatelecom.jx.zone.management.bean.drawTable.DrawTableInfoBean">
+        INSERT INTO T_DRAW_TABLE_INFO (
+        	ID ,
+        	TITLE ,
+        	MARK ,
+        	DESCRIPTION ,
+        	ROW_NUM ,
+        	COL_NUM ,
+        	CREATE_TIME ,
+        	ACCOUNT_ID ,
+        	ACCOUNT_NAME ,
+        	PARK_ID 
+        ) VALUES (
+        	#{id,jdbcType=DECIMAL} ,
+        	#{title,jdbcType=VARCHAR} ,
+        	#{mark,jdbcType=VARCHAR} ,
+        	#{description,jdbcType=VARCHAR} ,
+        	#{rowNum,jdbcType=DECIMAL} ,
+        	#{colNum,jdbcType=DECIMAL} ,
+        	#{createTime,jdbcType=TIMESTAMP} ,
+        	#{accountId,jdbcType=DECIMAL} ,
+        	#{accountName,jdbcType=VARCHAR} ,
+        	#{parkId,jdbcType=DECIMAL} 
+        )
+	</insert>
+	
+	<insert id="insertSelective" parameterType="com.chinatelecom.jx.zone.management.bean.drawTable.DrawTableInfoBean">
+    insert into T_DRAW_TABLE_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+    		<if test="id != null" >
+        ID,
+      	</if>
+    		<if test="title != null" >
+        TITLE,
+      	</if>
+    		<if test="mark != null" >
+        MARK,
+      	</if>
+    		<if test="description != null" >
+        DESCRIPTION,
+      	</if>
+    		<if test="rowNum != null" >
+        ROW_NUM,
+      	</if>
+    		<if test="colNum != null" >
+        COL_NUM,
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME,
+      	</if>
+    		<if test="accountId != null" >
+        ACCOUNT_ID,
+      	</if>
+    		<if test="accountName != null" >
+        ACCOUNT_NAME,
+      	</if>
+    		<if test="parkId != null" >
+        PARK_ID,
+      	</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+    		<if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      	</if>
+    		<if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      	</if>
+    		<if test="mark != null" >
+        #{mark,jdbcType=VARCHAR},
+      	</if>
+    		<if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      	</if>
+    		<if test="rowNum != null" >
+        #{rowNum,jdbcType=DECIMAL},
+      	</if>
+    		<if test="colNum != null" >
+        #{colNum,jdbcType=DECIMAL},
+      	</if>
+    		<if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    		<if test="accountId != null" >
+        #{accountId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="accountName != null" >
+        #{accountName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="parkId != null" >
+        #{parkId,jdbcType=DECIMAL},
+      	</if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinatelecom.jx.zone.management.bean.drawTable.DrawTableInfoBean">
+    update T_DRAW_TABLE_INFO
+    <set >
+    		<if test="title != null" >
+        TITLE = #{title,jdbcType=VARCHAR},
+      	</if>
+    		<if test="mark != null" >
+        MARK = #{mark,jdbcType=VARCHAR},
+      	</if>
+    		<if test="description != null" >
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      	</if>
+    		<if test="rowNum != null" >
+        ROW_NUM = #{rowNum,jdbcType=DECIMAL},
+      	</if>
+    		<if test="colNum != null" >
+        COL_NUM = #{colNum,jdbcType=DECIMAL},
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    		<if test="accountId != null" >
+        ACCOUNT_ID = #{accountId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="accountName != null" >
+        ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="parkId != null" >
+        PARK_ID = #{parkId,jdbcType=DECIMAL},
+      	</if>
+    </set>
+    where 
+      ID = #{id,jdbcType=DECIMAL} 
+  </update>
+  
+	<update id="updateByPrimaryKey" parameterType="com.chinatelecom.jx.zone.management.bean.drawTable.DrawTableInfoBean">
+      UPDATE T_DRAW_TABLE_INFO SET
+        TITLE = #{title,jdbcType=VARCHAR} ,
+        MARK = #{mark,jdbcType=VARCHAR} ,
+        DESCRIPTION = #{description,jdbcType=VARCHAR} ,
+        ROW_NUM = #{rowNum,jdbcType=DECIMAL} ,
+        COL_NUM = #{colNum,jdbcType=DECIMAL} ,
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP} ,
+        ACCOUNT_ID = #{accountId,jdbcType=DECIMAL} ,
+        ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR} ,
+        PARK_ID = #{parkId,jdbcType=DECIMAL} 
+      WHERE 
+        ID = #{id,jdbcType=DECIMAL} 
+	</update>
+	
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	        
+		       <if test="id != null">
+						<![CDATA[AND ID = #{id,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="title != null and title != ''">
+						<!--
+						<![CDATA[AND TITLE = #{title,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND TITLE LIKE '%' || #{title,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="mark != null and mark != ''">
+						<!--
+						<![CDATA[AND MARK = #{mark,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND MARK LIKE '%' || #{mark,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="description != null and description != ''">
+						<!--
+						<![CDATA[AND DESCRIPTION = #{description,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND DESCRIPTION LIKE '%' || #{description,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="rowNum != null">
+						<![CDATA[AND ROW_NUM = #{rowNum,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="colNum != null">
+						<![CDATA[AND COL_NUM = #{colNum,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+	        
+		       <if test="accountId != null">
+						<![CDATA[AND ACCOUNT_ID = #{accountId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="accountName != null and accountName != ''">
+						<!--
+						<![CDATA[AND ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND ACCOUNT_NAME LIKE '%' || #{accountName,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="parkId != null">
+						<![CDATA[AND PARK_ID = #{parkId,jdbcType=DECIMAL}]]>
+				   </if>
+		</where>
+	</sql>
+	
+ 
+  
+  <select id="queryByCond" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.drawTable.DrawTableInfoBean" >
+    select <include refid="Base_Column_List" />
+    from T_DRAW_TABLE_INFO
+	<include refid="Base_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+     
+  
+</mapper>
+

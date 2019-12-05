@@ -1,0 +1,207 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"Microsoft YaHei";
+}
+a:hover, a:visited, a:link, a:active {
+    text-decoration:none;
+	color:#000;
+}
+
+.survey_main {
+	width:100%;
+}
+.survey_content {
+	/* width:90%; */
+	width:1136.7px;
+	margin:0 auto 20px;
+}
+.displayFrame {
+	width:230px;
+	height:285px;
+	background-color: rgba(0,0,0,0.5);/* IE9、标准浏览器、IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂 */
+	color:#fff;
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius:5px;
+	position:absolute;
+	top:41px;
+	right:45px;
+	z-index:1;
+}
+@media \0screen\,screen\9 {/* 只支持IE6、7、8 */
+  .displayFrame{
+    background-color:#000;
+    filter:Alpha(opacity=50);
+    position:static; /* IE6、7、8只能设置position:static(默认属性) ，否则会导致子元素继承Alpha值 */
+    *zoom:1; /* 激活IE6、7的haslayout属性，让它读懂Alpha */
+  } 
+}
+.displayFrameTitle {
+	text-align:center;
+	border-bottom:1px solid #fff;
+	padding:9px 0;
+	font-size:16px;
+	font-weight:bold;
+	position:relative;
+}
+.displayFrameCont {
+	height:216px;
+	padding:15px 12px 10px;
+	position:relative;
+}
+.displayFrameBtn {
+	width:205px;
+	background-color:#f1921c;
+	border:0;
+	color:#fff;
+	position:absolute;
+	bottom:10px;
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius:5px;
+	padding:7px 0;
+	cursor:pointer;
+	font-weight: bold;
+}
+.titleName {
+	border-bottom:1px solid #ccc;
+	padding:5px 0;
+}
+.titleName ul{list-style-type:none; position:relative; top:7px; margin-left:5px;}  
+.titleName ul li{float:left; text-align:center; margin-right:20px; padding: 3px 7px;}
+.titleName ul li a{text-decoration:none; font-size:16px;}
+.titleClick { border-bottom:5px solid #f1921c;}
+.searchBar {
+	float:right;
+	margin-top:3px;
+}
+.searchBar input {
+	width:200px;
+}
+.searchBar img {
+	position:relative;
+	top:2px;
+	right:25px;
+}
+.searchOptions {
+	margin:5px 10px 0 17px;
+}
+.optionBtn {
+	float:left;
+	border:1px solid #ccc;
+	color:#646464;
+	margin:5px 7px 5px 0;
+	padding:1px 7px;
+	border-radius:1px;
+	cursor:pointer;
+	font-size:12px;
+}
+.selected {
+	background-color:#f1921c;
+	color:#fff;
+	border:1px solid #f1921c;
+}
+.surveyPictureBar {
+	margin:10px 0;
+	/* padding:0 20px; */
+}
+.surveyPicture {
+	position:relative;
+	margin:0 7px;
+	float:left;
+}
+.surveyPictureTips {
+	background-color: rgba(0,0,0,0.5);
+	color:#fff;
+	text-align:center;
+	position:absolute;
+	bottom:0;
+	width:100%;
+	padding:5px 0;
+}
+
+.allSurvey table {margin:10px 20px; width:98%; color:#8a8a8a;}
+.allSurvey table tr {}
+.allSurvey table tr td {padding:5px 0;}
+.newSur {
+	margin-left:5px;
+}
+.headSign {
+	vertical-align:middle;
+	position:relative;
+	bottom:2px;
+	margin-left: 5px;
+}
+.mySurvey table {margin:10px; width:98%; border-top:1px solid #f2f2f2;}
+.mySurvey table tr {}
+.mySurvey table tr th, .mySurvey table tr td {padding:7px 0;}
+.firstTr {
+	background-color:#F8F8F8;
+	font-weight:bold;
+}
+.nextTr {
+	color:#8a8a8a;
+	border-top:1px solid #f2f2f2;
+	border-bottom:1px solid #f2f2f2;
+}
+.operSurvey {
+	vertical-align:middle;
+	margin:0 5px;
+}
+.renovate{
+	display: block;
+    text-align: center;
+	border:1px solid #e6e6e6;
+	padding:7px 0;
+}
+.renovate:hover{
+	background-color:#f6f6f6;
+}
+.renovateTitle{
+	color: #ccc;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 14px;
+    text-align: center;
+}
+.hidebg {
+	position:absolute;left:0px;top:0px;
+	background-color:#000;
+	width:100%;  /*宽度设置为100%，这样才能使隐藏背景层覆盖原页面*/
+	height:100%;
+	filter:alpha(opacity=60);  /*设置透明度为60%*/
+	opacity:0.6;  /*非IE浏览器下设置透明度为60%*/
+	display:none;
+	z-Index:2;
+}

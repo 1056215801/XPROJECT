@@ -1,0 +1,151 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"Microsoft YaHei";
+}
+a:hover, a:visited, a:link, a:active {
+    text-decoration:none;
+	color:#5e5e5e;
+}
+
+.upgrade_main {
+	width:100%;
+}
+.upgrade_content {
+	width:90%;
+	margin:10px auto;
+	border:1px solid #ccc;
+}
+.upgrade_contentLeft {
+	width:200px;
+	float:left;
+	padding:0 15px;
+}
+.menuNav {
+	padding:15px 5px;
+	/* font-weight:bold; */
+	border-bottom:1px solid #ccc;
+}
+.menuNav ul{list-style-type:none;}  
+.menuNav ul li{margin-left:30px; margin-top:5px;}
+.menuNav ul li a{text-decoration:none; color:#aaa;}
+.upgrade_contentRight {
+	margin-left:220px;
+	padding:22px 15px;
+}
+.upgrade_cont {
+	border:1px solid #ccc;
+}
+.upgrade_top {
+	background-color:#F4F4F4;
+	padding:7px 17px;
+}
+
+.upgrade_dataTop {
+	padding:25px 0;
+	width:100%;
+	display:inline-block;
+	position:relative;
+	border-bottom:1px solid #e6e6e6;
+}
+.upgrade_dataTopImg {
+	float:left;
+	display:block;
+	margin-left:20px;
+	border-radius:80px;
+}
+.upgrade_dataTopCont {
+	float:left;
+	margin-left:20px;
+}
+.upgrade_dataTopCase1 {
+	padding:14px 0 4px;
+}
+.upgrade_dataTopCase2 {
+	padding:4px 0 14px;
+}
+.upgrade_dataTopCaseLeft {
+	float:left;
+	width:100px;
+	text-align:right;
+	color:#aaa;
+}
+.upgrade_dataTopCaseRight {
+	float:left;
+	width:200px;
+}
+
+.upgradeItem {
+	width:410px;
+	height:110px;
+	float:left;
+	margin:5px;
+	border:1px solid #ccc;
+}
+.upgradeData {
+	float:left;
+	padding:15px;
+}
+.upgradeData img {
+	float:left;
+	margin-right:10px;
+}
+.upgradeDataCont {
+	float:left;
+	width:180px;
+}
+.upgradeType {
+	font-size:16px;
+	font-weight:bold;
+	padding:5px 0;
+}
+.upgradeDetails {
+	font-size:12px;
+}
+.upgradeBtn {
+	width:110px;
+	height:110px;
+	float:right;
+	background-color:#F14342;
+	color:#fff;
+	text-align:center;
+}
+.upgradeBtnVal {
+	width:70px;
+	font-size:24px;
+	display:inline-block;
+	vertical-align:middle;
+	line-height:1;
+	margin:31px 0;
+	cursor:pointer;
+}

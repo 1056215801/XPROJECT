@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.wanjiCollect.WanjiCollectLogMapper" >
+
+	<resultMap id="BaseResultMap" type="com.chinatelecom.jx.zone.management.bean.logisticsInfo.WanjiCollectLogBean">
+    	<id column="COLLECT_ID" jdbcType="DECIMAL" property="collectId"/>
+    	<result column="ACCOUNT_ID" jdbcType="DECIMAL" property="accountId"/>
+    	<result column="CAR_ID" jdbcType="DECIMAL" property="carId"/>
+    	<result column="PLATE_NUM" jdbcType="VARCHAR" property="plateNum"/>
+    	<result column="DRIVER_ID" jdbcType="VARCHAR" property="driverId"/>
+    	<result column="DRIVER_AVATAR" jdbcType="VARCHAR" property="driverAvatar"/>
+    	<result column="DRIVER_NAME" jdbcType="VARCHAR" property="driverName"/>
+    	<result column="DRIVER_TELPHONE" jdbcType="VARCHAR" property="driverTelphone"/>
+    	<result column="CUR_PLACE" jdbcType="VARCHAR" property="curPlace"/>
+    	<result column="IS_AUTH" jdbcType="DECIMAL" property="isAuth"/>
+    	<result column="IS_CARAUTH" jdbcType="DECIMAL" property="isCarauth"/>
+    	<result column="IS_COMPANY" jdbcType="DECIMAL" property="isCompany"/>
+    	<result column="CAR_WIDTH" jdbcType="VARCHAR" property="carWidth"/>
+    	<result column="CAR_LENGTH" jdbcType="VARCHAR" property="carLength"/>
+    	<result column="CAR_LOAD" jdbcType="VARCHAR" property="carLoad"/>
+    	<result column="CAR_TYPE_NAME" jdbcType="VARCHAR" property="carTypeName"/>
+    	<result column="CAR_LOAD_TYPE_NAME" jdbcType="VARCHAR" property="carLoadTypeName"/>
+    	<result column="STATUS" jdbcType="DECIMAL" property="status"/>
+    	<result column="ACTIVE_DATE" jdbcType="TIMESTAMP" property="activeDate"/>
+    	<result column="REMARK" jdbcType="VARCHAR" property="remark"/>
+    	<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+	</resultMap>
+	
+	<!--
+	<resultMap id="ResultMapWithForeign" type="com.chinatelecom.jx.zone.management.bean.logisticsInfo.WanjiCollectLogBean" extends="BaseResultMap" >
+			 <result column="workProcessid" property="workProcessid" jdbcType="VARCHAR" />
+			 <result column="currentState" property="currentState" jdbcType="VARCHAR" />
+       <result column="organizationName" property="orgName" jdbcType="VARCHAR" />
+        <result column="companyName" property="companyName" jdbcType="VARCHAR" />
+       <result column="accountName" property="accountName" jdbcType="VARCHAR" />
+       <result column="parkName" property="parkName" jdbcType="VARCHAR" />
+  </resultMap>
+  -->
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		COLLECT_ID,ACCOUNT_ID,CAR_ID,PLATE_NUM,DRIVER_ID,DRIVER_AVATAR,DRIVER_NAME,DRIVER_TELPHONE,CUR_PLACE,IS_AUTH,IS_CARAUTH,IS_COMPANY,CAR_WIDTH,CAR_LENGTH,CAR_LOAD,CAR_TYPE_NAME,CAR_LOAD_TYPE_NAME,STATUS,ACTIVE_DATE,REMARK,CREATE_TIME
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_WANJI_COLLECT_LOG
+    where 
+				COLLECT_ID = #{collectId,jdbcType=DECIMAL} 
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+        DELETE FROM T_WANJI_COLLECT_LOG WHERE
+				COLLECT_ID = #{collectId,jdbcType=DECIMAL} 
+    </delete>
+
+	<insert id="insert" parameterType="com.chinatelecom.jx.zone.management.bean.logisticsInfo.WanjiCollectLogBean">
+        INSERT INTO T_WANJI_COLLECT_LOG (
+        	COLLECT_ID ,
+        	ACCOUNT_ID ,
+        	CAR_ID ,
+        	PLATE_NUM ,
+        	DRIVER_ID, 
+        	DRIVER_AVATAR, 
+        	DRIVER_NAME, 
+        	DRIVER_TELPHONE, 
+        	CUR_PLACE, 
+        	IS_AUTH ,
+        	IS_CARAUTH ,
+        	IS_COMPANY ,
+        	CAR_WIDTH ,
+        	CAR_LENGTH ,
+        	CAR_LOAD ,
+        	CAR_TYPE_NAME ,
+        	CAR_LOAD_TYPE_NAME ,
+        	STATUS ,
+        	ACTIVE_DATE ,
+        	REMARK ,
+        	CREATE_TIME 
+        ) VALUES (
+        	#{collectId,jdbcType=DECIMAL} ,
+        	#{accountId,jdbcType=DECIMAL} ,
+        	#{carId,jdbcType=DECIMAL} ,
+        	#{plateNum,jdbcType=VARCHAR} ,
+        	#{driverId,jdbcType=VARCHAR} ,
+        	#{driverAvatar,jdbcType=VARCHAR} ,
+        	#{driverName,jdbcType=VARCHAR} ,
+        	#{driverTelphone,jdbcType=VARCHAR} ,
+        	#{curPlace,jdbcType=VARCHAR} ,
+        	#{isAuth,jdbcType=DECIMAL} ,
+        	#{isCarauth,jdbcType=DECIMAL} ,
+        	#{isCompany,jdbcType=DECIMAL} ,
+        	#{carWidth,jdbcType=VARCHAR} ,
+        	#{carLength,jdbcType=VARCHAR} ,
+        	#{carLoad,jdbcType=VARCHAR} ,
+        	#{carTypeName,jdbcType=VARCHAR} ,
+        	#{carLoadTypeName,jdbcType=VARCHAR} ,
+        	#{status,jdbcType=DECIMAL} ,
+        	#{activeDate,jdbcType=TIMESTAMP} ,
+        	#{remark,jdbcType=VARCHAR} ,
+        	#{createTime,jdbcType=TIMESTAMP} 
+        )
+	</insert>
+	
+	<insert id="insertSelective" parameterType="com.chinatelecom.jx.zone.management.bean.logisticsInfo.WanjiCollectLogBean">
+    insert into T_WANJI_COLLECT_LOG
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+    		<if test="collectId != null" >
+        COLLECT_ID,
+      	</if>
+    		<if test="accountId != null" >
+        ACCOUNT_ID,
+      	</if>
+    		<if test="carId != null" >
+        CAR_ID,
+      	</if>
+    		<if test="plateNum != null" >
+        PLATE_NUM,
+      	</if>
+    		<if test="driverId != null" >
+        DRIVER_ID,
+      	</if>
+    		<if test="driverAvatar != null" >
+        DRIVER_AVATAR,
+      	</if>
+      		<if test="driverName != null" >
+        DRIVER_NAME,
+      	</if>
+    		<if test="driverTelphone != null" >
+        DRIVER_TELPHONE,
+      	</if>
+      		<if test="curPlace != null" >
+        CUR_PLACE,
+      	</if>
+    		<if test="isAuth != null" >
+        IS_AUTH,
+      	</if>
+    		<if test="isCarauth != null" >
+        IS_CARAUTH,
+      	</if>
+    		<if test="isCompany != null" >
+        IS_COMPANY,
+      	</if>
+    		<if test="carWidth != null" >
+        CAR_WIDTH,
+      	</if>
+    		<if test="carLength != null" >
+        CAR_LENGTH,
+      	</if>
+    		<if test="carLoad != null" >
+        CAR_LOAD,
+      	</if>
+    		<if test="carTypeName != null" >
+        CAR_TYPE_NAME,
+      	</if>
+    		<if test="carLoadTypeName != null" >
+        CAR_LOAD_TYPE_NAME,
+      	</if>
+    		<if test="status != null" >
+        STATUS,
+      	</if>
+    		<if test="activeDate != null" >
+        ACTIVE_DATE,
+      	</if>
+    		<if test="remark != null" >
+        REMARK,
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME,
+      	</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+    		<if test="collectId != null" >
+        #{collectId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="accountId != null" >
+        #{accountId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="carId != null" >
+        #{carId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="plateNum != null" >
+        #{plateNum,jdbcType=VARCHAR},
+      	</if>
+    		<if test="driverId != null" >
+        #{driverId,jdbcType=VARCHAR},
+      	</if>
+    		<if test="driverAvatar != null" >
+        #{driverAvatar,jdbcType=VARCHAR},
+      	</if>
+      		<if test="driverName != null" >
+        #{driverName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="driverTelphone != null" >
+        #{driverTelphone,jdbcType=VARCHAR},
+      	</if>
+      		<if test="curPlace != null" >
+        #{curPlace,jdbcType=VARCHAR},
+      	</if>
+    		<if test="isAuth != null" >
+        #{isAuth,jdbcType=DECIMAL},
+      	</if>
+    		<if test="isCarauth != null" >
+        #{isCarauth,jdbcType=DECIMAL},
+      	</if>
+    		<if test="isCompany != null" >
+        #{isCompany,jdbcType=DECIMAL},
+      	</if>
+    		<if test="carWidth != null" >
+        #{carWidth,jdbcType=VARCHAR},
+      	</if>
+    		<if test="carLength != null" >
+        #{carLength,jdbcType=VARCHAR},
+      	</if>
+    		<if test="carLoad != null" >
+        #{carLoad,jdbcType=VARCHAR},
+      	</if>
+    		<if test="carTypeName != null" >
+        #{carTypeName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="carLoadTypeName != null" >
+        #{carLoadTypeName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="status != null" >
+        #{status,jdbcType=DECIMAL},
+      	</if>
+    		<if test="activeDate != null" >
+        #{activeDate,jdbcType=TIMESTAMP},
+      	</if>
+    		<if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      	</if>
+    		<if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinatelecom.jx.zone.management.bean.logisticsInfo.WanjiCollectLogBean">
+    update T_WANJI_COLLECT_LOG
+    <set >
+    		<if test="accountId != null" >
+        ACCOUNT_ID = #{accountId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="carId != null" >
+        CAR_ID = #{carId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="plateNum != null" >
+        PLATE_NUM = #{plateNum,jdbcType=VARCHAR},
+      	</if>
+    		<if test="driverId != null" >
+        DRIVER_ID = #{driverId,jdbcType=VARCHAR},
+      	</if>
+    		<if test="driverAvatar != null" >
+        DRIVER_AVATAR = #{driverAvatar,jdbcType=VARCHAR},
+      	</if>
+      		<if test="driverName != null" >
+        DRIVER_NAME = #{driverName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="driverTelphone != null" >
+        DRIVER_TELPHONE = #{driverTelphone,jdbcType=VARCHAR},
+      	</if>
+      		<if test="curPlace != null" >
+        CUR_PLACE = #{curPlace,jdbcType=VARCHAR},
+      	</if>
+    		<if test="isAuth != null" >
+        IS_AUTH = #{isAuth,jdbcType=DECIMAL},
+      	</if>
+    		<if test="isCarauth != null" >
+        IS_CARAUTH = #{isCarauth,jdbcType=DECIMAL},
+      	</if>
+    		<if test="isCompany != null" >
+        IS_COMPANY = #{isCompany,jdbcType=DECIMAL},
+      	</if>
+    		<if test="carWidth != null" >
+        CAR_WIDTH = #{carWidth,jdbcType=VARCHAR},
+      	</if>
+    		<if test="carLength != null" >
+        CAR_LENGTH = #{carLength,jdbcType=VARCHAR},
+      	</if>
+    		<if test="carLoad != null" >
+        CAR_LOAD = #{carLoad,jdbcType=VARCHAR},
+      	</if>
+    		<if test="carTypeName != null" >
+        CAR_TYPE_NAME = #{carTypeName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="carLoadTypeName != null" >
+        CAR_LOAD_TYPE_NAME = #{carLoadTypeName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="status != null" >
+        STATUS = #{status,jdbcType=DECIMAL},
+      	</if>
+    		<if test="activeDate != null" >
+        ACTIVE_DATE = #{activeDate,jdbcType=TIMESTAMP},
+      	</if>
+    		<if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    </set>
+    where 
+      COLLECT_ID = #{collectId,jdbcType=DECIMAL} 
+  </update>
+  
+	<update id="updateByPrimaryKey" parameterType="com.chinatelecom.jx.zone.management.bean.logisticsInfo.WanjiCollectLogBean">
+      UPDATE T_WANJI_COLLECT_LOG SET
+        ACCOUNT_ID = #{accountId,jdbcType=DECIMAL} ,
+        CAR_ID = #{carId,jdbcType=DECIMAL} ,
+        PLATE_NUM = #{plateNum,jdbcType=VARCHAR} ,
+        DRIVER_ID = #{driverId,jdbcType=VARCHAR} ,
+        DRIVER_AVATAR = #{driverAvatar,jdbcType=VARCHAR} ,
+        DRIVER_NAME = #{driverName,jdbcType=VARCHAR} ,
+        DRIVER_TELPHONE = #{driverTelphone,jdbcType=VARCHAR} ,
+        CUR_PLACE = #{curPlace,jdbcType=VARCHAR} ,
+        IS_AUTH = #{isAuth,jdbcType=DECIMAL} ,
+        IS_CARAUTH = #{isCarauth,jdbcType=DECIMAL} ,
+        IS_COMPANY = #{isCompany,jdbcType=DECIMAL} ,
+        CAR_WIDTH = #{carWidth,jdbcType=VARCHAR} ,
+        CAR_LENGTH = #{carLength,jdbcType=VARCHAR} ,
+        CAR_LOAD = #{carLoad,jdbcType=VARCHAR} ,
+        CAR_TYPE_NAME = #{carTypeName,jdbcType=VARCHAR} ,
+        CAR_LOAD_TYPE_NAME = #{carLoadTypeName,jdbcType=VARCHAR} ,
+        STATUS = #{status,jdbcType=DECIMAL} ,
+        ACTIVE_DATE = #{activeDate,jdbcType=TIMESTAMP} ,
+        REMARK = #{remark,jdbcType=VARCHAR} ,
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP} 
+      WHERE 
+        COLLECT_ID = #{collectId,jdbcType=DECIMAL} 
+	</update>
+	
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	        
+		       <if test="collectId != null">
+						<![CDATA[AND COLLECT_ID = #{collectId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="accountId != null">
+						<![CDATA[AND ACCOUNT_ID = #{accountId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="carId != null">
+						<![CDATA[AND CAR_ID = #{carId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="plateNum != null and plateNum != ''">
+						<!--
+						<![CDATA[AND PLATE_NUM = #{plateNum,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND PLATE_NUM LIKE '%' || #{plateNum,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="driverId != null and driverId != ''">
+						<![CDATA[AND DRIVER_ID = #{driverId,jdbcType=VARCHAR}]]>
+				   </if>
+	        
+		       <if test="driverAvatar != null and driverAvatar != ''">
+						<!--
+						<![CDATA[AND DRIVER_AVATAR = #{driverAvatar,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND DRIVER_AVATAR LIKE '%' || #{driverAvatar,jdbcType=VARCHAR} || '%']]>
+				   </if>
+			   <if test="driverName != null and driverName != ''">
+						<!--
+						<![CDATA[AND DRIVER_NAME = #{driverName,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND DRIVER_NAME LIKE '%' || #{driverName,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="driverTelphone != null and driverTelphone != ''">
+						<!--
+						<![CDATA[AND DRIVER_TELPHONE = #{driverTelphone,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND DRIVER_TELPHONE LIKE '%' || #{driverTelphone,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+	          <if test="curPlace != null and curPlace != ''">
+						<!--
+						<![CDATA[AND CUR_PLACE = #{curPlace,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND CUR_PLACE LIKE '%' || #{curPlace,jdbcType=VARCHAR} || '%']]>
+				   </if>
+		       <if test="isAuth != null">
+						<![CDATA[AND IS_AUTH = #{isAuth,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="isCarauth != null">
+						<![CDATA[AND IS_CARAUTH = #{isCarauth,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="isCompany != null">
+						<![CDATA[AND IS_COMPANY = #{isCompany,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="carWidth != null">
+						<![CDATA[AND CAR_WIDTH = #{carWidth,jdbcType=VARCHAR}]]>
+				   </if>
+	        
+		       <if test="carLength != null">
+						<![CDATA[AND CAR_LENGTH = #{carLength,jdbcType=VARCHAR}]]>
+				   </if>
+	        
+		       <if test="carLoad != null">
+						<![CDATA[AND CAR_LOAD = #{carLoad,jdbcType=VARCHAR}]]>
+				   </if>
+	        
+		       <if test="carTypeName != null and carTypeName != ''">
+						<!--
+						<![CDATA[AND CAR_TYPE_NAME = #{carTypeName,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND CAR_TYPE_NAME LIKE '%' || #{carTypeName,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="carLoadTypeName != null and carLoadTypeName != ''">
+						<!--
+						<![CDATA[AND CAR_LOAD_TYPE_NAME = #{carLoadTypeName,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND CAR_LOAD_TYPE_NAME LIKE '%' || #{carLoadTypeName,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="status != null">
+						<![CDATA[AND STATUS = #{status,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+	        
+		       <if test="remark != null and remark != ''">
+						<!--
+						<![CDATA[AND REMARK = #{remark,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND REMARK LIKE '%' || #{remark,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		</where>
+	</sql>
+	
+ 
+  
+  <select id="queryByCond" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.logisticsInfo.WanjiCollectLogBean" >
+    select <include refid="Base_Column_List" />
+    from T_WANJI_COLLECT_LOG
+	<include refid="Base_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+     
+  
+</mapper>
+

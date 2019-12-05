@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.projectActivity.ProjectActivityInfoMapper">
+	<resultMap id="BaseResultMap" type="com.chinatelecom.jx.zone.management.bean.projectActivity.ProjectActivityInfoBean">
+		<id column="ACTIVITY_ID" jdbcType="DECIMAL" property="activityId" />
+		<result column="ACTIVITY_NAME" jdbcType="VARCHAR" property="activityName" />
+		<result column="ACTIVITY_LOCATION" jdbcType="VARCHAR" property="activityLocation" />
+		<result column="ACTIVITY_URL" jdbcType="VARCHAR" property="activityUrl" />
+		<result column="ACTIVITY_IMAGE" jdbcType="VARCHAR" property="activityImage" />
+		<result column="ACTIVITY_TAGS" jdbcType="VARCHAR" property="activityTags" />
+		<result column="QR_CODE" jdbcType="VARCHAR" property="qrCode" />
+		<result column="START_TIME" jdbcType="TIMESTAMP" property="startTime" />
+		<result column="END_TIME" jdbcType="TIMESTAMP" property="endTime" />
+		<result column="STATUS" jdbcType="DECIMAL" property="status" />
+		<result column="IS_TOP" jdbcType="DECIMAL" property="isTop" />
+		<result column="ENTER_COUNT" jdbcType="DECIMAL" property="enterCount" />
+		<result column="REMARK" jdbcType="VARCHAR" property="remark" />
+		<result column="CREATE_ACCOUNT" jdbcType="DECIMAL" property="createAccount" />
+		<result column="CREATE_USER" jdbcType="VARCHAR" property="createUser" />
+		<result column="SORT_GRADE" jdbcType="DECIMAL" property="sortGrade" />
+		<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="ACTIVITY_DESCRIPTION" jdbcType="VARCHAR" property="activityDescription" />
+	</resultMap>
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		ACTIVITY_ID,ACTIVITY_NAME,ACTIVITY_LOCATION,ACTIVITY_URL,ACTIVITY_IMAGE,ACTIVITY_TAGS,QR_CODE,START_TIME,END_TIME,STATUS,IS_TOP,ENTER_COUNT,REMARK,CREATE_ACCOUNT,CREATE_USER,SORT_GRADE,CREATE_TIME,ACTIVITY_DESCRIPTION 
+	</sql>
+	<sql id="Easy_Column_List">
+		ACTIVITY_ID,ACTIVITY_NAME,ACTIVITY_LOCATION,ACTIVITY_URL,ACTIVITY_IMAGE,ACTIVITY_TAGS,QR_CODE,START_TIME,END_TIME,STATUS,IS_TOP,ENTER_COUNT,REMARK,CREATE_ACCOUNT,CREATE_USER,SORT_GRADE,CREATE_TIME 
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal">
+		select
+		<include refid="Base_Column_List" />
+		from T_PROJECT_ACTIVITY_INFO where ACTIVITY_ID = #{activityId,jdbcType=DECIMAL}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal"> DELETE FROM T_PROJECT_ACTIVITY_INFO WHERE ACTIVITY_ID =
+		#{activityId,jdbcType=DECIMAL} 
+	</delete>
+	<insert id="insert" parameterType="com.chinatelecom.jx.zone.management.bean.projectActivity.ProjectActivityInfoBean"> INSERT INTO T_PROJECT_ACTIVITY_INFO ( ACTIVITY_ID , ACTIVITY_NAME ,
+		ACTIVITY_LOCATION , ACTIVITY_URL , ACTIVITY_IMAGE , ACTIVITY_TAGS , QR_CODE , START_TIME , END_TIME , STATUS , IS_TOP
+		, ENTER_COUNT , REMARK , CREATE_ACCOUNT , CREATE_USER , SORT_GRADE , CREATE_TIME , ACTIVITY_DESCRIPTION ) VALUES (
+		#{activityId,jdbcType=DECIMAL} , #{activityName,jdbcType=VARCHAR} , #{activityLocation,jdbcType=VARCHAR} ,
+		#{activityUrl,jdbcType=VARCHAR} , #{activityImage,jdbcType=VARCHAR} , #{activityTags,jdbcType=VARCHAR} ,
+		#{qrCode,jdbcType=VARCHAR} , #{startTime,jdbcType=TIMESTAMP} , #{endTime,jdbcType=TIMESTAMP} ,
+		#{status,jdbcType=DECIMAL} , #{isTop,jdbcType=DECIMAL} , #{enterCount,jdbcType=DECIMAL} , #{remark,jdbcType=VARCHAR} ,
+		#{createAccount,jdbcType=DECIMAL} , #{createUser,jdbcType=VARCHAR} , #{sortGrade,jdbcType=DECIMAL} ,
+		#{createTime,jdbcType=TIMESTAMP} , #{activityDescription,jdbcType=VARCHAR} ) 
+	</insert>
+	<insert id="insertSelective" parameterType="com.chinatelecom.jx.zone.management.bean.projectActivity.ProjectActivityInfoBean">
+		insert into T_PROJECT_ACTIVITY_INFO
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="activityId != null"> ACTIVITY_ID, 
+			</if>
+			<if test="activityName != null"> ACTIVITY_NAME, 
+			</if>
+			<if test="activityLocation != null"> ACTIVITY_LOCATION, 
+			</if>
+			<if test="activityUrl != null"> ACTIVITY_URL, 
+			</if>
+			<if test="activityImage != null"> ACTIVITY_IMAGE, 
+			</if>
+			<if test="activityTags != null"> ACTIVITY_TAGS, 
+			</if>
+			<if test="qrCode != null"> QR_CODE, 
+			</if>
+			<if test="startTime != null"> START_TIME, 
+			</if>
+			<if test="endTime != null"> END_TIME, 
+			</if>
+			<if test="status != null"> STATUS, 
+			</if>
+			<if test="isTop != null"> IS_TOP, 
+			</if>
+			<if test="enterCount != null"> ENTER_COUNT, 
+			</if>
+			<if test="remark != null"> REMARK, 
+			</if>
+			<if test="createAccount != null"> CREATE_ACCOUNT, 
+			</if>
+			<if test="createUser != null"> CREATE_USER, 
+			</if>
+			<if test="sortGrade != null"> SORT_GRADE, 
+			</if>
+			<if test="createTime != null"> CREATE_TIME, 
+			</if>
+			<if test="activityDescription != null"> ACTIVITY_DESCRIPTION, 
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="activityId != null"> #{activityId,jdbcType=DECIMAL}, 
+			</if>
+			<if test="activityName != null"> #{activityName,jdbcType=VARCHAR}, 
+			</if>
+			<if test="activityLocation != null"> #{activityLocation,jdbcType=VARCHAR}, 
+			</if>
+			<if test="activityUrl != null"> #{activityUrl,jdbcType=VARCHAR}, 
+			</if>
+			<if test="activityImage != null"> #{activityImage,jdbcType=VARCHAR}, 
+			</if>
+			<if test="activityTags != null"> #{activityTags,jdbcType=VARCHAR}, 
+			</if>
+			<if test="qrCode != null"> #{qrCode,jdbcType=VARCHAR}, 
+			</if>
+			<if test="startTime != null"> #{startTime,jdbcType=TIMESTAMP}, 
+			</if>
+			<if test="endTime != null"> #{endTime,jdbcType=TIMESTAMP}, 
+			</if>
+			<if test="status != null"> #{status,jdbcType=DECIMAL}, 
+			</if>
+			<if test="isTop != null"> #{isTop,jdbcType=DECIMAL}, 
+			</if>
+			<if test="enterCount != null"> #{enterCount,jdbcType=DECIMAL}, 
+			</if>
+			<if test="remark != null"> #{remark,jdbcType=VARCHAR}, 
+			</if>
+			<if test="createAccount != null"> #{createAccount,jdbcType=DECIMAL}, 
+			</if>
+			<if test="createUser != null"> #{createUser,jdbcType=VARCHAR}, 
+			</if>
+			<if test="sortGrade != null"> #{sortGrade,jdbcType=DECIMAL}, 
+			</if>
+			<if test="createTime != null"> #{createTime,jdbcType=TIMESTAMP}, 
+			</if>
+			<if test="activityDescription != null"> #{activityDescription,jdbcType=VARCHAR}, 
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.chinatelecom.jx.zone.management.bean.projectActivity.ProjectActivityInfoBean">
+		update T_PROJECT_ACTIVITY_INFO
+		<set>
+			<if test="activityName != null"> ACTIVITY_NAME = #{activityName,jdbcType=VARCHAR}, 
+			</if>
+			<if test="activityLocation != null"> ACTIVITY_LOCATION = #{activityLocation,jdbcType=VARCHAR}, 
+			</if>
+			<if test="activityUrl != null"> ACTIVITY_URL = #{activityUrl,jdbcType=VARCHAR}, 
+			</if>
+			<if test="activityImage != null"> ACTIVITY_IMAGE = #{activityImage,jdbcType=VARCHAR}, 
+			</if>
+			<if test="activityTags != null"> ACTIVITY_TAGS = #{activityTags,jdbcType=VARCHAR}, 
+			</if>
+			<if test="qrCode != null"> QR_CODE = #{qrCode,jdbcType=VARCHAR}, 
+			</if>
+			<if test="startTime != null"> START_TIME = #{startTime,jdbcType=TIMESTAMP}, 
+			</if>
+			<if test="endTime != null"> END_TIME = #{endTime,jdbcType=TIMESTAMP}, 
+			</if>
+			<if test="status != null"> STATUS = #{status,jdbcType=DECIMAL}, 
+			</if>
+			<if test="isTop != null"> IS_TOP = #{isTop,jdbcType=DECIMAL}, 
+			</if>
+			<if test="enterCount != null"> ENTER_COUNT = #{enterCount,jdbcType=DECIMAL}, 
+			</if>
+			<if test="remark != null"> REMARK = #{remark,jdbcType=VARCHAR}, 
+			</if>
+			<if test="createAccount != null"> CREATE_ACCOUNT = #{createAccount,jdbcType=DECIMAL}, 
+			</if>
+			<if test="createUser != null"> CREATE_USER = #{createUser,jdbcType=VARCHAR}, 
+			</if>
+			<if test="sortGrade != null"> SORT_GRADE = #{sortGrade,jdbcType=DECIMAL}, 
+			</if>
+			<if test="createTime != null"> CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}, 
+			</if>
+			<if test="activityDescription != null"> ACTIVITY_DESCRIPTION = #{activityDescription,jdbcType=VARCHAR}, 
+			</if>
+		</set>
+		where ACTIVITY_ID = #{activityId,jdbcType=DECIMAL}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.chinatelecom.jx.zone.management.bean.projectActivity.ProjectActivityInfoBean"> UPDATE T_PROJECT_ACTIVITY_INFO SET ACTIVITY_NAME =
+		#{activityName,jdbcType=VARCHAR} , ACTIVITY_LOCATION = #{activityLocation,jdbcType=VARCHAR} , ACTIVITY_URL =
+		#{activityUrl,jdbcType=VARCHAR} , ACTIVITY_IMAGE = #{activityImage,jdbcType=VARCHAR} , ACTIVITY_TAGS =
+		#{activityTags,jdbcType=VARCHAR} , QR_CODE = #{qrCode,jdbcType=VARCHAR} , START_TIME = #{startTime,jdbcType=TIMESTAMP}
+		, END_TIME = #{endTime,jdbcType=TIMESTAMP} , STATUS = #{status,jdbcType=DECIMAL} , IS_TOP = #{isTop,jdbcType=DECIMAL}
+		, ENTER_COUNT = #{enterCount,jdbcType=DECIMAL} , REMARK = #{remark,jdbcType=VARCHAR} , CREATE_ACCOUNT =
+		#{createAccount,jdbcType=DECIMAL} , CREATE_USER = #{createUser,jdbcType=VARCHAR} , SORT_GRADE =
+		#{sortGrade,jdbcType=DECIMAL} , CREATE_TIME = #{createTime,jdbcType=TIMESTAMP} , ACTIVITY_DESCRIPTION =
+		#{activityDescription,jdbcType=VARCHAR} WHERE ACTIVITY_ID = #{activityId,jdbcType=DECIMAL} 
+	</update>
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>
+			<if test="1==1">
+					<![CDATA[AND 1=1 ]]>
+			</if>
+			<if test="activityId != null">
+						<![CDATA[AND ACTIVITY_ID = #{activityId,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="activityName != null and activityName != ''">
+				<!-- <![CDATA[AND ACTIVITY_NAME = #{activityName,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND ACTIVITY_NAME LIKE '%' || #{activityName,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="activityLocation != null and activityLocation != ''">
+				<!-- <![CDATA[AND ACTIVITY_LOCATION = #{activityLocation,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND ACTIVITY_LOCATION LIKE '%' || #{activityLocation,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="activityUrl != null and activityUrl != ''">
+				<!-- <![CDATA[AND ACTIVITY_URL = #{activityUrl,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND ACTIVITY_URL LIKE '%' || #{activityUrl,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="activityImage != null and activityImage != ''">
+				<!-- <![CDATA[AND ACTIVITY_IMAGE = #{activityImage,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND ACTIVITY_IMAGE LIKE '%' || #{activityImage,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="tags != null and tags != ''">
+				<foreach collection="tags" item="item" index="index">
+					<choose>
+						<when test="index==0">
+								<![CDATA[ and (instr(ACTIVITY_TAGS, #{item}) > 0 ]]>
+						</when>
+						<otherwise>
+								<![CDATA[or instr(ACTIVITY_TAGS, #{item}) > 0 ]]>
+						</otherwise>
+					</choose>
+				</foreach>
+				)
+			</if>
+			<if test="qrCode != null and qrCode != ''">
+				<!-- <![CDATA[AND QR_CODE = #{qrCode,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND QR_CODE LIKE '%' || #{qrCode,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="status != null">
+						<![CDATA[AND STATUS = #{status,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="isTop != null">
+						<![CDATA[AND IS_TOP = #{isTop,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="enterCount != null">
+						<![CDATA[AND ENTER_COUNT = #{enterCount,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="remark != null and remark != ''">
+				<!-- <![CDATA[AND REMARK = #{remark,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND REMARK LIKE '%' || #{remark,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="createAccount != null">
+						<![CDATA[AND CREATE_ACCOUNT = #{createAccount,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="createUser != null and createUser != ''">
+				<!-- <![CDATA[AND CREATE_USER = #{createUser,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND CREATE_USER LIKE '%' || #{createUser,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="sortGrade != null">
+						<![CDATA[AND SORT_GRADE = #{sortGrade,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="activityDescription != null and activityDescription != ''">
+				<!-- <![CDATA[AND ACTIVITY_DESCRIPTION = #{activityDescription,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND ACTIVITY_DESCRIPTION LIKE '%' || #{activityDescription,jdbcType=VARCHAR} || '%']]>
+			</if>
+		</where>
+	</sql>
+	<sql id="Base_Where_Clause1">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>
+			<if test="1==1">
+					<![CDATA[AND 1=1 ]]>
+			</if>
+			<if test="activityId != null">
+						<![CDATA[AND ACTIVITY_ID != #{activityId,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="activityName != null and activityName != ''">
+				<!-- <![CDATA[AND ACTIVITY_NAME = #{activityName,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND ACTIVITY_NAME LIKE '%' || #{activityName,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="activityLocation != null and activityLocation != ''">
+				<!-- <![CDATA[AND ACTIVITY_LOCATION = #{activityLocation,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND ACTIVITY_LOCATION LIKE '%' || #{activityLocation,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="activityUrl != null and activityUrl != ''">
+				<!-- <![CDATA[AND ACTIVITY_URL = #{activityUrl,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND ACTIVITY_URL LIKE '%' || #{activityUrl,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="activityImage != null and activityImage != ''">
+				<!-- <![CDATA[AND ACTIVITY_IMAGE = #{activityImage,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND ACTIVITY_IMAGE LIKE '%' || #{activityImage,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="tags != null and tags != ''">
+				<foreach collection="tags" item="item" index="index">
+					<choose>
+						<when test="index==0">
+								<![CDATA[ and (instr(ACTIVITY_TAGS, #{item}) > 0 ]]>
+						</when>
+						<otherwise>
+								<![CDATA[or instr(ACTIVITY_TAGS, #{item}) > 0 ]]>
+						</otherwise>
+					</choose>
+				</foreach>
+				)
+			</if>
+			<if test="qrCode != null and qrCode != ''">
+				<!-- <![CDATA[AND QR_CODE = #{qrCode,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND QR_CODE LIKE '%' || #{qrCode,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="isTop != null">
+						<![CDATA[AND IS_TOP = #{isTop,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="enterCount != null">
+						<![CDATA[AND ENTER_COUNT = #{enterCount,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="remark != null and remark != ''">
+				<!-- <![CDATA[AND REMARK = #{remark,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND REMARK LIKE '%' || #{remark,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="createAccount != null">
+						<![CDATA[AND CREATE_ACCOUNT = #{createAccount,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="createUser != null and createUser != ''">
+				<!-- <![CDATA[AND CREATE_USER = #{createUser,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND CREATE_USER LIKE '%' || #{createUser,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="sortGrade != null">
+						<![CDATA[AND SORT_GRADE = #{sortGrade,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="activityDescription != null and activityDescription != ''">
+				<!-- <![CDATA[AND ACTIVITY_DESCRIPTION = #{activityDescription,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND ACTIVITY_DESCRIPTION LIKE '%' || #{activityDescription,jdbcType=VARCHAR} || '%']]>
+			</if>
+		</where>
+	</sql>
+	<!-- <sql id="Extends_Where_Clause" > <where> <if test="activityId != null"> AND a.ACTIVITY_ID = #{activityId,jdbcType=DECIMAL} 
+		</if> <if test="activityName != null and activityName != ''"> AND a.ACTIVITY_NAME = #{activityName,jdbcType=VARCHAR} AND 
+		a.ACTIVITY_NAME LIKE '%' || #{activityName,jdbcType=VARCHAR} || '%' </if> <if test="activityLocation != null and activityLocation 
+		!= ''"> AND a.ACTIVITY_LOCATION = #{activityLocation,jdbcType=VARCHAR} AND a.ACTIVITY_LOCATION LIKE '%' || #{activityLocation,jdbcType=VARCHAR} 
+		|| '%' </if> <if test="activityUrl != null and activityUrl != ''"> AND a.ACTIVITY_URL = #{activityUrl,jdbcType=VARCHAR} AND 
+		a.ACTIVITY_URL LIKE '%' || #{activityUrl,jdbcType=VARCHAR} || '%' </if> <if test="activityImage != null and activityImage 
+		!= ''"> AND a.ACTIVITY_IMAGE = #{activityImage,jdbcType=VARCHAR} AND a.ACTIVITY_IMAGE LIKE '%' || #{activityImage,jdbcType=VARCHAR} 
+		|| '%' </if> <if test="activityTags != null and activityTags != ''"> AND a.ACTIVITY_TAGS = #{activityTags,jdbcType=VARCHAR} 
+		AND a.ACTIVITY_TAGS LIKE '%' || #{activityTags,jdbcType=VARCHAR} || '%' </if> <if test="qrCode != null and qrCode != ''"> 
+		AND a.QR_CODE = #{qrCode,jdbcType=VARCHAR} AND a.QR_CODE LIKE '%' || #{qrCode,jdbcType=VARCHAR} || '%' </if> <if test="geStartTime 
+		!= null and geStartTime != ''"> <![CDATA[AND to_char(a.START_TIME,'yyyy-MM-dd HH24:mi:ss') >= #{geStartTime} || ' 00:00:00']]> 
+		</if> <if test="leStartTime != null and leStartTime != ''"> <![CDATA[AND to_char(a.START_TIME,'yyyy-MM-dd HH24:mi:ss') <= 
+		#{leStartTime} || ' 23:59:59']]> </if> <if test="geEndTime != null and geEndTime != ''"> <![CDATA[AND to_char(a.END_TIME,'yyyy-MM-dd 
+		HH24:mi:ss') >= #{geEndTime} || ' 00:00:00']]> </if> <if test="leEndTime != null and leEndTime != ''"> <![CDATA[AND to_char(a.END_TIME,'yyyy-MM-dd 
+		HH24:mi:ss') <= #{leEndTime} || ' 23:59:59']]> </if> <if test="status != null"> AND a.STATUS = #{status,jdbcType=DECIMAL} 
+		</if> <if test="isTop != null"> AND a.IS_TOP = #{isTop,jdbcType=DECIMAL} </if> <if test="enterCount != null"> AND a.ENTER_COUNT 
+		= #{enterCount,jdbcType=DECIMAL} </if> <if test="remark != null and remark != ''"> AND a.REMARK = #{remark,jdbcType=VARCHAR} 
+		AND a.REMARK LIKE '%' || #{remark,jdbcType=VARCHAR} || '%' </if> <if test="createAccount != null"> AND a.CREATE_ACCOUNT = 
+		#{createAccount,jdbcType=DECIMAL} </if> <if test="createUser != null and createUser != ''"> AND a.CREATE_USER = #{createUser,jdbcType=VARCHAR} 
+		AND a.CREATE_USER LIKE '%' || #{createUser,jdbcType=VARCHAR} || '%' </if> <if test="sortGrade != null"> AND a.SORT_GRADE 
+		= #{sortGrade,jdbcType=DECIMAL} </if> <if test="geCreateTime != null and geCreateTime != ''"> <![CDATA[AND to_char(a.CREATE_TIME,'yyyy-MM-dd 
+		HH24:mi:ss') >= #{geCreateTime} || ' 00:00:00']]> </if> <if test="leCreateTime != null and leCreateTime != ''"> <![CDATA[AND 
+		to_char(a.CREATE_TIME,'yyyy-MM-dd HH24:mi:ss') <= #{leCreateTime} || ' 23:59:59']]> </if> <if test="activityDescription != 
+		null and activityDescription != ''"> AND a.ACTIVITY_DESCRIPTION = #{activityDescription,jdbcType=VARCHAR} AND a.ACTIVITY_DESCRIPTION 
+		LIKE '%' || #{activityDescription,jdbcType=VARCHAR} || '%' </if> <if test="accountName != null and accountName!=''" > and 
+		b.account_name LIKE '%' || ${accountName} || '%' </if> <if test="orgName != null and orgName!=''" > and c.organization_name 
+		LIKE '%${orgName}%' </if> <if test="copmanyName != null and copmanyName!=''" > and d.organization_name LIKE '%${copmanyName}%' 
+		</if> <if test="parkName != null and parkName!=''" > and e.organization_name LIKE '%${parkName}%' </if> </where> </sql> -->
+	<select id="queryByCond" resultMap="BaseResultMap"
+		parameterType="com.chinatelecom.jx.zone.management.bean.projectActivity.ProjectActivityInfoBean">
+		select
+		<if test="fastQuery != null">
+			<include refid="Easy_Column_List" />
+		</if>
+		<if test="fastQuery == null">
+			<include refid="Base_Column_List" />
+		</if>
+		from T_PROJECT_ACTIVITY_INFO
+		<include refid="Base_Where_Clause1" />
+		<if test="statusArray != null and statusArray != ''">
+			and status in
+			<foreach item="item" index="index" collection="statusArray" open="(" separator="," close=")"> #{item} 
+			</foreach>
+		</if>
+		<if test="orderByClause != null"> order by ${orderByClause} 
+		</if>
+	</select>
+	<select id="queryByEnterAccount" resultMap="BaseResultMap"
+		parameterType="com.chinatelecom.jx.zone.management.bean.projectActivity.ProjectActivityInfoBean">
+		select a.ACTIVITY_ID, a.ACTIVITY_NAME, a.ACTIVITY_LOCATION, a.ACTIVITY_URL, a.ACTIVITY_IMAGE, a.ACTIVITY_TAGS,
+		a.QR_CODE, a.START_TIME, a.END_TIME, a.STATUS, a.IS_TOP, a.ENTER_COUNT, a.REMARK, a.CREATE_ACCOUNT, a.CREATE_USER,
+		a.SORT_GRADE,
+		<if test="fastQuery == ''"> a.ACTIVITY_DESCRIPTION, 
+		</if>
+		a.CREATE_TIME from T_PROJECT_ACTIVITY_INFO a join (select activity_id from T_PROJECT_ACTIVITY_ENTER where
+		enter_account = #{accountId,jdbcType=DECIMAL} and status =1) b on a.activity_id = b.activity_id
+		<where>
+			<if test="1==1">
+			<![CDATA[AND 1=1 ]]>
+			</if>
+			<if test="activityName != null and activityName != ''">
+			<![CDATA[AND a.ACTIVITY_NAME LIKE '%' || #{activityName,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="tags != null and tags != ''">
+				<foreach collection="tags" item="item" index="index">
+					<choose>
+						<when test="index==0">
+						<![CDATA[ and (instr(a.ACTIVITY_TAGS, #{item}) > 0 ]]>
+						</when>
+						<otherwise>
+						<![CDATA[or instr(a.ACTIVITY_TAGS, #{item}) > 0 ]]>
+						</otherwise>
+					</choose>
+				</foreach>
+				)
+			</if>
+			<if test="statusArray != null and statusArray != ''">
+				and a.status in
+				<foreach item="item" index="index" collection="statusArray" open="(" separator="," close=")"> #{item} 
+				</foreach>
+			</if>
+		</where>
+		order by a.status desc, a.create_time desc
+	</select>
+	<select id="queryTotalSize" resultType="java.lang.Integer"
+		parameterType="com.chinatelecom.jx.zone.management.bean.projectActivity.ProjectActivityInfoBean">
+		select count(1) from T_PROJECT_ACTIVITY_INFO
+		<include refid="Base_Where_Clause" />
+		<if test="statusArray != null and statusArray != ''">
+			and status in
+			<foreach item="item" index="index" collection="statusArray" open="(" separator="," close=")"> #{item} 
+			</foreach>
+		</if>
+		<if test="orderByClause != null"> order by ${orderByClause} 
+		</if>
+	</select>
+	<!-- <select id="queryByCondWithForeign" resultMap="ResultMapWithForeign" parameterType="com.chinatelecom.jx.zone.management.bean.projectActivity.ProjectActivityInfoBean" 
+		> select a.*, w.processinstid as workProcessid, w.currentState as currentState, b.account_name as accountName, c.organization_name 
+		as orgName, d.organization_name as companyName, e.organization_name as parkName from T_PROJECT_ACTIVITY_INFO a left join 
+		T_ACCOUNT_INFO b on a.account_id = b.account_id left join t_organization_info c on a.organization_id = c.organization_id 
+		left join t_organization_info d on a.conpany_id = d.organization_id left join t_organization_info e on a.root_id = e.organization_id 
+		inner join zone_workflow.wf_main w on a.id = w.relation_id and a.zt > 0 <include refid="Extends_Where_Clause" /> <if test="orderByClause 
+		!= null" > order by ${orderByClause} </if> </select> -->
+	<!-- <select id="selectWithForeignById" resultMap="ResultMapWithForeign" parameterType="java.math.BigDecimal" > select a.*, 
+		b.account_name as accountName, c.organization_name as orgName, d.organization_name as companyName, e.organization_name as 
+		parkName from T_PROJECT_ACTIVITY_INFO a left join T_ACCOUNT_INFO b on a.account_id = b.account_id left join t_organization_info 
+		c on a.organization_id = c.organization_id left join t_organization_info d on a.conpany_id = d.organization_id left join 
+		t_organization_info e on a.root_id = e.organization_id where a.ACTIVITY_ID = #{activityId,jdbcType=DECIMAL} </select> -->
+</mapper>

@@ -1,0 +1,138 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"黑体";
+}
+
+html {
+	background-color:#ebebeb;
+}
+.search_main {
+	background-color:#ebebeb;
+	position:relative;
+	margin-bottom:60px;
+}
+.search_content {
+	width:100%;
+	background-color:#ebebeb;
+	position:relative;
+}
+.searchBar {
+	position:fixed;
+	top:0;
+	background-color:#FDC006;
+	width:100%;
+	height:50px;
+	z-index:10000;
+}
+.search {
+	float:left;
+}
+.colorDeep { background-color:#F2BA02;}
+.message {
+	float:right;
+}
+.searchInput {
+	width:72%;
+	border-radius:20px;
+	border:0;
+	position:relative;
+	top:11px;
+	text-indent:1em;
+	padding:3px 0;
+}
+.searchBtn {
+	background-color:#FF8927;
+	padding:1px 10px;
+	border-radius:10px;
+	border:0;
+	position:relative;
+	top:12px;
+	margin-left:5px;
+	color:#fff;
+}
+#dropdown{
+	position:fixed;
+	top:50px;
+	width:100%;
+	height:120px;
+	background-color:#fff;
+	display:none;
+	z-index:10000;
+}
+.dropdownContent {
+	padding:5px 10px;
+}
+.optionBtn {
+	float:left;
+	border:1px solid #9E9E9E;
+	color:#9E9E9E;
+	margin:5px 7px 5px 0;
+	padding:0 5px;
+	border-radius:1px;
+	cursor:pointer;
+}
+.selected {
+	background-color:#FDC006;
+	color:#fff;
+	border:1px solid #FDC006;
+}
+.search_operBar {
+	background-color:#fff;
+	border-top:1px solid #cbcbcb;
+	border-bottom:1px solid #cbcbcb;
+	text-align:center;
+}
+.search_oper {
+	float:left;
+	padding:7px 0;
+}
+.borRight {
+	border-right:1px solid #cbcbcb;
+}
+.borLeft {
+	border-left:1px solid #cbcbcb;
+}
+.search_ent {
+	background-color:#fff;
+	margin-bottom:10px;
+	padding:7px 5px;
+}
+.search_entName {
+	float:left;
+	font-weight:bold;
+}
+.search_result {
+	background-color:#EBEBEB;
+	padding:5px 5px;
+}

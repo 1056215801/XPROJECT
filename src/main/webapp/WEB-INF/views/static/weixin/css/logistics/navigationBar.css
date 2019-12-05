@@ -1,0 +1,35 @@
+@charset "utf-8";
+/* CSS Document */
+
+.navigationBar {
+	width:100%;
+	height:55px;
+	position:fixed;
+	left:0;
+	bottom:0;
+	line-height:49px;
+	background-color:#F4F4F4;
+	border-top:1px solid #DBDBDB;
+}
+.navigationBar ul li {
+	width:25%;
+	float:left;
+	text-align:center;
+}
+.navigationBar ul li a {
+	text-decoration:none;
+	color:#7B7B7B;
+	font-size:10px;
+}
+.navImage {
+	height:12px;
+}
+#viewMore{ position:absolute; bottom:50px; right:105px; line-height:1.4;} 
+#viewMore ul{ background:#fff; border:1px solid #eeeeee; position:absolute; display:none; margin-top:-139px;} 
+#viewMore ul li { width:100px; text-align:center; font-weight:bold;}
+#viewMore ul li a{display:block; color:#000; text-decoration:none; font-size:14px; padding:12px 0;} 
+
+.img {}
+.img_1 {
+	background-image:url(../images/carSourced.png)
+}

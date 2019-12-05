@@ -1,0 +1,157 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+a:hover, a:visited, a:link, a:active {
+    text-decoration:none;
+	color:#000;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"黑体";
+}
+
+html {
+	background-color:#ebebeb;
+}
+.myCollection_main {
+	background-color:#EBEBEB;
+	font-size:16px;
+	margin-bottom:60px;
+}
+.fixed_top {
+	position:fixed;
+	top:0;
+	background-color:#00A85A;
+	width:100%;
+	height:50px;
+	z-index:1000;
+	font-weight:bold;
+}
+.fixed_top img {
+	margin:15px 5px 0 10px;
+}
+.fixed_top span {
+	position:absolute;
+	top:14px;
+	font-size:16px;
+	color:#FFF;
+}
+
+.contentBar {
+	background-color:#FFFFFF;
+	padding:7px 3%;
+	margin-top:10px;
+}
+
+.renovate{
+	display: block;
+    text-align: center;
+	background-color:#F6F6F6;
+	padding:7px 0;
+}
+.renovate:hover{
+	background-color:#e5edf2;
+}
+.font04{
+	color: #8D8D8D;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 14px;
+    text-align: center;
+}
+#tbox{
+	width:50px;
+	float:right;
+	position:fixed;
+	right:10px;
+	bottom:60px;
+	overflow:visible;
+}
+#gotop{ 
+	width:50px; 
+	height:50px; 
+	background:url(/XProject/static/weixin/images/logistics/rocket.png) no-repeat; 
+	display:block;
+	background-size:50px 50px; 
+}
+.selected {
+	font-weight: bold;
+    color: #f14241;
+}
+.project_operBar {
+	background-color:#fff;
+	border-top:1px solid #f6f6f6;
+	border-bottom:1px solid #f6f6f6;
+	text-align:center;
+	font-size: 16px;
+}
+.project_oper {
+	float:left;
+	padding:7px 0;
+}
+.borRight {
+	border-right:1px solid #f6f6f6;
+}
+.borLeft {
+	border-left:1px solid #f6f6f6;
+}
+.releaseType_goods {
+	border:1px solid #00A85A;
+	width:140px;
+	margin:25px auto 0;
+	padding:10px 12px;
+}
+.releaseType_goods img {
+	vertical-align:middle;
+}
+.releaseType_goods span {
+	vertical-align:middle;
+	color:#00A85A;
+	font-size:18px;
+	font-weight:bold;
+	margin-left:10px;
+}
+.releaseType_risk {
+	border:1px solid #F55825;
+	width:140px;
+	margin:25px auto 0;
+	padding:10px 12px;
+}
+.releaseType_risk img {
+	vertical-align:middle;
+}
+.releaseType_risk span {
+	vertical-align:middle;
+	color:#F55825;
+	font-size:18px;
+	font-weight:bold;
+	margin-left:10px;
+}

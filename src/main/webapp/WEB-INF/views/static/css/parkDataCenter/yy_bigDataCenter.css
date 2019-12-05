@@ -1,0 +1,424 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+html,
+body,
+div,
+span,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+del,
+dfn,
+em,
+img,
+small,
+strong,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+body {
+	line-height: 1;
+	color: #fff;
+	background: #fff;
+}
+
+ol,
+ul {
+	list-style: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+	font: 14px/1.5 arial, "Microsoft YaHei";
+}
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box
+}
+
+:after,
+:before {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box
+}
+
+a:hover,
+a:visited,
+a:link,
+a:active {
+	text-decoration: none;
+	color: #000;
+}
+
+div {
+	-webkit-transition: all .2s ease-in-out 0s;
+	-moz-transition: all .2s ease-in-out 0s;
+	-ms-transition: all .2s ease-in-out 0s;
+	-o-transition: all .2s ease-in-out 0s;
+	transition: all .2s ease-in-out 0s;
+}
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.clearfix {
+	zoom: 1
+}
+
+img,
+span {
+	vertical-align: middle;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	background: url(../../image/parkDataCenter/bj.jpg) no-repeat;
+	background-size: cover;
+	height: 100%;
+}
+
+.data_main {
+	width: 100%;
+	min-width: 1020px;
+	height: 100%;
+	position: relative;
+}
+
+.data_header {
+	position: relative;
+	height: 12%;
+	background: url(../../image/parkDataCenter/BJ.png) no-repeat;
+	background-size: cover;
+	min-width: 1020px;
+}
+
+.data_content {
+	min-width: 1020px;
+	height: 88%;
+	padding: 0 2%;
+}
+
+.dataBarGreen, .dataBarGreen2, .dataBarGreen3 {
+	background-color: #C1A900;
+}
+
+.dataBarMagenta, .dataBarMagenta2, .dataBarMagenta3 {
+	background-color: #CD0567;
+}
+
+.dataBarNavy, .dataBarNavy2, .dataBarNavy3 {
+	background-color: #0793D1;
+}
+
+.dataBarLightBlue, .dataBarLightBlue2, .dataBarLightBlue3 {
+	background-color: #05AFFA;
+}
+
+.dataBarGreen,
+.dataBarMagenta,
+.dataBarNavy,
+.dataBarLightBlue {
+	float: left;
+	width: 24.55%;
+	color: #fff;
+	margin-right: 0.6%;
+	text-align: center;
+	height: 100%;
+	display: table;
+}
+
+.dataBarGreen2,
+.dataBarMagenta2,
+.dataBarNavy2,
+.dataBarLightBlue2 {
+	float: left;
+	width: 32.7%;
+	color: #fff;
+	margin-right: 0.6%;
+	text-align: center;
+	height: 100%;
+	display: table;
+}
+
+.dataBarGreen3,
+.dataBarMagenta3,
+.dataBarNavy3,
+.dataBarLightBlue3 {
+	float: left;
+	width: 49.3%;
+	color: #fff;
+	margin-right: 0.6%;
+	text-align: center;
+	height: 100%;
+	display: table;
+}
+
+.dataBarTitle {
+	display: table-cell;
+	vertical-align: middle;
+	height: 35%;
+	font-size: 16px;
+}
+
+.dataBarNum {
+	display: table-row;
+	height: 35%;
+}
+
+.dataBarIncrease {
+	display: table-cell;
+	vertical-align: middle;
+	font-size: 12px;
+	height: 30%;
+}
+
+.yellowFont24 {
+	color: #FCFF00;
+	font-size: 26px;
+}
+
+.yellowFont {
+	color: #FCFF00;
+}
+
+.dataBar_1 {
+	height: 49%;
+	margin-bottom: 1%;
+}
+
+.dataBar_1_Left {
+	background-color: rgba(0, 0, 0, 0.3);
+	float: left;
+	width: 49.5%;
+	margin-right: 0.5%;
+	height: 100%;
+}
+
+.daraBar_1_Right {
+	background-color: rgba(0, 0, 0, 0.3);
+	float: left;
+	width: 50%;
+	height: 100%;
+}
+
+.data_contentLeft,
+.data_contentMid,
+.data_contentRight {
+	float: left;
+	height: 92%;
+	position: relative;
+}
+
+.dataBar_2_top,
+.dataBar_2_mid,
+.dataBar_2_btm {
+	background-color: rgba(0, 0, 0, 0.3);
+	width: 100%;
+	height: 32.7%;
+	margin-bottom: 1.2%;
+}
+
+.dataBar_3_top,
+.dataBar_3_btm {
+	background-color: rgba(0, 0, 0, 0.3);
+	width: 100%;
+	height: 49.5%;
+	margin-bottom: 1%;
+}
+
+.dataBar_4_left,
+.dataBar_4_mid,
+.dataBar_4_right {
+	background-color: rgba(0, 0, 0, 0.3);
+	float: left;
+	width: 33%;
+	height: 97%;
+	margin-right: 0.5%;
+}
+
+.dateBar {
+	margin-left: 25px;
+	font-size: 18px;
+}
+
+.dropdownButton {
+	display: inline-block;
+	vertical-align: middle;
+	background-color: rgba(0, 0, 0, 0.3);
+	color: #fff;
+	border: 1px solid transparent;
+	margin-bottom: 0;
+	padding: 3px 15px;
+	line-height: 1.42857;
+	white-space: nowrap;
+	cursor: pointer;
+}
+
+.caret {
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	border-top: 4px dashed;
+	display: inline-block;
+	height: 0;
+	margin-left: 2px;
+	vertical-align: middle;
+	width: 0;
+}
+
+.dropdownMenu {
+	display: none;
+	background-clip: padding-box;
+	background-color: rgba(0, 0, 0, 0.8);
+	color: #fff;
+	border: 1px solid transparent;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+	margin-top: 2px;
+	min-width: 150px;
+	position: absolute;
+	right: 30px;
+	z-index: 100;
+}
+
+.dropdownMenu>li>a {
+	clear: both;
+	display: block;
+	padding: 3px 20px;
+	white-space: nowrap;
+	border-radius: 3px;
+	color: inherit;
+	font-weight: 400;
+	line-height: 25px;
+	margin: 4px;
+	text-align: left;
+}
+
+.echarts-title {
+	cursor: pointer;
+	float: left;
+	width: 13%;
+	height: 100%;
+	border: 1px solid #6FBBDF;
+	margin-left: 1%;
+	text-align: center;
+	padding-top: 1.5%;
+	color: #6FBBDF;
+	background-color: #0071B5;
+	border-radius: 6px 6px 0 0;
+	border-bottom: none;
+}
+
+.echarts-title1 {
+	cursor: pointer;
+	float: left;
+	width: 13%;
+	height: 100%;
+	margin-left: 1%;
+	text-align: center;
+	padding-top: 1.5%;
+	color: #6FBBDF;
+	border-radius: 6px 6px 0 0;
+	-moz-user-select: none;
+	position: relative;
+	background: rgb(8, 47, 86) none repeat scroll 0% 0%;
+}
+
+.echarts-map {
+	display: block;
+	width: 100%;
+	height: 87%;
+	-moz-user-select: none;
+	position: relative;
+	background: rgb(8, 47, 86) none repeat scroll 0% 0%;
+}
+
+.echarts-map1 {
+	display: none;
+	width: 100%;
+	height: 87%;
+	-moz-user-select: none;
+	position: relative;
+	background: rgb(8, 47, 86) none repeat scroll 0% 0%;
+}
+
+.btn_prev {
+	background: rgba(0, 0, 0, 0) url("../../image/dataCenter/hover_left.png") no-repeat scroll left top;
+	left:0px;
+}
+.btn_next {
+	background: rgba(0, 0, 0, 0) url("../../image/dataCenter/hover_right.png") no-repeat scroll left top;
+	right:0px;
+}
+.btn_prev, .btn_next {
+    /* display: none; */
+    height: 74px !important;
+    margin-top: -37px;
+    position: absolute;
+    top: 52%;
+    width: 74px !important;
+    cursor: pointer;
+    z-index: 11111;
+}

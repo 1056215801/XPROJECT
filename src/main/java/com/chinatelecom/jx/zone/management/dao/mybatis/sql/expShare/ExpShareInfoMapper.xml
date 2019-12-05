@@ -1,0 +1,653 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper
+	namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.expShare.ExpShareInfoMapper">
+
+	<resultMap id="BaseResultMap"
+		type="com.chinatelecom.jx.zone.management.bean.expShare.ExpShareInfoBean">
+		<id column="EXP_ID" jdbcType="DECIMAL" property="expId" />
+		<result column="EXP_TITLE" jdbcType="VARCHAR" property="expTitle" />
+		<result column="EXP_UNIT" jdbcType="VARCHAR" property="expUnit" />
+		<result column="EXP_IMAGE" jdbcType="VARCHAR" property="expImage" />
+		<result column="EXP_LABEL" jdbcType="VARCHAR" property="expLabel" />
+		<result column="EXP_TEXT" jdbcType="VARCHAR" property="expText" />
+		<result column="ACCOUNT_ID" jdbcType="DECIMAL" property="accountId" />
+		<result column="ACCOUNT_NAME" jdbcType="VARCHAR" property="accountName" />
+		<result column="QR_CODE" jdbcType="VARCHAR" property="qrCode" />
+		<result column="STATUS" jdbcType="DECIMAL" property="status" />
+		<result column="BROWSE_COUNT" jdbcType="VARCHAR" property="browseCount" />
+		<result column="IS_TOP" jdbcType="DECIMAL" property="isTop" />
+		<result column="TOP_TIME" jdbcType="TIMESTAMP" property="topTime" />
+		<result column="REMARK" jdbcType="VARCHAR" property="remark" />
+		<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="EXP_ATTACHMENT" jdbcType="VARCHAR" property="expAttachment" />
+		<result column="UNIT_ID" jdbcType="DECIMAL" property="unitId" />
+		<result column="UNIT_TYPE" jdbcType="DECIMAL" property="unitType" />
+		<result column="COMMENT_COUNT" jdbcType="VARCHAR" property="commentCount" />
+		<result column="PROVINCE_NAME" jdbcType="VARCHAR" property="provinceName" />
+		<result column="AREA_NAME" jdbcType="VARCHAR" property="areaName" />
+		<result column="IMAGE_ID" jdbcType="DECIMAL" property="imageId" />
+		<result column="ATTACHMENT_ID" jdbcType="VARCHAR" property="attachmentId" />
+		<result column="BROWSE_COUNT_EDIT" jdbcType="VARCHAR" property="browseCountEdit" />
+	</resultMap>
+
+	<!-- <resultMap id="ResultMapWithForeign" type="com.chinatelecom.jx.zone.management.bean.expShare.ExpShareInfoBean" 
+		extends="BaseResultMap" > <result column="workProcessid" property="workProcessid" 
+		jdbcType="VARCHAR" /> <result column="currentState" property="currentState" 
+		jdbcType="VARCHAR" /> <result column="organizationName" property="orgName" 
+		jdbcType="VARCHAR" /> <result column="companyName" property="companyName" 
+		jdbcType="VARCHAR" /> <result column="accountName" property="accountName" 
+		jdbcType="VARCHAR" /> <result column="parkName" property="parkName" jdbcType="VARCHAR" 
+		/> </resultMap> -->
+
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		EXP_ID,EXP_TITLE,EXP_UNIT,EXP_IMAGE,EXP_LABEL,EXP_TEXT,ACCOUNT_ID,ACCOUNT_NAME,QR_CODE,STATUS,BROWSE_COUNT,IS_TOP,TOP_TIME,REMARK,CREATE_TIME,EXP_ATTACHMENT,UNIT_ID,UNIT_TYPE,COMMENT_COUNT,
+		PROVINCE_NAME,AREA_NAME,IMAGE_ID,ATTACHMENT_ID,BROWSE_COUNT_EDIT
+	</sql>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.math.BigDecimal">
+		select
+		<include refid="Base_Column_List" />
+		from T_EXP_SHARE_INFO
+		where
+		EXP_ID = #{expId,jdbcType=DECIMAL}
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+		DELETE FROM
+		T_EXP_SHARE_INFO WHERE
+		EXP_ID = #{expId,jdbcType=DECIMAL}
+	</delete>
+
+	<insert id="insert"
+		parameterType="com.chinatelecom.jx.zone.management.bean.expShare.ExpShareInfoBean">
+		INSERT INTO T_EXP_SHARE_INFO (
+		EXP_ID ,
+		EXP_TITLE ,
+		EXP_UNIT ,
+		EXP_IMAGE ,
+		EXP_LABEL ,
+		EXP_TEXT ,
+		ACCOUNT_ID ,
+		ACCOUNT_NAME ,
+		QR_CODE ,
+		STATUS ,
+		BROWSE_COUNT ,
+		IS_TOP ,
+		TOP_TIME ,
+		REMARK ,
+		CREATE_TIME,
+		EXP_ATTACHMENT,
+		UNIT_ID,
+		UNIT_TYPE,
+		COMMENT_COUNT,
+		PROVINCE_NAME,
+		AREA_NAME,
+		IMAGE_ID,
+		ATTACHMENT_ID,
+		BROWSE_COUNT_EDIT
+		) VALUES (
+		#{expId,jdbcType=DECIMAL} ,
+		#{expTitle,jdbcType=VARCHAR} ,
+		#{expUnit,jdbcType=VARCHAR} ,
+		#{expImage,jdbcType=VARCHAR} ,
+		#{expLabel,jdbcType=VARCHAR} ,
+		#{expText,jdbcType=VARCHAR} ,
+		#{accountId,jdbcType=DECIMAL} ,
+		#{accountName,jdbcType=VARCHAR} ,
+		#{qrCode,jdbcType=VARCHAR} ,
+		#{status,jdbcType=DECIMAL} ,
+		#{browseCount,jdbcType=VARCHAR} ,
+		#{isTop,jdbcType=DECIMAL} ,
+		#{topTime,jdbcType=TIMESTAMP} ,
+		#{remark,jdbcType=VARCHAR} ,
+		#{createTime,jdbcType=TIMESTAMP},
+		#{expAttachment,jdbcType=VARCHAR},
+		#{unitId,jdbcType=DECIMAL},
+		#{unitType,jdbcType=DECIMAL},
+		#{commentCount,jdbcType=VARCHAR},
+		#{provinceName,jdbcType=VARCHAR},
+		#{areaName,jdbcType=VARCHAR},
+		#{imageId,jdbcType=DECIMAL},
+		#{attachmentId,jdbcType=VARCHAR},
+		#{browseCountEdit,jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<insert id="insertSelective"
+		parameterType="com.chinatelecom.jx.zone.management.bean.expShare.ExpShareInfoBean">
+		insert into T_EXP_SHARE_INFO
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="expId != null">
+				EXP_ID,
+			</if>
+			<if test="expTitle != null">
+				EXP_TITLE,
+			</if>
+			<if test="expUnit != null">
+				EXP_UNIT,
+			</if>
+			<if test="expImage != null">
+				EXP_IMAGE,
+			</if>
+			<if test="expLabel != null">
+				EXP_LABEL,
+			</if>
+			<if test="expText != null">
+				EXP_TEXT,
+			</if>
+			<if test="accountId != null">
+				ACCOUNT_ID,
+			</if>
+			<if test="accountName != null">
+				ACCOUNT_NAME,
+			</if>
+			<if test="qrCode != null">
+				QR_CODE,
+			</if>
+			<if test="status != null">
+				STATUS,
+			</if>
+			<if test="browseCount != null">
+				BROWSE_COUNT,
+			</if>
+			<if test="isTop != null">
+				IS_TOP,
+			</if>
+			<if test="topTime != null">
+				TOP_TIME,
+			</if>
+			<if test="remark != null">
+				REMARK,
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME,
+			</if>
+			<if test="expAttachment != null">
+				EXP_ATTACHMENT,
+			</if>
+			<if test="unitId != null">
+				UNIT_ID,
+			</if>
+			<if test="unitType != null">
+				UNIT_TYPE,
+			</if>
+			<if test="commentCount != null">
+				COMMENT_COUNT,
+			</if>
+			<if test="provinceName != null">
+				PROVINCE_NAME,
+			</if>
+			<if test="areaName != null">
+				AREA_NAME,
+			</if>
+			<if test="imageId != null">
+				IMAGE_ID,
+			</if>
+			<if test="attachmentId != null">
+				ATTACHMENT_ID,
+			</if>
+			<if test="browseCountEdit != null">
+				BROWSE_COUNT_EDIT,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="expId != null">
+				#{expId,jdbcType=DECIMAL},
+			</if>
+			<if test="expTitle != null">
+				#{expTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="expUnit != null">
+				#{expUnit,jdbcType=VARCHAR},
+			</if>
+			<if test="expImage != null">
+				#{expImage,jdbcType=VARCHAR},
+			</if>
+			<if test="expLabel != null">
+				#{expLabel,jdbcType=VARCHAR},
+			</if>
+			<if test="expText != null">
+				#{expText,jdbcType=VARCHAR},
+			</if>
+			<if test="accountId != null">
+				#{accountId,jdbcType=DECIMAL},
+			</if>
+			<if test="accountName != null">
+				#{accountName,jdbcType=VARCHAR},
+			</if>
+			<if test="qrCode != null">
+				#{qrCode,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=DECIMAL},
+			</if>
+			<if test="browseCount != null">
+				#{browseCount,jdbcType=VARCHAR},
+			</if>
+			<if test="isTop != null">
+				#{isTop,jdbcType=DECIMAL},
+			</if>
+			<if test="topTime != null">
+				#{topTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="expAttachment != null">
+				#{expAttachment,jdbcType=VARCHAR},
+			</if>
+			<if test="unitId != null">
+				#{unitId,jdbcType=DECIMAL},
+			</if>
+			<if test="unitType != null">
+				#{unitType,jdbcType=DECIMAL},
+			</if>
+			<if test="commentCount != null">
+				#{commentCount,jdbcType=VARCHAR},
+			</if>
+			<if test="provinceName != null">
+				#{provinceName,jdbcType=VARCHAR},
+			</if>
+			<if test="areaName != null">
+				#{areaName,jdbcType=VARCHAR},
+			</if>
+			<if test="imageId != null">
+				#{imageId,jdbcType=DECIMAL},
+			</if>
+			<if test="attachmentId != null">
+				#{attachmentId,jdbcType=VARCHAR},
+			</if>
+			<if test="browseCountEdit != null">
+				#{browseCountEdit,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateByPrimaryKeySelective"
+		parameterType="com.chinatelecom.jx.zone.management.bean.expShare.ExpShareInfoBean">
+		update T_EXP_SHARE_INFO
+		<set>
+			<if test="expTitle != null">
+				EXP_TITLE = #{expTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="expUnit != null">
+				EXP_UNIT = #{expUnit,jdbcType=VARCHAR},
+			</if>
+			<if test="expImage != null">
+				EXP_IMAGE = #{expImage,jdbcType=VARCHAR},
+			</if>
+			<if test="expLabel != null">
+				EXP_LABEL = #{expLabel,jdbcType=VARCHAR},
+			</if>
+			<if test="expText != null">
+				EXP_TEXT = #{expText,jdbcType=VARCHAR},
+			</if>
+			<if test="accountId != null">
+				ACCOUNT_ID = #{accountId,jdbcType=DECIMAL},
+			</if>
+			<if test="accountName != null">
+				ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR},
+			</if>
+			<if test="qrCode != null">
+				QR_CODE = #{qrCode,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				STATUS = #{status,jdbcType=DECIMAL},
+			</if>
+			<if test="browseCount != null">
+				BROWSE_COUNT = #{browseCount,jdbcType=VARCHAR},
+			</if>
+			<if test="isTop != null">
+				IS_TOP = #{isTop,jdbcType=DECIMAL},
+			</if>
+			<if test="topTime != null">
+				TOP_TIME = #{topTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null">
+				REMARK = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="expAttachment != null">
+				EXP_ATTACHMENT = #{expAttachment,jdbcType=VARCHAR},
+			</if>
+			<if test="unitId != null">
+				UNIT_ID = #{unitId,jdbcType=DECIMAL},
+			</if>
+			<if test="unitType != null">
+				UNIT_TYPE = #{unitType,jdbcType=DECIMAL},
+			</if>
+			<if test="commentCount != null">
+				COMMENT_COUNT = #{commentCount,jdbcType=VARCHAR},
+			</if>
+			<if test="provinceName != null">
+				PROVINCE_NAME = #{provinceName,jdbcType=VARCHAR},
+			</if>
+			<if test="areaName != null">
+				AREA_NAME = #{areaName,jdbcType=VARCHAR},
+			</if>
+			<if test="imageId != null">
+				IMAGE_ID = #{imageId,jdbcType=DECIMAL},
+			</if>
+			<if test="attachmentId != null">
+				ATTACHMENT_ID = #{attachmentId,jdbcType=VARCHAR},
+			</if>
+			<if test="browseCountEdit != null">
+				BROWSE_COUNT_EDIT = #{browseCountEdit,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where
+		EXP_ID = #{expId,jdbcType=DECIMAL}
+	</update>
+
+	<update id="updateByPrimaryKey"
+		parameterType="com.chinatelecom.jx.zone.management.bean.expShare.ExpShareInfoBean">
+		UPDATE T_EXP_SHARE_INFO SET
+		EXP_TITLE =
+		#{expTitle,jdbcType=VARCHAR} ,
+		EXP_UNIT = #{expUnit,jdbcType=VARCHAR} ,
+		EXP_IMAGE = #{expImage,jdbcType=VARCHAR} ,
+		EXP_LABEL =
+		#{expLabel,jdbcType=VARCHAR} ,
+		EXP_TEXT = #{expText,jdbcType=VARCHAR} ,
+		ACCOUNT_ID = #{accountId,jdbcType=DECIMAL} ,
+		ACCOUNT_NAME =
+		#{accountName,jdbcType=VARCHAR} ,
+		QR_CODE = #{qrCode,jdbcType=VARCHAR}
+		,
+		STATUS = #{status,jdbcType=DECIMAL} ,
+		BROWSE_COUNT =
+		#{browseCount,jdbcType=VARCHAR} ,
+		IS_TOP = #{isTop,jdbcType=DECIMAL} ,
+		TOP_TIME = #{topTime,jdbcType=TIMESTAMP} ,
+		REMARK =
+		#{remark,jdbcType=VARCHAR} ,
+		CREATE_TIME =
+		#{createTime,jdbcType=TIMESTAMP},
+		EXP_ATTACHMENT =
+		#{expAttachment,jdbcType=VARCHAR},
+		UNIT_ID =
+		#{unitId,jdbcType=DECIMAL},
+		UNIT_TYPE = #{unitType,jdbcType=DECIMAL},
+		COMMENT_COUNT = #{commentCount,jdbcType=VARCHAR},
+		PROVINCE_NAME = #{provinceName,jdbcType=VARCHAR},
+		AREA_NAME = #{areaName,jdbcType=VARCHAR},
+		IMAGE_ID = #{imageId,jdbcType=DECIMAL},
+		ATTACHMENT_ID = #{attachmentId,jdbcType=VARCHAR} ,
+		BROWSE_COUNT_EDIT =
+		#{browseCountEdit,jdbcType=VARCHAR}
+		WHERE
+		EXP_ID = #{expId,jdbcType=DECIMAL}
+	</update>
+
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>
+
+			<if test="expId != null">
+						<![CDATA[AND EXP_ID = #{expId,jdbcType=DECIMAL}]]>
+			</if>
+
+			<if test="expTitle != null and expTitle != ''">
+				<!-- <![CDATA[AND EXP_TITLE = #{expTitle,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND EXP_TITLE LIKE '%' || #{expTitle,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="expUnit != null and expUnit != ''">
+				<!-- <![CDATA[AND EXP_UNIT = #{expUnit,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND EXP_UNIT LIKE '%' || #{expUnit,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="expImage != null and expImage != ''">
+				<!-- <![CDATA[AND EXP_IMAGE = #{expImage,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND EXP_IMAGE LIKE '%' || #{expImage,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="expLabel != null and expLabel != ''">
+				<!-- <![CDATA[AND EXP_LABEL = #{expLabel,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND EXP_LABEL LIKE '%' || #{expLabel,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="expText != null and expText != ''">
+				<!-- <![CDATA[AND EXP_TEXT = #{expText,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND EXP_TEXT LIKE '%' || #{expText,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="accountId != null">
+						<![CDATA[AND ACCOUNT_ID = #{accountId,jdbcType=DECIMAL}]]>
+			</if>
+
+			<if test="accountName != null and accountName != ''">
+				<!-- <![CDATA[AND ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND ACCOUNT_NAME LIKE '%' || #{accountName,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="qrCode != null and qrCode != ''">
+				<!-- <![CDATA[AND QR_CODE = #{qrCode,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND QR_CODE LIKE '%' || #{qrCode,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="status != null">
+						<![CDATA[AND STATUS = #{status,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="status == null">
+						<![CDATA[AND STATUS != 3]]>
+			</if>
+
+			<if test="browseCount != null and browseCount != ''">
+				<!-- <![CDATA[AND BROWSE_COUNT = #{browseCount,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND BROWSE_COUNT LIKE '%' || #{browseCount,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="isTop != null">
+						<![CDATA[AND IS_TOP = #{isTop,jdbcType=DECIMAL}]]>
+			</if>
+
+
+			<if test="remark != null and remark != ''">
+				<!-- <![CDATA[AND REMARK = #{remark,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND REMARK LIKE '%' || #{remark,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="provinceName != null and provinceName != ''">
+				<!-- <![CDATA[AND REMARK = #{remark,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND PROVINCE_NAME LIKE '%' || #{provinceName,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="areaName != null and areaName != ''">
+				<!-- <![CDATA[AND REMARK = #{remark,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND AREA_NAME LIKE '%' || #{areaName,jdbcType=VARCHAR} || '%']]>
+			</if>
+			
+			<if test="browseCountEdit != null and browseCountEdit != ''">
+				<!-- <![CDATA[AND BROWSE_COUNT = #{browseCount,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND BROWSE_COUNT_EDIT LIKE '%' || #{browseCountEdit,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+		</where>
+	</sql>
+
+
+
+	<select id="queryByCond" resultMap="BaseResultMap"
+		parameterType="com.chinatelecom.jx.zone.management.bean.expShare.ExpShareInfoBean">
+		select
+		<include refid="Base_Column_List" />
+		from T_EXP_SHARE_INFO
+		<include refid="Base_Where_Clause" />
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+
+	<!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+
+<!-- 	<select id="queryByArea" resultMap="BaseResultMap"
+		parameterType="com.chinatelecom.jx.zone.management.bean.expShare.ExpShareInfoBean">
+		select a.* from t_exp_share_info a
+
+		join t_company_info b on a.unit_id =
+		b.company_id
+
+		where b.area_name '%' || #{areaName,jdbcType=VARCHAR} ||
+		'%' and a.unit_type = 1
+
+		<if test="expTitle != null and expTitle != ''">
+			AND a.EXP_TITLE LIKE '%' || #{expTitle,jdbcType=VARCHAR}
+			|| '%'
+		</if>
+
+		union all
+
+		select a.* from t_exp_share_info a
+
+		join t_park_info d on
+		a.unit_id = d.park_id
+
+		where d.area_name like '%' || #{areaName,jdbcType=VARCHAR} || 
+		'%' and a.unit_type = 0
+
+		<if test="expTitle != null and expTitle != ''">
+			AND a.EXP_TITLE LIKE '%' || #{expTitle,jdbcType=VARCHAR}
+			|| '%'
+		</if>
+
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select> -->
+
+    
+	<sql id="Other_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>
+
+			<if test="expId != null">
+						<![CDATA[AND EXP_ID = #{expId,jdbcType=DECIMAL}]]>
+			</if>
+
+			<if test="expTitle != null and expTitle != ''">
+				<!-- <![CDATA[AND EXP_TITLE = #{expTitle,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND EXP_TITLE LIKE '%' || #{expTitle,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="expUnit != null and expUnit != ''">
+				<!-- <![CDATA[AND EXP_UNIT = #{expUnit,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND EXP_UNIT LIKE '%' || #{expUnit,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="expImage != null and expImage != ''">
+				<!-- <![CDATA[AND EXP_IMAGE = #{expImage,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND EXP_IMAGE LIKE '%' || #{expImage,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="expLabel != null and expLabel != ''">
+				<!-- <![CDATA[AND EXP_LABEL = #{expLabel,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND EXP_LABEL LIKE '%' || #{expLabel,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="expText != null and expText != ''">
+				<!-- <![CDATA[AND EXP_TEXT = #{expText,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND EXP_TEXT LIKE '%' || #{expText,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="accountId != null">
+						<![CDATA[AND ACCOUNT_ID = #{accountId,jdbcType=DECIMAL}]]>
+			</if>
+
+			<if test="accountName != null and accountName != ''">
+				<!-- <![CDATA[AND ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND ACCOUNT_NAME LIKE '%' || #{accountName,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="qrCode != null and qrCode != ''">
+				<!-- <![CDATA[AND QR_CODE = #{qrCode,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND QR_CODE LIKE '%' || #{qrCode,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="status != null">
+						<![CDATA[AND STATUS = #{status,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="status == null">
+						<![CDATA[AND STATUS in (0,1)]]>
+			</if>
+
+			<if test="browseCount != null and browseCount != ''">
+				<!-- <![CDATA[AND BROWSE_COUNT = #{browseCount,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND BROWSE_COUNT LIKE '%' || #{browseCount,jdbcType=VARCHAR} || '%']]>
+			</if>
+			
+			<if test="browseCountEdit != null and browseCountEdit != ''">
+				<!-- <![CDATA[AND BROWSE_COUNT = #{browseCount,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND BROWSE_COUNT_EDIT LIKE '%' || #{browseCountEdit,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="isTop != null">
+						<![CDATA[AND IS_TOP = #{isTop,jdbcType=DECIMAL}]]>
+			</if>
+
+
+			<if test="remark != null and remark != ''">
+				<!-- <![CDATA[AND REMARK = #{remark,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND REMARK LIKE '%' || #{remark,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="provinceName != null and provinceName != ''">
+				<!-- <![CDATA[AND REMARK = #{remark,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND PROVINCE_NAME LIKE '%' || #{provinceName,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="areaName != null and areaName != ''">
+				<!-- <![CDATA[AND REMARK = #{remark,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND AREA_NAME LIKE '%' || #{areaName,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+		</where>
+	</sql>
+	
+	<select id="queryAuditedList" resultMap="BaseResultMap"
+		parameterType="com.chinatelecom.jx.zone.management.bean.expShare.ExpShareInfoBean">
+		select
+		<include refid="Base_Column_List" />
+		from T_EXP_SHARE_INFO
+		<include refid="Other_Where_Clause" />
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+  
+  	<select id="queryOrderList" resultMap="BaseResultMap"
+		parameterType="com.chinatelecom.jx.zone.management.bean.expShare.ExpShareInfoBean">
+		select
+		<include refid="Base_Column_List" />
+		from T_EXP_SHARE_INFO 
+		<include refid="Base_Where_Clause" />
+		<if test="startTime != null">
+			<![CDATA[AND create_time >= #{startTime,jdbcType=TIMESTAMP}]]>
+		</if>
+		<if test="endTime != null">
+			<![CDATA[AND create_time <= #{endTime,jdbcType=TIMESTAMP}]]>
+		</if>
+		<if test="provinceName != null and provinceName != ''">
+			<![CDATA[AND PROVINCE_NAME = #{provinceName,jdbcType=VARCHAR}]]>
+		</if>
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+	
+	  <select id="syncExpInfoData" statementType="CALLABLE">
+	    {call PKG_SYNC_DATA.P_SYNC_EXP_INFO_DATA(
+	    #{p_exp_id,mode=IN,jdbcType=VARCHAR},
+	    #{p_result,mode=OUT,jdbcType=VARCHAR},
+	    #{p_resultdesc,mode=OUT,jdbcType=VARCHAR})}
+	 </select>
+  
+</mapper>
+

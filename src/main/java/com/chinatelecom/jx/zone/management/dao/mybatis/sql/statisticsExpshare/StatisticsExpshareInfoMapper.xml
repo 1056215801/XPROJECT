@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.statisticsExpshare.StatisticsExpshareInfoMapper">
+	<resultMap id="BaseResultMap" type="com.chinatelecom.jx.zone.management.bean.statisticsExpshare.StatisticsExpshareInfoBean">
+		<id column="ID" jdbcType="DECIMAL" property="id" />
+		<result column="AREA_ID" jdbcType="DECIMAL" property="areaId" />
+		<result column="AREA_NAME" jdbcType="VARCHAR" property="areaName" />
+		<result column="PARK_ID" jdbcType="DECIMAL" property="parkId" />
+		<result column="PARK_NAME" jdbcType="VARCHAR" property="parkName" />
+		<result column="SPACE_ID" jdbcType="DECIMAL" property="spaceId" />
+		<result column="SPACE_NAME" jdbcType="VARCHAR" property="spaceName" />
+		<result column="SUM_COUNT" jdbcType="DECIMAL" property="sumCount" />
+		<result column="TRUE_COUNT" jdbcType="DECIMAL" property="trueCount" />
+		<result column="BROWSE_COUNT" jdbcType="DECIMAL" property="browseCount" />
+		<result column="COMMENT_COUNT" jdbcType="DECIMAL" property="commentCount" />
+		<result column="CREATEDAY" jdbcType="TIMESTAMP" property="createday" />
+		<result column="UPDATETIME" jdbcType="TIMESTAMP" property="updatetime" />
+		<result column="COUNT_NUM" jdbcType="DECIMAL" property="countNum" />
+		<result column="KIND" jdbcType="DECIMAL" property="kind" />
+	</resultMap>
+	<!-- <resultMap id="ResultMapWithForeign" type="com.chinatelecom.jx.zone.management.bean.statisticsExpshare.StatisticsExpshareInfoBean" 
+		extends="BaseResultMap" > <result column="workProcessid" property="workProcessid" jdbcType="VARCHAR" /> <result column="currentState" 
+		property="currentState" jdbcType="VARCHAR" /> <result column="organizationName" property="orgName" jdbcType="VARCHAR" /> 
+		<result column="companyName" property="companyName" jdbcType="VARCHAR" /> <result column="accountName" property="accountName" 
+		jdbcType="VARCHAR" /> <result column="parkName" property="parkName" jdbcType="VARCHAR" /> </resultMap> -->
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		ID,AREA_ID,AREA_NAME,PARK_ID,PARK_NAME,SPACE_ID,SPACE_NAME,SUM_COUNT,TRUE_COUNT,BROWSE_COUNT,COMMENT_COUNT,CREATEDAY,UPDATETIME
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal">
+		select
+		<include refid="Base_Column_List" />
+		from T_STATISTICS_EXPSHARE_INFO where ID = #{id,jdbcType=DECIMAL}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal"> DELETE FROM T_STATISTICS_EXPSHARE_INFO WHERE ID =
+		#{id,jdbcType=DECIMAL}
+	</delete>
+	<insert id="insert" parameterType="com.chinatelecom.jx.zone.management.bean.statisticsExpshare.StatisticsExpshareInfoBean"> INSERT INTO T_STATISTICS_EXPSHARE_INFO ( ID , AREA_ID , AREA_NAME , PARK_ID ,
+		PARK_NAME , SPACE_ID , SPACE_NAME , SUM_COUNT , TRUE_COUNT , BROWSE_COUNT , COMMENT_COUNT , CREATEDAY , UPDATETIME )
+		VALUES ( #{id,jdbcType=DECIMAL} , #{areaId,jdbcType=DECIMAL} , #{areaName,jdbcType=VARCHAR} ,
+		#{parkId,jdbcType=DECIMAL} , #{parkName,jdbcType=VARCHAR} , #{spaceId,jdbcType=DECIMAL} ,
+		#{spaceName,jdbcType=VARCHAR} , #{sumCount,jdbcType=DECIMAL} , #{trueCount,jdbcType=DECIMAL} ,
+		#{browseCount,jdbcType=DECIMAL} , #{commentCount,jdbcType=DECIMAL} , #{createday,jdbcType=TIMESTAMP} ,
+		#{updatetime,jdbcType=TIMESTAMP} )
+	</insert>
+	<insert id="insertSelective" parameterType="com.chinatelecom.jx.zone.management.bean.statisticsExpshare.StatisticsExpshareInfoBean">
+		insert into T_STATISTICS_EXPSHARE_INFO
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null"> ID,
+			</if>
+			<if test="areaId != null"> AREA_ID,
+			</if>
+			<if test="areaName != null"> AREA_NAME,
+			</if>
+			<if test="parkId != null"> PARK_ID,
+			</if>
+			<if test="parkName != null"> PARK_NAME,
+			</if>
+			<if test="spaceId != null"> SPACE_ID,
+			</if>
+			<if test="spaceName != null"> SPACE_NAME,
+			</if>
+			<if test="sumCount != null"> SUM_COUNT,
+			</if>
+			<if test="trueCount != null"> TRUE_COUNT,
+			</if>
+			<if test="browseCount != null"> BROWSE_COUNT,
+			</if>
+			<if test="commentCount != null"> COMMENT_COUNT,
+			</if>
+			<if test="createday != null"> CREATEDAY,
+			</if>
+			<if test="updatetime != null"> UPDATETIME,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null"> #{id,jdbcType=DECIMAL},
+			</if>
+			<if test="areaId != null"> #{areaId,jdbcType=DECIMAL},
+			</if>
+			<if test="areaName != null"> #{areaName,jdbcType=VARCHAR},
+			</if>
+			<if test="parkId != null"> #{parkId,jdbcType=DECIMAL},
+			</if>
+			<if test="parkName != null"> #{parkName,jdbcType=VARCHAR},
+			</if>
+			<if test="spaceId != null"> #{spaceId,jdbcType=DECIMAL},
+			</if>
+			<if test="spaceName != null"> #{spaceName,jdbcType=VARCHAR},
+			</if>
+			<if test="sumCount != null"> #{sumCount,jdbcType=DECIMAL},
+			</if>
+			<if test="trueCount != null"> #{trueCount,jdbcType=DECIMAL},
+			</if>
+			<if test="browseCount != null"> #{browseCount,jdbcType=DECIMAL},
+			</if>
+			<if test="commentCount != null"> #{commentCount,jdbcType=DECIMAL},
+			</if>
+			<if test="createday != null"> #{createday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatetime != null"> #{updatetime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.chinatelecom.jx.zone.management.bean.statisticsExpshare.StatisticsExpshareInfoBean">
+		update T_STATISTICS_EXPSHARE_INFO
+		<set>
+			<if test="areaId != null"> AREA_ID = #{areaId,jdbcType=DECIMAL},
+			</if>
+			<if test="areaName != null"> AREA_NAME = #{areaName,jdbcType=VARCHAR},
+			</if>
+			<if test="parkId != null"> PARK_ID = #{parkId,jdbcType=DECIMAL},
+			</if>
+			<if test="parkName != null"> PARK_NAME = #{parkName,jdbcType=VARCHAR},
+			</if>
+			<if test="spaceId != null"> SPACE_ID = #{spaceId,jdbcType=DECIMAL},
+			</if>
+			<if test="spaceName != null"> SPACE_NAME = #{spaceName,jdbcType=VARCHAR},
+			</if>
+			<if test="sumCount != null"> SUM_COUNT = #{sumCount,jdbcType=DECIMAL},
+			</if>
+			<if test="trueCount != null"> TRUE_COUNT = #{trueCount,jdbcType=DECIMAL},
+			</if>
+			<if test="browseCount != null"> BROWSE_COUNT = #{browseCount,jdbcType=DECIMAL},
+			</if>
+			<if test="commentCount != null"> COMMENT_COUNT = #{commentCount,jdbcType=DECIMAL},
+			</if>
+			<if test="createday != null"> CREATEDAY = #{createday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatetime != null"> UPDATETIME = #{updatetime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.chinatelecom.jx.zone.management.bean.statisticsExpshare.StatisticsExpshareInfoBean"> UPDATE T_STATISTICS_EXPSHARE_INFO SET AREA_ID =
+		#{areaId,jdbcType=DECIMAL} , AREA_NAME = #{areaName,jdbcType=VARCHAR} , PARK_ID = #{parkId,jdbcType=DECIMAL} ,
+		PARK_NAME = #{parkName,jdbcType=VARCHAR} , SPACE_ID = #{spaceId,jdbcType=DECIMAL} , SPACE_NAME =
+		#{spaceName,jdbcType=VARCHAR} , SUM_COUNT = #{sumCount,jdbcType=DECIMAL} , TRUE_COUNT = #{trueCount,jdbcType=DECIMAL}
+		, BROWSE_COUNT = #{browseCount,jdbcType=DECIMAL} , COMMENT_COUNT = #{commentCount,jdbcType=DECIMAL} , CREATEDAY =
+		#{createday,jdbcType=TIMESTAMP} , UPDATETIME = #{updatetime,jdbcType=TIMESTAMP} WHERE ID = #{id,jdbcType=DECIMAL}
+	</update>
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>
+			<if test="id != null">
+						<![CDATA[AND ID = #{id,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="areaId != null">
+						<![CDATA[AND AREA_ID = #{areaId,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="areaName != null and areaName != ''">
+				<!-- <![CDATA[AND AREA_NAME = #{areaName,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND AREA_NAME LIKE '%' || #{areaName,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="parkId != null">
+						<![CDATA[AND PARK_ID = #{parkId,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="parkName != null and parkName != ''">
+				<!-- <![CDATA[AND PARK_NAME = #{parkName,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND PARK_NAME LIKE '%' || #{parkName,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="spaceId != null">
+						<![CDATA[AND SPACE_ID = #{spaceId,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="spaceName != null and spaceName != ''">
+				<!-- <![CDATA[AND SPACE_NAME = #{spaceName,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND SPACE_NAME LIKE '%' || #{spaceName,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="sumCount != null">
+						<![CDATA[AND SUM_COUNT = #{sumCount,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="trueCount != null">
+						<![CDATA[AND TRUE_COUNT = #{trueCount,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="browseCount != null">
+						<![CDATA[AND BROWSE_COUNT = #{browseCount,jdbcType=DECIMAL}]]>
+			</if>
+			<if test="commentCount != null">
+						<![CDATA[AND COMMENT_COUNT = #{commentCount,jdbcType=DECIMAL}]]>
+			</if>
+		</where>
+	</sql>
+	<select id="queryByCond" resultMap="BaseResultMap"
+		parameterType="com.chinatelecom.jx.zone.management.bean.statisticsExpshare.StatisticsExpshareInfoBean">
+		select
+		<include refid="Base_Column_List" />
+		from T_STATISTICS_EXPSHARE_INFO
+		<include refid="Base_Where_Clause" />
+		<if test="orderByClause != null"> order by ${orderByClause}
+		</if>
+	</select>
+	<!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+	<select id="queryStatisticsListByCity" resultMap="BaseResultMap"
+		parameterType="com.chinatelecom.jx.zone.management.bean.statisticsExpshare.StatisticsExpshareInfoBean">
+		<!-- select t.area_name,sum(t.sum_count) as count_num from T_STATISTICS_EXPSHARE_INFO t <where> <if test="startTime != 
+			null"> t.createday &gt; startTime </if> <if test="endTime != null"> t.createday &lt; endTime </if> </where> group by t.area_name 
+			order by 2 -->
+		select ai.area_name,nvl(tt.sum_count,0) as count_num from t_area_info ai left join (select t.area_id, sum(t.sum_count)
+		as sum_count， sum(t.true_count) as true_count， sum(t.browse_count) as browse_count， sum(t.comment_count) as
+		comment_count from T_STATISTICS_EXPSHARE_INFO t
+		<where>
+			<if test="startTime != null">
+					<![CDATA[AND t.createday >= #{startTime,jdbcType=TIMESTAMP}]]>
+			</if>
+			<if test="endTime != null">
+					<![CDATA[AND t.createday <= #{endTime,jdbcType=TIMESTAMP}]]>
+			</if>
+		</where>
+		group by t.area_id ) tt on tt.area_id = ai.area_id
+		<if test="provinceId != null"> where ai.parent_id = #{provinceId,jdbcType=DECIMAL}
+		</if>
+		<if test="provinceId == null"> where ai.parent_id = 360000
+		</if>
+		order by nvl(tt.sum_count,0) asc
+	</select>
+	<select id="queryStatisticsListByUnit" resultMap="BaseResultMap"
+		parameterType="com.chinatelecom.jx.zone.management.bean.statisticsExpshare.StatisticsExpshareInfoBean">
+		select t.park_name,sum(t.sum_count) as count_num from T_STATISTICS_EXPSHARE_INFO t
+		<where>
+			<if test="startTime != null">
+			<![CDATA[AND t.createday >= #{startTime,jdbcType=TIMESTAMP}]]>
+			</if>
+			<if test="endTime != null">
+			<![CDATA[AND t.createday <= #{endTime,jdbcType=TIMESTAMP}]]>
+			</if>
+			<if test="provinceId != null">
+      		<![CDATA[AND t.province_id = #{provinceId,jdbcType=DECIMAL} ]]>
+			</if>
+			<if test="1 == 1">
+			<![CDATA[AND t.park_name is not null]]>
+			</if>
+		</where>
+		group by t.park_name order by count_num
+	</select>
+	<select id="queryStatisticsListByTotal" resultMap="BaseResultMap"
+		parameterType="com.chinatelecom.jx.zone.management.bean.statisticsExpshare.StatisticsExpshareInfoBean">
+		select area_name, area_kind as kind, nvl(b.sum_count, 0) as sum_count, nvl(b.true_count, 0) as true_count,
+		nvl(b.browse_count, 0) as browse_count, nvl(b.comment_count, 0) as comment_count from (select area_id, area_name,
+		area_kind from t_area_info start with
+		<if test="provinceId != null"> area_id = #{provinceId,jdbcType=DECIMAL}
+		</if>
+		<if test="provinceId == null"> area_id = 360000
+		</if>
+		connect by prior area_id = parent_id) a left join (select t.area_id, sum(t.sum_count) as sum_count， sum(t.true_count)
+		as true_count， sum(t.browse_count) as browse_count， sum(t.comment_count) as comment_count from
+		T_STATISTICS_EXPSHARE_INFO t
+		<where>
+			<if test="startTime != null">
+			<![CDATA[AND t.createday >= #{startTime,jdbcType=TIMESTAMP}]]>
+			</if>
+			<if test="endTime != null">
+			<![CDATA[AND t.createday <= #{endTime,jdbcType=TIMESTAMP}]]>
+			</if>
+		</where>
+		group by t.area_id) b on b.area_id = a.area_id order by a.area_id
+	</select>
+</mapper>

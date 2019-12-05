@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.weixinConfig.WeixinConfigTemplateMapper" >
+
+	<resultMap id="BaseResultMap" type="com.chinatelecom.jx.zone.management.bean.weixinConfig.WeixinConfigTemplateBean">
+    	<id column="TEMPLATE_ID" jdbcType="DECIMAL" property="templateId"/>
+    	<result column="BUSINESS" jdbcType="VARCHAR" property="business"/>
+    	<result column="TEMPLATE_MSG_ID" jdbcType="VARCHAR" property="templateMsgId"/>
+    	<result column="TEMPLATE_MSG_TITLE" jdbcType="VARCHAR" property="templateMsgTitle"/>
+    	<result column="CONTENT" jdbcType="VARCHAR" property="content"/>
+    	<result column="EXAMPLES" jdbcType="VARCHAR" property="examples"/>
+    	<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+    	<result column="REMARK" jdbcType="VARCHAR" property="remark"/>
+	</resultMap>
+	
+	<!--
+	<resultMap id="ResultMapWithForeign" type="com.chinatelecom.jx.zone.management.bean.weixinConfig.WeixinConfigTemplateBean" extends="BaseResultMap" >
+			 <result column="workProcessid" property="workProcessid" jdbcType="VARCHAR" />
+			 <result column="currentState" property="currentState" jdbcType="VARCHAR" />
+       <result column="organizationName" property="orgName" jdbcType="VARCHAR" />
+        <result column="companyName" property="companyName" jdbcType="VARCHAR" />
+       <result column="accountName" property="accountName" jdbcType="VARCHAR" />
+       <result column="parkName" property="parkName" jdbcType="VARCHAR" />
+  </resultMap>
+  -->
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		TEMPLATE_ID,BUSINESS,TEMPLATE_MSG_ID,TEMPLATE_MSG_TITLE,CONTENT,EXAMPLES,CREATE_TIME,REMARK
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_WEIXIN_CONFIG_TEMPLATE
+    where 
+				TEMPLATE_ID = #{templateId,jdbcType=DECIMAL} 
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+        DELETE FROM T_WEIXIN_CONFIG_TEMPLATE WHERE
+				TEMPLATE_ID = #{templateId,jdbcType=DECIMAL} 
+    </delete>
+
+	<insert id="insert" parameterType="com.chinatelecom.jx.zone.management.bean.weixinConfig.WeixinConfigTemplateBean">
+        INSERT INTO T_WEIXIN_CONFIG_TEMPLATE (
+        	TEMPLATE_ID ,
+        	BUSINESS ,
+        	TEMPLATE_MSG_ID ,
+        	TEMPLATE_MSG_TITLE ,
+        	CONTENT ,
+        	EXAMPLES ,
+        	CREATE_TIME ,
+        	REMARK 
+        ) VALUES (
+        	#{templateId,jdbcType=DECIMAL} ,
+        	#{business,jdbcType=VARCHAR} ,
+        	#{templateMsgId,jdbcType=VARCHAR} ,
+        	#{templateMsgTitle,jdbcType=VARCHAR} ,
+        	#{content,jdbcType=VARCHAR} ,
+        	#{examples,jdbcType=VARCHAR} ,
+        	#{createTime,jdbcType=TIMESTAMP} ,
+        	#{remark,jdbcType=VARCHAR} 
+        )
+	</insert>
+	
+	<insert id="insertSelective" parameterType="com.chinatelecom.jx.zone.management.bean.weixinConfig.WeixinConfigTemplateBean">
+    insert into T_WEIXIN_CONFIG_TEMPLATE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+    		<if test="templateId != null" >
+        TEMPLATE_ID,
+      	</if>
+    		<if test="business != null" >
+        BUSINESS,
+      	</if>
+    		<if test="templateMsgId != null" >
+        TEMPLATE_MSG_ID,
+      	</if>
+    		<if test="templateMsgTitle != null" >
+        TEMPLATE_MSG_TITLE,
+      	</if>
+    		<if test="content != null" >
+        CONTENT,
+      	</if>
+    		<if test="examples != null" >
+        EXAMPLES,
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME,
+      	</if>
+    		<if test="remark != null" >
+        REMARK,
+      	</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+    		<if test="templateId != null" >
+        #{templateId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="business != null" >
+        #{business,jdbcType=VARCHAR},
+      	</if>
+    		<if test="templateMsgId != null" >
+        #{templateMsgId,jdbcType=VARCHAR},
+      	</if>
+    		<if test="templateMsgTitle != null" >
+        #{templateMsgTitle,jdbcType=VARCHAR},
+      	</if>
+    		<if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      	</if>
+    		<if test="examples != null" >
+        #{examples,jdbcType=VARCHAR},
+      	</if>
+    		<if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    		<if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      	</if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinatelecom.jx.zone.management.bean.weixinConfig.WeixinConfigTemplateBean">
+    update T_WEIXIN_CONFIG_TEMPLATE
+    <set >
+    		<if test="business != null" >
+        BUSINESS = #{business,jdbcType=VARCHAR},
+      	</if>
+    		<if test="templateMsgId != null" >
+        TEMPLATE_MSG_ID = #{templateMsgId,jdbcType=VARCHAR},
+      	</if>
+    		<if test="templateMsgTitle != null" >
+        TEMPLATE_MSG_TITLE = #{templateMsgTitle,jdbcType=VARCHAR},
+      	</if>
+    		<if test="content != null" >
+        CONTENT = #{content,jdbcType=VARCHAR},
+      	</if>
+    		<if test="examples != null" >
+        EXAMPLES = #{examples,jdbcType=VARCHAR},
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    		<if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      	</if>
+    </set>
+    where 
+      TEMPLATE_ID = #{templateId,jdbcType=DECIMAL} 
+  </update>
+  
+	<update id="updateByPrimaryKey" parameterType="com.chinatelecom.jx.zone.management.bean.weixinConfig.WeixinConfigTemplateBean">
+      UPDATE T_WEIXIN_CONFIG_TEMPLATE SET
+        BUSINESS = #{business,jdbcType=VARCHAR} ,
+        TEMPLATE_MSG_ID = #{templateMsgId,jdbcType=VARCHAR} ,
+        TEMPLATE_MSG_TITLE = #{templateMsgTitle,jdbcType=VARCHAR} ,
+        CONTENT = #{content,jdbcType=VARCHAR} ,
+        EXAMPLES = #{examples,jdbcType=VARCHAR} ,
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP} ,
+        REMARK = #{remark,jdbcType=VARCHAR} 
+      WHERE 
+        TEMPLATE_ID = #{templateId,jdbcType=DECIMAL} 
+	</update>
+	
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	        
+		       <if test="templateId != null">
+						<![CDATA[AND TEMPLATE_ID = #{templateId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="business != null and business != ''">
+						<!--
+						<![CDATA[AND BUSINESS = #{business,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND BUSINESS LIKE '%' || #{business,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="templateMsgId != null and templateMsgId != ''">
+						<!--
+						<![CDATA[AND TEMPLATE_MSG_ID = #{templateMsgId,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND TEMPLATE_MSG_ID LIKE '%' || #{templateMsgId,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="templateMsgTitle != null and templateMsgTitle != ''">
+						<!--
+						<![CDATA[AND TEMPLATE_MSG_TITLE = #{templateMsgTitle,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND TEMPLATE_MSG_TITLE LIKE '%' || #{templateMsgTitle,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="content != null and content != ''">
+						<!--
+						<![CDATA[AND CONTENT = #{content,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND CONTENT LIKE '%' || #{content,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="examples != null and examples != ''">
+						<!--
+						<![CDATA[AND EXAMPLES = #{examples,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND EXAMPLES LIKE '%' || #{examples,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+	        
+		       <if test="remark != null and remark != ''">
+						<!--
+						<![CDATA[AND REMARK = #{remark,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND REMARK LIKE '%' || #{remark,jdbcType=VARCHAR} || '%']]>
+				   </if>
+		</where>
+	</sql>
+	
+ 
+  
+  <select id="queryByCond" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.weixinConfig.WeixinConfigTemplateBean" >
+    select <include refid="Base_Column_List" />
+    from T_WEIXIN_CONFIG_TEMPLATE
+	<include refid="Base_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+     
+  
+</mapper>
+

@@ -1,0 +1,239 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #fff;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"Microsoft YaHei";
+}
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box
+}
+:after,:before {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box
+}
+a:hover, a:visited, a:link, a:active {
+    text-decoration:none;
+	color:#000;
+}
+div {
+	-webkit-transition: all .2s ease-in-out 0s;
+	-moz-transition: all .2s ease-in-out 0s;
+	-ms-transition: all .2s ease-in-out 0s;
+	-o-transition: all .2s ease-in-out 0s;
+	transition: all .2s ease-in-out 0s;
+}
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.clearfix{zoom:1} 
+img,span {vertical-align:middle;}
+
+html {height:100%;}
+body {
+	background:url(../images/bj.jpg) no-repeat;
+    background-size:cover;
+	height:100%;
+}
+.data_main {
+	width:100%;
+	min-width:1020px;
+	height:100%;
+	position:relative;
+}
+.data_header {
+	position:relative;
+	min-width:1020px;
+}
+.dataLogo {
+	position:absolute;
+	left:3%;
+	top:12%;
+}
+.dataWeather {
+	position:absolute;
+	right:1%;
+	top:15%;
+	background-color: rgba(255,255,255,0.3);
+	color:#fff;
+	padding:2px 15px;
+	border-radius: 20px;
+	font-size:13px;
+}
+.data_content {
+	min-width:1020px;
+	height:88%;
+	padding:0 1%;
+}
+.dropdownBar {
+	margin-bottom:0.5%;
+	text-align:right;
+}
+.dropdownButton {
+	display: inline-block;
+	vertical-align: middle;
+	background-color: rgba(0,0,0,0.3);
+	color:#fff;
+	border: 1px solid transparent;
+	margin-bottom: 0;
+    padding: 3px 15px;
+    line-height: 1.42857;
+    white-space: nowrap;
+	cursor: pointer;
+}
+.dropdownMenu {
+	display: none;
+	background-clip: padding-box;
+    background-color: rgba(0,0,0,0.3);
+	color:#fff;
+    border: 1px solid transparent;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    margin-top: 2px;
+    min-width: 150px;
+    position: absolute;
+	right: 122px;
+    z-index: 100;
+}
+.dropdownMenu > li > a {
+	clear: both;
+    display: block;
+    padding: 3px 20px;
+    white-space: nowrap;
+    border-radius: 3px;
+    color: inherit;
+    font-weight: 400;
+    line-height: 25px;
+    margin: 4px;
+    text-align: left;
+}
+.dropdownMenu > li > a:hover {
+	background-color:#ccc;
+}
+.caret {
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px dashed;
+    display: inline-block;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    width: 0;
+}
+.data_contentLeft, .data_contentMid, .data_contentRight {
+	float:left;
+	height:92%;
+	position:relative;
+}
+.dataBarTop {margin-bottom:1%;}
+.dataBarBottom {}
+.dataBarGreen, .dataBarMagenta, .dataBarNavy {
+	float:left;
+	color:#fff;
+	margin-right:0.6%;
+	text-align:center;
+	height:100%;
+	display: table;
+}
+.dataBarGreen {
+	background-color:#799C0E;
+}
+.dataBarMagenta {
+	background-color:#CD0567;
+}
+.dataBarNavy {
+	background-color:#11729D;
+}
+.dataBarTitle {
+	display:table-cell;
+	vertical-align:middle;
+	height:35%;
+	font-size:16px;
+}
+.dataBarNum {
+	display:table-row;
+	height:35%;
+}
+.dataBarIncrease {
+	display:table-cell;
+	vertical-align:middle;
+	height:30%;
+	font-size:12px;
+}
+.yellowFont {
+	color:#FCFF00;
+}
+.yellowFont24 {
+	color:#FCFF00;
+	font-size:26px;
+}
+.dataBar_1 {
+	height:49%;
+	margin-bottom:1%;
+	background-color: rgba(0,0,0,0.3);
+	width:100%;
+}
+.dataBar_2 {
+	height:49%;
+	margin-bottom:1%;
+	background-color: rgba(0,0,0,0.3);
+	width:100%;
+}
+.dataBarBotton {
+	float:left;
+	display:table;
+	height:100%;
+	border:2px solid #63AECD;
+	border-radius:10px;
+	margin-right:0.6%;
+	background: -webkit-gradient(linear, left top, left bottom, from(#40A4C1), to(#0E5281));
+	background: linear-gradient(#40A4C1, #0E5281);
+	text-align:center;
+	cursor:pointer;
+}
+.dataBarBotton:hover, .dataBarBotton focus {
+	background: -webkit-gradient(linear, left top, left bottom, from(#52AAC7), to(#0E4E80));
+	background: linear-gradient(top, #42abf8, #0E4E80);
+}
+.dataBarBotton:active {
+	background: #368AA6; 
+}
+.dataBarName {
+	display:table-cell;
+	vertical-align:middle;
+	font-size:20px;
+}

@@ -1,0 +1,90 @@
+@charset "utf-8";
+/* CSS Document */
+
+.project_header {
+	width:100%;
+	/*position:fixed;
+	top:0;*/
+	z-index:101;
+	background-color:#FFF;
+}
+.header_tab {
+	height:85px;
+	padding-top:10px;
+}
+.header_sign {
+	float:left;
+	margin-left:5%;
+}
+.header_sign img {
+	float:left;
+	margin-left:20px;
+	margin-top:4px;
+}
+.header_add {
+	float:left;
+	position:relative;
+	top:26px;
+	left:5px;
+}
+.header_sign input {
+	background-color:#FDEFEF;
+	color:#F03C3C;
+	border:1px solid #F03C3C;
+	font-size:12px;
+	margin-top:5px;
+}
+.tabName {}
+.tabName ul{float:left; list-style-type:none; margin-left:150px; position:relative; top:41px;}  
+.tabName ul li{float:left; text-align:center; padding:7px 20px; border-radius:5px 5px 0 0; font-weight:bold;}
+.tabName ul li a{text-decoration:none; font-size:20px;}
+.nameClick {background:#3a3d4b;}
+.nameClick a {color:#fff!important;}
+.header_user {
+	float:right;
+	margin-right:5%;
+}
+.header_user img {
+	float:left;
+}
+.header_user a {
+	margin-left:10px;
+}
+.header_user span {
+	float:left;
+	position:relative;
+	top:30px;
+	left:5px;
+	margin-right:50px;
+}
+.tabItem {
+	height:40px;
+	background-color:#f04342;
+}
+.tabItem ul{list-style-type:none; margin-left:440px; position:relative; top:9px;}  
+.tabItem ul li{float:left;text-align:center; margin-left:10px; border-radius:5px; padding:1px 7px;}
+.tabItem ul li a{text-decoration:none; color:#FFF;}
+.itemClick { background-color:#d32625;}
+
+.dropdown {
+	background-color:#333333;
+	font-size:16px;
+	position:absolute;
+	top:90px;
+	right:15%;
+	width:150px;
+	z-index: 100;
+}
+.dropdown ul {}
+.dropdown ul li {padding:7px 0; text-align:center;}
+.dropdown ul li:hover {background-color:#454545;}
+.dropdown ul li a {color:#959595; margin-left:5px;}
+.dropdownBtn {
+	width:100%;
+	background-color:#2570EC;
+	color:#fff;
+	padding:5px 0;
+	text-align:center;
+	border:0;
+	cursor: pointer;
+}

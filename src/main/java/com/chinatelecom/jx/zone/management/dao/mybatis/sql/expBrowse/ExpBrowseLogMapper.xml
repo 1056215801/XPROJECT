@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.expBrowse.ExpBrowseLogMapper" >
+
+	<resultMap id="BaseResultMap" type="com.chinatelecom.jx.zone.management.bean.expBrowse.ExpBrowseLogBean">
+    	<id column="LOG_ID" jdbcType="DECIMAL" property="logId"/>
+    	<result column="EXP_ID" jdbcType="DECIMAL" property="expId"/>
+    	<result column="TYPE" jdbcType="DECIMAL" property="type"/>
+    	<result column="BROWSE_ID" jdbcType="DECIMAL" property="browseId"/>
+    	<result column="BROWSE_NAME" jdbcType="VARCHAR" property="browseName"/>
+    	<result column="BROWSE_IP" jdbcType="VARCHAR" property="browseIp"/>
+    	<result column="REMARK" jdbcType="VARCHAR" property="remark"/>
+    	<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+	</resultMap>
+	
+	<!--
+	<resultMap id="ResultMapWithForeign" type="com.chinatelecom.jx.zone.management.bean.expBrowse.ExpBrowseLogBean" extends="BaseResultMap" >
+			 <result column="workProcessid" property="workProcessid" jdbcType="VARCHAR" />
+			 <result column="currentState" property="currentState" jdbcType="VARCHAR" />
+       <result column="organizationName" property="orgName" jdbcType="VARCHAR" />
+        <result column="companyName" property="companyName" jdbcType="VARCHAR" />
+       <result column="accountName" property="accountName" jdbcType="VARCHAR" />
+       <result column="parkName" property="parkName" jdbcType="VARCHAR" />
+  </resultMap>
+  -->
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		LOG_ID,EXP_ID,TYPE,BROWSE_ID,BROWSE_NAME,BROWSE_IP,REMARK,CREATE_TIME
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_EXP_BROWSE_LOG
+    where 
+				LOG_ID = #{logId,jdbcType=DECIMAL} 
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+        DELETE FROM T_EXP_BROWSE_LOG WHERE
+				LOG_ID = #{logId,jdbcType=DECIMAL} 
+    </delete>
+
+	<insert id="insert" parameterType="com.chinatelecom.jx.zone.management.bean.expBrowse.ExpBrowseLogBean">
+        INSERT INTO T_EXP_BROWSE_LOG (
+        	LOG_ID ,
+        	EXP_ID ,
+        	TYPE ,
+        	BROWSE_ID ,
+        	BROWSE_NAME ,
+        	BROWSE_IP ,
+        	REMARK ,
+        	CREATE_TIME 
+        ) VALUES (
+        	#{logId,jdbcType=DECIMAL} ,
+        	#{expId,jdbcType=DECIMAL} ,
+        	#{type,jdbcType=DECIMAL} ,
+        	#{browseId,jdbcType=DECIMAL} ,
+        	#{browseName,jdbcType=VARCHAR} ,
+        	#{browseIp,jdbcType=VARCHAR} ,
+        	#{remark,jdbcType=VARCHAR} ,
+        	#{createTime,jdbcType=TIMESTAMP} 
+        )
+	</insert>
+	
+	<insert id="insertSelective" parameterType="com.chinatelecom.jx.zone.management.bean.expBrowse.ExpBrowseLogBean">
+    insert into T_EXP_BROWSE_LOG
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+    		<if test="logId != null" >
+        LOG_ID,
+      	</if>
+    		<if test="expId != null" >
+        EXP_ID,
+      	</if>
+    		<if test="type != null" >
+        TYPE,
+      	</if>
+    		<if test="browseId != null" >
+        BROWSE_ID,
+      	</if>
+    		<if test="browseName != null" >
+        BROWSE_NAME,
+      	</if>
+    		<if test="browseIp != null" >
+        BROWSE_IP,
+      	</if>
+    		<if test="remark != null" >
+        REMARK,
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME,
+      	</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+    		<if test="logId != null" >
+        #{logId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="expId != null" >
+        #{expId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="type != null" >
+        #{type,jdbcType=DECIMAL},
+      	</if>
+    		<if test="browseId != null" >
+        #{browseId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="browseName != null" >
+        #{browseName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="browseIp != null" >
+        #{browseIp,jdbcType=VARCHAR},
+      	</if>
+    		<if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      	</if>
+    		<if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinatelecom.jx.zone.management.bean.expBrowse.ExpBrowseLogBean">
+    update T_EXP_BROWSE_LOG
+    <set >
+    		<if test="expId != null" >
+        EXP_ID = #{expId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="type != null" >
+        TYPE = #{type,jdbcType=DECIMAL},
+      	</if>
+    		<if test="browseId != null" >
+        BROWSE_ID = #{browseId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="browseName != null" >
+        BROWSE_NAME = #{browseName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="browseIp != null" >
+        BROWSE_IP = #{browseIp,jdbcType=VARCHAR},
+      	</if>
+    		<if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    </set>
+    where 
+      LOG_ID = #{logId,jdbcType=DECIMAL} 
+  </update>
+  
+	<update id="updateByPrimaryKey" parameterType="com.chinatelecom.jx.zone.management.bean.expBrowse.ExpBrowseLogBean">
+      UPDATE T_EXP_BROWSE_LOG SET
+        EXP_ID = #{expId,jdbcType=DECIMAL} ,
+        TYPE = #{type,jdbcType=DECIMAL} ,
+        BROWSE_ID = #{browseId,jdbcType=DECIMAL} ,
+        BROWSE_NAME = #{browseName,jdbcType=VARCHAR} ,
+        BROWSE_IP = #{browseIp,jdbcType=VARCHAR} ,
+        REMARK = #{remark,jdbcType=VARCHAR} ,
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP} 
+      WHERE 
+        LOG_ID = #{logId,jdbcType=DECIMAL} 
+	</update>
+	
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	        
+		       <if test="logId != null">
+						<![CDATA[AND LOG_ID = #{logId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="expId != null">
+						<![CDATA[AND EXP_ID = #{expId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="type != null">
+						<![CDATA[AND TYPE = #{type,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="browseId != null">
+						<![CDATA[AND BROWSE_ID = #{browseId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="browseName != null and browseName != ''">
+						<!--
+						<![CDATA[AND BROWSE_NAME = #{browseName,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND BROWSE_NAME LIKE '%' || #{browseName,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="browseIp != null and browseIp != ''">
+						<!--
+						<![CDATA[AND BROWSE_IP = #{browseIp,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND BROWSE_IP LIKE '%' || #{browseIp,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="remark != null and remark != ''">
+						<!--
+						<![CDATA[AND REMARK = #{remark,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND REMARK LIKE '%' || #{remark,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		</where>
+	</sql>
+	
+ 
+  
+  <select id="queryByCond" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.expBrowse.ExpBrowseLogBean" >
+    select <include refid="Base_Column_List" />
+    from T_EXP_BROWSE_LOG
+	<include refid="Base_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+     
+  
+</mapper>
+

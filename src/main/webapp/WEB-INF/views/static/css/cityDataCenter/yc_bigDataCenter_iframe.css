@@ -1,0 +1,784 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+html,body,div,span,iframe,h1,h2,h3,h4,h5,h6,p,a,del,dfn,em,img,small,strong,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,section,summary {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+body {
+	line-height: 1;
+	color: #fff;
+	background: #fff;
+}
+
+ol,
+ul {
+	list-style: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+	font: 14px/1.5 arial, "Microsoft YaHei";
+}
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box
+}
+
+:after,
+:before {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box
+}
+
+a:hover,
+a:visited,
+a:link,
+a:active {
+	text-decoration: none;
+	color: #000;
+}
+
+div {
+	-webkit-transition: all .2s ease-in-out 0s;
+	-moz-transition: all .2s ease-in-out 0s;
+	-ms-transition: all .2s ease-in-out 0s;
+	-o-transition: all .2s ease-in-out 0s;
+	transition: all .2s ease-in-out 0s;
+}
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.clearfix {
+	zoom: 1
+}
+.clear {
+	clear: both;
+}
+
+img,
+span {
+	vertical-align: middle;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	
+	background-size: cover;
+	height: 100%;
+}
+
+.data_main {
+	width: 100%;
+	min-width: 1020px;
+	height: 100%;
+	position: relative;
+}
+
+.data_header {
+	position: relative;
+	height: 19px;
+	min-width: 1020px;
+	padding-bottom: 18.5px;
+	padding-top: 10px;
+	padding-left: 0px;
+}
+.data_content {
+	min-width: 1020px;
+	height: calc( 100% - 79px);
+	height: -webkit-calc(100% - 79px);
+	height: -moz-calc(100% - 79px);
+	padding: 0 0.5%;
+}
+
+.dropdownButton {
+	display: inline-block;
+	vertical-align: middle;
+	background-color: rgba(0, 0, 0, 0.3);
+	color: #fff;
+	border: 1px solid transparent;
+	margin-bottom: 0;
+	padding: 3px 15px;
+	width: 100px;
+	line-height: 1.42857;
+	white-space: nowrap;
+	cursor: pointer;
+}
+.caret {
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	border-top: 4px dashed;
+	display: inline-block;
+	height: 0;
+	margin-left: 2px;
+	vertical-align: middle;
+	width: 0;
+}
+
+.dropdownMenu {
+	display: none;
+	background-clip: padding-box;
+	background-color: rgba(0, 0, 0, 0.8);
+	color: #fff;
+	border: 1px solid transparent;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+	margin-top: 2px;
+	width: 100px;
+	position: absolute;
+	right: 0px;
+	text-align: center;
+	z-index: 100;
+}
+.dropdownMenu>li>a {
+	clear: both;
+	display: block;
+	padding: 3px 20px;
+	white-space: nowrap;
+	border-radius: 3px;
+	color: inherit;
+	font-weight: 400;
+	line-height: 25px;
+	margin: 4px;
+	text-align: left;
+}
+.btnSelect {
+	position: absolute;
+	right: 2%;
+	margin-right: 9%;
+	margin-top: -3%;
+}
+.local-date {
+	padding: 0 10px;
+	display: inline-block;
+	vertical-align: middle;
+	border-left: 1px solid;
+	font-size: 14px;
+	color: #75d5ff;
+	line-height: 1;
+	font-family: "黑体";
+}
+
+.local-date h1 {
+	font-size: 24px;
+}
+
+.local-date p {
+	line-height: 1.5;
+}
+
+.dataIncrease_box{
+	height: 30%;
+	width: 100%;
+}
+.dataChart_box{
+	height: 70%;
+	width: 100%;
+}
+.increase_box1,.increase_box2,.chart_box1,.chart_box2{
+	float: left;
+	height: 100%;
+}
+.increase_box1,.increase_box2{
+	padding-top: 20px;
+}
+.chart_box1,.chart_box2{
+	padding-top: 10px;
+	padding-bottom: 20px;
+}
+.increase_box1,.chart_box1{
+	width: 28.4%;
+}
+.increase_box2,.chart_box2{
+	width: 71.6%;
+}
+.industrialAddVal,.mainBusinessIncome,.totalProfit{
+	height: 100%;
+}
+.mainBusinessIncome,.totalProfit{
+	float: left;
+	padding-left: 5px;
+	width: 50%;
+}
+.backColor-MGreen{
+	background-color: #799C0E;
+}
+.back-MG-icon{
+	background: url(../../image/cityDataCenter/yc/MGreen-icon.png) no-repeat 5px 5px #799C0E;
+}
+.backColor-ORed{
+	background-color: #CD0567;
+}
+.back-OR-icon{
+	background: url(../../image/cityDataCenter/yc/ORed-icon.png) no-repeat 5px 5px #CD0567;
+}
+.backColor-LBlue{
+	background-color: #11729D;
+}
+.backColor-LBlue1 {
+	background-color: #0793D1;
+}
+.back-LB-icon{
+	background: url(../../image/cityDataCenter/yc/LBlue-icon.png) no-repeat 5px 5px #11729D;
+}
+.addVal-Growth,
+.expectedGoal,
+.predictionVal,
+.sort-pro,
+.increase-sort-pro{
+	float: left;
+}
+.expectedGoal,
+.predictionVal,
+.sort-pro,
+.increase-sort-pro{
+	width: calc(30% - 1px);
+	width: -webkit-calc(30% - 1px);
+	width: -moz-calc(30% - 1px);
+	height: calc( 50% - 0.5px);
+	height: -webkit-calc(50% - 0.5px);
+	height: -moz-calc(50% - 0.5px);
+	margin-left: 1px;
+}
+.expectedGoal,
+.predictionVal{
+	margin-bottom: 0.5px;
+}
+.sort-pro,
+.increase-sort-pro{
+	margin-top: 0.5px;
+}
+.chart-view{
+	width: 100%;
+	height: 100%;
+}
+.chart-title{
+	font-size: 22px;
+	height: 50px;
+	line-height: 50px;
+	padding-left: 10px;
+	color: #000;
+}
+.chart-map{
+	width: 100%;
+	height: calc(100% - 50px);
+	height: -moz-calc(100% - 50px);
+	height: -webkit-calc(100% - 50px);
+}
+.addVal-Growth{
+	width: 40%;
+	height: 100%;
+}
+.mainTitle{
+	width: 100%;
+	height: 35%;
+	text-align: center;
+	padding:18px 0; 
+}
+.mainTitleVal{
+	width: 100%;
+	height: 35%;
+	text-align: center;
+	padding:8px 0; 
+}
+.color-yellow{
+	color: #F4F800;
+}
+.mainTitle{
+	font-size: 22px;
+}
+.mainTitleVal-num{
+	font-size: 32px;
+}
+.anAddVal{
+	width: 100%;
+	height: 30%;
+	text-align: center;
+	padding:10px 0; 
+	font-size: 16px;
+}
+.quotaTitle{
+	height: 50%;
+	text-align: center;
+	padding: 13px 0px;
+	font-size: 16px;
+}
+.quotaTitleVal{
+	height: 50%;
+	text-align: center;
+	padding: 5px 0px;
+}
+.quotaTitleVal-num{
+	font-size: 16px;
+}
+.chart_min_box1,.chart_min_box2{
+	height: calc(50% - 4px);
+	height: -moz-calc(50% - 4px);
+	height: -webkit-calc(50% - 4px);
+	margin-left: 5px;
+	width: calc(100% - 5px);
+	width: -moz-calc(100% - 5px);
+	width: -webkit-calc(100% - 5px);
+}
+.chart_min_box2{
+	margin-top: 8px;
+}
+.chart-pie,.chart-bar{
+	-moz-user-select: none;
+	height: 100%;
+	/* background: rgb(8, 47, 86) none repeat scroll 0% 0%; */
+	float: left;
+}
+.chart-pie{
+	width: 30%;
+}
+.chart-bar{
+	margin-left: 8px;
+	width: calc(70% - 8px);
+	width: -moz-calc(70% - 8px);
+	width: -webkit-calc(70% - 8px);
+}
+.increase_county_box2,.increase_county_box3,.increase_county_box4 {
+	float: left;
+	margin-top: 20px;
+	margin-left: 2.5px;
+	margin-right: 2.5px;
+	width: calc(20% - 5px);
+	width: -moz-calc(20% - 5px);
+	width: -webkit-calc(20% - 5px);
+	height: calc(100% - 20px);
+	height: -moz-calc(100% - 20px);
+	height: -webkit-calc(100% - 20px);
+}
+
+.increase_county_box1 {
+	float: left;
+	margin-top: 20px;
+	margin-right: 2.5px;
+	width: calc(20% - 2.5px);
+	width: -moz-calc(20% - 2.5px);
+	width: -webkit-calc(20% - 2.5px);
+	height: calc(100% - 20px);
+	height: -moz-calc(100% - 20px);
+	height: -webkit-calc(100% - 20px);
+}
+
+.increase_county_box5 {
+	float: left;
+	margin-top: 20px;
+	margin-left: 2.5px;
+	width: calc(20% - 2.5px);
+	width: -moz-calc(20% - 2.5px);
+	width: -webkit-calc(20% - 2.5px);
+	height: calc(100% - 20px);
+	height: -moz-calc(100% - 20px);
+	height: -webkit-calc(100% - 20px);
+}
+
+.back-OR-UpArrow-icon {
+	background: url(../../image/cityDataCenter/yc/UpArrow-icon.png) no-repeat 5px 5px #CD0567;
+}
+
+.back-LB1-UpArrow-icon {
+	background: url(../../image/cityDataCenter/yc/UpArrow-icon.png) no-repeat 5px 5px #0793D1;
+}
+
+.backColor-DCyan {
+	background-color: #11729D;
+}
+
+.backColor-YBrown {
+	background-color: #A99711;
+}
+
+.addValCounty-Growth,.anAddValCounty,.sortCounty-pro {
+	float: left;
+}
+
+.addValCounty-Growth {
+	float: left;
+	width: 60%;
+	height: 100%;
+}
+
+.anAddValCounty,.sortCounty-pro {
+	float: left;
+	width: calc(40% - 1px);
+	width: -webkit-calc(40% - 1px);
+	width: -moz-calc(40% - 1px);
+	height: calc( 50% - 0.5px);
+	height: -webkit-calc(50% - 0.5px);
+	height: -moz-calc(50% - 0.5px);
+	margin-left: 1px;
+	margin-bottom: 0.5px;
+}
+
+.sortCounty-pro {
+	margin-top: 0.5px;
+}
+
+.addValCounty-Growth-title {
+	height: 45%;
+    width: 100%;
+    font-size: 22px;
+    text-align: center;
+    padding-top: 40px;
+}
+
+.addValCounty-Growth-val {
+	height: 50%;
+	width: 100%;
+	text-align: center;
+	padding-top: 5px;
+}
+
+.addValCounty-Growth-val-num {
+	font-size: 32px;
+}
+
+.anAddValCounty-title,.sortCounty-pro-title,.anAddValCounty-val,.sortCounty-pro-val {
+	height: 50%;
+	width: 100%;
+	text-align: center;
+}
+
+.anAddValCounty-title,.sortCounty-pro-title {
+	font-size: 15px;
+	padding-top: 15px;
+}
+
+.anAddValCounty-val,.sortCounty-pro-val-num {
+	font-size: 13px;
+	padding-top: 5px;
+}
+
+.anAddValCounty-sortPro,.sortCounty-pro2 {
+	float: left;
+	width: calc(40% - 1px);
+	width: -webkit-calc(40% - 1px);
+	width: -moz-calc(40% - 1px);
+	margin-left: 1px;
+}
+
+.anAddValCounty-sortPro {
+	margin-bottom: 0.5px;
+	height: calc( 65% - 0.5px);
+	height: -webkit-calc(65% - 0.5px);
+	height: -moz-calc(65% - 0.5px);
+}
+
+.sortCounty-pro2 {
+	margin-top: 0.5px;
+	height: calc( 35% - 0.5px);
+	height: -webkit-calc(35% - 0.5px);
+	height: -moz-calc(35% - 0.5px);
+}
+
+.sortCounty-pro2-title {
+	padding-top: 5px;
+	text-align: center;
+}
+
+.anAddValCounty-sortPro-title,.anAddValCounty-sortPro-val {
+	height: 27%;
+	width: 100%;
+	text-align: center;
+}
+
+.proAddTitle,.proAddVal {
+	height: 23%;
+	width: 100%;
+	text-align: center;
+}
+
+.proAddTitle {
+	padding-top: 5px;
+}
+
+.proAddVal {
+	font-size: 13px;
+}
+
+.anAddValCounty-sortPro-title {
+	padding-top: 5px;
+	font-size: 16px;
+}
+
+.anAddValCounty-sortPro-val {
+	font-size: 15px;
+}
+
+.economicData-county-title {
+	height: 70px;
+	line-height: 70px;
+	padding-left: 20px;
+	font-size: 24px;
+	color: #C4EFF8;
+	width: 100%;
+}
+
+.economicData-county-content {
+	height: calc( 100% - 70px);
+	height: -webkit-calc(100% - 70px);
+	height: -moz-calc(100% - 70px);
+	width: 100%;
+}
+
+.btn_set {
+	display: inline-block;
+	padding-left: 10px;
+	padding-right: 10px;
+	height: 35px;
+	text-align: center;
+	width: auto;
+	border: 1px solid #C4EFF8;
+	border-radius: 5px;
+	line-height: 35px;
+	background-color: #082E56;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+.btn_set img {
+	margin-top: -4px;
+}
+
+.btn_set font {
+	color: #FFF;
+}
+
+.btn_set:hover {
+	background-color: #3773B2;
+}
+
+.btn_set1{
+	background-color: #3773B2;
+}
+.economicData-county-sortField {
+	height: 40px;
+	line-height: 40px;
+	padding-left: 20px;
+	font-size: 18px;
+	color: #C4EFF8;
+	width: 100%;
+}
+
+.economicData-county-tableView {
+	height: calc( 100% - 40px);
+	height: -webkit-calc(100% - 40px);
+	height: -moz-calc(100% - 40px);
+	width: 100%;
+	padding: 15px;
+}
+
+.economicData-county-tableView table {
+	width: 100%;
+	height: 100%;
+	font-size: 12px;
+}
+
+.economicData-county-tableView table tr td {
+	white-space: nowrap;
+	vertical-align: middle;
+	border: 1px solid #0d5f8c;
+	text-align: center;
+	color: #C4EFF8;
+	font-size: 14px;
+}
+
+.economicData-county-tableView table tr td img {
+	margin-left: 5px;
+	margin-top: -5px;
+}
+
+.economicData-county-tableView table tr:nth-child(1) {
+	height: 11.3%;
+}
+
+.economicData-county-tableView table tr:nth-child(1),.economicData-county-tableView table tr:nth-child(2) {
+	background-color: #082F56;
+}
+
+.economicData-county-tableView table tr:nth-child(1) td {
+	font-size: 22px;
+}
+
+.economicData-county-tableView table tr:nth-child(2n + 2) {
+	background-color: #082F56;
+}
+
+.e-c-tV7 table tr:nth-child(3) {
+	background-color: #0572A8 !important;
+}
+.e-c-tV7 table tr:last-child td{
+	color: #fcff00;
+}
+.economicData-county-tableView table tr:nth-child(2n + 3) {
+	background-color: #0E4073;
+}
+.redFont {
+	color: red;
+}
+
+.economicData-county-map {
+	float: left;
+	width: 40%;
+	height: calc( 100% - 8px);
+	height: -webkit-calc(100% - 8px);
+	height: -moz-calc(100% - 8px);
+	margin-bottom: 8px;
+}
+
+.economicData-county-chart1,.economicData-county-chart2 {
+	float: left;
+	width: calc( 60% - 8px);
+	width: -webkit-calc(60% - 8px);
+	width: -moz-calc(60% - 8px);
+	height: calc( 50% - 8px);
+	height: -webkit-calc(50% - 8px);
+	height: -moz-calc(50% - 8px);
+	margin-left: 8px;
+}
+
+.economicData-county-chart1 {
+	-moz-user-select: none;
+	background: rgb(8, 47, 86) none repeat scroll 0% 0%;
+	margin-bottom: 4px;
+}
+
+.economicData-county-chart2 {
+	-moz-user-select: none;
+	background: rgb(8, 47, 86) none repeat scroll 0% 0%;
+	margin-top: 4px;
+}
+
+.economicData-pro-tab {
+	float: left;
+	width: calc(65% - 5px);
+	width: -webkit-calc(65% - 5px);
+	width: -moz-calc(65% - 5px);
+	height: calc(55% - 5px);
+	height: -webkit-calc(55% - 5px);
+	height: -moz-calc(55% - 5px);
+	margin-bottom: 5px;
+	margin-right: 5px;
+}
+
+.economicData-pro-pieChart {
+	float: right;
+	-moz-user-select: none;
+	background: rgb(8, 47, 86) none repeat scroll 0% 0%;
+	width: calc(35% - 5px);
+	width: -webkit-calc(35% - 5px);
+	width: -moz-calc(35% - 5px);
+	height: calc(55% - 5px);
+	height: -webkit-calc(55% - 5px);
+	height: -moz-calc(55% - 5px);
+	margin-bottom: 5px;
+	margin-left: 5px;
+}
+
+.economicData-pro-barChart {
+	float: left;
+	-moz-user-select: none;
+	background: rgb(8, 47, 86) none repeat scroll 0% 0%;
+	width: 100%;
+	height: calc(45% - 10px);
+	height: -webkit-calc(45% - 10px);
+	height: -moz-calc(45% - 10px);
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.echarts-title {
+	cursor: pointer;
+	float: left;
+	width: 13%;
+	height: 100%;
+	border: 1px solid #6FBBDF;
+	margin-left: 1%;
+	text-align: center;
+	padding-top: 1%;
+	color: #6FBBDF;
+	background-color: #0071B5;
+	border-radius: 6px 6px 0 0;
+	border-bottom: none;
+}
+
+.echarts-title1 {
+	cursor: pointer;
+	float: left;
+	width: 13%;
+	height: 100%;
+	margin-left: 1%;
+	text-align: center;
+	padding-top: 1%;
+	color: #FCFF00;
+	font-weight: bold;
+	border-radius: 6px 6px 0 0;
+	-moz-user-select: none;
+	position: relative;
+	background: rgb(8, 47, 86) none repeat scroll 0% 0%;
+}
+
+.echarts-map {
+	display: block;
+	width: 100%;
+	height: 87%;
+	-moz-user-select: none;
+	position: relative;
+	background: rgb(8, 47, 86) none repeat scroll 0% 0%;
+}
+
+.echarts-map1 {
+	display: none;
+	width: 100%;
+	height: 87%;
+	-moz-user-select: none;
+	position: relative;
+	background: rgb(8, 47, 86) none repeat scroll 0% 0%;
+}
+
+.btn_prev {
+	background: rgba(0, 0, 0, 0) url("../../image/dataCenter/hover_left.png") no-repeat scroll left top;
+	left:0px;
+}
+.btn_next {
+	background: rgba(0, 0, 0, 0) url("../../image/dataCenter/hover_right.png") no-repeat scroll left top;
+	right:0px;
+}
+.btn_prev, .btn_next {
+    /* display: none; */
+    height: 74px !important;
+    margin-top: -37px;
+    position: absolute;
+    top: 52%;
+    width: 74px !important;
+    cursor: pointer;
+    z-index: 11111;
+}

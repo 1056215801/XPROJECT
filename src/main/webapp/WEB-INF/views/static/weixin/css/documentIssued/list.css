@@ -1,0 +1,237 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"黑体";
+}
+a:hover, a:visited, a:link, a:active {
+    text-decoration:none;
+	color:#000;
+}
+
+html {
+	background-color:#ebebeb;
+}
+.document_main {
+	background-color:#ebebeb;
+	position:relative;
+	margin-bottom:60px;
+}
+.document_content {
+	width:100%;
+	background-color:#ebebeb;
+	position:relative;
+}
+.searchBar {
+	position:fixed;
+	top:0;
+	background-color:#f14241;
+	width:100%;
+	height:50px;
+	z-index:10000;
+}
+.search {
+	float:left;
+}
+.colorDeep { background-color:#c92827;}
+.message {
+	float:right;
+}
+
+/* 搜索栏图标 */
+.searchImg{
+	width:28px;
+	height:28px;
+	margin: 10px 12px 14px;
+}
+
+.searchInput {
+	width:79%;
+	border-radius:20px;
+	border:0;
+	position:relative;
+	top:9px;
+	text-indent:1em;
+	padding:3px 0;
+	outline:none;
+}
+.searchBtn {
+	background-color:#FF8927;
+	padding:1px 10px;
+	border-radius:10px;
+	border:0;
+	position:relative;
+	top:12px;
+	margin-left:5px;
+	color:#fff;
+}
+.dropdownContent {
+	padding:5px 10px;
+}
+.optionBtn {
+	/* float:left;
+	border:1px solid #9E9E9E;
+	color:#9E9E9E;
+	margin:5px 7px 5px 0;
+	padding:0 5px;
+	border-radius:1px;
+	cursor:pointer; */
+	float: left;
+	border: 1px solid #a6a6a6;
+	color: #646464;
+	margin: 0 7px 5px 0;
+	padding: 3px 7px;
+	border-radius: 1px;
+	cursor: pointer;
+	font-size: 12px;
+}
+.selected {
+	background-color:#f1921c;
+	color:#fff;
+	border:1px solid #f1921c;
+}
+.project_operBar {
+	background-color:#fff;
+	border-top:1px solid #f6f6f6;
+	border-bottom:1px solid #f6f6f6;
+	text-align:center;
+}
+.project_oper {
+	float:left;
+	padding:7px 0;
+}
+.borRight {
+	border-right:1px solid #f6f6f6;
+}
+.borLeft {
+	border-left:1px solid #f6f6f6;
+}
+.operSelected {
+	font-weight: bold;
+    color: #f14241;
+}
+
+.surveyCont {
+	background-color:#fff;
+	margin-bottom:10px;
+}
+.surveyDataBar {
+	margin:0 10px;
+	padding:5px 0;
+}
+.surveyDataTop {
+	padding:5px 0;
+	margin-bottom: 15px;
+}
+.redRound {
+	background-color: #f14241;
+	width:10px;
+	height:10px;
+	border-radius:10px;
+	margin-right:5px;
+	display:inline-block;
+	vertical-align: middle;
+	position: relative;
+	bottom:1px;
+}
+.surveyTitle {
+	vertical-align:middle;
+	font-size: 15px;
+}
+.surveyTime {
+	float:left;
+	font-size:12px;
+	color: #5e5e5e;
+	position: relative;
+    top: 2px;
+}
+.surveyDataBottom {
+	position:relative;
+	padding:5px 0;
+}
+.surveyPop {
+	vertical-align:middle;
+	font-size:12px;
+	color:#5e5e5e;
+}
+.surveyStateYellow {
+	position:absolute;
+	top:7px;
+	right:0;
+	padding:1px 15px;
+	background-color:#f1921c;
+	color:#fff;
+	border:0;
+	border-radius:10px;
+}
+.surveyStateGray {
+	position:absolute;
+	top:7px;
+	right:0;
+	padding:1px 15px;
+	background-color:#A3A3A3;
+	color:#fff;
+	border:0;
+	border-radius:10px;
+}
+/* 底部选项栏图标样式 */
+.navigationImg{
+	width:20px;
+	height:20px; 
+	margin-top:6%;
+}
+
+/* 加载更多 */
+.renovateTitle {
+	color: #120F0F;
+	display: inline-block;
+	font-size: 14px;
+	line-height: 14px;
+	text-align: center;
+}
+.renovate {
+	display: block;
+    text-align: center;
+	background-color:#F6F6F6;
+	padding:7px 0;
+}
+/* 小火箭 */
+#tbox{
+	width:50px;
+	height: 60px; 
+	background:url(/XProject/static/weixin/images/logistics/rocket.png) no-repeat; 
+	display:none;
+	position:fixed;
+	right:10px;
+	bottom:50px;
+	background-size:50px 50px; 
+}

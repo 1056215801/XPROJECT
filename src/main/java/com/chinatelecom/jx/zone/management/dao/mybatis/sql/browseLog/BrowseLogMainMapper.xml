@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.browseLog.BrowseLogMainMapper" >
+
+	<resultMap id="BaseResultMap" type="com.chinatelecom.jx.zone.management.bean.browseLog.BrowseLogMainBean">
+    	<id column="ID" jdbcType="DECIMAL" property="id"/>
+    	<result column="RELATED_ID" jdbcType="DECIMAL" property="relatedId"/>
+    	<result column="SOURCE" jdbcType="VARCHAR" property="source"/>
+    	<result column="ACCOUNT_ID" jdbcType="DECIMAL" property="accountId"/>
+    	<result column="REMARK" jdbcType="VARCHAR" property="remark"/>
+    	<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+    	<result column="LOG_COUNT" jdbcType="DECIMAL" property="logCount"/>
+	</resultMap>
+	
+	<!--
+	<resultMap id="ResultMapWithForeign" type="com.chinatelecom.jx.zone.management.bean.browseLog.BrowseLogMainBean" extends="BaseResultMap" >
+			 <result column="workProcessid" property="workProcessid" jdbcType="VARCHAR" />
+			 <result column="currentState" property="currentState" jdbcType="VARCHAR" />
+       <result column="organizationName" property="orgName" jdbcType="VARCHAR" />
+        <result column="companyName" property="companyName" jdbcType="VARCHAR" />
+       <result column="accountName" property="accountName" jdbcType="VARCHAR" />
+       <result column="parkName" property="parkName" jdbcType="VARCHAR" />
+  </resultMap>
+  -->
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		ID,RELATED_ID,SOURCE,ACCOUNT_ID,REMARK,CREATE_TIME,LOG_COUNT
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_BROWSE_LOG_MAIN
+    where 
+				ID = #{id,jdbcType=DECIMAL} 
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+        DELETE FROM T_BROWSE_LOG_MAIN WHERE
+				ID = #{id,jdbcType=DECIMAL} 
+    </delete>
+
+	<insert id="insert" parameterType="com.chinatelecom.jx.zone.management.bean.browseLog.BrowseLogMainBean">
+        INSERT INTO T_BROWSE_LOG_MAIN (
+        	ID ,
+        	RELATED_ID ,
+        	SOURCE ,
+        	ACCOUNT_ID ,
+        	REMARK ,
+        	CREATE_TIME ,
+        	LOG_COUNT
+        ) VALUES (
+        	#{id,jdbcType=DECIMAL} ,
+        	#{relatedId,jdbcType=DECIMAL} ,
+        	#{source,jdbcType=VARCHAR} ,
+        	#{accountId,jdbcType=DECIMAL} ,
+        	#{remark,jdbcType=VARCHAR} ,
+        	#{createTime,jdbcType=TIMESTAMP} ,
+        	#{logCount,jdbcType=DECIMAL}
+        )
+	</insert>
+	
+	<insert id="insertSelective" parameterType="com.chinatelecom.jx.zone.management.bean.browseLog.BrowseLogMainBean">
+    insert into T_BROWSE_LOG_MAIN
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+    		<if test="id != null" >
+        ID,
+      	</if>
+    		<if test="relatedId != null" >
+        RELATED_ID,
+      	</if>
+    		<if test="source != null" >
+        SOURCE,
+      	</if>
+    		<if test="accountId != null" >
+        ACCOUNT_ID,
+      	</if>
+    		<if test="remark != null" >
+        REMARK,
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME,
+      	</if>
+      	<if test="logCount != null" >
+        LOG_COUNT,
+      	</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+    		<if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      	</if>
+    		<if test="relatedId != null" >
+        #{relatedId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="source != null" >
+        #{source,jdbcType=VARCHAR},
+      	</if>
+    		<if test="accountId != null" >
+        #{accountId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      	</if>
+    		<if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+      	<if test="logCount != null" >
+        #{logCount,jdbcType=DECIMAL},
+      	</if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinatelecom.jx.zone.management.bean.browseLog.BrowseLogMainBean">
+    update T_BROWSE_LOG_MAIN
+    <set >
+    		<if test="relatedId != null" >
+        RELATED_ID = #{relatedId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="source != null" >
+        SOURCE = #{source,jdbcType=VARCHAR},
+      	</if>
+    		<if test="accountId != null" >
+        ACCOUNT_ID = #{accountId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+      	<if test="logCount != null" >
+        LOG_COUNT = #{logCount,jdbcType=DECIMAL}
+      	</if>
+    </set>
+    where 
+      ID = #{id,jdbcType=DECIMAL} 
+  </update>
+  
+	<update id="updateByPrimaryKey" parameterType="com.chinatelecom.jx.zone.management.bean.browseLog.BrowseLogMainBean">
+      UPDATE T_BROWSE_LOG_MAIN SET
+        RELATED_ID = #{relatedId,jdbcType=DECIMAL} ,
+        SOURCE = #{source,jdbcType=VARCHAR} ,
+        ACCOUNT_ID = #{accountId,jdbcType=DECIMAL} ,
+        REMARK = #{remark,jdbcType=VARCHAR} ,
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP} ,
+        LOG_COUNT = #{logCount,jdbcType=DECIMAL}
+      WHERE 
+        ID = #{id,jdbcType=DECIMAL} 
+	</update>
+	
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	        
+		       <if test="id != null">
+						<![CDATA[AND ID = #{id,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="relatedId != null">
+						<![CDATA[AND RELATED_ID = #{relatedId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="source != null and source != ''">
+						<!--
+						<![CDATA[AND SOURCE = #{source,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND SOURCE LIKE '%' || #{source,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="accountId != null">
+						<![CDATA[AND ACCOUNT_ID = #{accountId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="remark != null and remark != ''">
+						<!--
+						<![CDATA[AND REMARK = #{remark,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND REMARK LIKE '%' || #{remark,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        <if test="logCount != null" >
+	        	<![CDATA[AND LOG_COUNT = #{logCount,jdbcType=DECIMAL}]]>
+	        </if>
+		</where>
+	</sql>
+	
+ 
+  
+  <select id="queryByCond" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.browseLog.BrowseLogMainBean" >
+    select <include refid="Base_Column_List" />
+    from T_BROWSE_LOG_MAIN
+	<include refid="Base_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+  <select id="getBrowseCount" resultType="java.lang.Integer" parameterType="com.chinatelecom.jx.zone.management.bean.browseLog.BrowseLogMainBean" >
+    select count(1)
+    from T_BROWSE_LOG_MAIN
+	<include refid="Base_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select> 
+  
+  <delete id="deleteByCond" parameterType="com.chinatelecom.jx.zone.management.bean.browseLog.BrowseLogMainBean">
+  	delete from T_BROWSE_LOG_MAIN 
+  	<include refid="Base_Where_Clause" />
+  </delete>
+</mapper>
+

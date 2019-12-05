@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.projectDeclare.ProjectDeclareOrgMapper" >
+
+	<resultMap id="BaseResultMap" type="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareOrgBean">
+    	<id column="RELATED_ID" jdbcType="DECIMAL" property="relatedId"/>
+    	<result column="DECLARE_ID" jdbcType="DECIMAL" property="declareId"/>
+    	<result column="ORG_ID" jdbcType="DECIMAL" property="orgId"/>
+    	<result column="ORG_NAME" jdbcType="VARCHAR" property="orgName"/>
+    	<result column="REMARK" jdbcType="VARCHAR" property="remark"/>
+    	<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+	</resultMap>
+	
+	<!--
+	<resultMap id="ResultMapWithForeign" type="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareOrgBean" extends="BaseResultMap" >
+			 <result column="workProcessid" property="workProcessid" jdbcType="VARCHAR" />
+			 <result column="currentState" property="currentState" jdbcType="VARCHAR" />
+       <result column="organizationName" property="orgName" jdbcType="VARCHAR" />
+        <result column="companyName" property="companyName" jdbcType="VARCHAR" />
+       <result column="accountName" property="accountName" jdbcType="VARCHAR" />
+       <result column="parkName" property="parkName" jdbcType="VARCHAR" />
+  </resultMap>
+  -->
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		RELATED_ID,DECLARE_ID,ORG_ID,ORG_NAME,REMARK,CREATE_TIME
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_PROJECT_DECLARE_ORG
+    where 
+				RELATED_ID = #{relatedId,jdbcType=DECIMAL} 
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+        DELETE FROM T_PROJECT_DECLARE_ORG WHERE
+				RELATED_ID = #{relatedId,jdbcType=DECIMAL} 
+    </delete>
+
+	<insert id="insert" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareOrgBean">
+        INSERT INTO T_PROJECT_DECLARE_ORG (
+        	RELATED_ID ,
+        	DECLARE_ID ,
+        	ORG_ID ,
+        	ORG_NAME ,
+        	REMARK ,
+        	CREATE_TIME 
+        ) VALUES (
+        	#{relatedId,jdbcType=DECIMAL} ,
+        	#{declareId,jdbcType=DECIMAL} ,
+        	#{orgId,jdbcType=DECIMAL} ,
+        	#{orgName,jdbcType=VARCHAR} ,
+        	#{remark,jdbcType=VARCHAR} ,
+        	#{createTime,jdbcType=TIMESTAMP} 
+        )
+	</insert>
+	
+	<insert id="insertSelective" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareOrgBean">
+    insert into T_PROJECT_DECLARE_ORG
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+    		<if test="relatedId != null" >
+        RELATED_ID,
+      	</if>
+    		<if test="declareId != null" >
+        DECLARE_ID,
+      	</if>
+    		<if test="orgId != null" >
+        ORG_ID,
+      	</if>
+    		<if test="orgName != null" >
+        ORG_NAME,
+      	</if>
+    		<if test="remark != null" >
+        REMARK,
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME,
+      	</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+    		<if test="relatedId != null" >
+        #{relatedId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="declareId != null" >
+        #{declareId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="orgId != null" >
+        #{orgId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="orgName != null" >
+        #{orgName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      	</if>
+    		<if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareOrgBean">
+    update T_PROJECT_DECLARE_ORG
+    <set >
+    		<if test="declareId != null" >
+        DECLARE_ID = #{declareId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="orgId != null" >
+        ORG_ID = #{orgId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="orgName != null" >
+        ORG_NAME = #{orgName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    </set>
+    where 
+      RELATED_ID = #{relatedId,jdbcType=DECIMAL} 
+  </update>
+  
+	<update id="updateByPrimaryKey" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareOrgBean">
+      UPDATE T_PROJECT_DECLARE_ORG SET
+        DECLARE_ID = #{declareId,jdbcType=DECIMAL} ,
+        ORG_ID = #{orgId,jdbcType=DECIMAL} ,
+        ORG_NAME = #{orgName,jdbcType=VARCHAR} ,
+        REMARK = #{remark,jdbcType=VARCHAR} ,
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP} 
+      WHERE 
+        RELATED_ID = #{relatedId,jdbcType=DECIMAL} 
+	</update>
+	
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	        
+		       <if test="relatedId != null">
+						<![CDATA[AND RELATED_ID = #{relatedId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="declareId != null">
+						<![CDATA[AND DECLARE_ID = #{declareId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="orgId != null">
+						<![CDATA[AND ORG_ID = #{orgId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="orgName != null and orgName != ''">
+						<!--
+						<![CDATA[AND ORG_NAME = #{orgName,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND ORG_NAME LIKE '%' || #{orgName,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="remark != null and remark != ''">
+						<!--
+						<![CDATA[AND REMARK = #{remark,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND REMARK LIKE '%' || #{remark,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		</where>
+	</sql>
+	
+ 
+  
+  <select id="queryByCond" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareOrgBean" >
+    select <include refid="Base_Column_List" />
+    from T_PROJECT_DECLARE_ORG
+	<include refid="Base_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+     
+  
+</mapper>
+

@@ -1,0 +1,178 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"黑体";
+}
+a:hover, a:visited, a:link, a:active {
+    text-decoration:none;
+	color:#000;
+}
+
+html {
+	background-color:#ebebeb;
+}
+.myAppli_main {
+	background-color:#ebebeb;
+	position:relative;
+	margin-bottom:60px;
+}
+.myAppli_content {
+	width:100%;
+	background-color:#ebebeb;
+	position:relative;
+}
+.fixed_top {
+	position:fixed;
+	top:0;
+	background-color:#f14241;
+	width:100%;
+	height:50px;
+	z-index:1000;
+	font-weight:bold;
+}
+.fixed_top img {
+	margin:18px 5px 0 10px;
+}
+.fixed_top span {
+	position:absolute;
+	top:14px;
+	font-size:16px;
+	color:#FFF;
+}
+.myAppliCont {
+}
+.myAppliDataBar {
+	position:relative;
+	margin-bottom:7px;
+	background-color:#fff;
+}
+.myAppliTimeLimit {
+	width:80px;
+	font-size:16px;
+	font-weight:bold;
+	text-align:center;
+	padding:18px 0;
+}
+.myAppliTimeLimitContRed {
+	color:#f14241;
+	display:inline-block;
+	vertical-align:middle;
+	width: 45px;
+	line-height: 1.4;
+}
+.myAppliTimeLimitContGray {
+	color:#B3B3B3;
+	display:inline-block;
+	vertical-align:middle;
+	width: 45px;
+	line-height: 1.4;
+}
+.myAppliStateGreen {
+	background-color:#09D26C;
+	width:80px;
+	color:#fff;
+	border-radius:0 20px 20px 0;
+	text-align:center;
+	padding:2px 0;
+}
+.myAppliStateGray {
+	background-color:#B3B3B3;
+	width:80px;
+	color:#fff;
+	border-radius:0 20px 20px 0;
+	text-align:center;
+	padding:2px 0;
+}
+.myAppliStateBlue {
+	background-color:#45A9E4;
+	width:80px;
+	color:#fff;
+	border-radius:0 20px 20px 0;
+	text-align:center;
+	padding:2px 0;
+}
+.myAppliTitle {
+	font-weight: bold;
+	padding-right:11px;
+}
+.myAppliData {
+	margin-top: 20px;
+	position: relative;
+	color: #8a8a8a;
+	font-size:12px;
+}
+.myAppliDataLeft {
+	float: left;
+	text-align: right;
+	width: 60px;
+}
+.myAppliDataRight {
+	margin-left: 60px;
+}
+.recommendItem {
+	position:absolute;
+	top:0;
+	left:0;
+}
+
+/* 加载更多 */
+.renovateTitle {
+	color: #8D8D8D;
+	display: inline-block;
+	font-size: 14px;
+	line-height: 14px;
+	text-align: center;
+}
+.renovate {
+	display: block;
+    text-align: center;
+	background-color:#F6F6F6;
+	padding:7px 0;
+}
+
+/* 小火箭 */
+#tbox{
+	width:50px;
+	float:right;
+	position:fixed;
+	right:10px;
+	bottom:50px;
+	overflow:visible;
+}
+#gotop{ 
+	width:50px; 
+	height:60px; 
+	background:url(/XProject/static/weixin/images/logistics/rocket.png) no-repeat; 
+	display:block;
+	background-size:50px 50px; 
+}

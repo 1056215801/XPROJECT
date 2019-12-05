@@ -1,0 +1,191 @@
+{
+	//企业税务信用
+	"x_data.z_fi_credit_result":{
+		"year":"评价年度",
+		"no":"纳税人识别号",
+		"level1":"纳税信用等级",
+		"org":"评价单位"
+	},
+	
+	//进出口信用
+	"x_data.z_fi_operating_export_result":{
+		"reg_gov":"注册海关",
+		"trade_type":"经营类别",
+		"reg_date":"注册日期",
+		"credit_grade-Grade":"信用等级",
+		"credit_grade-Time":"认定日期",
+	},
+	
+	//对外投资
+	"x_data.z_info_investment_result":{
+		"name":"被投资企业名称",
+		"oper_name":"被投资法定代表人",
+		"regist_capi":"注册资本",
+		"funded_ratio":"出资比例",
+		"start_date":"成立日期",
+		"status":"状态",
+	},
+	
+	//控股企业 
+	"x_data.z_ser_hold_result":{
+		"name":"控股企业名称",
+		"percent_total":"投资比例",
+		"paths":"投资链",
+	},
+	
+	//行政许可 工商
+	"x_data.z_fi_license_gs_result":{
+		"licens_doc_name":"许可文件名称",
+		"licens_office":"评价单位",
+	},
+	
+	//行政许可 信用中国
+	"x_data.z_fi_license_cn_result":{
+		"name":"项目名称",
+		"case_no":"案号",
+		"province":"地域",
+		"lian_date":"决定日期",
+	},
+	
+	//法律诉讼 被执行人信息
+	"x_data.z_legal_sx_zx_result":{
+		"anno":"案号",
+		"execute_gov":"执行法院",
+		"biaodi":"执行标地",
+		"liandate":"立案时间",
+	},
+	
+	//法律诉讼 失信被执行人
+	"x_data.z_legal_sx_sx_result":{
+		"anno":"案件编号",
+		"executestatus":"被执行人的履行情况",
+		"yiwu":"法律生效文书确定的义务",
+		"executegov":"执行法院",
+		"executeunite":"作出执行依据单位",
+		"publicdate":"发布时间",
+	},
+	
+	//法律诉讼 裁判文书
+	"x_data.z_legal_judgment_result":{
+		"case_no":"判决案号",
+		"case_name":"标题",
+		"content":"判决结果",
+		"judge_date":"发布日期",
+	},
+	
+	//法律诉讼 法院公告
+	"x_data.z_legal_court_result":{
+		"category":"公告类型",
+		"party":"公告人",
+		"party":"当事人",
+		"publish_date":"刊登日期",
+	},
+	
+	//法律诉讼 开庭公告
+	"x_data.z_legal_courting_result":{
+		"open_date":"开庭日期",
+		"case_reason":"案由",
+		"prosecutor":"公诉人原告上诉人申请人",
+		"defendant":"被告人被告被上诉人被申请人",
+	},
+	
+	//法律诉讼 司法拍卖
+	"x_data.z_risk_sale_result":{
+		"name":"名称",
+		"yi_wu":"起拍价",
+		"action_remark":"拍卖时间",
+		"executegov":"委托法院",
+	},
+	
+	//法律诉讼 司法协助
+	"x_data.z_legal_judicial_result":{
+		"executed_by":"被执行人",
+		"equity_amount":"股权数额",
+		"execution_notice_num":"执行通知文号",
+		"status":"类型状态",
+	},
+	
+	//法律诉讼 送达公告 TODO
+	"x_data.z_fi_credit_result":{
+		"level1":"公告名称",
+		"no":"法院名称",
+		"org":"发布日期",
+	},
+	
+	//招标股
+	"x_data.z_fi_operating_tender_result":{
+		"title":"名称",
+		"province_name":"所在地区",
+		"channel_name":"类型",
+		"pubdate":"发布日期",
+	},
+	
+	//融资信息
+	"x_data.z_fi_operating_fi_result":{
+		"date1":"日期",
+		"product_name":"产品名称",
+		"round":"融资轮次",
+		"amount":"金额",
+		"investment":"投资方",
+	},
+	
+	//地块公示
+	"x_data.z_fi_publish_result":{
+		"address":"地块位置",
+		"publish_gov":"发布机关",
+		"admin_area":"行政区",
+		"publish_date":"发布日期",
+	},
+	
+	//购地信息
+	"x_data.z_fi_purchase_result":{
+		"project_location":"项目位置",
+		"land_use":"土地用途",
+		"area":"面积",
+		"admin_area":"行政区",
+		"land_supply_way":"供地方式",
+		"sign_time":"合同签订日期",
+	},
+	
+	//土地转让
+	"x_data.z_fi_transfer_result":{
+		"address":"土地坐落",
+		"admin_area":"行政区",
+		"old_owner":"原土地使用权人",
+		"new_owner":"现土地使用权人",
+	},
+	
+	//抽查检查
+	"x_data.z_s_spot_check":{
+		"executive_org":"检查实施机关",
+		"type":"类型",
+		"date1":"日期",
+		"consequence":"结果"
+	},
+	
+	//债券信息
+	"x_data.z_fi_bond_result":{
+		"short_name":"债券简称",
+		"bond_code":"债券代码",
+		"bond_type":"债券类型",
+		"release_date":"发行日期",
+		"launch_date":"上市日期",
+	},
+	
+	//新闻舆情
+	"x_data.z_fi_extra_news_result":{
+		"title":"新闻标题",
+		"publish_time":"新闻发布时间",
+		"source":"新闻来源",
+		"url":"新闻url",
+	},
+	
+	//企业年报 TODO
+	"x_data.z_fi_credit_result":{
+		"level1":"纳税信用等级",
+		"no":"纳税人识别号",
+		"org":"评价单位",
+		"year":"评价年度",
+	}
+
+}

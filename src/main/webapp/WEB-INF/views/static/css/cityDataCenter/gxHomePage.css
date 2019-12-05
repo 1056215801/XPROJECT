@@ -1,0 +1,450 @@
+@charset "utf-8";
+/* CSS Document */
+.cp {cursor: pointer;}
+/* 首页 */
+.content {
+    padding: 10px 15px;
+    height: -webkit-calc(100% - 90px);
+    height: calc(100% - 90px);
+    position: relative;
+}
+.tabHeadlineBar {
+    position: relative;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+}
+.tabHeadline {
+    display: inline-block;
+    vertical-align: middle;
+    width: calc(100% - 180px);
+    height: 32px;
+    color:rgba(0,234,255,1);
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 32px;
+	border-bottom: 2px solid #62C6FF;
+	overflow: hidden;
+}
+.tabHeadline span {
+	display: inline-block;
+	width: 100%;
+	line-height: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.tabCaptionBar {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    /* background: linear-gradient(to right, #0F29A0, rgba(2,65,200,0)); */
+    background: linear-gradient(90deg,rgba(0,74,216,1),rgba(2,64,200,0));
+    padding: 0 10px;
+    line-height: 40px;
+}
+.tabCaption {
+    /* width: calc(100% - 110px); */
+    width: auto;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+}
+.tabDataName {
+	font-size: 20px;
+	font-weight: bold;
+	color: #FFFD2E;
+	margin-left: 10px;
+}
+.tabDataNameSm {
+	display: inline-block;
+	width: calc(100% - 10px);
+	font-size: 16px;
+	font-weight: bold;
+	color: #FFFD2E;
+	margin-left: 10px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.tabDataValue {
+	font-size: 30px;
+	font-family: DIN-Medium;
+	font-weight: 500;
+	color: #FFFD2E;
+	margin-left: 10px;
+}
+.tabDataUnit {
+	font-size: 14px;
+	font-weight: 400;
+	color: #00EAFF;
+	margin-left: 3px;
+	vertical-align: baseline;
+	position: relative;
+	top: 11px;
+}
+.tabContBar .blockStyle + .blockStyle {
+    margin-top: 5px;
+}
+.tabContBar .spanStyle + .spanStyle {
+    margin-left: 5px;
+}
+.productBar {
+	position: relative;
+	width: 100%;
+	height: 100% ;
+	overflow: hidden;
+}
+.product {
+	position: relative;
+	height: 100%;
+	overflow: hidden;
+	z-index: 1000;
+}
+.product a {
+	position: absolute;
+	display: block;
+	border-radius: 50%;
+	color: #fff;
+	font-weight: bold;
+	font-size: 16px;
+	text-decoration: none;
+	text-align: center;
+}
+.product .middle-box {
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+	text-align: center;
+}
+.product .middle-box img {width: 25px;}
+.product .middle-box p {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.bubbleBar {
+	border-radius:50%;
+	text-align: center;
+}
+.bubbleCont {
+	display: inline-block;
+	vertical-align: middle;
+}
+.bubbleName {
+	font-size: 14px;
+	color: #FFF;
+	line-height: 1.2;
+	margin-top: 3px;
+}
+.blueBu {
+	position: absolute;
+	top: 3%;
+	left: 36%;
+	width: 150px;
+	height: 150px;
+	background: rgba(35,242,255,0.3);
+	border: 2px solid rgba(106,232,255,1);
+}
+.yellowBu {
+	position: absolute;
+	top: 7%;
+	left: 5%;
+	width: 114px;
+	height: 114px;
+	background: rgba(255,158,64,0.3);
+	border: 2px solid rgba(255,192,56,1);
+}
+.redBu {
+	position: absolute;
+	bottom: 10%;
+	left: 40%;
+	width: 94px;
+	height: 94px;
+	background:rgba(255,55,74,0.3);
+	border:2px solid rgba(255,113,113,1);
+}
+.greenBu {
+	position: absolute;
+	bottom: 5%;
+	left: 3%;
+	width: 140px;
+	height: 140px;
+	background: rgba(56,255,70,0.3);
+	border: 2px solid rgba(101,255,126,1);
+}
+.purpleBu {
+	position: absolute;
+	top: 7%;
+	right: 3%;
+	width: 94px;
+	height: 94px;
+	background: rgba(168,44,255,0.3);
+	border: 2px solid rgba(178,104,255,1);
+}
+.lilacColourBu {
+	position: absolute;
+	bottom: 5%;
+	right: 5%;
+	width: 114px;
+	height: 114px;
+	background: rgba(125,125,255,0.3);
+	border: 2px solid rgba(125,125,255,1);
+}
+.color1 {
+	-webkit-box-shadow: inset 0px 0px 5px 5px rgba(106,232,255,.5);
+	box-shadow: inset 0px 0px 5px 5px rgba(106,232,255,.5);
+}
+.color2 {
+	-webkit-box-shadow: inset 0px 0px 5px 5px rgba(255,192,56,.5);
+	box-shadow: inset 0px 0px 5px 5px rgba(255,192,56,.5);
+}
+.color3 {
+	-webkit-box-shadow: inset 0px 0px 5px 5px rgba(255,113,113,.5);
+	box-shadow: inset 0px 0px 5px 5px rgba(255,113,113,.5);
+}
+.color4 {
+	-webkit-box-shadow: inset 0px 0px 5px 5px rgba(101,255,126,.5);
+	box-shadow: inset 0px 0px 5px 5px rgba(101,255,126,.5);
+}
+.color5 {
+	-webkit-box-shadow: inset 0px 0px 5px 5px rgba(178,104,255,.5);
+	box-shadow: inset 0px 0px 5px 5px rgba(178,104,255,.5);
+}
+.color6 {
+	-webkit-box-shadow: inset 0px 0px 5px 5px rgba(125,125,255,.5);
+	box-shadow: inset 0px 0px 5px 5px rgba(125,125,255,.5);
+}
+.eject_caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    color: #00EAFF;
+    margin-left: 5px;
+    vertical-align: middle;
+    border-top: 6px dashed;
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+}
+/* 首页 */
+
+/* 企业画像 */
+.companyInfoBar {
+    height: calc(100% - 230px - 0px);
+}
+/* 企业画像 */
+
+/* 运营管理 */
+.tabCaptionUnit {
+	font-size: 14px;
+	color: #0FFFFC;
+}
+.selectBar {
+    margin-bottom: 10px;
+    color: #fff;
+    height: 20px;
+    font-size: 14px;
+}
+.selectBar span {
+    margin-right: 30px;
+    display: inline-block;
+    font-size: 14px;
+    color: #00DEFF;
+    -webkit-transition: .5s 0s;
+    transition: .5s 0s;
+    cursor: pointer;
+}
+.selectBar span:hover, .selectBar .on {
+    color: #FFEE2D;
+}
+.fourth-price-num > span {
+    background: linear-gradient(90deg,rgba(0,74,216,1),rgba(2,64,200,0));
+    text-algin: left;
+    color: #FFFD2E;
+    width: 25%;
+}
+.fourth-price-num .middle-box {
+    display: block;
+    padding: 9px 10px 9px 10px;
+    line-height: inherit;
+    font-size: 25px;
+}
+.fourth-price-num .middle-box > p {
+    font-size: 14px;
+    color: #fff;
+}
+.fourth-price-num h1.orangeT, .fourth-price-num h1.bgT {
+    color: #FFFD2E;
+}
+.fourth-price-num > span:last-child {
+    width: 25%;
+}
+.fourth-price-num h1 > small {
+    font-size: 34px;
+    color: #FFFD2E;
+    margin-left: 5px;
+    position: relative;
+    top: -3px;
+}
+.fourth-price-num .bigProjectDataNum .dataNums .dataOne {
+    background-color: transparent;
+    margin: 0;
+    width: 27px;
+    height: 40px;
+}
+.bigProjectDataNum .dataNums .tt span {
+    color: #FFFD2E;
+    font-size: 34px;
+}
+.tabBox {
+	display: inline-block;
+	width: calc(33.33% - 10px);
+	height: calc(50% - 10px);
+	margin: 10px 10px 0 0;
+	padding: 10px 15px;
+	background: linear-gradient(90deg,rgba(0,74,216,1),rgba(2,64,200,0));
+	border-radius: 4px;
+}
+.tabC {
+	display: inline-block;
+	vertical-align: middle;
+}
+.tabT {
+	font-size: 14px;
+	color: #FFFFFF;
+	margin-bottom: 5px;
+}
+.tabV {
+	font-size: 26px;
+	color: #FFFD2E;
+}
+.gxLegend {
+    float: right;
+    display: inline-block;
+} 
+.gxLegend span {
+    font-size: 12px;
+    color: #fff;
+    border-left: none !important;
+}
+.gxLegend span i {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #FFE42D;
+    vertical-align: text-top;
+    margin-right: 5px;
+}
+.gxLegend span:first-child i {
+    background: #00FFFF;
+}
+.gxLegend span.on i {
+    background: #eee;
+}
+/* 运营管理 */
+
+@media screen and (max-width: 1600px){
+	.tabCaptionBar {
+	    height: 30px;
+	    line-height: 30px;
+	}
+	.tabContBar {
+	    height: -webkit-calc(100% - 30px);
+	    height: calc(100% - 30px);
+    }
+    .outsideBox {
+   		padding: 5px 10px;
+    }
+    .tabDataName {
+        font-size: 20px;
+    }
+    .tabDataValue {
+        font-size: 25px !important;
+    } 
+    .tabDataUnit {
+        top: 8px !important;
+    }
+    .blueBu {
+		width: 120px;
+		height: 120px;
+	}
+	.yellowBu {
+		width: 91.2px;
+		height: 91.2px;
+	}
+	.redBu {
+		width: 75.2px;
+		height: 75.2px;
+	}
+	.greenBu {
+		width: 112px;
+		height: 112px;
+	}
+	.purpleBu {
+		width: 75.2px;
+		height: 75.2px;
+	}
+	.lilacColourBu {
+		width: 91.2px;
+		height: 91.2px;
+	}
+	.fourth-price-num .middle-box > p {
+	    font-size: 13px;
+	}
+	.bigProjectDataNum .dataNums .dataOne {
+	    width: 21px !important;
+	}
+	.bigProjectDataNum .dataNums .tt span {
+	    font-size: 30px;
+	}
+	.fourth-price-num h1 > small {
+	    font-size: 30px;
+	    top: -1px;
+	}
+}
+@media screen and (max-width: 1440px){
+	.blueBu {
+		width: 120px;
+		height: 120px;
+	}
+	.yellowBu {
+		width: 91.2px;
+		height: 91.2px;
+	}
+	.redBu {
+		width: 75.2px;
+		height: 75.2px;
+	}
+	.greenBu {
+		width: 112px;
+		height: 112px;
+	}
+	.purpleBu {
+		width: 75.2px;
+		height: 75.2px;
+	}
+	.lilacColourBu {
+		width: 91.2px;
+		height: 91.2px;
+	}
+	.fourth-price-num .middle-box > p {
+	    font-size: 12px;
+	}
+	.bigProjectDataNum .dataNums .dataOne {
+	    width: 18px !important;
+	}
+	.bigProjectDataNum .dataNums .tt span {
+	    font-size: 25px;
+	}
+	.fourth-price-num h1 > small {
+	    font-size: 25px;
+	    top: -4px;
+	}
+}

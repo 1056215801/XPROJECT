@@ -1,0 +1,119 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"Microsoft YaHei";
+}
+a:hover, a:visited, a:link, a:active {
+    text-decoration:none;
+	color:#000;
+}
+
+.preview_main {
+	width:100%;
+}
+.preview_content {
+	width:90%;
+	margin:10px auto 20px;
+	border: 1px solid #ccc;
+}
+.preview_tipBar {
+	width:90%;
+	margin:10px auto 0;
+	border:1px solid #FED245;
+	background-color:#FDFFD8;
+	padding:10px 0;
+}
+.preview_tip {
+	float:left;
+	color:#F00;
+	margin:5px 15px 0;
+}
+.yellowBtnContral {
+	background-color:#f1921c;
+	border:1px solid #f1921c;
+	color:#fff;
+	width:100px;
+	float:right;
+	padding:3px 0;
+	cursor:pointer;
+}
+.grayBtnContral {
+	background-color:#F2F2F2;
+	border:1px solid #E2E2E2;
+	margin-right:10px;
+	width:100px;
+	float:right;
+	padding:3px 0;
+	cursor:pointer;
+}
+.preview_cont {
+	width:90%;
+	margin:0 auto 20px;
+}
+.preview_title {
+	font-size:24px;
+	font-weight:bold;
+	text-align:center;
+	padding:20px;
+}
+.preview_top {
+	padding:10px 40px;
+	border-bottom:2px dashed #ccc;
+	font-size:12px;
+	color:#a8a8a8;
+}
+.font14 {
+	font-size:14px;
+}
+.span_contral_t-3 {
+	position:relative;
+	top:-3px;
+}
+.img_contral_t1 {
+	position:relative;
+	top:1px;
+}
+.img_contral_t4 {
+	position:relative;
+	top:4px;
+}
+.survey_subject {
+	font-weight:bold;
+	margin-top:20px;
+}
+.textareContral {
+	padding:10px;
+	width:80%;
+	font-size:12px;
+	margin:5px 40px 0;
+}

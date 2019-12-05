@@ -1,0 +1,12 @@
+eclipse.preferences.version=1
+encoding//src/main/conf/development=UTF-8
+encoding//src/main/java=UTF-8
+encoding//src/main/resources=UTF-8
+encoding//src/main/resources/development.properties=UTF-8
+encoding//src/main/resources/integration.properties=UTF-8
+encoding//src/main/resources/integration_rh.properties=UTF-8
+encoding//src/main/resources/production.properties=UTF-8
+encoding//src/main/resources/project.properties=UTF-8
+encoding//src/main/resources/weixin.properties=UTF-8
+encoding//src/test/java=UTF-8
+encoding/<project>=UTF-8

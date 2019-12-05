@@ -1,0 +1,105 @@
+http://www.cnblogs.com/gbin1/archive/2011/11/24/2262202.html
+
+最近需要寻找一个比较酷的页面幻灯显示插件，发现Nivo Slider是一个非常不错的选择。如果你需要演示新产品，或者你需要比较酷的幻灯片转化效果，Nivo幻灯是你的一个选择之一。
+
+主要特性：
+
+号称世界最棒的jQuery幻灯插件
+16种幻灯变化的特效 
+简单并且配置灵活
+体积小并且符合语义
+jQuery插件使用免费（但是wordpress插件需要付费：20美元）
+这里我稍微说一下，jQuery的插件到处都有，我们需要有目的的选择一下插件，这个网站拥有自己独立的网站，网站非常正规，别的不说，使用着就放心。而且有技术支持团队，不过只支持付费用户。幻灯效果和效率都不错，堪比flash的幻灯。例如， 这个flash的幻灯显示。
+
+Javascript代码
+类库引用：
+
+<script type="text/javascript" src="scripts/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="../jquery.nivo.slider.pack.js"></script>
+
+调用代码：
+
+$(window).load(function() {
+    $('#slider').nivoSlider();
+});
+
+
+你可以自定义如下选项：
+
+effect: 设置幻灯变化效果，可以使用'random', 或者指定效果如, 'fold,fade,sliceDown'
+slices: slice动画效果参数
+boxCols: box动画效果参数
+boxRows:box动画效果参数
+animSpeed: 动画变化速度
+pauseTime: 每个幻灯时间
+startSlide: 起始幻灯
+directionNav: 是否显示“上一个”和“下一个”导航
+directionNavHide: 是否悬浮显示导航
+controlNav: 是否显示导航控制
+controlNavThumbs: 导航是否使用缩略图
+controlNavThumbsFromRel: 是否让图片使用rel
+controlNavThumbsSearch: 导航缩略图后缀
+controlNavThumbsReplace: 导航缩略图替换
+keyboardNav: 是否键盘导航
+pauseOnHover: 悬浮是否停止
+manualAdvance: 是否手动变化幻灯
+captionOpacity: 标题透明度
+prevText: 上一张文字设定
+nextText: 下一张文字设定
+randomStart: 是否随机开始
+beforeChange: 函数，在幻灯变化前调用
+afterChange:函数，在幻灯变化后调用
+slideshowEnd:函数，在幻灯变化完成调用
+lastSlide:函数，在最后一个幻灯变化完成调用
+afterLoad: 函数，slider加载后调用
+
+代码示例：
+<script type="text/javascript">
+$(window).load(function() {
+    $('#slider').nivoSlider({
+        effect: 'random', // Specify sets like: 'fold,fade,sliceDown'
+        slices: 15, // For slice animations
+        boxCols: 8, // For box animations
+        boxRows: 4, // For box animations
+        animSpeed: 500, // Slide transition speed
+        pauseTime: 3000, // How long each slide will show
+        startSlide: 0, // Set starting Slide (0 index)
+        directionNav: true, // Next & Prev navigation
+        directionNavHide: true, // Only show on hover
+        controlNav: true, // 1,2,3... navigation
+        controlNavThumbs: false, // Use thumbnails for Control Nav
+        controlNavThumbsFromRel: false, // Use image rel for thumbs
+        controlNavThumbsSearch: '.jpg', // Replace this with...
+        controlNavThumbsReplace: '_thumb.jpg', // ...this in thumb Image src
+        keyboardNav: true, // Use left & right arrows
+        pauseOnHover: true, // Stop animation while hovering
+        manualAdvance: false, // Force manual transitions
+        captionOpacity: 0.8, // Universal caption opacity
+        prevText: 'Prev', // Prev directionNav text
+        nextText: 'Next', // Next directionNav text
+        randomStart: false, // Start on a random slide
+        beforeChange: function(){}, // Triggers before a slide transition
+        afterChange: function(){}, // Triggers after a slide transition
+        slideshowEnd: function(){}, // Triggers after all slides have been shown
+        lastSlide: function(){}, // Triggers when last slide is shown
+        afterLoad: function(){} // Triggers when slider has loaded
+    });
+});
+</script>
+
+HTML代码
+<div class="slider-wrapper theme-default">
+    <div class="ribbon"></div>
+    <div id="slider" class="nivoSlider">
+        <img src="images/toystory.jpg" alt=""/>
+        <a href="http://dev7studios.com"><img src="images/up.jpg" alt="" title="This is an example of a caption"/></a>
+        <img src="images/walle.jpg" alt="" data-transition="slideInLeft"/>
+        <img src="images/nemo.jpg" alt="" title="#htmlcaption"/>
+    </div>
+    <div id="htmlcaption" class="nivo-html-caption">
+        <strong>This</strong> is an example of a <em>HTML</em> caption with <a href="#">a link</a>.
+    </div>
+</div>
+
+如何为每一个幻灯自定义变化效果：
+<img src="images/slide1.jpg" alt="" data-transition="slideInLeft"/>

@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.projectActivity.ProjectActivityComplainMapper" >
+
+	<resultMap id="BaseResultMap" type="com.chinatelecom.jx.zone.management.bean.projectActivity.ProjectActivityComplainBean">
+    	<id column="COMPLAIN_ID" jdbcType="DECIMAL" property="complainId"/>
+    	<result column="ACTIVITY_ID" jdbcType="DECIMAL" property="activityId"/>
+    	<result column="SUBMIT_ACCOUNT" jdbcType="DECIMAL" property="submitAccount"/>
+    	<result column="SUBMIT_USER" jdbcType="VARCHAR" property="submitUser"/>
+    	<result column="SUBMIT_CONTENT" jdbcType="VARCHAR" property="submitContent"/>
+    	<result column="SUBMIT_TIME" jdbcType="TIMESTAMP" property="submitTime"/>
+    	<result column="RESPONSE_RST" jdbcType="DECIMAL" property="responseRst"/>
+    	<result column="RESPONSE_CONTENT" jdbcType="VARCHAR" property="responseContent"/>
+    	<result column="RESPONSE_TIME" jdbcType="TIMESTAMP" property="responseTime"/>
+    	<result column="REMARK" jdbcType="VARCHAR" property="remark"/>
+    	<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+    	<result column="ACTIVITY_NAME" jdbcType="VARCHAR" property="activityName"/>
+    	<result column="STATUS" jdbcType="DECIMAL" property="status"/>
+	</resultMap>
+	
+	<!--
+	<resultMap id="ResultMapWithForeign" type="com.chinatelecom.jx.zone.management.bean.projectActivity.ProjectActivityComplainBean" extends="BaseResultMap" >
+			 <result column="workProcessid" property="workProcessid" jdbcType="VARCHAR" />
+			 <result column="currentState" property="currentState" jdbcType="VARCHAR" />
+       <result column="organizationName" property="orgName" jdbcType="VARCHAR" />
+        <result column="companyName" property="companyName" jdbcType="VARCHAR" />
+       <result column="accountName" property="accountName" jdbcType="VARCHAR" />
+       <result column="parkName" property="parkName" jdbcType="VARCHAR" />
+  </resultMap>
+  -->
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		COMPLAIN_ID,ACTIVITY_ID,SUBMIT_ACCOUNT,SUBMIT_USER,SUBMIT_CONTENT,SUBMIT_TIME,RESPONSE_RST,RESPONSE_CONTENT,RESPONSE_TIME,REMARK,CREATE_TIME
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_PROJECT_ACTIVITY_COMPLAIN
+    where 
+				COMPLAIN_ID = #{complainId,jdbcType=DECIMAL} 
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+        DELETE FROM T_PROJECT_ACTIVITY_COMPLAIN WHERE
+				COMPLAIN_ID = #{complainId,jdbcType=DECIMAL} 
+    </delete>
+
+	<insert id="insert" parameterType="com.chinatelecom.jx.zone.management.bean.projectActivity.ProjectActivityComplainBean">
+        INSERT INTO T_PROJECT_ACTIVITY_COMPLAIN (
+        	COMPLAIN_ID ,
+        	ACTIVITY_ID ,
+        	SUBMIT_ACCOUNT ,
+        	SUBMIT_USER ,
+        	SUBMIT_CONTENT ,
+        	SUBMIT_TIME ,
+        	RESPONSE_RST ,
+        	RESPONSE_CONTENT ,
+        	RESPONSE_TIME ,
+        	REMARK ,
+        	CREATE_TIME 
+        ) VALUES (
+        	#{complainId,jdbcType=DECIMAL} ,
+        	#{activityId,jdbcType=DECIMAL} ,
+        	#{submitAccount,jdbcType=DECIMAL} ,
+        	#{submitUser,jdbcType=VARCHAR} ,
+        	#{submitContent,jdbcType=VARCHAR} ,
+        	#{submitTime,jdbcType=TIMESTAMP} ,
+        	#{responseRst,jdbcType=DECIMAL} ,
+        	#{responseContent,jdbcType=VARCHAR} ,
+        	#{responseTime,jdbcType=TIMESTAMP} ,
+        	#{remark,jdbcType=VARCHAR} ,
+        	#{createTime,jdbcType=TIMESTAMP} 
+        )
+	</insert>
+	
+	<insert id="insertSelective" parameterType="com.chinatelecom.jx.zone.management.bean.projectActivity.ProjectActivityComplainBean">
+    insert into T_PROJECT_ACTIVITY_COMPLAIN
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+    		<if test="complainId != null" >
+        COMPLAIN_ID,
+      	</if>
+    		<if test="activityId != null" >
+        ACTIVITY_ID,
+      	</if>
+    		<if test="submitAccount != null" >
+        SUBMIT_ACCOUNT,
+      	</if>
+    		<if test="submitUser != null" >
+        SUBMIT_USER,
+      	</if>
+    		<if test="submitContent != null" >
+        SUBMIT_CONTENT,
+      	</if>
+    		<if test="submitTime != null" >
+        SUBMIT_TIME,
+      	</if>
+    		<if test="responseRst != null" >
+        RESPONSE_RST,
+      	</if>
+    		<if test="responseContent != null" >
+        RESPONSE_CONTENT,
+      	</if>
+    		<if test="responseTime != null" >
+        RESPONSE_TIME,
+      	</if>
+    		<if test="remark != null" >
+        REMARK,
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME,
+      	</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+    		<if test="complainId != null" >
+        #{complainId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="activityId != null" >
+        #{activityId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="submitAccount != null" >
+        #{submitAccount,jdbcType=DECIMAL},
+      	</if>
+    		<if test="submitUser != null" >
+        #{submitUser,jdbcType=VARCHAR},
+      	</if>
+    		<if test="submitContent != null" >
+        #{submitContent,jdbcType=VARCHAR},
+      	</if>
+    		<if test="submitTime != null" >
+        #{submitTime,jdbcType=TIMESTAMP},
+      	</if>
+    		<if test="responseRst != null" >
+        #{responseRst,jdbcType=DECIMAL},
+      	</if>
+    		<if test="responseContent != null" >
+        #{responseContent,jdbcType=VARCHAR},
+      	</if>
+    		<if test="responseTime != null" >
+        #{responseTime,jdbcType=TIMESTAMP},
+      	</if>
+    		<if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      	</if>
+    		<if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinatelecom.jx.zone.management.bean.projectActivity.ProjectActivityComplainBean">
+    update T_PROJECT_ACTIVITY_COMPLAIN
+    <set >
+    		<if test="activityId != null" >
+        ACTIVITY_ID = #{activityId,jdbcType=DECIMAL},
+      	</if>
+    		<if test="submitAccount != null" >
+        SUBMIT_ACCOUNT = #{submitAccount,jdbcType=DECIMAL},
+      	</if>
+    		<if test="submitUser != null" >
+        SUBMIT_USER = #{submitUser,jdbcType=VARCHAR},
+      	</if>
+    		<if test="submitContent != null" >
+        SUBMIT_CONTENT = #{submitContent,jdbcType=VARCHAR},
+      	</if>
+    		<if test="submitTime != null" >
+        SUBMIT_TIME = #{submitTime,jdbcType=TIMESTAMP},
+      	</if>
+    		<if test="responseRst != null" >
+        RESPONSE_RST = #{responseRst,jdbcType=DECIMAL},
+      	</if>
+    		<if test="responseContent != null" >
+        RESPONSE_CONTENT = #{responseContent,jdbcType=VARCHAR},
+      	</if>
+    		<if test="responseTime != null" >
+        RESPONSE_TIME = #{responseTime,jdbcType=TIMESTAMP},
+      	</if>
+    		<if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      	</if>
+    </set>
+    where 
+      COMPLAIN_ID = #{complainId,jdbcType=DECIMAL} 
+  </update>
+  
+	<update id="updateByPrimaryKey" parameterType="com.chinatelecom.jx.zone.management.bean.projectActivity.ProjectActivityComplainBean">
+      UPDATE T_PROJECT_ACTIVITY_COMPLAIN SET
+        ACTIVITY_ID = #{activityId,jdbcType=DECIMAL} ,
+        SUBMIT_ACCOUNT = #{submitAccount,jdbcType=DECIMAL} ,
+        SUBMIT_USER = #{submitUser,jdbcType=VARCHAR} ,
+        SUBMIT_CONTENT = #{submitContent,jdbcType=VARCHAR} ,
+        SUBMIT_TIME = #{submitTime,jdbcType=TIMESTAMP} ,
+        RESPONSE_RST = #{responseRst,jdbcType=DECIMAL} ,
+        RESPONSE_CONTENT = #{responseContent,jdbcType=VARCHAR} ,
+        RESPONSE_TIME = #{responseTime,jdbcType=TIMESTAMP} ,
+        REMARK = #{remark,jdbcType=VARCHAR} ,
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP} 
+      WHERE 
+        COMPLAIN_ID = #{complainId,jdbcType=DECIMAL} 
+	</update>
+	
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	        
+		       <if test="complainId != null">
+						<![CDATA[AND COMPLAIN_ID = #{complainId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="activityId != null">
+						<![CDATA[AND ACTIVITY_ID = #{activityId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="submitAccount != null">
+						<![CDATA[AND SUBMIT_ACCOUNT = #{submitAccount,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="submitUser != null and submitUser != ''">
+						<!--
+						<![CDATA[AND SUBMIT_USER = #{submitUser,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND SUBMIT_USER LIKE '%' || #{submitUser,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="submitContent != null and submitContent != ''">
+						<!--
+						<![CDATA[AND SUBMIT_CONTENT = #{submitContent,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND SUBMIT_CONTENT LIKE '%' || #{submitContent,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+	        
+		       <if test="responseRst != null">
+						<![CDATA[AND RESPONSE_RST = #{responseRst,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="responseContent != null and responseContent != ''">
+						<!--
+						<![CDATA[AND RESPONSE_CONTENT = #{responseContent,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND RESPONSE_CONTENT LIKE '%' || #{responseContent,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+	        
+		       <if test="remark != null and remark != ''">
+						<!--
+						<![CDATA[AND REMARK = #{remark,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND REMARK LIKE '%' || #{remark,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		</where>
+	</sql>
+	
+ 	
+ 	<sql id="Base_Where_Clause_Rewrite">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	        
+		       <if test="complainId != null">
+						<![CDATA[AND a.COMPLAIN_ID = #{complainId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="activityId != null">
+						<![CDATA[AND a.ACTIVITY_ID = #{activityId,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="submitAccount != null">
+						<![CDATA[AND a.SUBMIT_ACCOUNT = #{submitAccount,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="submitUser != null and submitUser != ''">
+						<!--
+						<![CDATA[AND a.SUBMIT_USER = #{submitUser,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND a.SUBMIT_USER LIKE '%' || #{submitUser,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="submitContent != null and submitContent != ''">
+						<!--
+						<![CDATA[AND a.SUBMIT_CONTENT = #{submitContent,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND a.SUBMIT_CONTENT LIKE '%' || #{submitContent,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+	        
+		       <if test="responseRst != null">
+						<![CDATA[AND a.RESPONSE_RST = #{responseRst,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="responseContent != null and responseContent != ''">
+						<!--
+						<![CDATA[AND a.RESPONSE_CONTENT = #{responseContent,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND a.RESPONSE_CONTENT LIKE '%' || #{responseContent,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+	        
+		       <if test="remark != null and remark != ''">
+						<!--
+						<![CDATA[AND a.REMARK = #{remark,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND a.REMARK LIKE '%' || #{remark,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		</where>
+	</sql>
+ 	
+  
+  <select id="queryByCond" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.projectActivity.ProjectActivityComplainBean" >
+    select <include refid="Base_Column_List" />
+    from T_PROJECT_ACTIVITY_COMPLAIN
+	<include refid="Base_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+     
+  <select id="queryByCondRewrite" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.projectActivity.ProjectActivityComplainBean" >
+    select * 
+    from T_PROJECT_ACTIVITY_COMPLAIN a 
+    join T_PROJECT_ACTIVITY_INFO b
+    on a.activity_id = b.activity_id 
+	<include refid="Base_Where_Clause_Rewrite" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>
+

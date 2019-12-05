@@ -1,0 +1,132 @@
+@charset "utf-8";
+/* CSS Document */
+.Xcontent{
+	width: 100%;
+	height: 430px;
+	min-width: 1020px;
+}
+.Xcontent01{
+	height: 430px;
+	margin: auto;
+	overflow: hidden;
+}
+.Xcontent02>a>p{
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color: #595959;
+	margin-top: 30px;
+	float: left;
+}
+.Xcontent02>a>p:hover{
+	color: #cd2426;
+}
+.Xcontent03>p{
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color: #595959;
+	margin-top: 32px;
+	float: left;
+	margin-left: 2px;
+	cursor: pointer;
+}
+.Xcontent04>p{
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color: #595959;
+	margin-top: 33px;
+	float: left;
+	margin-left: 2px;
+	cursor: pointer;
+}
+.Xcontent05{
+	width: 1198px;
+	height: 484px;
+	border: 1px solid #a4a4a4;
+	margin-top: 70px;
+}
+.Xcontent06{
+	width: 429px;
+	height: 430px;
+	float: left;
+}
+.Xcontent08{
+	float: left;
+	width: 78px;
+	height: 430px;
+	margin-left: 20px;
+}
+.Xcontent07{
+	width: 76px;
+	height: 76px;
+	border: 1px solid #e8e8e8;
+}
+.Xcontent09{
+	width: 76px;
+	height: 76px;
+	margin-top: 12px;
+	border: 1px solid #e8e8e8;
+}
+.Xcontent13{
+	height: 430px;
+	margin-left: 547px;
+}
+.Xcontent14{
+	font-size: 24px;
+	height: 72px;
+}
+.Xcontent16{
+	font-size: 14px;
+	color: #9f9f9f;
+	margin-top: 5px;
+}
+.Xcontent17{
+	background: #f5f3ef;
+	margin-top: 15px;
+	overflow: hidden;
+	padding-bottom:15px;
+	padding-top:5px;
+	border-top:2px solid #ccc;
+}
+.Xcontent18{
+	font-size: 12px;
+	color: #666a6e;
+	margin-top: 20px;
+	margin-left: 16px;
+	float: left;
+	text-align: right;
+    width: 50px;
+}
+.Xcontent19{
+	font-size: 28px;
+	float: left;
+	color: #f14241;
+	margin-left: 15px;
+	margin-top: 4px;
+}
+.Xcontent19>span{
+	font-size: 28px;
+	color: #cd2426;
+	
+}
+.Xcontent23{
+	height: 20px;
+	margin-top: 10px;
+}
+.Xcontent24{
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color: #666a6e;
+	margin-left: 16px;
+	line-height: 20px;
+	float: left;
+	text-align: right;
+    width: 50px;
+}
+.Xcontent25{
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color: #6e7372;
+	margin-left: 20px;
+	float: left;
+	line-height: 20px;
+}

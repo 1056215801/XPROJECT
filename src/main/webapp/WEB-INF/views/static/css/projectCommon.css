@@ -1,0 +1,48 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*图片上传及附件上传按钮样式*/
+#pictureUpload .uploadify {
+	width:102px!important;
+	height:32px!important;
+	cursor: pointer;
+}
+#pictureUpload .swfupload {
+	width:102px;
+	height:32px;
+}
+#pictureUpload .uploadify-button {
+	background-color: #f14241;
+	color:#fff;
+	border:1px solid #f14241;
+	width:100px!important;
+	border-radius:0;
+	text-shadow:none;
+	cursor: pointer;
+}
+#pictureUpload .uploadify:hover .uploadify-button {
+	background-color: #F25454;
+}
+
+#fileUpload .uploadify {
+	width:102px!important;
+	height:32px!important;
+	cursor: pointer;
+}
+#fileUpload .swfupload {
+	width:102px;
+	height:32px;
+}
+#fileUpload .uploadify-button {
+	background-color: #fff;
+	color:#f14241;
+	border:1px solid #f14241;
+	width:100px!important;
+	border-radius:0;
+	text-shadow:none;
+	cursor: pointer;
+}
+#fileUpload .uploadify:hover .uploadify-button {
+	background-color: #efefef;
+}
+/*图片上传及附件上传按钮样式*/

@@ -1,0 +1,120 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"黑体";
+}
+
+html {
+	background-color:#ebebeb;
+}
+.increment_main {
+	background-color:#EBEBEB;
+	font-size:16px;
+	margin-bottom:60px;
+}
+.fixed_top {
+	width:100%;
+	position:fixed;
+	top:0;
+	background-color:#00A85A;
+	padding:5px 0;
+	font-weight:bold;
+	z-index:100;
+}
+
+.increment_top {
+	width:100%;
+	height:20px;
+	margin-top:20px;
+	border-top:1px solid #CBCBCB;
+}
+.increment_title {
+	width:30%;
+	position:relative;
+	top:-10px;
+	left:35%;
+	text-align:center; 
+	background-color:#ebebeb;
+	font-size:14px;
+}
+.increment_content {
+	background-color:#FFF;
+	padding:18px 5px;
+}
+.increment_service {
+	width:25%;
+	text-align:center;
+	float:left;
+}
+.increment_name {
+	font-size:14px;
+	padding:0 10px;
+	line-height:1;
+}
+
+.releaseType_goods {
+	border:1px solid #00A85A;
+	width:140px;
+	margin:25px auto 0;
+	padding:10px 12px;
+}
+.releaseType_goods img {
+	vertical-align:middle;
+}
+.releaseType_goods span {
+	vertical-align:middle;
+	color:#00A85A;
+	font-size:18px;
+	font-weight:bold;
+	margin-left:10px;
+}
+.releaseType_risk {
+	border:1px solid #F55825;
+	width:140px;
+	margin:25px auto 0;
+	padding:10px 12px;
+}
+.releaseType_risk img {
+	vertical-align:middle;
+}
+.releaseType_risk span {
+	vertical-align:middle;
+	color:#F55825;
+	font-size:18px;
+	font-weight:bold;
+	margin-left:10px;
+}
+a:hover, a:visited, a:link, a:active {
+    text-decoration:none;
+	color:#000;
+}

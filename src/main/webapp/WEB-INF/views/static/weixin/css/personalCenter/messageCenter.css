@@ -1,0 +1,149 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, 
+del, dfn, em, img,
+small, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary
+ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+	color: #5e5e5e;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body, button, input, select, textarea {
+    font: 14px/1.5 arial,"黑体";
+}
+a:hover, a:visited, a:link, a:active {
+    text-decoration:none;
+	color:#5e5e5e;
+}
+
+html {
+	background-color:#ebebeb;
+}
+.message_main {
+	background-color:#ebebeb;
+}
+.message_content {
+	width:100%;
+	background-color:#ebebeb;
+	position:relative;
+}
+.message_operBar {
+	background-color:#fff;
+	border-top:1px solid #f6f6f6;
+	border-bottom:1px solid #f6f6f6;
+	text-align:center;
+	margin-top:10px;
+}
+.message_oper {
+	float:left;
+	padding:7px 0;
+}
+.borRight {
+	border-right:1px solid #f6f6f6;
+}
+.borLeft {
+	border-left:1px solid #f6f6f6;
+}
+
+.message_dataBar {
+	background-color:#fff;
+	padding-bottom:10px;
+}
+.message_data {
+	padding:7px 0;
+	margin:0 15px;
+	border-bottom:1px solid #f6f6f6;
+	background-color:#fff;
+}
+.message_cont {
+	color:#000;
+}
+.message_time {
+	color:#ccc;
+	margin-top:3px;
+}
+
+.fixed_bottom {
+	width:100%;
+	height:45px;
+	position:fixed;
+	bottom:0;
+	background-color:#F4F4F4;
+	border-top:1px solid #DCDCDC;
+}
+.returnBtn {
+	float:left;
+	margin:12px 10px;
+}
+.bottom_operation {
+	float:right;
+	border-left:1px solid #DCDCDC;
+	padding:0 10px;
+}
+.bottom_operation img {
+	margin:12px 0;
+}
+.spanContral_1 {
+	position:relative;
+	bottom:16px;
+}
+.spanContral_2 {
+	position:relative;
+	top:10px;
+}
+.selected {
+	font-weight: bold;
+    color: #DD3737;
+}
+/* 加载更多 */
+.renovateTitle {
+	color: #120F0F;
+	display: inline-block;
+	font-size: 14px;
+	line-height: 14px;
+	text-align: center;
+}
+.renovate {
+	display: block;
+    text-align: center;
+	background-color:#F6F6F6;
+	padding:7px 0;
+}
+
+/* 小火箭 */
+#tbox{
+	width:50px;
+	float:right;
+	position:fixed;
+	right:10px;
+	bottom:50px;
+	overflow:visible;
+}
+#gotop{ 
+	width:50px; 
+	height:50px; 
+	background:url(/XProject/static/weixin/images/logistics/rocket.png) no-repeat; 
+	display:block;
+	background-size:50px 50px; 

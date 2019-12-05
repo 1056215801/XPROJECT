@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper
+	namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.projectDeclare.ProjectDeclareApplyMapper">
+
+	<resultMap id="BaseResultMap"
+		type="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareApplyBean">
+		<id column="APPLY_ID" jdbcType="DECIMAL" property="applyId" />
+		<result column="DECLARE_ID" jdbcType="DECIMAL" property="declareId" />
+		<result column="ACCOUNT_ID" jdbcType="DECIMAL" property="accountId" />
+		<result column="ACCOUNT_NAME" jdbcType="VARCHAR" property="accountName" />
+		<result column="COMPANY_NAME" jdbcType="VARCHAR" property="companyName" />
+		<result column="COMPANY_ID" jdbcType="DECIMAL" property="companyId" />
+		<result column="ACCOUNT_TEL" jdbcType="VARCHAR" property="accountTel" />
+		<result column="AT_URL_LIST" jdbcType="VARCHAR" property="atUrlList" />
+		<result column="AT_ID_LIST" jdbcType="VARCHAR" property="atIdList" />
+		<result column="APPLY_STATUS" jdbcType="DECIMAL" property="applyStatus" />
+		<result column="REMARK" jdbcType="VARCHAR" property="remark" />
+		<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="AUDIT_TIME" jdbcType="TIMESTAMP" property="auditTime" />
+		<result column="SOURCE_ORG_ID" jdbcType="DECIMAL" property="sourceOrgId" />
+		<result column="SOURCE_ORG__NAME" jdbcType="VARCHAR" property="sourceOrgName" />
+		<result column="SOURCE_ORG_KIND" jdbcType="DECIMAL" property="sourceOrgKind" />
+		<result column="SORT_NUM" jdbcType="DECIMAL" property="sortNum" />
+		<result column="AUDIT_ORG_ID" jdbcType="DECIMAL" property="auditOrgId" />
+		<result column="STATUS" jdbcType="DECIMAL" property="status" />
+		<result column="SORT_NUM_LOG" jdbcType="DECIMAL" property="sortNumLog" />
+		<result column="APPLY_SOURCE_ORG" jdbcType="VARCHAR" property="applySourceOrg" />
+		<result column="DECLARE_TITLE" jdbcType="VARCHAR" property="declareTitle" />
+	</resultMap>
+
+	<!-- <resultMap id="ResultMapWithForeign" type="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareApplyBean" 
+		extends="BaseResultMap" > <result column="workProcessid" property="workProcessid" 
+		jdbcType="VARCHAR" /> <result column="currentState" property="currentState" 
+		jdbcType="VARCHAR" /> <result column="organizationName" property="orgName" 
+		jdbcType="VARCHAR" /> <result column="companyName" property="companyName" 
+		jdbcType="VARCHAR" /> <result column="accountName" property="accountName" 
+		jdbcType="VARCHAR" /> <result column="parkName" property="parkName" jdbcType="VARCHAR" 
+		/> </resultMap> -->
+
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		APPLY_ID,DECLARE_ID,ACCOUNT_ID,ACCOUNT_NAME,COMPANY_NAME,COMPANY_ID,ACCOUNT_TEL,AT_URL_LIST,AT_ID_LIST,APPLY_STATUS,REMARK,CREATE_TIME,AUDIT_TIME,SOURCE_ORG_ID,SOURCE_ORG__NAME,SOURCE_ORG_KIND,SORT_NUM,AUDIT_ORG_ID
+	</sql>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.math.BigDecimal">
+		select
+		<include refid="Base_Column_List" />
+		from T_PROJECT_DECLARE_APPLY
+		where
+		APPLY_ID = #{applyId,jdbcType=DECIMAL}
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+		DELETE FROM T_PROJECT_DECLARE_APPLY WHERE
+		APPLY_ID = #{applyId,jdbcType=DECIMAL}
+	</delete>
+
+	<insert id="insert"
+		parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareApplyBean">
+		INSERT INTO T_PROJECT_DECLARE_APPLY (
+		APPLY_ID ,
+		DECLARE_ID ,
+		ACCOUNT_ID ,
+		ACCOUNT_NAME ,
+		COMPANY_NAME ,
+		COMPANY_ID ,
+		ACCOUNT_TEL ,
+		AT_URL_LIST ,
+		AT_ID_LIST ,
+		APPLY_STATUS ,
+		REMARK ,
+		CREATE_TIME ,
+		AUDIT_TIME,
+		SOURCE_ORG_ID,
+		SOURCE_ORG__NAME,
+		SOURCE_ORG_KIND,
+		SORT_NUM ,
+		AUDIT_ORG_ID
+		) VALUES (
+		#{applyId,jdbcType=DECIMAL} ,
+		#{declareId,jdbcType=DECIMAL} ,
+		#{accountId,jdbcType=DECIMAL} ,
+		#{accountName,jdbcType=VARCHAR} ,
+		#{companyName,jdbcType=VARCHAR} ,
+		#{companyId,jdbcType=DECIMAL} ,
+		#{accountTel,jdbcType=VARCHAR} ,
+		#{atUrlList,jdbcType=VARCHAR} ,
+		#{atIdList,jdbcType=VARCHAR} ,
+		#{applyStatus,jdbcType=DECIMAL} ,
+		#{remark,jdbcType=VARCHAR} ,
+		#{createTime,jdbcType=TIMESTAMP} ,
+		#{auditTime,jdbcType=TIMESTAMP} ,
+		#{sourceOrgId,jdbcType=DECIMAL} ,
+		#{sourceOrgName,jdbcType=VARCHAR} ,
+		#{sourceOrgKind,jdbcType=DECIMAL} ,
+		#{sortNum,jdbcType=DECIMAL} ,
+		#{auditOrgId,jdbcType=DECIMAL}
+		)
+	</insert>
+
+	<insert id="insertSelective"
+		parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareApplyBean">
+		insert into T_PROJECT_DECLARE_APPLY
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="applyId != null">
+				APPLY_ID,
+			</if>
+			<if test="declareId != null">
+				DECLARE_ID,
+			</if>
+			<if test="accountId != null">
+				ACCOUNT_ID,
+			</if>
+			<if test="accountName != null">
+				ACCOUNT_NAME,
+			</if>
+			<if test="companyName != null">
+				COMPANY_NAME,
+			</if>
+			<if test="companyId != null">
+				COMPANY_ID,
+			</if>
+			<if test="accountTel != null">
+				ACCOUNT_TEL,
+			</if>
+			<if test="atUrlList != null">
+				AT_URL_LIST,
+			</if>
+			<if test="atIdList != null">
+				AT_ID_LIST,
+			</if>
+			<if test="applyStatus != null">
+				APPLY_STATUS,
+			</if>
+			<if test="remark != null">
+				REMARK,
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME,
+			</if>
+			<if test="auditTime != null">
+				AUDIT_TIME,
+			</if>
+			<if test="sourceOrgId != null">
+				SOURCE_ORG_ID,
+			</if>
+			<if test="sourceOrgName != null">
+				SOURCE_ORG__NAME,
+			</if>
+			<if test="sourceOrgKind != null">
+				SOURCE_ORG_KIND,
+			</if>
+			<if test="sortNum != null">
+				SORT_NUM,
+			</if>
+			<if test="auditOrgId != null">
+				AUDIT_ORG_ID,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="applyId != null">
+				#{applyId,jdbcType=DECIMAL},
+			</if>
+			<if test="declareId != null">
+				#{declareId,jdbcType=DECIMAL},
+			</if>
+			<if test="accountId != null">
+				#{accountId,jdbcType=DECIMAL},
+			</if>
+			<if test="accountName != null">
+				#{accountName,jdbcType=VARCHAR},
+			</if>
+			<if test="companyName != null">
+				#{companyName,jdbcType=VARCHAR},
+			</if>
+			<if test="companyId != null">
+				#{companyId,jdbcType=DECIMAL},
+			</if>
+			<if test="accountTel != null">
+				#{accountTel,jdbcType=VARCHAR},
+			</if>
+			<if test="atUrlList != null">
+				#{atUrlList,jdbcType=VARCHAR},
+			</if>
+			<if test="atIdList != null">
+				#{atIdList,jdbcType=VARCHAR},
+			</if>
+			<if test="applyStatus != null">
+				#{applyStatus,jdbcType=DECIMAL},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="auditTime != null">
+				#{auditTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="sourceOrgId != null">
+				#{sourceOrgId,jdbcType=DECIMAL},
+			</if>
+			<if test="sourceOrgName != null">
+				#{sourceOrgName,jdbcType=VARCHAR},
+			</if>
+			<if test="sourceOrgKind != null">
+				#{sourceOrgKind,jdbcType=DECIMAL},
+			</if>
+			<if test="sortNum != null">
+				#{sortNum,jdbcType=DECIMAL},
+			</if>
+			<if test="auditOrgId != null">
+				#{auditOrgId,jdbcType=DECIMAL},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateByPrimaryKeySelective"
+		parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareApplyBean">
+		update T_PROJECT_DECLARE_APPLY
+		<set>
+			<if test="declareId != null">
+				DECLARE_ID = #{declareId,jdbcType=DECIMAL},
+			</if>
+			<if test="accountId != null">
+				ACCOUNT_ID = #{accountId,jdbcType=DECIMAL},
+			</if>
+			<if test="accountName != null">
+				ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR},
+			</if>
+			<if test="companyName != null">
+				COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+			</if>
+			<if test="companyId != null">
+				COMPANY_ID = #{companyId,jdbcType=DECIMAL},
+			</if>
+			<if test="accountTel != null">
+				ACCOUNT_TEL = #{accountTel,jdbcType=VARCHAR},
+			</if>
+			<if test="atUrlList != null">
+				AT_URL_LIST = #{atUrlList,jdbcType=VARCHAR},
+			</if>
+			<if test="atIdList != null">
+				AT_ID_LIST = #{atIdList,jdbcType=VARCHAR},
+			</if>
+			<if test="applyStatus != null">
+				APPLY_STATUS = #{applyStatus,jdbcType=DECIMAL},
+			</if>
+			<if test="remark != null">
+				REMARK = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="auditTime != null">
+				AUDIT_TIME = #{auditTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="sourceOrgId != null">
+				SOURCE_ORG_ID = #{sourceOrgId,jdbcType=DECIMAL},
+			</if>
+			<if test="sourceOrgName != null">
+				SOURCE_ORG__NAME = #{sourceOrgName,jdbcType=VARCHAR},
+			</if>
+			<if test="sourceOrgKind != null">
+				SOURCE_ORG_KIND = #{sourceOrgKind,jdbcType=DECIMAL},
+			</if>
+			<if test="sortNum != null">
+				SORT_NUM = #{sortNum,jdbcType=DECIMAL},
+			</if>
+			<if test="auditOrgId != null">
+				AUDIT_ORG_ID = #{auditOrgId,jdbcType=DECIMAL},
+			</if>
+		</set>
+		where
+		APPLY_ID = #{applyId,jdbcType=DECIMAL}
+	</update>
+
+	<update id="updateByPrimaryKey"
+		parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareApplyBean">
+		UPDATE T_PROJECT_DECLARE_APPLY SET
+		DECLARE_ID = #{declareId,jdbcType=DECIMAL} ,
+		ACCOUNT_ID = #{accountId,jdbcType=DECIMAL} ,
+		ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR} ,
+		COMPANY_NAME = #{companyName,jdbcType=VARCHAR} ,
+		COMPANY_ID = #{companyId,jdbcType=DECIMAL} ,
+		ACCOUNT_TEL = #{accountTel,jdbcType=VARCHAR} ,
+		AT_URL_LIST = #{atUrlList,jdbcType=VARCHAR} ,
+		AT_ID_LIST = #{atIdList,jdbcType=VARCHAR} ,
+		APPLY_STATUS = #{applyStatus,jdbcType=DECIMAL} ,
+		REMARK = #{remark,jdbcType=VARCHAR} ,
+		CREATE_TIME = #{createTime,jdbcType=TIMESTAMP} ,
+		AUDIT_TIME = #{auditTime,jdbcType=TIMESTAMP} ,
+		SOURCE_ORG_ID = #{sourceOrgId,jdbcType=DECIMAL},
+		SOURCE_ORG__NAME = #{sourceOrgName,jdbcType=VARCHAR},
+		SOURCE_ORG_KIND = #{sourceOrgKind,jdbcType=DECIMAL},
+		SORT_NUM = #{sortNum,jdbcType=DECIMAL},
+		AUDIT_ORG_ID = #{auditOrgId,jdbcType=DECIMAL}
+		WHERE
+		APPLY_ID = #{applyId,jdbcType=DECIMAL}
+	</update>
+
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>
+
+			<if test="applyId != null">
+						<![CDATA[AND APPLY_ID = #{applyId,jdbcType=DECIMAL}]]>
+			</if>
+
+			<if test="declareId != null">
+						<![CDATA[AND DECLARE_ID = #{declareId,jdbcType=DECIMAL}]]>
+			</if>
+
+			<if test="accountId != null">
+						<![CDATA[AND ACCOUNT_ID = #{accountId,jdbcType=DECIMAL}]]>
+			</if>
+
+			<if test="accountName != null and accountName != ''">
+				<!-- <![CDATA[AND ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND ACCOUNT_NAME LIKE '%' || #{accountName,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="companyName != null and companyName != ''">
+				<!-- <![CDATA[AND COMPANY_NAME = #{companyName,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND COMPANY_NAME LIKE '%' || #{companyName,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="accountTel != null and accountTel != ''">
+				<!-- <![CDATA[AND ACCOUNT_TEL = #{accountTel,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND ACCOUNT_TEL LIKE '%' || #{accountTel,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="atUrlList != null and atUrlList != ''">
+				<!-- <![CDATA[AND AT_URL_LIST = #{atUrlList,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND AT_URL_LIST LIKE '%' || #{atUrlList,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="atIdList != null and atIdList != ''">
+				<!-- <![CDATA[AND AT_ID_LIST = #{atIdList,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND AT_ID_LIST LIKE '%' || #{atIdList,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="applyStatus != null">
+						<![CDATA[AND APPLY_STATUS = #{applyStatus,jdbcType=DECIMAL}]]>
+			</if>
+
+			<if test="sourceOrgId != null">
+						<![CDATA[AND SOURCE_ORG_ID = #{sourceOrgId,jdbcType=DECIMAL}]]>
+			</if>
+
+			<if test="auditOrgId != null">
+						<![CDATA[AND AUDIT_ORG_ID = #{auditOrgId,jdbcType=DECIMAL}]]>
+			</if>
+
+			<if test="remark != null and remark != ''">
+				<!-- <![CDATA[AND REMARK = #{remark,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND REMARK LIKE '%' || #{remark,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+
+		</where>
+	</sql>
+
+
+
+	<select id="queryByCond" resultMap="BaseResultMap"
+		parameterType="com.chinatelecom.jx.zone.management.bean.projectDeclare.ProjectDeclareApplyBean">
+		select
+		<include refid="Base_Column_List" />
+		from T_PROJECT_DECLARE_APPLY
+		<include refid="Base_Where_Clause" />
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+
+	<!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+
+	<delete id="deleteByDeclareId" parameterType="java.math.BigDecimal">
+		DELETE FROM T_PROJECT_DECLARE_APPLY WHERE
+		DECLARE_ID = #{declareId,jdbcType=DECIMAL}
+	</delete>
+
+	<!-- <select id="selectAuditedList" resultMap="BaseResultMap" > select a.*,c.sort_num 
+		as sort_num_log,c.status from t_project_declare_apply a left join t_project_declare_log 
+		c on a.apply_id = c.apply_id where a.declare_id = #{declareId,jdbcType=DECIMAL} 
+		and ( (a.apply_status !=2 and a.audit_org_id = #{auditOrgId,jdbcType=DECIMAL}) 
+		or c.org_id = #{auditOrgId,jdbcType=DECIMAL} ) <if test="companyName != null 
+		and companyName != ''"> <![CDATA[AND a.COMPANY_NAME LIKE '%' || #{companyName,jdbcType=VARCHAR} 
+		|| '%']]> </if> order by a.CREATE_TIME DESC </select> -->
+
+	<select id="selectReportedList" resultMap="BaseResultMap">
+		select a.*, c.sort_num as sort_num_log
+		from t_project_declare_apply a
+		join t_project_declare_log c
+		on a.apply_id = c.apply_id
+		where a.declare_id = #{declareId,jdbcType=DECIMAL}
+		and c.org_id = #{auditOrgId,jdbcType=DECIMAL}
+
+		<if test="companyName != null and companyName != ''">
+						<![CDATA[AND a.COMPANY_NAME LIKE '%' || #{companyName,jdbcType=VARCHAR} || '%']]>
+		</if>
+		order by c.sort_num ASC
+	</select>
+
+	<select id="selectAuditedList" resultMap="BaseResultMap">
+		select a.*, c.status,c.APPLY_SOURCE_ORG
+		from t_project_declare_apply a
+		join t_project_declare_auditLog c
+		on a.apply_id = c.apply_id
+		where c.org_id = #{auditOrgId,jdbcType=DECIMAL}
+		<if test="declareId != null">
+			<![CDATA[AND a.declare_id = #{declareId,jdbcType=DECIMAL}]]>
+		</if>	
+		<if test="companyName != null and companyName != ''">
+			<![CDATA[AND a.COMPANY_NAME LIKE '%' || #{companyName,jdbcType=VARCHAR} || '%']]>
+		</if>
+		order by a.CREATE_TIME DESC
+	</select>
+	<select id="selectApplyWithForegin" resultMap="BaseResultMap">
+		select i.declare_title, a.*
+ 		 from t_project_declare_apply a, t_project_declare_info i
+		 where i.declare_id = a.declare_id
+		 
+
+			<if test="applyId != null">
+						<![CDATA[AND a.APPLY_ID = #{applyId,jdbcType=DECIMAL}]]>
+			</if>
+
+			<if test="declareId != null">
+						<![CDATA[AND a.DECLARE_ID = #{declareId,jdbcType=DECIMAL}]]>
+			</if>
+
+			<if test="accountId != null">
+						<![CDATA[AND a.ACCOUNT_ID = #{accountId,jdbcType=DECIMAL}]]>
+			</if>
+
+			<if test="accountName != null and accountName != ''">
+				<!-- <![CDATA[AND ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND a.ACCOUNT_NAME LIKE '%' || #{accountName,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="companyName != null and companyName != ''">
+				<!-- <![CDATA[AND COMPANY_NAME = #{companyName,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND a.COMPANY_NAME LIKE '%' || #{companyName,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="accountTel != null and accountTel != ''">
+				<!-- <![CDATA[AND ACCOUNT_TEL = #{accountTel,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND a.ACCOUNT_TEL LIKE '%' || #{accountTel,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="atUrlList != null and atUrlList != ''">
+				<!-- <![CDATA[AND AT_URL_LIST = #{atUrlList,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND a.AT_URL_LIST LIKE '%' || #{atUrlList,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="atIdList != null and atIdList != ''">
+				<!-- <![CDATA[AND AT_ID_LIST = #{atIdList,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND a.AT_ID_LIST LIKE '%' || #{atIdList,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+			<if test="applyStatus != null">
+						<![CDATA[AND a.APPLY_STATUS = #{applyStatus,jdbcType=DECIMAL}]]>
+			</if>
+
+			<if test="sourceOrgId != null">
+						<![CDATA[AND a.SOURCE_ORG_ID = #{sourceOrgId,jdbcType=DECIMAL}]]>
+			</if>
+
+			<if test="auditOrgId != null">
+						<![CDATA[AND a.AUDIT_ORG_ID = #{auditOrgId,jdbcType=DECIMAL}]]>
+			</if>
+
+			<if test="remark != null and remark != ''">
+				<!-- <![CDATA[AND REMARK = #{remark,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND a.REMARK LIKE '%' || #{remark,jdbcType=VARCHAR} || '%']]>
+			</if>
+			<if test="declareTitle != null and declareTitle != ''">
+				<!-- <![CDATA[AND REMARK = #{remark,jdbcType=VARCHAR}]]> -->
+						<![CDATA[AND i.DECLARE_TITLE LIKE '%' || #{declareTitle,jdbcType=VARCHAR} || '%']]>
+			</if>
+
+
+
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+</mapper>
+

@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="com.chinatelecom.jx.zone.management.dao.mybatis.mapper.weixinReceivedMsg.WeixinReceivedMsgMapper" >
+
+	<resultMap id="BaseResultMap" type="com.chinatelecom.jx.zone.management.bean.weixinReceivedMsg.WeixinReceivedMsgBean">
+    	<id column="ID" jdbcType="DECIMAL" property="id"/>
+    	<result column="CONTENT" jdbcType="VARCHAR" property="content"/>
+    	<result column="FROM_USER_NAME" jdbcType="VARCHAR" property="fromUserName"/>
+    	<result column="TO_USER_NAME" jdbcType="VARCHAR" property="toUserName"/>
+    	<result column="CREATE_TIME" jdbcType="VARCHAR" property="createTime"/>
+    	<result column="STATUS" jdbcType="VARCHAR" property="status"/>
+    	<result column="MEDIA_ID" jdbcType="VARCHAR" property="mediaId"/>
+    	<result column="PIC_URL" jdbcType="VARCHAR" property="picUrl"/>
+    	<result column="FORMAT" jdbcType="VARCHAR" property="format"/>
+    	<result column="TYPE" jdbcType="VARCHAR" property="type"/>
+    	<result column="TITLE" jdbcType="VARCHAR" property="title"/>
+    	<result column="URL" jdbcType="VARCHAR" property="url"/>
+    	<result column="DESCRIPTION" jdbcType="VARCHAR" property="description"/>
+    	<result column="MSG_ID" jdbcType="VARCHAR" property="msgId"/>
+    	<result column="THUMB_MEDIA_ID" jdbcType="VARCHAR" property="thumbMediaId"/>
+    	<result column="LOCATION_Y" jdbcType="VARCHAR" property="locationY"/>
+    	<result column="LOCATION_X" jdbcType="VARCHAR" property="locationX"/>
+    	<result column="SCALE" jdbcType="VARCHAR" property="scale"/>
+    	<result column="LABEL" jdbcType="VARCHAR" property="label"/>
+	</resultMap>
+	
+	<!--
+	<resultMap id="ResultMapWithForeign" type="com.chinatelecom.jx.zone.management.bean.weixinReceivedMsg.WeixinReceivedMsgBean" extends="BaseResultMap" >
+			 <result column="workProcessid" property="workProcessid" jdbcType="VARCHAR" />
+			 <result column="currentState" property="currentState" jdbcType="VARCHAR" />
+       <result column="organizationName" property="orgName" jdbcType="VARCHAR" />
+        <result column="companyName" property="companyName" jdbcType="VARCHAR" />
+       <result column="accountName" property="accountName" jdbcType="VARCHAR" />
+       <result column="parkName" property="parkName" jdbcType="VARCHAR" />
+  </resultMap>
+  -->
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		ID,CONTENT,FROM_USER_NAME,TO_USER_NAME,CREATE_TIME,STATUS,MEDIA_ID,PIC_URL,FORMAT,TYPE,TITLE,URL,DESCRIPTION,MSG_ID,THUMB_MEDIA_ID,LOCATION_Y,LOCATION_X,SCALE,LABEL
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_WEIXIN_RECEIVED_MSG
+    where 
+				ID = #{id,jdbcType=DECIMAL} 
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+        DELETE FROM T_WEIXIN_RECEIVED_MSG WHERE
+				ID = #{id,jdbcType=DECIMAL} 
+    </delete>
+
+	<insert id="insert" parameterType="com.chinatelecom.jx.zone.management.bean.weixinReceivedMsg.WeixinReceivedMsgBean">
+        INSERT INTO T_WEIXIN_RECEIVED_MSG (
+        	ID ,
+        	CONTENT ,
+        	FROM_USER_NAME ,
+        	TO_USER_NAME ,
+        	CREATE_TIME ,
+        	STATUS ,
+        	MEDIA_ID ,
+        	PIC_URL ,
+        	FORMAT ,
+        	TYPE ,
+        	TITLE ,
+        	URL ,
+        	DESCRIPTION ,
+        	MSG_ID ,
+        	THUMB_MEDIA_ID ,
+        	LOCATION_Y ,
+        	LOCATION_X ,
+        	SCALE ,
+        	LABEL 
+        ) VALUES (
+        	#{id,jdbcType=DECIMAL} ,
+        	#{content,jdbcType=VARCHAR} ,
+        	#{fromUserName,jdbcType=VARCHAR} ,
+        	#{toUserName,jdbcType=VARCHAR} ,
+        	#{createTime,jdbcType=VARCHAR} ,
+        	#{status,jdbcType=VARCHAR} ,
+        	#{mediaId,jdbcType=VARCHAR} ,
+        	#{picUrl,jdbcType=VARCHAR} ,
+        	#{format,jdbcType=VARCHAR} ,
+        	#{type,jdbcType=VARCHAR} ,
+        	#{title,jdbcType=VARCHAR} ,
+        	#{url,jdbcType=VARCHAR} ,
+        	#{description,jdbcType=VARCHAR} ,
+        	#{msgId,jdbcType=VARCHAR} ,
+        	#{thumbMediaId,jdbcType=VARCHAR} ,
+        	#{locationY,jdbcType=VARCHAR} ,
+        	#{locationX,jdbcType=VARCHAR} ,
+        	#{scale,jdbcType=VARCHAR} ,
+        	#{label,jdbcType=VARCHAR} 
+        )
+	</insert>
+	
+	<insert id="insertSelective" parameterType="com.chinatelecom.jx.zone.management.bean.weixinReceivedMsg.WeixinReceivedMsgBean">
+    insert into T_WEIXIN_RECEIVED_MSG
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+    		<if test="id != null" >
+        ID,
+      	</if>
+    		<if test="content != null" >
+        CONTENT,
+      	</if>
+    		<if test="fromUserName != null" >
+        FROM_USER_NAME,
+      	</if>
+    		<if test="toUserName != null" >
+        TO_USER_NAME,
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME,
+      	</if>
+    		<if test="status != null" >
+        STATUS,
+      	</if>
+    		<if test="mediaId != null" >
+        MEDIA_ID,
+      	</if>
+    		<if test="picUrl != null" >
+        PIC_URL,
+      	</if>
+    		<if test="format != null" >
+        FORMAT,
+      	</if>
+    		<if test="type != null" >
+        TYPE,
+      	</if>
+    		<if test="title != null" >
+        TITLE,
+      	</if>
+    		<if test="url != null" >
+        URL,
+      	</if>
+    		<if test="description != null" >
+        DESCRIPTION,
+      	</if>
+    		<if test="msgId != null" >
+        MSG_ID,
+      	</if>
+    		<if test="thumbMediaId != null" >
+        THUMB_MEDIA_ID,
+      	</if>
+    		<if test="locationY != null" >
+        LOCATION_Y,
+      	</if>
+    		<if test="locationX != null" >
+        LOCATION_X,
+      	</if>
+    		<if test="scale != null" >
+        SCALE,
+      	</if>
+    		<if test="label != null" >
+        LABEL,
+      	</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+    		<if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      	</if>
+    		<if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      	</if>
+    		<if test="fromUserName != null" >
+        #{fromUserName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="toUserName != null" >
+        #{toUserName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      	</if>
+    		<if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      	</if>
+    		<if test="mediaId != null" >
+        #{mediaId,jdbcType=VARCHAR},
+      	</if>
+    		<if test="picUrl != null" >
+        #{picUrl,jdbcType=VARCHAR},
+      	</if>
+    		<if test="format != null" >
+        #{format,jdbcType=VARCHAR},
+      	</if>
+    		<if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      	</if>
+    		<if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      	</if>
+    		<if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      	</if>
+    		<if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      	</if>
+    		<if test="msgId != null" >
+        #{msgId,jdbcType=VARCHAR},
+      	</if>
+    		<if test="thumbMediaId != null" >
+        #{thumbMediaId,jdbcType=VARCHAR},
+      	</if>
+    		<if test="locationY != null" >
+        #{locationY,jdbcType=VARCHAR},
+      	</if>
+    		<if test="locationX != null" >
+        #{locationX,jdbcType=VARCHAR},
+      	</if>
+    		<if test="scale != null" >
+        #{scale,jdbcType=VARCHAR},
+      	</if>
+    		<if test="label != null" >
+        #{label,jdbcType=VARCHAR},
+      	</if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinatelecom.jx.zone.management.bean.weixinReceivedMsg.WeixinReceivedMsgBean">
+    update T_WEIXIN_RECEIVED_MSG
+    <set >
+    		<if test="content != null" >
+        CONTENT = #{content,jdbcType=VARCHAR},
+      	</if>
+    		<if test="fromUserName != null" >
+        FROM_USER_NAME = #{fromUserName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="toUserName != null" >
+        TO_USER_NAME = #{toUserName,jdbcType=VARCHAR},
+      	</if>
+    		<if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      	</if>
+    		<if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      	</if>
+    		<if test="mediaId != null" >
+        MEDIA_ID = #{mediaId,jdbcType=VARCHAR},
+      	</if>
+    		<if test="picUrl != null" >
+        PIC_URL = #{picUrl,jdbcType=VARCHAR},
+      	</if>
+    		<if test="format != null" >
+        FORMAT = #{format,jdbcType=VARCHAR},
+      	</if>
+    		<if test="type != null" >
+        TYPE = #{type,jdbcType=VARCHAR},
+      	</if>
+    		<if test="title != null" >
+        TITLE = #{title,jdbcType=VARCHAR},
+      	</if>
+    		<if test="url != null" >
+        URL = #{url,jdbcType=VARCHAR},
+      	</if>
+    		<if test="description != null" >
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      	</if>
+    		<if test="msgId != null" >
+        MSG_ID = #{msgId,jdbcType=VARCHAR},
+      	</if>
+    		<if test="thumbMediaId != null" >
+        THUMB_MEDIA_ID = #{thumbMediaId,jdbcType=VARCHAR},
+      	</if>
+    		<if test="locationY != null" >
+        LOCATION_Y = #{locationY,jdbcType=VARCHAR},
+      	</if>
+    		<if test="locationX != null" >
+        LOCATION_X = #{locationX,jdbcType=VARCHAR},
+      	</if>
+    		<if test="scale != null" >
+        SCALE = #{scale,jdbcType=VARCHAR},
+      	</if>
+    		<if test="label != null" >
+        LABEL = #{label,jdbcType=VARCHAR},
+      	</if>
+    </set>
+    where 
+      ID = #{id,jdbcType=DECIMAL} 
+  </update>
+  
+	<update id="updateByPrimaryKey" parameterType="com.chinatelecom.jx.zone.management.bean.weixinReceivedMsg.WeixinReceivedMsgBean">
+      UPDATE T_WEIXIN_RECEIVED_MSG SET
+        CONTENT = #{content,jdbcType=VARCHAR} ,
+        FROM_USER_NAME = #{fromUserName,jdbcType=VARCHAR} ,
+        TO_USER_NAME = #{toUserName,jdbcType=VARCHAR} ,
+        CREATE_TIME = #{createTime,jdbcType=VARCHAR} ,
+        STATUS = #{status,jdbcType=VARCHAR} ,
+        MEDIA_ID = #{mediaId,jdbcType=VARCHAR} ,
+        PIC_URL = #{picUrl,jdbcType=VARCHAR} ,
+        FORMAT = #{format,jdbcType=VARCHAR} ,
+        TYPE = #{type,jdbcType=VARCHAR} ,
+        TITLE = #{title,jdbcType=VARCHAR} ,
+        URL = #{url,jdbcType=VARCHAR} ,
+        DESCRIPTION = #{description,jdbcType=VARCHAR} ,
+        MSG_ID = #{msgId,jdbcType=VARCHAR} ,
+        THUMB_MEDIA_ID = #{thumbMediaId,jdbcType=VARCHAR} ,
+        LOCATION_Y = #{locationY,jdbcType=VARCHAR} ,
+        LOCATION_X = #{locationX,jdbcType=VARCHAR} ,
+        SCALE = #{scale,jdbcType=VARCHAR} ,
+        LABEL = #{label,jdbcType=VARCHAR} 
+      WHERE 
+        ID = #{id,jdbcType=DECIMAL} 
+	</update>
+	
+	<sql id="Base_Where_Clause">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	        
+		       <if test="id != null">
+						<![CDATA[AND ID = #{id,jdbcType=DECIMAL}]]>
+				   </if>
+	        
+		       <if test="content != null and content != ''">
+						<!--
+						<![CDATA[AND CONTENT = #{content,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND CONTENT LIKE '%' || #{content,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="fromUserName != null and fromUserName != ''">
+						<!--
+						<![CDATA[AND FROM_USER_NAME = #{fromUserName,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND FROM_USER_NAME LIKE '%' || #{fromUserName,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="toUserName != null and toUserName != ''">
+						<!--
+						<![CDATA[AND TO_USER_NAME = #{toUserName,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND TO_USER_NAME LIKE '%' || #{toUserName,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="createTime != null and createTime != ''">
+						<!--
+						<![CDATA[AND CREATE_TIME = #{createTime,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND CREATE_TIME LIKE '%' || #{createTime,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="status != null and status != ''">
+						<!--
+						<![CDATA[AND STATUS = #{status,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND STATUS LIKE '%' || #{status,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="mediaId != null and mediaId != ''">
+						<!--
+						<![CDATA[AND MEDIA_ID = #{mediaId,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND MEDIA_ID LIKE '%' || #{mediaId,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="picUrl != null and picUrl != ''">
+						<!--
+						<![CDATA[AND PIC_URL = #{picUrl,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND PIC_URL LIKE '%' || #{picUrl,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="format != null and format != ''">
+						<!--
+						<![CDATA[AND FORMAT = #{format,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND FORMAT LIKE '%' || #{format,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="type != null and type != ''">
+						<!--
+						<![CDATA[AND TYPE = #{type,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND TYPE LIKE '%' || #{type,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="title != null and title != ''">
+						<!--
+						<![CDATA[AND TITLE = #{title,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND TITLE LIKE '%' || #{title,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="url != null and url != ''">
+						<!--
+						<![CDATA[AND URL = #{url,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND URL LIKE '%' || #{url,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="description != null and description != ''">
+						<!--
+						<![CDATA[AND DESCRIPTION = #{description,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND DESCRIPTION LIKE '%' || #{description,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="msgId != null and msgId != ''">
+						<!--
+						<![CDATA[AND MSG_ID = #{msgId,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND MSG_ID LIKE '%' || #{msgId,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="thumbMediaId != null and thumbMediaId != ''">
+						<!--
+						<![CDATA[AND THUMB_MEDIA_ID = #{thumbMediaId,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND THUMB_MEDIA_ID LIKE '%' || #{thumbMediaId,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="locationY != null and locationY != ''">
+						<!--
+						<![CDATA[AND LOCATION_Y = #{locationY,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND LOCATION_Y LIKE '%' || #{locationY,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="locationX != null and locationX != ''">
+						<!--
+						<![CDATA[AND LOCATION_X = #{locationX,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND LOCATION_X LIKE '%' || #{locationX,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="scale != null and scale != ''">
+						<!--
+						<![CDATA[AND SCALE = #{scale,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND SCALE LIKE '%' || #{scale,jdbcType=VARCHAR} || '%']]>
+				   </if>
+	        
+		       <if test="label != null and label != ''">
+						<!--
+						<![CDATA[AND LABEL = #{label,jdbcType=VARCHAR}]]>
+						-->
+						<![CDATA[AND LABEL LIKE '%' || #{label,jdbcType=VARCHAR} || '%']]>
+				   </if>
+		</where>
+	</sql>
+	
+ 
+  
+  <select id="queryByCond" resultMap="BaseResultMap" parameterType="com.chinatelecom.jx.zone.management.bean.weixinReceivedMsg.WeixinReceivedMsgBean" >
+    select <include refid="Base_Column_List" />
+    from T_WEIXIN_RECEIVED_MSG
+	<include refid="Base_Where_Clause" />
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <!-- 以上都是自动生成的代码，请勿随意改动， 自定义的方法写在下面，避免重新生成时混淆 ，也有助于快速找回自定义方法 -->
+     
+  
+</mapper>
+
